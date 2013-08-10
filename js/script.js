@@ -8,8 +8,8 @@ $(function() {
         '<div class="accordion-group' + i + '">' +
         '<div class="accordion-heading">' +
         '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse' + i + '">' +
-        '<h2><p class="text-center">' + data[i].label + '</br></p></h2>' +
-        '<h4><p class="text-center">' + data[i].sublabel + '</br></p></h4>' +
+        '<h2><p class="text-center">' + data[i].label + '</p></h2>' +
+        '<h4><p class="text-center">' + data[i].sublabel + '</p></h4>' +
         '<h6><p class="text-left date">2013.09.02 月曜日 AM 08:30</p></h6>' +
         '</a>' +
         '</div>' +
@@ -48,7 +48,7 @@ $(function() {
         } else {
           result_text += "第" + day_mix[j].charAt(1) + day_mix[j].charAt(0) + "曜日 ";
         }
-        $(".accordion-group" + (i - 1) + " date").text(result_text);
+        $(".accordion-group" + (i - 1) + " .date").text(result_text);
       }
     }
 
