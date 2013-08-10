@@ -47,8 +47,13 @@ $(function() {
         } else {
           result_text += "第" + day_mix[j].charAt(1) + day_mix[j].charAt(0) + "曜日 ";
         }
-        $(".accordion-group" + (i - 1) + " .date").text(result_text);
+
       }
+
+      result_text = "2013/08/xx （" + result_text+"）";
+
+      $(".accordion-group" + (i - 1) + " .date").text(result_text);
+
     }
   }
   $("select.form-control").change(function(data) {
