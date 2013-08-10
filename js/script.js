@@ -20,21 +20,23 @@ $(function() {
         '</div>' +
         '</div>');
     }
-  });
 
-  $.get("data.csv", function(csvdata) {
-    csvdata = csvdata.replace(/¥r/g, "");
-    var tmp = csvdata.split(String.fromCharCode(10));
-    for (var i in tmp) {
-      var row = tmp[i].split(",");
-      list_data.push(row);
-    }
 
-    for (var row_index in list_data) {
-      $("select.form-control").append("<option value=" + row_index + ">" + list_data[row_index][0] + "</option>");
-    }
-    //デフォルトのインデックスの表示  
-    onChangeSelect(0);
+
+    $.get("data.csv", function(csvdata) {
+      csvdata = csvdata.replace(/¥r/g, "");
+      var tmp = csvdata.split(String.fromCharCode(10));
+      for (var i in tmp) {
+        var row = tmp[i].split(",");
+        list_data.push(row);
+      }
+
+      for (var row_index in list_data) {
+        $("select.form-control").append("<option value=" + row_index + ">" + list_data[row_index][0] + "</option>");
+      }
+      //デフォルトのインデックスの表示  
+      onChangeSelect(0);
+    });
   });
 
   function onChangeSelect(row_index) {
@@ -50,7 +52,7 @@ $(function() {
 
       }
 
-      result_text = "2013/08/xx （" + result_text+"）";
+      result_text = "2013/08/xx （" + result_text + "）";
 
       $(".accordion-group" + (i - 1) + " .date").text(result_text);
 
