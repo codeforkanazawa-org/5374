@@ -14,7 +14,7 @@ $(function(){
     '</div>'+
     '<div id="collapseOne" class="accordion-body collapse">'+
       '<div class="accordion-inner">'+
-      json[i].decription+
+      data[i].decription+
       '</div>'+
     '</div>'+
   '</div>');
