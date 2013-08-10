@@ -36,9 +36,8 @@ $(function() {
 
     }
   });
-  $("select.form-control").change(function(data) {
-    var row_index=$(data.target).val();
 
+  function onChangeSelect(row_index) {
     for (var i = 1; i < list_data[row_index].length; i++) {
       var day_mix = list_data[row_index][i].split(" ");
       var result_text = "";
@@ -52,6 +51,10 @@ $(function() {
       }
     }
 
-  });
+  }
 
+  $("select.form-control").change(function(data) {
+    var row_index = $(data.target).val();
+    onChangeSelect(row_index);
+  });
 });
