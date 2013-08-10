@@ -1,6 +1,5 @@
 $(function(){
-	$.get("description.json", function(json){
-    var data= $.parseJSON(json); 
+	$.getJSON("description.json", function(data){
 
 		for(i in data){
 
