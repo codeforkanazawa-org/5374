@@ -48,6 +48,6 @@ $(function(){
     }
   });
 });
-$("select.form-control").change(function(data)){
+$("select.form-control").change(function(data){
 console.log(data);
-}
+});
