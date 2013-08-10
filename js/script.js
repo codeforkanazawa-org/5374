@@ -32,9 +32,9 @@ $(function() {
 
     for (var row_index in list_data) {
       $("select.form-control").append("<option value=" + row_index + ">" + list_data[row_index][0] + "</option>");
-
-
     }
+    //デフォルトのインデックスの表示  
+    onChangeSelect(0);
   });
 
   function onChangeSelect(row_index) {
@@ -51,7 +51,6 @@ $(function() {
       }
     }
   }
-  onChangeSelect(0);
   $("select.form-control").change(function(data) {
     var row_index = $(data.target).val();
     onChangeSelect(row_index);
