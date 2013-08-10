@@ -31,7 +31,7 @@ $(function(){
     }
 
     for(var row_index in list_data){
-        $("select.form-control").append("<option>"+list_data[row_index][0]+"</option>");
+        $("select.form-control").append("<option value="+row_index+">"+list_data[row_index][0]+"</option>");
 
         for(var i=1;i<list_data[row_index].length;i++){
             var day_mix=list_data[row_index][i].split(" ");
@@ -42,10 +42,12 @@ $(function(){
               }else{
                 result_text+="第"+day_mix[j].charAt(1)+day_mix[j].charAt(0)+"曜日 ";
               }
-              $("accordion-group"+(i-1)+" date").text(result_text);
+              $("#accordion-group"+(i-1)+" date").text(result_text);
             }
         }
     }
   });
-
 });
+$("select.form-control").change(function(data)){
+console.log(data);
+}
