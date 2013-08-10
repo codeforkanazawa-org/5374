@@ -50,9 +50,8 @@ $(function() {
         $(".accordion-group" + (i - 1) + " .date").text(result_text);
       }
     }
-
   }
-
+  onChangeSelect(0);
   $("select.form-control").change(function(data) {
     var row_index = $(data.target).val();
     onChangeSelect(row_index);
