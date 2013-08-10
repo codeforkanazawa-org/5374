@@ -24,7 +24,7 @@ $(function(){
 
   $.get("data.csv", function(csvdata){
     csvdata=csvdata.replace(/¥r/g,"");
-    var tmp=csvdata.split(/¥n/g);
+    var tmp=csvdata.split(String.fromCharCode(10));
     for(var i in tmp){
       var row=tmp[i].split(",");
       list_data.push(row);
