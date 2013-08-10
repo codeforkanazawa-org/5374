@@ -2,7 +2,6 @@ var list_data=new Array();
 
 $(function(){
 	$.getJSON("description.json", function(data){
-
 		for(var i in data){
 
 			$("#accordion").append(
