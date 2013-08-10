@@ -24,7 +24,8 @@ $(function(){
 	});
 
   $.get("data.csv", function(csvdata){
-    var tmp=csvdata.replace("¥r","").split("¥n");
+    csvdata=svdata.replace("¥r","");
+    var tmp=csvdata.split("¥n");
     for(var i in tmp){
       var row=tmp[i].split(",");
       list_data.push(row);
