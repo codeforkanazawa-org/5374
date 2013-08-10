@@ -15,7 +15,32 @@
     <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) 
     <script src="js/respond.js"></script>
     -->  
-    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript">
+$(function(){
+  $.getJSON("description.json", function(data){
+
+    for(i in data){
+
+      $("#accordion").append(
+        '<div class="accordion-group'+i+'">'+
+    '<div class="accordion-heading">'+
+      '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">'+
+        '<h2><p class="text-center">'+json[i].label+'</br></p></h2>'+
+        '<h4><p class="text-center">'+json[i].sublabel+'</br></p></h4>'+
+        '<h6><p class="text-left">2013.09.02 月曜日 AM 08:30</p></h6>'+
+      '</a>'+
+    '</div>'+
+    '<div id="collapseOne" class="accordion-body collapse">'+
+      '<div class="accordion-inner">'+
+      json[i].decription+
+      '</div>'+
+    '</div>'+
+  '</div>');
+    }
+
+  });
+});
+    </script>
   </head>
   <body>
     <div class="accordion" id="accordion2">
@@ -95,6 +120,9 @@
         </select>
       </div>
     </div>
+  </div>
+  <div id="accordion">
+
   </div>
   <div class="accordion-group0">
     <div class="accordion-heading">
