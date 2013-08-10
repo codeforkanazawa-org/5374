@@ -1,4 +1,4 @@
-var list_data=array();
+var list_data=new Array();
 
 $(function(){
 	$.getJSON("description.json", function(data){
