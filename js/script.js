@@ -24,7 +24,7 @@ $(function(){
 	});
 
   $.get("data.csv", function(csvdata){
-    var tmp=csvdata.splngs[i];
+    var tmp=csvdata.split[i];
     for(var i in tmp){
       var row=csvdata[i].split(",");
       list_data.push(row);
