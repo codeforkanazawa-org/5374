@@ -326,6 +326,7 @@ $(function() {
     if (row_index != -1) {
       set_selected_area_name(areaModels[row_index].label);
     }
+
     if (row_index != -1 && $("#accordion").children().length == 0) {
       create_menu_list(function() {
         update_data(row_index);
@@ -335,13 +336,59 @@ $(function() {
     }
   }
 
+  function getGpsErrorMessage(error) {
+    switch(error.code)  {
+    case error.PERMISSION_DENIED:
+      return "User denied the request for Geolocation."
+    case error.POSITION_UNAVAILABLE:
+      return "Location information is unavailable."
+    case error.TIMEOUT:
+      return "The request to get user location timed out."
+    case error.UNKNOWN_ERROR:
+    default:
+      return "An unknown error occurred."
+    }
+  }
+
+  function getAreaIndex(area_name) {
+    for (var i in areaModels) {
+      if (areaModels[i].label == area_name) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
   $("select.form-control").change(function(data) {
     var row_index = $(data.target).val();
     onChangeSelect(row_index);
   });
 
+  $('#select_area').click(function(){
+    navigator.geolocation.getCurrentPosition(function(position){
+      $.getJSON('area_candidate.php', {
+        latitude:position.coords.latitude,
+        longitude:position.coords.longitude
+      }, function(data){
+        if (data.result == true) {
+          var area_name = data.candidate;
+          var index = getAreaIndex(area_name);
+          $("select.form-control").val(index).change();
+        } else {
+          alert(data.reason);
+        }
+      })
+
+    }, function(error) {
+      alert(getGpsErrorMessage(error));
+    });
+  });
+
   if (get_selected_area_name() == null) {
     $('#collapseZero').addClass('in');
+  }
+  if (!navigator.geolocation) {
+    $('#select_area').css('display', 'none');
   }
 
   update_area_list();
