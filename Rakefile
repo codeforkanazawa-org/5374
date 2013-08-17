@@ -9,7 +9,7 @@ end
 
 desc "deploy GitHub:Pages"
 task :deploy do
-	sh "git commit -a"	
+	system "git commit -a"	
 	sh "git checkout gh-pages"
 	sh "git merge master"
 	sh "git push"
