@@ -14,6 +14,18 @@
 				</outerBoundaryIs>
 			</Polygon>
 		</Placemark>
+		<Placemark>
+			<styleUrl>#poly-000000-4-76</styleUrl>
+			<name>三馬</name>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>0</tessellate>
+						<coordinates>136.62168502807617,36.53124331831945,0.0 136.62164211273193,36.52912253130589,0.0 136.62449598312378,36.529105288896744,0.0 136.62456035614014,36.53124331831945,0.0 136.62168502807617,36.53124331831945,0.0</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
 		<Style id='poly-000000-4-76'>
 			<LineStyle>
 				<color>ff000000</color>
