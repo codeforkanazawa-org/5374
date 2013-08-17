@@ -3,6 +3,12 @@ var list_data = new Array();
 $(function() {
   $.getJSON("description.json", function(data) {
     for (var i in data) {
+      var targets = data[i].target;
+      var target_tag = '<ul style="color:white">';
+      for (var j in targets) {
+        target_tag += '<li>'+targets[j].name+'</li>';
+      }
+      target_tag += '</ul>';
 
       $("#accordion").append(
         '<div class="accordion-group' + i + '">' +
@@ -15,13 +21,11 @@ $(function() {
         '</div>' +
         '<div id="collapse' + i + '" class="accordion-body collapse">' +
         '<div class="accordion-inner">' +
-        data[i].description+
+        data[i].description+'<br />'+target_tag+
         '</div>' +
         '</div>' +
         '</div>');
     }
-
-
 
     $.get("data.csv", function(csvdata) {
       csvdata = csvdata.replace(/¥r/g, "");
