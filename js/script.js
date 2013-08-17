@@ -171,6 +171,16 @@ var CenterModel = function(row) {
 
 
 }
+
+function get_selected_area_name() {
+  return localStorage.getItem('selected_area_name');
+}
+
+function set_selected_area_name(name) {
+  localStorage.setItem('selected_area_name', name);
+}
+
+
 $(function() {
   // var data_list = new Array();
   var center_data = new Array();
@@ -211,10 +221,17 @@ $(function() {
 
         };
 
+        var selected_name = get_selected_area_name();
+
         $("select.form-control").append('<option value="-1">未選択</option>');
         for (var row_index in areaModels) {
-          $("select.form-control").append("<option value=" + row_index + ">" + areaModels[row_index].label + "</option>");
+          var area_name = areaModels[row_index].label;
+          var selected = (selected_name == area_name) ? 'selected="selected"' : '';
+
+          $("select.form-control").append('<option value="' + row_index + '" '+selected+' >' + area_name + "</option>");
         }
+
+        $("select.form-control").change();
       });
     });
   }
@@ -279,6 +296,9 @@ $(function() {
   }
 
   function onChangeSelect(row_index) {
+    if (row_index != -1) {
+      set_selected_area_name(areaModels[row_index].label);
+    }
     if (row_index != -1 && $("#accordion").children().length == 0) {
       create_menu_list(function() {
         update_data(row_index);
@@ -292,6 +312,10 @@ $(function() {
     var row_index = $(data.target).val();
     onChangeSelect(row_index);
   });
+
+  if (get_selected_area_name() == null) {
+    $('#collapseZero').addClass('in');
+  }
 
   update_area_list();
 });
