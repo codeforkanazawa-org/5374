@@ -185,6 +185,9 @@ var TrashModel = function(_lable, _cell) {
   }
 
 }
+/**
+センターのデータを管理します。
+*/
 var CenterModel = function(row) {
 
   function getDay(center, index) {
@@ -314,9 +317,9 @@ $(function() {
             '</div>');
 
           var result_text = areaModels[row_index].trash[i].getDateLabel();
-          var day_list = areaModels[row_index].trash[i].getDayList();
+          // var day_list = areaModels[row_index].trash[i].getDayList();
           $(".accordion-group" + (d_no) + " .date").text(result_text);
-          $(".accordion-group" + (d_no) + " .targetDays").html(day_list);
+          // $(".accordion-group" + (d_no) + " .targetDays").html(day_list);
         }
       }
     }
