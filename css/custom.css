@@ -3,17 +3,11 @@
 
 /* Override base .btn styles */
 /* Apply text and background changes to three key states: default, hover, and active (click). */
-.accordion-group0{background-color:  #1abc9c;}
-.accordion-group1{background-color:  #16a085;}
-.accordion-group2{background-color:  #f1c40f;}
-.accordion-group3{background-color:  #f39c12;}
-.accordion-group4{background-color:  #d35400;}
-.accordion-group5{background-color:  #e67e22;}
-.accordion-group6{background-color:  #27ae60;}
-.accordion-group7{background-color:  #2ecc71;}
-.accordion-group8{background-color:  #3498db;}
-.accordion-group9{background-color:  #2980b9;}
-.accordion-group10{background-color:  #e74c3c;}
+.accordion-group0{background-color:  #ea3b13;}/* 燃やす */
+.accordion-group1{background-color:  #733b96;}/* 燃やさない */
+.accordion-group2{background-color:  #77ae1f;}/* 資源 */
+.accordion-group3{background-color:  #2dc7aa;}/* びん */
+
 .accordion-toggle{color:#ffffff;height: 120px;}
 
 .accordion-toggle-top{color:#000000;height: 20px;}
