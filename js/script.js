@@ -33,7 +33,7 @@ $(function() {
         '<div id="collapse' + i + '" class="accordion-body collapse">' +
         '<div class="accordion-inner">' +
         data[i].description + '<br />' + target_tag +
-        '</div>' +
+        '<div class="targetDays"></div></div>' +        
         '</div>' +
         '</div>');
     }
@@ -119,7 +119,7 @@ function onChangeSelect(row_index) {
     // result_text = "2013/08/xx （" + result_text + "）";
 
     $(".accordion-group" + (i - 2) + " .date").text(result_text);
-    $(".accordion-group" + (i - 2) + " .accordion-inner").append(day_list);
+    $(".accordion-group" + (i - 2) + " .targetDays").html(day_list);
 
   }
   $("select.form-control").change(function(data) {
