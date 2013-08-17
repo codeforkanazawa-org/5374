@@ -1,8 +1,14 @@
+/**
+  エリアを管理するクラスです。
+*/
 var AreaModel = function() {
   this.label;
   this.centerName;
   this.center;
   this.trash = new Array();
+/**
+  各ゴミのカテゴリに対して、最も直近の日付を計算します。
+*/
 
   this.calcMostRect = function() {
     var now = new Date();
@@ -10,6 +16,9 @@ var AreaModel = function() {
       this.trash[i].calcMostRect(this);
     }
   }
+  /**
+    休止期間（主に年末年始）かどうかを判定します。
+  */
   this.isBlankDay = function(currentDate) {
     var period = [this.center.startDate, this.center.endDate];
 
@@ -19,6 +28,10 @@ var AreaModel = function() {
     }
     return false;
   }
+  /**
+    処理センターを登録します。
+    名前が一致するかどうかで判定を行っております。
+  */
   this.setCenter = function(center_data) {
     for (var i in center_data) {
       if (this.centerName == center_data[i].name) {
@@ -26,7 +39,9 @@ var AreaModel = function() {
       }
     };
   }
-
+/**
+  ゴミのカテゴリのソートを行います。
+*/
   this.sortTrash = function() {
     this.trash.sort(function(a, b) {
       var at = a.mostRecent.getTime();
@@ -38,10 +53,16 @@ var AreaModel = function() {
   }
 
 }
+/**
+  ゴミの種類の分別のクラスです。
+*/
 var Description = function() {
   this.label;
   this.notice;
 }
+/**
+  各ゴミのカテゴリを管理するクラスです。
+*/
 var TrashModel = function(_lable, _cell) {
   this.dayLabel;
   this.mostRecent;
@@ -78,7 +99,10 @@ var TrashModel = function(_lable, _cell) {
     };
     return -1;
   }
-
+/**
+  このゴミの年間のゴミの日を計算します。
+  センターが休止期間がある場合は、その期間１週間ずらすという実装を行っております。
+*/
   this.calcMostRect = function(areaObj) {
 
     var day_mix = this.dayCell;
@@ -123,7 +147,7 @@ var TrashModel = function(_lable, _cell) {
             );
             //年末年始のずらしの対応
             //休止期間なら、今後の日程を１週間ずらす
-            if (areaObj.isBlankDay(d, areaObj.centerName)) {
+            if (areaObj.isBlankDay(d)) {
               isShift = true;
             }
             if (isShift) {
@@ -146,6 +170,9 @@ var TrashModel = function(_lable, _cell) {
     }
     this.dayList = day_list;
   }
+  /**
+   計算したゴミの日一覧をリスト形式として取得します。
+  */
   this.getDayList = function() {
     var day_text = "<ul>";
     for (var i in this.data_list) {
