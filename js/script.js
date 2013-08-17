@@ -94,7 +94,7 @@ function onChangeSelect(row_index) {
               ((7 + getDayIndex(day_mix[j]) - date.getDay()) % 7) + week * 7 * 24 * 60 * 60 * 1000
             );
             //同じ月の時
-            if ((d.getMonth() + 1) == month) {
+            if ((d.getMonth() + 1) == month%12) {
               day_list += "<li>" + d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate() + "</li>";
             }
 
