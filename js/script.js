@@ -10,7 +10,7 @@ var AreaModel = function() {
       this.trash[i].calcMostRect(this);
     }
   }
-  
+
   this.isBlankDay = function(currentDate) {
     var period = [this.center.startDate, this.center.endDate];
 
@@ -354,10 +354,10 @@ $(function() {
 
   if (get_selected_area_name() == null) {
     $('#collapseZero').addClass('in');
-  }
+  }/*
   if (!navigator.geolocation) {
     $('#select_area').css('display', 'none');
-  }
+  }*/
 
   update_area_list();
 });
