@@ -15,7 +15,7 @@ function main()
 	$lng = doubleval($_GET['longitude']);
 
 	$candidate = get_candidate($lat, $lng);
-	
+
 	if ($candidate === false)
 	{
 		echo get_error_response('候補地が見つかりませんでした。');
@@ -38,7 +38,7 @@ function get_candidate($latitude, $longitude)
 {
 	$filename = './XML/area.kml';
 
-	$point = "$latitude, $longitude";
+	$point = "$longitude,$latitude";
 
 	$doc = new DOMDocument();
 	$doc->load($filename);
@@ -51,13 +51,12 @@ function get_candidate($latitude, $longitude)
 	{
 		$polygon_elms = $doc->getElementsByTagName('Polygon');
 		$polygon = get_polygon($polygon_elms->item(0));
-
 		$result = $pointLocation->pointInPolygon($point, $polygon);
 
 		if ($result === 'inside')
 		{
 			$name_elm = $doc->getElementsByTagName('name');
-			$name = $name_elm->nodeValue;
+			$name = $name_elm->item(0)->nodeValue;
 			return $name;
 		}
 	}
