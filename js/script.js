@@ -266,9 +266,9 @@ $(function() {
           target_tag += '</ul>';
 
           accordion_elm.append(
-            '<div class="accordion-group' + d_no + '">' +
+            '<div class="accordion-group" id="accordion-group' + d_no + '">' +
             '<div class="accordion-heading">' +
-            '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse' + i + '">' +
+            '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '">' +
             '<h2><p class="text-center">' + '<center><img src="' + description.styles.svg + '" /></center>' + '</p></h2>' +
             '<h4><p class="text-center">' + description.sublabel + '</p></h4>' +
             '<h6><p class="text-left date"></p></h6>' +
@@ -283,8 +283,8 @@ $(function() {
 
           var result_text = areaModels[row_index].trash[i].getDateLabel();
           var day_list = areaModels[row_index].trash[i].getDayList();
-          $(".accordion-group" + (d_no) + " .date").text(result_text);
-          $(".accordion-group" + (d_no) + " .targetDays").html(day_list);
+          $("#accordion-group" + (d_no) + " .date").text(result_text);
+          $("#accordion-group" + (d_no) + " .targetDays").html(day_list);
         }
       }
     }
