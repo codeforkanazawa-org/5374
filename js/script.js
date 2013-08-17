@@ -94,7 +94,7 @@ $(function() {
           $("select.form-control").append("<option value=" + row_index + ">" + list_data[row_index][0] + "</option>");
         }
         //デフォルトのインデックスの表示  
-        onChangeSelect(0);
+        // onChangeSelect(0);
 
         //テストケース
 
@@ -126,7 +126,7 @@ $(function() {
 
 
   function onChangeSelect(row_index) {
-    //直近の日時を更新
+    
     var now = new Date();
 
     for (var i = 2; i < list_data[row_index].length; i++) {
@@ -134,6 +134,7 @@ $(function() {
 
       var day_mix = list_data[row_index][i].split(" ");
       var result_text = "";
+      //直近の日時を更新
       var mostRecent = null;
       // 12月 +3月　を表現
       for (var month = 4; month <= 12 + 3; month++) {
@@ -160,8 +161,8 @@ $(function() {
               if ((d.getMonth() + 1) == month % 12) {
                 day_list += "<li>" + d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate() + "</li>";
 
-                if (d.getTime() < now.getTime()) {
-                  mostRecent = now;
+                if (mostRecent==null && d.getTime() > now.getTime()) {
+                  mostRecent = d;
                 }
 
               }
@@ -187,8 +188,8 @@ $(function() {
                 }
                 day_list += "<li>" + d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate() + "</li>";
 
-                if (d.getTime() < now.getTime()) {
-                  mostRecent = now;
+                if (mostRecent==null && d.getTime() > now.getTime()) {
+                  mostRecent = d;
                 }
 
               }
@@ -208,7 +209,7 @@ $(function() {
           result_text += "第" + day_mix[j].charAt(1) + day_mix[j].charAt(0) + "曜日 ";
         }
       }
-      result_text += mostRecent.getFullYear() + "/" + mostRecent.getMonth() + "/" + mostRecent.getDate();
+      result_text += mostRecent.getFullYear() + "/" + (1 + mostRecent.getMonth()) + "/" + mostRecent.getDate();
 
       day_list += "</ul>"
 
