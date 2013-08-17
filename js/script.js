@@ -25,7 +25,7 @@ $(function() {
         '<div class="accordion-group' + i + '">' +
         '<div class="accordion-heading">' +
         '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse' + i + '">' +
-        '<h2><p class="text-center">' + data[i].label + '</p></h2>' +
+        '<h2><p class="text-center">' + '<center><object type="image/svg+xml" data="' + data[i].styles.svg +'"></object></center>' + '</p></h2>' +
         '<h4><p class="text-center">' + data[i].sublabel + '</p></h4>' +
         '<h6><p class="text-left date"></p></h6>' +
         '</a>' +

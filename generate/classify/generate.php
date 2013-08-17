@@ -93,17 +93,15 @@ function put_target($src, $map, $styles) {
 				'label' => $convert_class_name,
 				'sublabel' => '',
 				'description' => '',
-				'target' => array(),				
+				'target' => array(),		
+				'styles' => $styles[$convert_class_name],
 			);
 		}
-		
-		$style = $styles[$convert_class_name];
 		
 		$class = $dst[$convert_class_name];
 		$target = array(
 			'name' => $line['target'],
 			'notice' => isset($line['notice']) ? $line['notice'] : '',
-			'style' => $style,
 			);
 
 		$dst[$convert_class_name]['target'][] = $target;
