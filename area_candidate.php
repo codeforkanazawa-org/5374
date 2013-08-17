@@ -62,8 +62,6 @@ function get_candidate($latitude, $longitude)
 		}
 	}
 
-	return '戸板';
-
 	return false;
 }
 
