@@ -62,7 +62,7 @@ $(function() {
         '<div class="accordion-group' + i + '">' +
         '<div class="accordion-heading">' +
         '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse' + i + '">' +
-        '<h2><p class="text-center">' + '<center><img src="' + data[i].styles.svg +'" /></center>' + '</p></h2>' +
+        '<h2><p class="text-center">' + '<center><img src="' + data[i].styles.svg + '" /></center>' + '</p></h2>' +
         '<h4><p class="text-center">' + data[i].sublabel + '</p></h4>' +
         '<h6><p class="text-left date"></p></h6>' +
         '</a>' +
@@ -126,11 +126,15 @@ $(function() {
 
 
   function onChangeSelect(row_index) {
+    //直近の日時を更新
+    var now = new Date();
+
     for (var i = 2; i < list_data[row_index].length; i++) {
       var day_list = "<ul>";
 
       var day_mix = list_data[row_index][i].split(" ");
       var result_text = "";
+      var mostRecent = null;
       // 12月 +3月　を表現
       for (var month = 4; month <= 12 + 3; month++) {
         for (var j in day_mix) {
@@ -155,6 +159,11 @@ $(function() {
               //同じ月の時
               if ((d.getMonth() + 1) == month % 12) {
                 day_list += "<li>" + d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate() + "</li>";
+
+                if (d.getTime() < now.getTime()) {
+                  mostRecent = now;
+                }
+
               }
 
             } else {
@@ -166,7 +175,6 @@ $(function() {
               //休止期間なら、今後の日程を１週間ずらす
               if (isBlankDay(d, list_data[row_index][1])) {
                 isShift = true;
-                console.log(d);
 
               }
               if (isShift) {
@@ -178,8 +186,15 @@ $(function() {
                   // console.log(d);
                 }
                 day_list += "<li>" + d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate() + "</li>";
+
+                if (d.getTime() < now.getTime()) {
+                  mostRecent = now;
+                }
+
               }
             }
+
+
           }
 
 
@@ -192,8 +207,9 @@ $(function() {
         } else {
           result_text += "第" + day_mix[j].charAt(1) + day_mix[j].charAt(0) + "曜日 ";
         }
-
       }
+      result_text += mostRecent.getFullYear() + "/" + mostRecent.getMonth() + "/" + mostRecent.getDate();
+
       day_list += "</ul>"
 
       // result_text = "2013/08/xx （" + result_text + "）";
