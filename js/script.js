@@ -28,12 +28,12 @@ var AreaModel = function() {
   }
 
   this.sortTrash = function() {
-    this.trash.sort( function(a,b){
-      var at=a.mostRecent.getTime();
-      var bt=b.mostRecent.getTime();
-      if(  at< bt ) return -1;
-        if( at > bt) return 1;
-        return 0;
+    this.trash.sort(function(a, b) {
+      var at = a.mostRecent.getTime();
+      var bt = b.mostRecent.getTime();
+      if (at < bt) return -1;
+      if (at > bt) return 1;
+      return 0;
     });
   }
 
@@ -241,43 +241,42 @@ $(function() {
     for (var i in areaModels[row_index].trash) {
       var description;
 
-      for (var j in descriptions) {
-        if (descriptions[j].label == areaModels[row_index].trash[i].label) {
-          description = descriptions[j];
+      for (var d_no in descriptions) {
+        if (descriptions[d_no].label == areaModels[row_index].trash[i].label) {
+          description = descriptions[d_no];
+
+
+          var target_tag = '<ul>';
+          var targets = description.target;
+          for (var j in targets) {
+            target_tag += '<li>' + targets[j].name + '</li>';
+          }
+          target_tag += '</ul>';
+
+          $("#accordion").append(
+            '<div class="accordion-group' + d_no + '">' +
+            '<div class="accordion-heading">' +
+            '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse' + i + '">' +
+            '<h2><p class="text-center">' + '<center><img src="' + description.styles.svg + '" /></center>' + '</p></h2>' +
+            '<h4><p class="text-center">' + description.sublabel + '</p></h4>' +
+            '<h6><p class="text-left date"></p></h6>' +
+            '</a>' +
+            '</div>' +
+            '<div id="collapse' + i + '" class="accordion-body collapse">' +
+            '<div class="accordion-inner">' +
+            description.description + '<br />' + target_tag +
+            '<div class="targetDays"></div></div>' +
+            '</div>' +
+            '</div>');
+
+          var result_text = areaModels[row_index].trash[i].getDateLabel();
+          var day_list = areaModels[row_index].trash[i].getDayList();
+          $(".accordion-group" + (d_no) + " .date").text(result_text);
+          $(".accordion-group" + (d_no) + " .targetDays").html(day_list);
         }
-      };
-
-      var target_tag = '<ul>';
-      var targets = description.target;
-      for (var j in targets) {
-        target_tag += '<li>' + targets[j].name + '</li>';
       }
-      target_tag += '</ul>';
-
-      $("#accordion").append(
-        '<div class="accordion-group' + i + '">' +
-        '<div class="accordion-heading">' +
-        '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse' + i + '">' +
-        '<h2><p class="text-center">' + '<center><img src="' + description.styles.svg + '" /></center>' + '</p></h2>' +
-        '<h4><p class="text-center">' + description.sublabel + '</p></h4>' +
-        '<h6><p class="text-left date"></p></h6>' +
-        '</a>' +
-        '</div>' +
-        '<div id="collapse' + i + '" class="accordion-body collapse">' +
-        '<div class="accordion-inner">' +
-        description.description + '<br />' + target_tag +
-        '<div class="targetDays"></div></div>' +
-        '</div>' +
-        '</div>');
-
-
-      var result_text = areaModels[row_index].trash[i].getDateLabel();
-      var day_list = areaModels[row_index].trash[i].getDayList();
-      $(".accordion-group" + (i) + " .date").text(result_text);
-      $(".accordion-group" + (i) + " .targetDays").html(day_list);
     }
   }
-
 
   function onChangeSelect(row_index) {
     if (row_index != -1 && $("#accordion").children().length == 0) {
