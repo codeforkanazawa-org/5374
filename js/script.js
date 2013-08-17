@@ -40,30 +40,23 @@ $(function() {
     $.get("center.csv", function(tmp_center_data) {
       var tmp = tmp_center_data.split(String.fromCharCode(10));
 
-      $.get("data.csv", function(csvdata) {
+
+
+      $.get("CSV/area_days.csv", function(csvdata) {
         csvdata = csvdata.replace(/¥r/g, "");
         var tmp = csvdata.split(String.fromCharCode(10));
+        tmp.shift();
         for (var i in tmp) {
           var row = tmp[i].split(",");
-          center_data.push(row);
+          list_data.push(row);
+        }
 
-        };
+        for (var row_index in list_data) {
+          $("select.form-control").append("<option value=" + row_index + ">" + list_data[row_index][0] + "</option>");
+        }
+        //デフォルトのインデックスの表示  
+        onChangeSelect(0);
 
-        $.get("data.csv", function(csvdata) {
-          csvdata = csvdata.replace(/¥r/g, "");
-          var tmp = csvdata.split(String.fromCharCode(10));
-          for (var i in tmp) {
-            var row = tmp[i].split(",");
-            list_data.push(row);
-          }
-
-          for (var row_index in list_data) {
-            $("select.form-control").append("<option value=" + row_index + ">" + list_data[row_index][0] + "</option>");
-          }
-          //デフォルトのインデックスの表示  
-          onChangeSelect(0);
-
-        });
       });
     });
   });
@@ -94,7 +87,7 @@ function onChangeSelect(row_index) {
               ((7 + getDayIndex(day_mix[j]) - date.getDay()) % 7) + week * 7 * 24 * 60 * 60 * 1000
             );
             //同じ月の時
-            if ((d.getMonth() + 1) == month%12) {
+            if ((d.getMonth() + 1) == month % 12) {
               day_list += "<li>" + d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate() + "</li>";
             }
 
