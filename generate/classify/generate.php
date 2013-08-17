@@ -7,14 +7,30 @@ function main()
 	$src_filename = 'classify_src.csv';
 	$dst_filename = 'description.json';
 	$map_filename = 'classify_map.csv';
+	$list_filename = 'classify_list.csv';
 
-	$src = load_class_list($src_filename);
+	$list = load_class_list($list_filename);
+	$src = load_class_src($src_filename);
 	$map = load_class_map($map_filename);
-	$dst = put_target($src, $map);
+	$dst = put_target($src, $map, $list);
 	save_description($dst_filename, $dst);
 }
 
 function load_class_list($filename)
+{
+	$lists = array();
+
+	$fp = fopen($filename, 'r');
+	while ($data = fgetcsv($fp, 10000))
+	{
+		$class = $data[0];
+		$lists[$class] = array('svg' => $data[1]);
+	}
+	
+	return $lists;
+}
+
+function load_class_src($filename)
 {
 	$classes = array();
 
@@ -55,7 +71,7 @@ function load_class_map($filename)
 	return $map; 
 }
 
-function put_target($src, $map) {
+function put_target($src, $map, $styles) {
 	$dst = array();
 
 	foreach ($src as $line) {
@@ -77,10 +93,11 @@ function put_target($src, $map) {
 				'label' => $convert_class_name,
 				'sublabel' => '',
 				'description' => '',
-				'target' => array(),				
+				'target' => array(),		
+				'styles' => $styles[$convert_class_name],
 			);
 		}
-
+		
 		$class = $dst[$convert_class_name];
 		$target = array(
 			'name' => $line['target'],
