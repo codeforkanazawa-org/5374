@@ -51,7 +51,6 @@ var AreaModel = function() {
       return 0;
     });
   }
-
 }
 /**
   ゴミの種類の分別のクラスです。
@@ -104,7 +103,6 @@ var TrashModel = function(_lable, _cell) {
   センターが休止期間がある場合は、その期間１週間ずらすという実装を行っております。
 */
   this.calcMostRect = function(areaObj) {
-
     var day_mix = this.dayCell;
     var result_text = "";
     var day_list = new Array();
@@ -117,13 +115,11 @@ var TrashModel = function(_lable, _cell) {
 
         //week=0が第1週目です。
         for (var week = 0; week < 5; week++) {
-
           //4月1日を起点として第n曜日などを計算する。
           var date = new Date(2013, month - 1, 1);
           var d = new Date(date);
           //毎週
           if (day_mix[j].length == 1) {
-
             //コンストラクタでやろうとするとうまく行かなかった。。
             //
             //4月1日を基準にして曜日の差分で時間を戻し、最大５週までの増加させて毎週を表現
@@ -139,9 +135,7 @@ var TrashModel = function(_lable, _cell) {
               }
 
             }
-
           } else {
-
             d.setTime(date.getTime() + 1000 * 60 * 60 * 24 *
               ((7 + getDayIndex(day_mix[j].charAt(0)) - date.getDay()) % 7) + week * 7 * 24 * 60 * 60 * 1000
             );
@@ -183,7 +177,6 @@ var TrashModel = function(_lable, _cell) {
     day_text += "</ul>";
     return day_text;
   }
-
 }
 /**
 センターのデータを管理します。
@@ -198,8 +191,6 @@ var CenterModel = function(row) {
   this.name = row[0];
   this.startDate = getDay(row, 1);
   this.endDate = getDay(row, 2);
-
-
 }
 
 function get_selected_area_name() {
@@ -209,7 +200,6 @@ function get_selected_area_name() {
 function set_selected_area_name(name) {
   localStorage.setItem('selected_area_name', name);
 }
-
 
 $(function() {
   // var data_list = new Array();
@@ -248,26 +238,26 @@ $(function() {
           var area = areaModels[i];
           area.setCenter(center_data);
           // area.calcMostRect();
-
         };
 
         var selected_name = get_selected_area_name();
 
-        $("select.form-control").append('<option value="-1">未選択</option>');
+        var area_select_form = $("select.form-control");
+
+        area_select_form.append('<option value="-1">未選択</option>');
         for (var row_index in areaModels) {
           var area_name = areaModels[row_index].label;
           var selected = (selected_name == area_name) ? 'selected="selected"' : '';
 
-          $("select.form-control").append('<option value="' + row_index + '" '+selected+' >' + area_name + "</option>");
+          area_select_form.append('<option value="' + row_index + '" '+selected+' >' + area_name + "</option>");
         }
 
-        $("select.form-control").change();
+        area_select_form.change();
       });
     });
   }
 
   function create_menu_list(after_action) {
-
     $.getJSON("description.json", function(data) {
       for (var i in data) {
         descriptions.push(data[i]);
@@ -282,7 +272,8 @@ $(function() {
     //トラッシュの近い順にソートします。
     areaModels[row_index].sortTrash();
     //一旦削除
-    $("#accordion").empty();
+    var accordion_elm = $("#accordion");
+    accordion_elm.empty();
 
     //アコーディオンの分類から対応の計算を行います。
     for (var i in areaModels[row_index].trash) {
@@ -292,7 +283,6 @@ $(function() {
         if (descriptions[d_no].label == areaModels[row_index].trash[i].label) {
           description = descriptions[d_no];
 
-
           var target_tag = '<ul>';
           var targets = description.target;
           for (var j in targets) {
@@ -300,7 +290,7 @@ $(function() {
           }
           target_tag += '</ul>';
 
-          $("#accordion").append(
+          accordion_elm.append(
             '<div class="accordion-group' + d_no + '">' +
             '<div class="accordion-heading">' +
             '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse' + i + '">' +
@@ -389,10 +379,10 @@ $(function() {
 
   if (get_selected_area_name() == null) {
     $('#collapseZero').addClass('in');
-  }
+  }/*
   if (!navigator.geolocation) {
     $('#select_area').css('display', 'none');
-  }
+  }*/
 
   update_area_list();
 });
