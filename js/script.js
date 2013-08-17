@@ -33,10 +33,7 @@ $(function() {
     }
 
     var center = getCenterData(center_name);
-
     var period = getStartAndEndDay(center);
-    // console.log(period[0].getTime(),currentDate.getTime(),period[1].getTime());
-
 
     if (period[0].getTime() <= currentDate.getTime() &&
       currentDate.getTime() <= period[1].getTime()) {
@@ -45,44 +42,9 @@ $(function() {
     return false;
   }
 
-
-  $.getJSON("description.json", function(data) {
-    for (var i in data) {
-      descriptionClassification.push({
-        "label": data[i].label
-      });
-      var targets = data[i].target;
-      var target_tag = '<ul>';
-      for (var j in targets) {
-        target_tag += '<li>' + targets[j].name + '</li>';
-      }
-      target_tag += '</ul>';
-
-      $("#accordion").append(
-        '<div class="accordion-group' + i + '">' +
-        '<div class="accordion-heading">' +
-        '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse' + i + '">' +
-        '<h2><p class="text-center">' + '<center><img src="' + data[i].styles.svg + '" /></center>' + '</p></h2>' +
-        '<h4><p class="text-center">' + data[i].sublabel + '</p></h4>' +
-        '<h6><p class="text-left date"></p></h6>' +
-        '</a>' +
-        '</div>' +
-        '<div id="collapse' + i + '" class="accordion-body collapse">' +
-        '<div class="accordion-inner">' +
-        data[i].description + '<br />' + target_tag +
-        '<div class="targetDays"></div></div>' +
-        '</div>' +
-        '</div>');
-    }
-    $.get("CSV/center.csv", function(tmp_center_data) {
-      var tmp = tmp_center_data.split(String.fromCharCode(10));
-      for (var i in tmp) {
-        var row = tmp[i].split(",");
-        center_data.push(row);
-      }
-
-      $.get("CSV/area_days.csv", function(csvdata) {
-        csvdata = csvdata.replace("/¥r/gm", "");
+  function update_area_list() {
+    $.get("CSV/area_days.csv", function(csvdata) {
+        var csvdata = csvdata.replace("/¥r/gm", "");
         var tmp = csvdata.split(String.fromCharCode(10));
         area_days_label = tmp.shift().split(",");
         for (var i in tmp) {
@@ -90,43 +52,59 @@ $(function() {
           list_data.push(row);
         }
 
-        for (var row_index in list_data) {
-          $("select.form-control").append("<option value=" + row_index + ">" + list_data[row_index][0] + "</option>");
-        }
-        //デフォルトのインデックスの表示  
-        // onChangeSelect(0);
+        $.get("CSV/center.csv", function(tmp_center_data) {
+          var tmp = tmp_center_data.split(String.fromCharCode(10));
+          for (var i in tmp) {
+            var row = tmp[i].split(",");
+            center_data.push(row);
 
-        //テストケース
-
-        if (!isBlankDay(new Date(2014, 0, 1), "東部管理センター")) {
-          console.log("テストエラー");
-        }
-        if (!isBlankDay(new Date(2014, 0, 2), "東部管理センター")) {
-          console.log("テストエラー");
-        }
-        if (!isBlankDay(new Date(2014, 0, 7), "東部管理センター")) {
-          console.log("テストエラー");
-        }
-        if (isBlankDay(new Date(2014, 0, 8), "東部管理センター")) {
-          console.log("テストエラー");
-        }
-        if (isBlankDay(new Date(2014, 0, 10), "東部管理センター")) {
-          console.log("テストエラー");
-        }
-        if (isBlankDay(new Date(2014, 1, 14), "東部管理センター")) {
-          console.log("テストエラー");
-        }
-        if (isBlankDay(new Date(2014, 1, 5), "東部管理センター")) {
-          console.log("テストエラー");
-        }
-
+            $("select.form-control").append('<option value="-1">未選択</option>');
+            for (var row_index in list_data) {
+              $("select.form-control").append("<option value=" + row_index + ">" + list_data[row_index][0] + "</option>");
+            }
+          }
+        });
       });
-    });
-  });
+  }
 
+  function create_menu_list(after_action) {
+    descriptionClassification = new Array();
+    $("#accordion").empty();
 
-  function onChangeSelect(row_index) {
-    
+    $.getJSON("description.json", function(data) {
+        for (var i in data) {
+          descriptionClassification.push({
+            "label": data[i].label
+          });
+          var targets = data[i].target;
+          var target_tag = '<ul>';
+          for (var j in targets) {
+            target_tag += '<li>' + targets[j].name + '</li>';
+          }
+          target_tag += '</ul>';
+
+          $("#accordion").append(
+            '<div class="accordion-group' + i + '">' +
+            '<div class="accordion-heading">' +
+            '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse' + i + '">' +
+            '<h2><p class="text-center">' + '<center><img src="' + data[i].styles.svg + '" /></center>' + '</p></h2>' +
+            '<h4><p class="text-center">' + data[i].sublabel + '</p></h4>' +
+            '<h6><p class="text-left date"></p></h6>' +
+            '</a>' +
+            '</div>' +
+            '<div id="collapse' + i + '" class="accordion-body collapse">' +
+            '<div class="accordion-inner">' +
+            data[i].description + '<br />' + target_tag +
+            '<div class="targetDays"></div></div>' +
+            '</div>' +
+            '</div>');
+        }
+
+        after_action();
+      });
+  }
+
+  function update_date(row_index) {
     var now = new Date();
 
     for (var i = 2; i < list_data[row_index].length; i++) {
@@ -194,11 +172,7 @@ $(function() {
 
               }
             }
-
-
           }
-
-
         }
       }
 
@@ -213,8 +187,6 @@ $(function() {
 
       day_list += "</ul>"
 
-      // result_text = "2013/08/xx （" + result_text + "）";
-
       //アコーディオンの分類から対応の計算を行います。
       for (var label1 in descriptionClassification) {
         if (descriptionClassification[label1].label == area_days_label[i]) {
@@ -224,6 +196,16 @@ $(function() {
         }
       }
     }
+  } 
+
+  function onChangeSelect(row_index) {
+    if (row_index != -1 && $("#accordion").children().length == 0) {
+      create_menu_list(function() {
+        update_date(row_index);
+      });
+    } else {
+      update_date(row_index);
+    }
   }
 
   $("select.form-control").change(function(data) {
@@ -231,4 +213,5 @@ $(function() {
     onChangeSelect(row_index);
   });
 
+  update_area_list();
 });
