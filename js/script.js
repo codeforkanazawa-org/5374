@@ -4,7 +4,7 @@ $(function() {
   $.getJSON("description.json", function(data) {
     for (var i in data) {
       var targets = data[i].target;
-      var target_tag = '<ul style="color:white">';
+      var target_tag = '<ul>';
       for (var j in targets) {
         target_tag += '<li>'+targets[j].name+'</li>';
       }
