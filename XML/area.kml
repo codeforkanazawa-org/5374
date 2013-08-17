@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://www.opengis.net/kml/2.2'>
+	<Document>
+		<name>無題のレイヤ</name>
+		<Placemark>
+			<styleUrl>#poly-000000-4-76</styleUrl>
+			<name>適当町</name>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>0</tessellate>
+						<coordinates>136.66618824005127,36.557213930414086,0.0 136.66536211967468,36.55663651746388,0.0 136.6657054424286,36.55626593673007,0.0 136.6665744781494,36.55686058867329,0.0 136.66618824005127,36.557213930414086,0.0</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<styleUrl>#poly-000000-4-76</styleUrl>
+			<name>西岡町</name>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>0</tessellate>
+						<coordinates>136.6688597202301,36.55781719306655,0.0 136.66826963424683,36.55745523604026,0.0 136.66889190673828,36.55686058867329,0.0 136.6696000099182,36.55741214580514,0.0 136.6688597202301,36.55781719306655,0.0</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Style id='poly-000000-4-76'>
+			<LineStyle>
+				<color>ff000000</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>4C000000</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+	</Document>
+</kml>
