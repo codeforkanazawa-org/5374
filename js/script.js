@@ -285,12 +285,30 @@ $(function() {
         if (descriptions[d_no].label == trash.label) {
           description = descriptions[d_no];
 
+          var target_tag = '';
+
+          var furigana = '';
+
           var target_tag = '<ul>';
           var targets = description.target;
           for (var j in targets) {
-            target_tag += '<li>' + targets[j].name + '</li>';
+            var target = targets[j];
+            if (furigana != target.furigana) {
+              if (furigana != '') {
+                target_tag += '</ul>';
+              }
+
+              furigana = target.furigana;
+
+              target_tag += furigana;
+              target_tag += '<ul>';
+            }
+
+            target_tag += '<li>' + target.name + '</li>';
           }
+
           target_tag += '</ul>';
+          
           var dateLabel = trash.getDateLabel();
 
           accordionHTML +=
