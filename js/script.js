@@ -136,6 +136,7 @@ var TrashModel = function(_lable, _cell) {
 
             }
           } else {
+            //特定の週
             d.setTime(date.getTime() + 1000 * 60 * 60 * 24 *
               ((7 + getDayIndex(day_mix[j].charAt(0)) - date.getDay()) % 7) + week * 7 * 24 * 60 * 60 * 1000
             );
@@ -167,8 +168,8 @@ var TrashModel = function(_lable, _cell) {
   */
   this.getDayList = function() {
     var day_text = "<ul>";
-    for (var i in this.data_list) {
-      var d = data_list[i];
+    for (var i in this.dayList) {
+      var d = this.dayList[i];
       day_text += "<li>" + d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate() + "</li>"
 
     };
@@ -200,10 +201,8 @@ var CenterModel = function(row) {
   }
 
 $(function() {
-  // var data_list = new Array();
   var center_data = new Array();
   var descriptions = new Array();
-  var area_days_label;
   var areaModels = new Array();
 
   function update_area_list() {
