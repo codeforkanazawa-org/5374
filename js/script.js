@@ -294,7 +294,7 @@ $(function() {
           var dateLabel = trash.getDateLabel();
 
           accordionHTML+=
-            '<div class="accordion-group' + d_no + '">' +
+            '<div class="accordion-group" id="accordion-group' + d_no + '">' +
             '<div class="accordion-heading">' +
             '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '">' +
             '<h2><p class="text-center">' + '<center><img src="' + description.styles.svg + '" /></center>' + '</p></h2>' +
