@@ -296,7 +296,7 @@ $(function() {
           accordionHTML+=
             '<div class="accordion-group' + d_no + '">' +
             '<div class="accordion-heading">' +
-            '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse' + i + '">' +
+            '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '">' +
             '<h2><p class="text-center">' + '<center><img src="' + description.styles.svg + '" /></center>' + '</p></h2>' +
             '<h4><p class="text-center">' + description.sublabel + '</p></h4>' +
             '<h6><p class="text-left date">'+dateLabel+'</p></h6>' +
@@ -307,7 +307,10 @@ $(function() {
             description.description + '<br />' + target_tag +
             '<div class="targetDays"></div></div>' +
             '</div>' +
-            '</div>'
+            '</div>';
+
+          // $(".accordion-group" + (d_no) + " .targetDays").html(day_list);
+
         }
 
         accordion_elm.html(accordionHTML);
@@ -380,10 +383,9 @@ $(function() {
   if (get_selected_area_name() == null) {
     $('#collapseZero').addClass('in');
   }
-  /*
   if (!navigator.geolocation) {
     $('#select_area').css('display', 'none');
-  }*/
+  }
 
   update_area_list();
 });
