@@ -300,7 +300,7 @@ $(function() {
 
               furigana = target.furigana;
 
-              target_tag += '<h5 class="initials">'+furigana+'</h5>';
+              target_tag += '<h4 class="initials">'+furigana+'</h4>';
               target_tag += '<ul>';
             }
 
