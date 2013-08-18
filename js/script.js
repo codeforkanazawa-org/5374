@@ -10,7 +10,6 @@ var AreaModel = function() {
   /**
   各ゴミのカテゴリに対して、最も直近の日付を計算します。
 */
-
   this.calcMostRect = function() {
     var now = new Date();
     for (var i = 0; i < this.trash.length; i++) {
@@ -271,15 +270,12 @@ $(function() {
     areaModels[row_index].calcMostRect();
     //トラッシュの近い順にソートします。
     areaModels[row_index].sortTrash();
-    //一旦削除
-    var accordion_elm = $("#accordion");
-    accordion_elm.empty();
 
-    var accordionHTML="";
+    var accordionHTML = "";
     //アコーディオンの分類から対応の計算を行います。
     for (var i in areaModels[row_index].trash) {
       var description;
-      var trash=areaModels[row_index].trash[i];
+      var trash = areaModels[row_index].trash[i];
 
       for (var d_no in descriptions) {
         if (descriptions[d_no].label == trash.label) {
@@ -293,13 +289,13 @@ $(function() {
           target_tag += '</ul>';
           var dateLabel = trash.getDateLabel();
 
-          accordionHTML+=
+          accordionHTML +=
             '<div class="accordion-group" id="accordion-group' + d_no + '">' +
             '<div class="accordion-heading">' +
             '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '">' +
             '<h2><p class="text-center">' + '<center><img src="' + description.styles.svg + '" /></center>' + '</p></h2>' +
             '<h4><p class="text-center">' + description.sublabel + '</p></h4>' +
-            '<h6><p class="text-left date">'+dateLabel+'</p></h6>' +
+            '<h6><p class="text-left date">' + dateLabel + '</p></h6>' +
             '</a>' +
             '</div>' +
             '<div id="collapse' + i + '" class="accordion-body collapse">' +
@@ -312,15 +308,19 @@ $(function() {
 
 
         }
+        //一旦削除
+        var accordion_elm = $("#accordion");
 
         accordion_elm.html(accordionHTML);
       }
     }
 
-    $('.accordion-body').on('shown.bs.collapse', function(){
+    $('.accordion-body').on('shown.bs.collapse', function() {
       var body = $('body');
-      var accordion_offset = $($(this).parent().get(0)).offset().top ;
-      body.animate({scrollTop: accordion_offset}, 0);
+      var accordion_offset = $($(this).parent().get(0)).offset().top;
+      body.animate({
+        scrollTop: accordion_offset
+      }, 0);
     });
   }
 
