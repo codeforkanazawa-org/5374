@@ -267,16 +267,18 @@ $(function() {
   }
 
   function update_data(row_index) {
+    var areaModel = areaModels[row_index];
+
     //直近の一番近い日付を計算します。
-    areaModels[row_index].calcMostRect();
+    areaModel.calcMostRect();
     //トラッシュの近い順にソートします。
-    areaModels[row_index].sortTrash();
+    areaModel.sortTrash();
 
     var accordionHTML = "";
     //アコーディオンの分類から対応の計算を行います。
-    for (var i in areaModels[row_index].trash) {
+    for (var i in areaModel.trash) {
       var description;
-      var trash = areaModels[row_index].trash[i];
+      var trash = areaModel.trash[i];
 
       for (var d_no in descriptions) {
         if (descriptions[d_no].label == trash.label) {
