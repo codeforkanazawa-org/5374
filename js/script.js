@@ -240,7 +240,7 @@ $(function() {
 
         var selected_name = get_selected_area_name();
 
-        var area_select_form = $("select.form-control");
+        var area_select_form = $("#select_area");
         var select_html="";
         select_html+='<option value="-1">未選択</option>';
         for (var row_index in areaModels) {
@@ -360,7 +360,7 @@ $(function() {
     return -1;
   }
 
-  $("select.form-control").change(function(data) {
+  $("#select_area").change(function(data) {
     var row_index = $(data.target).val();
     onChangeSelect(row_index);
   });
@@ -374,7 +374,7 @@ $(function() {
         if (data.result == true) {
           var area_name = data.candidate;
           var index = getAreaIndex(area_name);
-          $("select.form-control").val(index).change();
+          $("#select_area").val(index).change();
         } else {
           alert(data.reason);
         }
