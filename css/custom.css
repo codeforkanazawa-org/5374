@@ -23,7 +23,7 @@
 
 #gps_area {margin-top: 5px;}
 
-a{
+a,a:hover{	
 	color: white;
 }
 .accordion-heading .accordion-table{
