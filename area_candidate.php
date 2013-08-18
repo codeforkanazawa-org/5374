@@ -36,7 +36,7 @@ function main()
 */
 function get_candidate($latitude, $longitude)
 {
-	$filename = './XML/area.kml';
+	$filename = './area.kml';
 
 	$point = "$longitude,$latitude";
 

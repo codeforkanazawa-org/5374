@@ -206,7 +206,7 @@ $(function() {
   var areaModels = new Array();
 
   function update_area_list() {
-    $.get("CSV/area_days.csv", function(csvdata) {
+    $.get("data/area_days.csv", function(csvdata) {
       var csvdata = csvdata.replace("/¥r/gm", "");
       var tmp = csvdata.split(String.fromCharCode(10));
       var area_days_label = tmp.shift().split(",");
@@ -223,7 +223,7 @@ $(function() {
         }
       }
 
-      $.get("CSV/center.csv", function(tmp_center_data) {
+      $.get("data/center.csv", function(tmp_center_data) {
         var tmp = tmp_center_data.split(String.fromCharCode(10));
         for (var i in tmp) {
           var row = tmp[i].split(",");
@@ -255,7 +255,7 @@ $(function() {
   }
 
   function create_menu_list(after_action) {
-    $.getJSON("description.json", function(data) {
+    $.getJSON("data/description.json", function(data) {
       for (var i in data) {
         descriptions.push(data[i]);
       }
