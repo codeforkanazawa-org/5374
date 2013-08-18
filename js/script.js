@@ -378,6 +378,7 @@ $(function() {
           var area_name = data.candidate;
           var index = getAreaIndex(area_name);
           $("#select_area").val(index).change();
+          alert(area_name+'が設定されました');
         } else {
           alert(data.reason);
         }
