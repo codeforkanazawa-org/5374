@@ -1,3 +1,4 @@
+"use strict"
 /**
   エリアを管理するクラスです。
 */
@@ -6,7 +7,7 @@ var AreaModel = function() {
   this.centerName;
   this.center;
   this.trash = new Array();
-/**
+  /**
   各ゴミのカテゴリに対して、最も直近の日付を計算します。
 */
 
@@ -29,7 +30,7 @@ var AreaModel = function() {
     return false;
   }
   /**
-    処理センターを登録します。
+    ゴミ処理センターを登録します。
     名前が一致するかどうかで判定を行っております。
   */
   this.setCenter = function(center_data) {
@@ -39,7 +40,7 @@ var AreaModel = function() {
       }
     };
   }
-/**
+  /**
   ゴミのカテゴリのソートを行います。
 */
   this.sortTrash = function() {
@@ -98,7 +99,7 @@ var TrashModel = function(_lable, _cell) {
     };
     return -1;
   }
-/**
+  /**
   このゴミの年間のゴミの日を計算します。
   センターが休止期間がある場合は、その期間１週間ずらすという実装を行っております。
 */
@@ -149,9 +150,7 @@ var TrashModel = function(_lable, _cell) {
             }
             //特定の週のみ表示
             if (week == day_mix[j].charAt(1) - 1) {
-              if (isShift) {
-                // console.log(d);
-              }
+
               day_list.push(d) // += "<li>" + d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate() + "</li>";
 
               if (this.mostRecent == null && d.getTime() > now.getTime()) {
@@ -193,13 +192,13 @@ var CenterModel = function(row) {
   this.endDate = getDay(row, 2);
 }
 
-function get_selected_area_name() {
-  return localStorage.getItem('selected_area_name');
-}
+  function get_selected_area_name() {
+    return localStorage.getItem('selected_area_name');
+  }
 
-function set_selected_area_name(name) {
-  localStorage.setItem('selected_area_name', name);
-}
+  function set_selected_area_name(name) {
+    localStorage.setItem('selected_area_name', name);
+  }
 
 $(function() {
   // var data_list = new Array();
@@ -249,7 +248,7 @@ $(function() {
           var area_name = areaModels[row_index].label;
           var selected = (selected_name == area_name) ? 'selected="selected"' : '';
 
-          area_select_form.append('<option value="' + row_index + '" '+selected+' >' + area_name + "</option>");
+          area_select_form.append('<option value="' + row_index + '" ' + selected + ' >' + area_name + "</option>");
         }
 
         area_select_form.change();
@@ -258,6 +257,7 @@ $(function() {
   }
 
   function create_menu_list(after_action) {
+
     $.getJSON("description.json", function(data) {
       for (var i in data) {
         descriptions.push(data[i]);
@@ -275,12 +275,14 @@ $(function() {
     var accordion_elm = $("#accordion");
     accordion_elm.empty();
 
+    var accordionHTML="";
     //アコーディオンの分類から対応の計算を行います。
     for (var i in areaModels[row_index].trash) {
       var description;
+      var trash=areaModels[row_index].trash[i];
 
       for (var d_no in descriptions) {
-        if (descriptions[d_no].label == areaModels[row_index].trash[i].label) {
+        if (descriptions[d_no].label == trash.label) {
           description = descriptions[d_no];
 
           var target_tag = '<ul>';
@@ -289,14 +291,15 @@ $(function() {
             target_tag += '<li>' + targets[j].name + '</li>';
           }
           target_tag += '</ul>';
+          var dateLabel = trash.getDateLabel();
 
-          accordion_elm.append(
+          accordionHTML+=
             '<div class="accordion-group' + d_no + '">' +
             '<div class="accordion-heading">' +
             '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse' + i + '">' +
             '<h2><p class="text-center">' + '<center><img src="' + description.styles.svg + '" /></center>' + '</p></h2>' +
             '<h4><p class="text-center">' + description.sublabel + '</p></h4>' +
-            '<h6><p class="text-left date"></p></h6>' +
+            '<h6><p class="text-left date">'+dateLabel+'</p></h6>' +
             '</a>' +
             '</div>' +
             '<div id="collapse' + i + '" class="accordion-body collapse">' +
@@ -304,13 +307,10 @@ $(function() {
             description.description + '<br />' + target_tag +
             '<div class="targetDays"></div></div>' +
             '</div>' +
-            '</div>');
-
-          var result_text = areaModels[row_index].trash[i].getDateLabel();
-          // var day_list = areaModels[row_index].trash[i].getDayList();
-          $(".accordion-group" + (d_no) + " .date").text(result_text);
-          // $(".accordion-group" + (d_no) + " .targetDays").html(day_list);
+            '</div>'
         }
+
+        accordion_elm.html(accordionHTML);
       }
     }
   }
@@ -330,16 +330,16 @@ $(function() {
   }
 
   function getGpsErrorMessage(error) {
-    switch(error.code)  {
-    case error.PERMISSION_DENIED:
-      return "User denied the request for Geolocation."
-    case error.POSITION_UNAVAILABLE:
-      return "Location information is unavailable."
-    case error.TIMEOUT:
-      return "The request to get user location timed out."
-    case error.UNKNOWN_ERROR:
-    default:
-      return "An unknown error occurred."
+    switch (error.code) {
+      case error.PERMISSION_DENIED:
+        return "User denied the request for Geolocation."
+      case error.POSITION_UNAVAILABLE:
+        return "Location information is unavailable."
+      case error.TIMEOUT:
+        return "The request to get user location timed out."
+      case error.UNKNOWN_ERROR:
+      default:
+        return "An unknown error occurred."
     }
   }
 
@@ -357,12 +357,12 @@ $(function() {
     onChangeSelect(row_index);
   });
 
-  $('#select_area').click(function(){
-    navigator.geolocation.getCurrentPosition(function(position){
+  $('#select_area').click(function() {
+    navigator.geolocation.getCurrentPosition(function(position) {
       $.getJSON('area_candidate.php', {
-        latitude:position.coords.latitude,
-        longitude:position.coords.longitude
-      }, function(data){
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+      }, function(data) {
         if (data.result == true) {
           var area_name = data.candidate;
           var index = getAreaIndex(area_name);
@@ -379,7 +379,8 @@ $(function() {
 
   if (get_selected_area_name() == null) {
     $('#collapseZero').addClass('in');
-  }/*
+  }
+  /*
   if (!navigator.geolocation) {
     $('#select_area').css('display', 'none');
   }*/
