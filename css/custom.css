@@ -10,7 +10,7 @@
 
 .accordion-group{margin-bottom:0;border:0;border-radius:0}
 
-.accordion-toggle{color:#ffffff;height: 120px;}
+
 
 .accordion-toggle-top{color:#000000;height: 22px;}
 .accordion-group-top{background-color:  #ffffff;}
@@ -23,5 +23,20 @@
 
 #gps_area {margin-top: 5px;}
 
+.accordion-heading .accordion-table{
+display: table-cell;
+vertical-align: middle;
+text-align: center;
+width: 100%;
+
+}
 .accordion-heading .accordion-toggle {
+position: relative;
+display: table;
+padding: 0;
+width: 100%;
+height: 119px;
+}
+.accordion-group h6{
+	position:absolute;bottom:0px;left:10px;margin:0;
 }
