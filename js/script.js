@@ -273,6 +273,8 @@ $(function() {
     //トラッシュの近い順にソートします。
     areaModel.sortTrash();
 
+    var height = $(window).height() / 4;
+
     var accordionHTML = "";
     //アコーディオンの分類から対応の計算を行います。
     for (var i in areaModel.trash) {
@@ -294,7 +296,7 @@ $(function() {
           accordionHTML +=
             '<div class="accordion-group" id="accordion-group' + d_no + '">' +
             '<div class="accordion-heading">' +
-            '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '">' +
+            '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '" style="height:'+height+'px">' +
             '<h2><p class="text-center">' + '<center><img src="' + description.styles.svg + '" /></center>' + '</p></h2>' +
             '<h4><p class="text-center">' + description.sublabel + '</p></h4>' +
             '<h6><p class="text-left date">' + dateLabel + '</p></h6>' +
