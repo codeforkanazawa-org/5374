@@ -324,6 +324,12 @@ $(function() {
         scrollTop: accordion_offset
       }, 50);
     });
+
+    $('.accordion-body').on('hidden.bs.collapse', function() {
+      if ($('.in').length == 0) {
+        $('html, body').scrollTop(0);
+      }
+    });
   }
 
   function onChangeSelect(row_index) {
