@@ -16,4 +16,7 @@
 .accordion-group-top{background-color:  #ffffff;}
 
 .accordion-inner ul {color:#ffffff;}
+.accordion-inner {text-align: center}
 .date {margin-top: 42px;} 
+
+#select_area {margin-top: 5px;}
