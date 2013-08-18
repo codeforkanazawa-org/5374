@@ -126,37 +126,34 @@ var TrashModel = function(_lable, _cell) {
             d.setTime(date.getTime() + 1000 * 60 * 60 * 24 *
               ((7 + getDayIndex(day_mix[j]) - date.getDay()) % 7) + week * 7 * 24 * 60 * 60 * 1000
             );
-            //同じ月の時
-            if ((d.getMonth() + 1) == month % 12) {
-              day_list.push(d) // += "<li>" + d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate() + "</li>";
 
-              if (this.mostRecent == null && d.getTime() > now.getTime()) {
-                this.mostRecent = d;
-              }
-
-            }
           } else {
             //特定の週
             d.setTime(date.getTime() + 1000 * 60 * 60 * 24 *
               ((7 + getDayIndex(day_mix[j].charAt(0)) - date.getDay()) % 7) + week * 7 * 24 * 60 * 60 * 1000
             );
-            //年末年始のずらしの対応
-            //休止期間なら、今後の日程を１週間ずらす
-            if (areaObj.isBlankDay(d)) {
-              isShift = true;
-            }
-            if (isShift) {
-              d.setTime(d.getTime() + 7 * 24 * 60 * 60 * 1000);
-            }
-            //特定の週のみ表示
-            if (week == day_mix[j].charAt(1) - 1) {
 
-              day_list.push(d) // += "<li>" + d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate() + "</li>";
-
-              if (this.mostRecent == null && d.getTime() > now.getTime()) {
-                this.mostRecent = d;
-              }
+            //特定の週のみ処理する
+            if (week != day_mix[j].charAt(1) - 1) {
+              continue;
             }
+          }
+          //年末年始のずらしの対応
+          //休止期間なら、今後の日程を１週間ずらす
+          if (areaObj.isBlankDay(d)) {
+            isShift = true;
+          }
+          if (isShift) {
+            d.setTime(d.getTime() + 7 * 24 * 60 * 60 * 1000);
+          }
+          //同じ月の時のみ処理したい
+          if ((d.getMonth() + 1) != month % 12) {
+            continue;
+          }
+          day_list.push(d) // += "<li>" + d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate() + "</li>";
+
+          if (this.mostRecent == null && d.getTime() > now.getTime()) {
+            this.mostRecent = d;
           }
         }
       }
@@ -240,13 +237,13 @@ $(function() {
         var selected_name = get_selected_area_name();
 
         var area_select_form = $("#select_area");
-        var select_html="";
-        select_html+='<option value="-1">未選択</option>';
+        var select_html = "";
+        select_html += '<option value="-1">未選択</option>';
         for (var row_index in areaModels) {
           var area_name = areaModels[row_index].label;
           var selected = (selected_name == area_name) ? 'selected="selected"' : '';
 
-          select_html+='<option value="' + row_index + '" ' + selected + ' >' + area_name + "</option>";
+          select_html += '<option value="' + row_index + '" ' + selected + ' >' + area_name + "</option>";
         }
         area_select_form.html(select_html);
         area_select_form.change();
@@ -296,10 +293,10 @@ $(function() {
           accordionHTML +=
             '<div class="accordion-group" id="accordion-group' + d_no + '">' +
             '<div class="accordion-heading">' +
-            '<a class="accordion-toggle" style="height:'+accordion_height+'px" data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '">' +
+            '<a class="accordion-toggle" style="height:' + accordion_height + 'px" data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '">' +
             '<div class="accordion-table" ><img src="' + description.styles.svg + '"  /></div>' +
-            //'<h4><p class="text-center">' + description.sublabel + '</p></h4>' +
-            '<h6><p class="text-left date">' + dateLabel + '</p></h6>' +
+          //'<h4><p class="text-center">' + description.sublabel + '</p></h4>' +
+          '<h6><p class="text-left date">' + dateLabel + '</p></h6>' +
             '</a>' +
             '</div>' +
             '<div id="collapse' + i + '" class="accordion-body collapse">' +
@@ -310,7 +307,7 @@ $(function() {
             '</div>';
           // $(".accordion-group" + (d_no) + " .targetDays").html(day_list);
         }
-        
+
       }
     }
 
@@ -384,7 +381,7 @@ $(function() {
           var area_name = data.candidate;
           var index = getAreaIndex(area_name);
           $("#select_area").val(index).change();
-          alert(area_name+'が設定されました');
+          alert(area_name + 'が設定されました');
         } else {
           alert(data.reason);
         }
