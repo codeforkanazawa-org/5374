@@ -241,15 +241,15 @@ $(function() {
         var selected_name = get_selected_area_name();
 
         var area_select_form = $("select.form-control");
-
-        area_select_form.append('<option value="-1">未選択</option>');
+        var select_html="";
+        select_html+='<option value="-1">未選択</option>';
         for (var row_index in areaModels) {
           var area_name = areaModels[row_index].label;
           var selected = (selected_name == area_name) ? 'selected="selected"' : '';
 
-          area_select_form.append('<option value="' + row_index + '" ' + selected + ' >' + area_name + "</option>");
+          select_html+='<option value="' + row_index + '" ' + selected + ' >' + area_name + "</option>";
         }
-
+        area_select_form.html(select_html);
         area_select_form.change();
       });
     });
@@ -267,6 +267,7 @@ $(function() {
   }
 
   function update_data(row_index) {
+    //直近の一番近い日付を計算します。
     areaModels[row_index].calcMostRect();
     //トラッシュの近い順にソートします。
     areaModels[row_index].sortTrash();
@@ -310,7 +311,6 @@ $(function() {
       }
     }
 
-    //一旦削除
     var accordion_elm = $("#accordion");
     accordion_elm.html(accordionHTML);
 
