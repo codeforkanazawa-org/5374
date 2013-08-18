@@ -307,15 +307,9 @@ $(function() {
             '</div>');
 
           var result_text = areaModels[row_index].trash[i].getDateLabel();
-<<<<<<< HEAD
-          var day_list = areaModels[row_index].trash[i].getDayList();
-          $("#accordion-group" + (d_no) + " .date").text(result_text);
-          $("#accordion-group" + (d_no) + " .targetDays").html(day_list);
-=======
           // var day_list = areaModels[row_index].trash[i].getDayList();
           $(".accordion-group" + (d_no) + " .date").text(result_text);
           // $(".accordion-group" + (d_no) + " .targetDays").html(day_list);
->>>>>>> 470cd94e38f503a8fe664e79aa40cc64da55bca5
         }
       }
     }
