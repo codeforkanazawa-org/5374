@@ -307,19 +307,10 @@ $(function() {
             description.description + '<br />' + target_tag +
             '<div class="targetDays"></div></div>' +
             '</div>' +
-<<<<<<< HEAD
             '</div>';
-
           // $(".accordion-group" + (d_no) + " .targetDays").html(day_list);
 
-=======
-            '</div>');
 
-          var result_text = areaModels[row_index].trash[i].getDateLabel();
-          // var day_list = areaModels[row_index].trash[i].getDayList();
-          $("#accordion-group" + (d_no) + " .date").text(result_text);
-          // $(".accordion-group" + (d_no) + " .targetDays").html(day_list);
->>>>>>> master
         }
 
         accordion_elm.html(accordionHTML);
