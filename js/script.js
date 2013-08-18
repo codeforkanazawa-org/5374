@@ -365,7 +365,7 @@ $(function() {
     onChangeSelect(row_index);
   });
 
-  $('#select_area').click(function() {
+  $('#gps_area').click(function() {
     navigator.geolocation.getCurrentPosition(function(position) {
       $.getJSON('area_candidate.php', {
         latitude: position.coords.latitude,
@@ -389,7 +389,7 @@ $(function() {
     $('#collapseZero').addClass('in');
   }
   if (!navigator.geolocation) {
-    $('#select_area').css('display', 'none');
+    $('#gps_area').css('display', 'none');
   }
 
   update_area_list();
