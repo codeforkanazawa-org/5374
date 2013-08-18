@@ -255,13 +255,13 @@ $(function() {
   }
 
   function create_menu_list(after_action) {
-
     $.getJSON("description.json", function(data) {
       for (var i in data) {
         descriptions.push(data[i]);
       }
 
       after_action();
+      $('#accordion2').show();
     });
   }
 
@@ -387,6 +387,7 @@ $(function() {
   });
 
   if (get_selected_area_name() == null) {
+    $('#accordion2').show();
     $('#collapseZero').addClass('in');
   }
   if (!navigator.geolocation) {
