@@ -43,3 +43,7 @@ height: 119px;
 .accordion-group h6{
 	position:absolute;bottom:0px;left:10px;margin:0;
 }
+
+.initials {
+	color: #ffffff;
+}

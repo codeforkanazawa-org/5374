@@ -289,7 +289,7 @@ $(function() {
 
           var furigana = '';
 
-          var target_tag = '<ul>';
+          var target_tag = '';
           var targets = description.target;
           for (var j in targets) {
             var target = targets[j];
@@ -300,7 +300,7 @@ $(function() {
 
               furigana = target.furigana;
 
-              target_tag += furigana;
+              target_tag += '<h5 class="initials">'+furigana+'</h5>';
               target_tag += '<ul>';
             }
 
