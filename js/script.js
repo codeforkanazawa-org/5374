@@ -316,6 +316,12 @@ $(function() {
         accordion_elm.html(accordionHTML);
       }
     }
+
+    $('.accordion-body').on('shown.bs.collapse', function(){
+      var body = $('body');
+      var accordion_offset = $($(this).parent().get(0)).offset().top ;
+      body.animate({scrollTop: accordion_offset}, 0);
+    });
   }
 
   function onChangeSelect(row_index) {
