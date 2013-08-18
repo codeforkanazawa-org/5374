@@ -17,6 +17,11 @@
 
 .accordion-inner ul {color:#ffffff;}
 #accordion2 .accordion-inner {text-align: center}
-.date {margin-top: 42px;} 
+.date {margin-top: 31px;} 
 
 #gps_area {margin-top: 5px;}
+
+.accordion-heading .accordion-toggle {
+	padding: 15px;
+}
+
