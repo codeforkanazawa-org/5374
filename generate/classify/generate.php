@@ -102,6 +102,7 @@ function put_target($src, $map, $styles) {
 		$target = array(
 			'name' => $line['target'],
 			'notice' => isset($line['notice']) ? $line['notice'] : '',
+			'furigana' => $line['furigana'],
 			);
 
 		$dst[$convert_class_name]['target'][] = $target;
