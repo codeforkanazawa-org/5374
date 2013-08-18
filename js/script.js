@@ -239,7 +239,7 @@ $(function() {
 
         var selected_name = get_selected_area_name();
 
-        var area_select_form = $("select.form-control");
+        var area_select_form = $("#select_area");
         var select_html="";
         select_html+='<option value="-1">未選択</option>';
         for (var row_index in areaModels) {
@@ -318,7 +318,7 @@ $(function() {
       var accordion_offset = $($(this).parent().get(0)).offset().top;
       body.animate({
         scrollTop: accordion_offset
-      }, 0);
+      }, 50);
     });
   }
 
@@ -359,12 +359,12 @@ $(function() {
     return -1;
   }
 
-  $("select.form-control").change(function(data) {
+  $("#select_area").change(function(data) {
     var row_index = $(data.target).val();
     onChangeSelect(row_index);
   });
 
-  $('#select_area').click(function() {
+  $('#gps_area').click(function() {
     navigator.geolocation.getCurrentPosition(function(position) {
       $.getJSON('area_candidate.php', {
         latitude: position.coords.latitude,
@@ -373,7 +373,7 @@ $(function() {
         if (data.result == true) {
           var area_name = data.candidate;
           var index = getAreaIndex(area_name);
-          $("select.form-control").val(index).change();
+          $("#select_area").val(index).change();
         } else {
           alert(data.reason);
         }
@@ -388,7 +388,7 @@ $(function() {
     $('#collapseZero').addClass('in');
   }
   if (!navigator.geolocation) {
-    $('#select_area').css('display', 'none');
+    $('#gps_area').css('display', 'none');
   }
 
   update_area_list();

@@ -9,7 +9,28 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/custom.css" rel="stylesheet" media="screen">
-    <!-- JavaScript plugins (requires jQuery) -->
+  </head>
+  <body>
+    
+  <div id="accordion"></div>
+
+  <div class="accordion" id="accordion2">
+    <div class="accordion-group-top">
+      <div class="accordion-heading">
+        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion2" href="#collapseZero">
+          <center style=" margin: 5px 0 5px auto; "><img src="img/setting02.svg"/></center>
+        </a>
+      </div>
+      <div id="collapseZero" class="accordion-body collapse">
+        <div class="accordion-inner">
+          <select class="form-control" id="select_area"></select>
+          <button id="gps_area" class="btn btn-primary">現在位置から地域を選択する</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript plugins (requires jQuery) -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
@@ -21,27 +42,5 @@
     <script type="text/javascript" src="js/bookmark-bubble/example/example.min.js"></script>
 
     <script type="text/javascript" src="js/script.js"></script>
-
-  </head>
-  <body>
-    
-  <div id="accordion">
-
-  </div>
-  <div class="accordion" id="accordion2">
-  <div class="accordion-group-top">
-    <div class="accordion-heading">
-      <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion2" href="#collapseZero">
-        <center style=" margin: 5px 0 5px auto; "><img src="img/setting02.svg"/></center>
-      </a>
-    </div>
-    <div id="collapseZero" class="accordion-body collapse">
-      <div class="accordion-inner">
-        <select class="form-control">
-        </select>
-        <button id="select_area" class="btn btn-primary">現在位置から地域を選択する</button>
-      </div>
-    </div>
-  </div>
   </body>
 </html>
