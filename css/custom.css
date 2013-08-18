@@ -23,6 +23,9 @@
 
 #gps_area {margin-top: 5px;}
 
+a{
+	color: white;
+}
 .accordion-heading .accordion-table{
 display: table-cell;
 vertical-align: middle;
