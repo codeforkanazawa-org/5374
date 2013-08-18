@@ -305,15 +305,14 @@ $(function() {
             '</div>' +
             '</div>';
           // $(".accordion-group" + (d_no) + " .targetDays").html(day_list);
-
-
         }
-        //一旦削除
-        var accordion_elm = $("#accordion");
-
-        accordion_elm.html(accordionHTML);
+        
       }
     }
+
+    //一旦削除
+    var accordion_elm = $("#accordion");
+    accordion_elm.html(accordionHTML);
 
     $('.accordion-body').on('shown.bs.collapse', function() {
       var body = $('body');
