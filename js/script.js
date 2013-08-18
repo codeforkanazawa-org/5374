@@ -319,7 +319,7 @@ $(function() {
       var accordion_offset = $($(this).parent().get(0)).offset().top;
       body.animate({
         scrollTop: accordion_offset
-      }, 0);
+      }, 50);
     });
   }
 
