@@ -273,6 +273,8 @@ $(function() {
     //トラッシュの近い順にソートします。
     areaModel.sortTrash();
 
+    var accordion_height = $(window).height() / 4;
+
     var accordionHTML = "";
     //アコーディオンの分類から対応の計算を行います。
     for (var i in areaModel.trash) {
@@ -294,10 +296,10 @@ $(function() {
           accordionHTML +=
             '<div class="accordion-group" id="accordion-group' + d_no + '">' +
             '<div class="accordion-heading">' +
-            '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '">' +
-            '<h2><p class="text-center">' + '<center><img src="' + description.styles.svg + '" /></center>' + '</p></h2>' +
-            '<h4><p class="text-center">' + description.sublabel + '</p></h4>' +
-            '<h6><p class="text-left date">' + dateLabel + '</p></h6>' +
+            '<a class="accordion-toggle" style="position:relative;display:table;padding:0;width:100%;height:'+accordion_height+'px" data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '">' +
+            '<div style="display:table-cell;vertical-align:middle;text-align:center;width:100%"><img src="' + description.styles.svg + '"  /></div>' +
+            //'<h4><p class="text-center">' + description.sublabel + '</p></h4>' +
+            '<h6 style="position:absolute;bottom:0px;left:10px;margin:0"><p class="text-left date">' + dateLabel + '</p></h6>' +
             '</a>' +
             '</div>' +
             '<div id="collapse' + i + '" class="accordion-body collapse">' +
@@ -394,8 +396,6 @@ $(function() {
   if (!navigator.geolocation) {
     $('#gps_area').css('display', 'none');
   }
-
-  $('#accordion').height($(window).height());
 
   update_area_list();
 });
