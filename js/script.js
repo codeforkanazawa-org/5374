@@ -11,7 +11,6 @@ var AreaModel = function() {
   各ゴミのカテゴリに対して、最も直近の日付を計算します。
 */
   this.calcMostRect = function() {
-    var now = new Date();
     for (var i = 0; i < this.trash.length; i++) {
       this.trash[i].calcMostRect(this);
     }
@@ -106,7 +105,6 @@ var TrashModel = function(_lable, _cell) {
     var day_mix = this.dayCell;
     var result_text = "";
     var day_list = new Array();
-    var now = new Date();
     // 12月 +3月　を表現
     for (var month = 4; month <= 12 + 3; month++) {
       for (var j in day_mix) {
@@ -152,12 +150,28 @@ var TrashModel = function(_lable, _cell) {
           }
           day_list.push(d) // += "<li>" + d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate() + "</li>";
 
-          if (this.mostRecent == null && d.getTime() > now.getTime()) {
-            this.mostRecent = d;
-          }
         }
       }
     }
+    //曜日によって日付順ではないので最終的にソートする。
+    //ソートしなくてもなんとなりそうな気もしますが。。
+    day_list.sort(function(a,b){
+      var at = a.getTime();
+      var bt = b.getTime();
+      if (at < bt) return -1;
+      if (at > bt) return 1;
+      return 0;
+    })
+    //直近の日付を更新
+    this.mostRecent=day_list[day_list.length-1];
+    var now = new Date();
+
+    for (var i in day_list) {
+      if (now.getTime()<day_list[i].getTime() &&day_list[i].getTime()<this.mostRecent.getTime()){
+        this.mostRecent=day_list[i];
+      }
+    };
+
     this.dayList = day_list;
   }
   /**
@@ -245,6 +259,11 @@ $(function() {
 
           select_html += '<option value="' + row_index + '" ' + selected + ' >' + area_name + "</option>";
         }
+        //デバッグ用
+        if (typeof dump=="function"){
+           dump(areaModels);                  
+        }
+
         area_select_form.html(select_html);
         area_select_form.change();
       });
