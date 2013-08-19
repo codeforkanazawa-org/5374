@@ -116,26 +116,12 @@ var TrashModel = function(_lable, _cell) {
           //4月1日を起点として第n曜日などを計算する。
           var date = new Date(2013, month - 1, 1);
           var d = new Date(date);
-          //毎週
-          if (day_mix[j].length == 1) {
-            //コンストラクタでやろうとするとうまく行かなかった。。
-            //
-            //4月1日を基準にして曜日の差分で時間を戻し、最大５週までの増加させて毎週を表現
-            d.setTime(date.getTime() + 1000 * 60 * 60 * 24 *
-              ((7 + getDayIndex(day_mix[j]) - date.getDay()) % 7) + week * 7 * 24 * 60 * 60 * 1000
-            );
-
-          } else {
-            //特定の週
-            d.setTime(date.getTime() + 1000 * 60 * 60 * 24 *
-              ((7 + getDayIndex(day_mix[j].charAt(0)) - date.getDay()) % 7) + week * 7 * 24 * 60 * 60 * 1000
-            );
-
-            //特定の週のみ処理する
-            if (week != day_mix[j].charAt(1) - 1) {
-              continue;
-            }
-          }
+          //コンストラクタでやろうとするとうまく行かなかった。。
+          //
+          //4月1日を基準にして曜日の差分で時間を戻し、最大５週までの増加させて毎週を表現
+          d.setTime(date.getTime() + 1000 * 60 * 60 * 24 *
+            ((7 + getDayIndex(day_mix[j].charAt(0)) - date.getDay()) % 7) + week * 7 * 24 * 60 * 60 * 1000
+          );
           //年末年始のずらしの対応
           //休止期間なら、今後の日程を１週間ずらす
           if (areaObj.isBlankDay(d)) {
@@ -148,6 +134,13 @@ var TrashModel = function(_lable, _cell) {
           if ((d.getMonth() + 1) != month % 12) {
             continue;
           }
+          //特定の週のみ処理する
+          if (day_mix[j].length > 1) {
+            if (week != day_mix[j].charAt(1) - 1) {
+              continue;
+            }
+          }
+
           day_list.push(d) // += "<li>" + d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate() + "</li>";
 
         }
@@ -155,7 +148,7 @@ var TrashModel = function(_lable, _cell) {
     }
     //曜日によって日付順ではないので最終的にソートする。
     //ソートしなくてもなんとなりそうな気もしますが。。
-    day_list.sort(function(a,b){
+    day_list.sort(function(a, b) {
       var at = a.getTime();
       var bt = b.getTime();
       if (at < bt) return -1;
@@ -163,12 +156,12 @@ var TrashModel = function(_lable, _cell) {
       return 0;
     })
     //直近の日付を更新
-    this.mostRecent=day_list[day_list.length-1];
+    this.mostRecent = day_list[day_list.length - 1];
     var now = new Date();
 
     for (var i in day_list) {
-      if (now.getTime()<day_list[i].getTime() &&day_list[i].getTime()<this.mostRecent.getTime()){
-        this.mostRecent=day_list[i];
+      if (now.getTime() < day_list[i].getTime() && day_list[i].getTime() < this.mostRecent.getTime()) {
+        this.mostRecent = day_list[i];
       }
     };
 
@@ -260,8 +253,8 @@ $(function() {
           select_html += '<option value="' + row_index + '" ' + selected + ' >' + area_name + "</option>";
         }
         //デバッグ用
-        if (typeof dump=="function"){
-           dump(areaModels);                  
+        if (typeof dump == "function") {
+          dump(areaModels);
         }
 
         area_select_form.html(select_html);
@@ -316,7 +309,7 @@ $(function() {
 
               furigana = target.furigana;
 
-              target_tag += '<h4 class="initials">'+furigana+'</h4>';
+              target_tag += '<h4 class="initials">' + furigana + '</h4>';
               target_tag += '<ul>';
             }
 
@@ -324,7 +317,7 @@ $(function() {
           }
 
           target_tag += '</ul>';
-          
+
           var dateLabel = trash.getDateLabel();
 
           accordionHTML +=
