@@ -160,8 +160,10 @@ var TrashModel = function(_lable, _cell) {
     var now = new Date();
 
     for (var i in day_list) {
-      if (now.getTime() < day_list[i].getTime() && day_list[i].getTime() < this.mostRecent.getTime()) {
+      //8:30までは今日も含むこととする。
+      if (this.mostRecent==null && now.getTime() <= day_list[i].getTime()+8*30*60*1000) {
         this.mostRecent = day_list[i];
+        break;
       }
     };
 
