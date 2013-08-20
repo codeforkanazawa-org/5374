@@ -156,12 +156,11 @@ var TrashModel = function(_lable, _cell) {
       return 0;
     })
     //直近の日付を更新
-    this.mostRecent = day_list[day_list.length - 1];
     var now = new Date();
 
     for (var i in day_list) {
       //8:30までは今日も含むこととする。
-      if (this.mostRecent==null && now.getTime() <= day_list[i].getTime()+8*30*60*1000) {
+      if (this.mostRecent==null && now.getTime() <= day_list[i].getTime()+8.5*60*60*1000) {
         this.mostRecent = day_list[i];
         break;
       }
