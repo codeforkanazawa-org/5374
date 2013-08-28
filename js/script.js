@@ -70,6 +70,7 @@ var TrashModel = function(_lable, _cell) {
   this.description;
 
   var result_text = "";
+  var today=new Date();
 
   for (var j in this.dayCell) {
     if (this.dayCell[j].length == 1) {
@@ -131,7 +132,7 @@ var TrashModel = function(_lable, _cell) {
             d.setTime(d.getTime() + 7 * 24 * 60 * 60 * 1000);
           }
           //同じ月の時のみ処理したい
-          if ((d.getMonth() + 1) != month % 12) {
+          if (d.getMonth() != (month-1) % 12) {
             continue;
           }
           //特定の週のみ処理する
@@ -278,6 +279,8 @@ $(function() {
   function update_data(row_index) {
     var areaModel = areaModels[row_index];
 
+
+    var today=new Date();
     //直近の一番近い日付を計算します。
     areaModel.calcMostRect();
     //トラッシュの近い順にソートします。
@@ -321,10 +324,23 @@ $(function() {
 
           var dateLabel = trash.getDateLabel();
 
+          var leftDay = Math.ceil((trash.mostRecent.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
+          var leftDayText = "";
+          if (leftDay==0){
+            leftDayText="今日";
+          }else if (leftDay == 1) {
+            leftDayText = "明日";
+          } else if (leftDay == 2) {
+            leftDayText = "明後日"
+          } else {
+            leftDayText = leftDay + "日後";
+          }
+
           accordionHTML +=
             '<div class="accordion-group" id="accordion-group' + d_no + '">' +
             '<div class="accordion-heading">' +
             '<a class="accordion-toggle" style="height:' + accordion_height + 'px" data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '">' +
+            '<div class="left-day">' + leftDayText + '</div>' +
             '<div class="accordion-table" ><img src="' + description.styles.svg + '"  /></div>' +
           //'<h4><p class="text-center">' + description.sublabel + '</p></h4>' +
           '<h6><p class="text-left date">' + dateLabel + '</p></h6>' +
