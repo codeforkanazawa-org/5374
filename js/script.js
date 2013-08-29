@@ -213,7 +213,7 @@ $(function() {
 
   function update_area_list() {
     $.get("data/area_days.csv", function(csvdata) {
-      var csvdata = csvdata.replace("/¥r/gm", "");
+      var csvdata = csvdata.replace("/\r/gm", "");
       var tmp = csvdata.split(String.fromCharCode(10));
       var area_days_label = tmp.shift().split(",");
       for (var i in tmp) {
