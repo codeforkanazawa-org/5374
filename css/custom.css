@@ -24,6 +24,10 @@ a.accordion-toggle-top{
 	margin-top: 40px;
 }
 
+#accordion3 #cfk{
+	border-top: 1px solid black;
+}
+
 #accordion3 h3{
 	font-weight: bold;
 	font-size: 16px;
