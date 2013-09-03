@@ -14,19 +14,31 @@
 a.accordion-toggle-top{
 	margin: 0;
 	text-align: left;
-	font-size: 22px;
-	margin: 15px 0 15px 25px;
+	font-size: 25px;
+	margin: 15px 0 15px 15px;
 
 }
 
 #accordion3 h2{
-	font-size: 22px;
+	font-size: 20px;
+	margin-top: 10px;
 }
 
 #accordion3 h3{
 	font-weight: bold;
 	font-size: 16px;
+	margin-top: 15px;
 }
+
+#accordion3 #caption{
+	font-size: 12px;
+	color: #7F7F7F;
+}
+#accordion3 #caption h4{
+	font-size: 12px;
+	font-weight: bold;
+}
+
 
 a.accordion-toggle-top{
 	color: #000000;
@@ -84,5 +96,9 @@ a,a:hover{
 	color: #ffffff;
 }
 #help{
-	margin-left: 10px;
+	margin-left: 5px;
+}
+#select_area_title{
+	text-align: center;
+	font-size: 20px;
 }
