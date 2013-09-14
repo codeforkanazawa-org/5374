@@ -341,7 +341,7 @@ $(function() {
             '<div class="accordion-heading">' +
             '<a class="accordion-toggle" style="height:' + accordion_height + 'px" data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '">' +
             '<div class="left-day">' + leftDayText + '</div>' +
-            '<div class="accordion-table" ><img src="' + description.styles.svg + '"  /></div>' +
+            '<div class="accordion-table" ><img src="' + description.styles.svg + '" alt="'+description.label+'"  /></div>' +
           //'<h4><p class="text-center">' + description.sublabel + '</p></h4>' +
           '<h6><p class="text-left date">' + dateLabel + '</p></h6>' +
             '</a>' +
