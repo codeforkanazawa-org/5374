@@ -277,6 +277,10 @@ $(function() {
   }
 
   function update_data(row_index) {
+
+    //SVG が使えるかどうかの判定を行う。
+    //参考 http://satussy.blogspot.jp/2011/12/javascript-svg.html
+    var ableSVG = (window.SVGAngle !== void 0);
     var areaModel = areaModels[row_index];
 
 
@@ -341,9 +345,14 @@ $(function() {
             '<div class="accordion-heading">' +
             '<a class="accordion-toggle" style="height:' + accordion_height + 'px" data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '">' +
             '<div class="left-day">' + leftDayText + '</div>' +
-            '<div class="accordion-table" ><img src="' + description.styles.svg + '" alt="'+description.label+'"  /></div>' +
-          //'<h4><p class="text-center">' + description.sublabel + '</p></h4>' +
-          '<h6><p class="text-left date">' + dateLabel + '</p></h6>' +
+            '<div class="accordion-table" >';
+          if (ableSVG) {
+            accordionHTML += '<img src="' + description.styles.svg + '" alt="' + description.label + '"  />';
+          } else {
+            accordionHTML += '<p class="text-center">' + description.sublabel + '</p>';
+          }
+          accordionHTML += '</div>' +
+            '<h6><p class="text-left date">' + dateLabel + '</p></h6>' +
             '</a>' +
             '</div>' +
             '<div id="collapse' + i + '" class="accordion-body collapse">' +
@@ -377,7 +386,7 @@ $(function() {
   }
 
   function onChangeSelect(row_index) {　
-    if (row_index == -1){
+    if (row_index == -1) {
       return;
     }
     set_selected_area_name(areaModels[row_index].label);
