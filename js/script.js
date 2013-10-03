@@ -1,7 +1,7 @@
 "use strict";
 
 /**
-  エリアを管理するクラスです。
+  エリア(ごみ処理の地域）を管理するクラスです。
 */
 var AreaModel = function() {
   this.label;
@@ -145,8 +145,8 @@ var TrashModel = function(_lable, _cell) {
         }
       }
     }
-    //曜日によって日付順ではないので最終的にソートする。
-    //ソートしなくてもなんとなりそうな気もしますが。。
+    //曜日によっては日付順ではないので最終的にソートする。
+    //ソートしなくてもなんとなりそうな気もしますが、とりあえずソート
     day_list.sort(function(a, b) {
       var at = a.getTime();
       var bt = b.getTime();
@@ -158,7 +158,6 @@ var TrashModel = function(_lable, _cell) {
     var now = new Date();
 
     for (var i in day_list) {
-      //8:30までは今日も含むこととする。
       if (this.mostRecent == null && now.getTime() < day_list[i].getTime() + 24 * 60 * 60 * 1000) {
         this.mostRecent = day_list[i];
         break;
@@ -209,16 +208,23 @@ $(function() {
 
   function updateAreaList() {
     $.get("data/area_days.csv", function(csvdata) {
-      var csvdata = csvdata.replace("/\r/gm", "");
-      var tmp = csvdata.split(String.fromCharCode(10));
+      //CSVのパース作業
+      var csvdata = csvdata.replace("\r/gm", "");
+      var tmp = csvdata.split("\n");
+      //行ごとに解析を行う。
+      //shiftは先頭のラベル行のみ取り出すため
+
+      //各行は [地域名],[ゴミ処理場],[燃やすゴミ],[燃えないごみ],[資源],[びん]
+      //という想定です。
       var area_days_label = tmp.shift().split(",");
       for (var i in tmp) {
         var row = tmp[i].split(",");
         var area = new AreaModel();
         area.label = row[0];
         area.centerName = row[1];
-        areaModels.push(area);
-
+        
+        areaModels.push(area);  
+        //２列目以降の処理
         for (var i = 2; i < 2 + 4; i++) {
           var trash = new TrashModel(area_days_label[i], row[i]);
           area.trash.push(trash);
@@ -226,20 +232,24 @@ $(function() {
       }
 
       $.get("data/center.csv", function(tmp_center_data) {
-        var tmp = tmp_center_data.split(String.fromCharCode(10));
+        //ゴミ処理センターのデータを解析します。
+        //表示上は現れませんが。
+        //金沢などの各処理センターの休止期間分は一週間ずらすという法則性のため
+        //例えば第一金曜日のときは、一周ずらしその月だけ第二金曜日にするなど
+        var tmp = tmp_center_data.split("\n");
         for (var i in tmp) {
           var row = tmp[i].split(",");
 
           var center = new CenterModel(row);
           center_data.push(center);
         }
+        //ゴミ処理センターを対応する各地域に割り当てます。
         for (var i in areaModels) {
           var area = areaModels[i];
           area.setCenter(center_data);
         };
-
+        //ListメニューのHTML作成
         var selected_name = getSelectedAreaName();
-
         var area_select_form = $("#select_area");
         var select_html = "";
         select_html += '<option value="-1">地域を選択してください</option>';
@@ -249,11 +259,12 @@ $(function() {
 
           select_html += '<option value="' + row_index + '" ' + selected + " >" + area_name + "</option>";
         }
+
         //デバッグ用
         if (typeof dump == "function") {
           dump(areaModels);
         }
-
+        //HTMLへの適応
         area_select_form.html(select_html);
         area_select_form.change();
       });
