@@ -5,7 +5,10 @@ main();
 function main()
 {
 	$src_filename = 'classify_src.csv';
-	$dst_filename = 'description.json';
+//	$dst_filename = 'description.json';
+	$dst_filename = 'description.csv';
+	$target_filename = 'target.csv';
+
 	$map_filename = 'classify_map.csv';
 	$list_filename = 'classify_list.csv';
 
@@ -13,7 +16,7 @@ function main()
 	$src = load_class_src($src_filename);
 	$map = load_class_map($map_filename);
 	$dst = put_target($src, $map, $list);
-	save_description($dst_filename, $dst);
+	save_description_csv($dst_filename,$target_filename, $dst);
 }
 
 function load_class_list($filename)
@@ -111,9 +114,48 @@ function put_target($src, $map, $styles) {
 	return $dst;
 }
 
-function save_description($filename, $list)
+function save_description_csv($filename,$target_filename, $list)
 {
-	$json = json_encode(array_values($list));
-	file_put_contents($filename, $json);
+	$fp=fopen($filename, "w+");
+	$target_fp=fopen($target_filename, "w+");
+	$first=true;
+	$target_labels=array("type","name","notice","furigana");
+	$labels=array("label","sublabel","description","styles");
+	foreach ($list as $row) {
+		$buffer="";
+		$buffer_target="";
+		if ($first){
+			//先頭行のラベル生成
+			fputcsv($fp, $labels);
+		}
+		foreach ($row as $key => $v) {
+			if (strcmp($key,"target")==0){
+				if ($first){
+				//先頭行のラベル生成
+					fputcsv($target_fp, $target_labels);
+				}
+				foreach ($v as $key => $value) {
+					$value["type"]=$row["label"];
+					$tmp=array();
+					//連想配列の順番の並び替えを行う。
+					foreach ($target_labels as $tmp_index => $tmp_key) {
+						$tmp[$tmp_key]=$value[$tmp_key];
+					}
+					fputcsv($target_fp, $tmp);
+				}
+			}else{
+				if (strlen($buffer)>0){
+					$buffer.=",";
+				}
+				$buffer.=$v;
+			}
+		}
+
+		fwrite($fp, $buffer."\n");
+		$first=false;
+	}
+	fclose($fp);
+	fclose($target_fp);
+
 
 }
