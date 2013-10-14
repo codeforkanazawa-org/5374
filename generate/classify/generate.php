@@ -143,6 +143,11 @@ function save_description_csv($filename,$target_filename, $list)
 					}
 					fputcsv($target_fp, $tmp);
 				}
+			}else if(strcmp($key,"styles")==0){
+				if (strlen($buffer)>0){
+					$buffer.=",";
+				}
+				$buffer.=$v["svg"];		
 			}else{
 				if (strlen($buffer)>0){
 					$buffer.=",";

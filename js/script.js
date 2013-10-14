@@ -52,13 +52,7 @@ var AreaModel = function() {
     });
   }
 }
-/**
-  ゴミの種類の分別のクラスです。
-*/
-var Description = function() {
-  this.label;
-  this.notice;
-}
+
 /**
   各ゴミのカテゴリを管理するクラスです。
 */
@@ -192,11 +186,39 @@ var CenterModel = function(row) {
   this.startDate = getDay(row, 1);
   this.endDate = getDay(row, 2);
 }
+/**
+* ゴミのカテゴリを管理するクラスです。
+* description.csvのモデルです。
+*/
+var DescriptionModel = function(row) {
+  this.targets = new Array();
+
+  var data = row.split(",");
+  this.label = data[0];
+  this.sublabel = data[1];//not used
+  this.description = data[2];//not used
+  this.styles = data[3];
+
+}
+/**
+ * ゴミのカテゴリの中のゴミの具体的なリストを管理するクラスです。
+ * target.csvのモデルです。
+ */
+var TargetRowModel = function(row) {
+  var data = row.split(",");
+  this.type = data[0];
+  this.name = data[1];
+  this.notice = data[2];
+  this.furigana = data[3];
+}
+
 
 $(function() {
   var center_data = new Array();
   var descriptions = new Array();
   var areaModels = new Array();
+  var descriptions = new Array();
+
 
   function getSelectedAreaName() {
     return localStorage.getItem("selected_area_name");
@@ -212,8 +234,7 @@ $(function() {
       var csvdata = csvdata.replace("\r/gm", "");
       var tmp = csvdata.split("\n");
       //行ごとに解析を行う。
-      //shiftは先頭のラベル行のみ取り出すため
-
+      //shiftは先頭のラベル行のみ除去するため
       //各行は [地域名],[ゴミ処理場],[燃やすゴミ],[燃えないごみ],[資源],[びん]
       //という想定です。
       var area_days_label = tmp.shift().split(",");
@@ -222,8 +243,8 @@ $(function() {
         var area = new AreaModel();
         area.label = row[0];
         area.centerName = row[1];
-        
-        areaModels.push(area);  
+
+        areaModels.push(area);
         //２列目以降の処理
         for (var i = 2; i < 2 + 4; i++) {
           var trash = new TrashModel(area_days_label[i], row[i]);
@@ -233,10 +254,11 @@ $(function() {
 
       $.get("data/center.csv", function(tmp_center_data) {
         //ゴミ処理センターのデータを解析します。
-        //表示上は現れませんが。
+        //表示上は現れませんが、
         //金沢などの各処理センターの休止期間分は一週間ずらすという法則性のため
-        //例えば第一金曜日のときは、一周ずらしその月だけ第二金曜日にするなど
+        //例えば第一金曜日のときは、一周ずらしその月だけ第二金曜日にする
         var tmp = tmp_center_data.split("\n");
+        tmp.shift();
         for (var i in tmp) {
           var row = tmp[i].split(",");
 
@@ -248,6 +270,7 @@ $(function() {
           var area = areaModels[i];
           area.setCenter(center_data);
         };
+        //エリアとゴミ処理センターを対応後に、表示のリストを生成する。
         //ListメニューのHTML作成
         var selected_name = getSelectedAreaName();
         var area_select_form = $("#select_area");
@@ -271,23 +294,52 @@ $(function() {
     });
   }
 
+
   function createMenuList(after_action) {
-    $.getJSON("data/description.json", function(data) {
+    $.get("data/description.csv", function(csv_data) {
+      var data = csv_data.split("\n");
+      data.shift();
       for (var i in data) {
-        descriptions.push(data[i]);
+        if (data[i].length == 0) {
+          //空データはスルーする。
+          continue;
+        }
+        descriptions.push(new DescriptionModel(data[i]));
       }
 
-      after_action();
-      $("#accordion2").show();
+      $.get("data/target.csv", function(csv_data) {
+
+        var data = csv_data.split("\n");
+        data.shift();
+        for (var i in data) {
+          if (data[i].length == 0) {
+            //空データはスルーする。
+            continue;
+          }
+          var row = new TargetRowModel(data[i]);
+          for (var j = 0; j < descriptions.length; j++) {
+            //一致してるものに追加する。
+            if (descriptions[j].label == row.type) {
+              descriptions[j].targets.push(row);
+              break;
+            }
+          };
+        }
+        after_action();
+        $("#accordion2").show();
+
+      });
+
     });
+
   }
 
   function updateData(row_index) {
     //SVG が使えるかどうかの判定を行う。
+    //TODO Android 2.3以下では見れない（代替の表示も含め）不具合が改善されてない。。
     //参考 http://satussy.blogspot.jp/2011/12/javascript-svg.html
     var ableSVG = (window.SVGAngle !== void 0);
     var areaModel = areaModels[row_index];
-
     var today = new Date();
     //直近の一番近い日付を計算します。
     areaModel.calcMostRect();
@@ -299,17 +351,17 @@ $(function() {
     var accordionHTML = "";
     //アコーディオンの分類から対応の計算を行います。
     for (var i in areaModel.trash) {
-      var description;
       var trash = areaModel.trash[i];
 
       for (var d_no in descriptions) {
-        if (descriptions[d_no].label == trash.label) {
-          description = descriptions[d_no];
+        var description = descriptions[d_no];
+
+        if (description.label == trash.label) {
 
           var target_tag = "";
           var furigana = "";
           var target_tag = "";
-          var targets = description.target;
+          var targets = description.targets;
           for (var j in targets) {
             var target = targets[j];
             if (furigana != target.furigana) {
@@ -329,8 +381,9 @@ $(function() {
           target_tag += "</ul>";
 
           var dateLabel = trash.getDateLabel();
-
+          //あと何日かを計算する処理です。
           var leftDay = Math.ceil((trash.mostRecent.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
+
           var leftDayText = "";
           if (leftDay == 0) {
             leftDayText = "今日";
@@ -349,7 +402,7 @@ $(function() {
             '<div class="left-day">' + leftDayText + '</div>' +
             '<div class="accordion-table" >';
           if (ableSVG) {
-            accordionHTML += '<img src="' + description.styles.svg + '" alt="' + description.label + '"  />';
+            accordionHTML += '<img src="' + description.styles + '" alt="' + description.label + '"  />';
           } else {
             accordionHTML += '<p class="text-center">' + description.label + "</p>";
           }
@@ -369,7 +422,7 @@ $(function() {
 
     var accordion_elm = $("#accordion");
     accordion_elm.html(accordionHTML);
-
+    //アコーディオンのラベル部分をクリックしたら  
     $(".accordion-body").on("shown.bs.collapse", function() {
       var body = $('body');
       var accordion_offset = $($(this).parent().get(0)).offset().top;
@@ -377,7 +430,7 @@ $(function() {
         scrollTop: accordion_offset
       }, 50);
     });
-
+    //アコーディオンの非表示部分をクリックしたら  
     $(".accordion-body").on("hidden.bs.collapse", function() {
       if ($(".in").length == 0) {
         $("html, body").scrollTop(0);
@@ -392,6 +445,7 @@ $(function() {
     setSelectedAreaName(areaModels[row_index].label);
 
     if ($("#accordion").children().length == 0) {
+
       createMenuList(function() {
         updateData(row_index);
       });
@@ -400,19 +454,7 @@ $(function() {
     }
   }
 
-  function getGpsErrorMessage(error) {
-    switch (error.code) {
-      case error.PERMISSION_DENIED:
-        return "User denied the request for Geolocation."
-      case error.POSITION_UNAVAILABLE:
-        return "Location information is unavailable."
-      case error.TIMEOUT:
-        return "The request to get user location timed out."
-      case error.UNKNOWN_ERROR:
-      default:
-        return "An unknown error occurred."
-    }
-  }
+
 
   function getAreaIndex(area_name) {
     for (var i in areaModels) {
@@ -422,12 +464,16 @@ $(function() {
     }
     return -1;
   }
-
+  //リストが選択されたら
   $("#select_area").change(function(data) {
     var row_index = $(data.target).val();
     onChangeSelect(row_index);
   });
 
+  //-----------------------------------
+  //位置情報をもとに地域を自動的に設定する処理です。
+  //これから下は現在、利用できません。 
+  //将来的に使うかもしれないので残してあります。
   $("#gps_area").click(function() {
     navigator.geolocation.getCurrentPosition(function(position) {
       $.getJSON("area_candidate.php", {
@@ -457,5 +503,18 @@ $(function() {
     $("#gps_area").css("display", "none");
   }
 
+  function getGpsErrorMessage(error) {
+    switch (error.code) {
+      case error.PERMISSION_DENIED:
+        return "User denied the request for Geolocation."
+      case error.POSITION_UNAVAILABLE:
+        return "Location information is unavailable."
+      case error.TIMEOUT:
+        return "The request to get user location timed out."
+      case error.UNKNOWN_ERROR:
+      default:
+        return "An unknown error occurred."
+    }
+  }
   updateAreaList();
 });
