@@ -49,6 +49,8 @@ data/center.csvと対応した、名称を記述します。
 ## data/center.csvの仕様
 
 上記の理由で、センターの休止期間を記述します。
+そういった支障がない場合は、空のファイルにしてもらっても大丈夫です。
+
 
 ## data/description.csvの仕様
 
@@ -60,11 +62,11 @@ data/center.csvと対応した、名称を記述します。
 
 ### sublabel
 
-使用されておりません。
+現在、使用されておりません。
 
 ### description
 
-使用されておりません。
+現在、使用されておりません。
 
 ### styles 
 
@@ -78,10 +80,11 @@ data/center.csvと対応した、名称を記述します。
 
 
 ### type
+
 typeの値としてはそれぞれ
-「燃えるゴミ」、「燃えないゴミ」、「びんゴミ」、「資源ゴミ」のいずれかである。
+description.csvで記述したものでこれをもとに、紐付けを行う。
+（例：「燃えるゴミ」、「燃えないゴミ」、「びんゴミ」、「資源ゴミ」など）
 	
-これをもとに、紐付けを行う。
 
 ### name
 
@@ -95,3 +98,13 @@ typeの値としてはそれぞれ
 
 リストで表示する際のラベルとしてのふりがなを指定します。
 
+
+## その他のカスタマイズについて
+
+スクリプトファイルは　js/script.jsをカスタマイズしてください。
+
+cssはcustom.cssとなっております。
+
+このアプリケーションは
+[Twitter bootstrap](http://getbootstrap.com/javascript/)のライブラリ
+[mobile-bookmark-bubble](https://code.google.com/p/mobile-bookmark-bubble/)のライブラリを使用しており、そのファイルも含まれております。

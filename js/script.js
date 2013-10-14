@@ -472,7 +472,7 @@ $(function() {
 
   //-----------------------------------
   //位置情報をもとに地域を自動的に設定する処理です。
-  //これから下は現在、利用できません。 
+  //これから下は現在、利用されておりません。 
   //将来的に使うかもしれないので残してあります。
   $("#gps_area").click(function() {
     navigator.geolocation.getCurrentPosition(function(position) {
