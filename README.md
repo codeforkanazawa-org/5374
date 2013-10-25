@@ -30,7 +30,7 @@
 - 宮田 人司(Hotoshi MIYATA)　Designer
 
 本アプリ及びソースコードの著作権はCode for Kanazawaに帰属します。
-但し、このソースコードは[MPL]（http://www.mozilla.org/MPL/2.0/）のもと配布されています。MPLに従えば、どなたでも利用、改変、及び再配布が可能です。
+但し、このソースコードは[MPL](http://www.mozilla.org/MPL/2.0/)のもと配布されています。MPLに従えば、どなたでも利用、改変、及び再配布が可能です。
 
 ## 5347のカスタマイズについて
 
