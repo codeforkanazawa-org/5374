@@ -212,8 +212,11 @@ var TargetRowModel = function(row) {
   this.furigana = data[3];
 }
 
+var windowHeight;
 
 $(function() {
+  windowHeight = $(window).height();
+
   var center_data = new Array();
   var descriptions = new Array();
   var areaModels = new Array();
@@ -346,7 +349,7 @@ $(function() {
     //トラッシュの近い順にソートします。
     areaModel.sortTrash();
 
-    var accordion_height = $(window).height() / 4;
+    var accordion_height = windowHeight / 4;
 
     var accordionHTML = "";
     //アコーディオンの分類から対応の計算を行います。
@@ -422,6 +425,9 @@ $(function() {
 
     var accordion_elm = $("#accordion");
     accordion_elm.html(accordionHTML);
+
+    $('html,body').animate({scrollTop: 0}, 'fast');
+
     //アコーディオンのラベル部分をクリックしたら  
     $(".accordion-body").on("shown.bs.collapse", function() {
       var body = $('body');
