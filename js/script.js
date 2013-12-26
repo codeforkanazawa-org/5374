@@ -257,8 +257,8 @@ $(function() {
 
         areaModels.push(area);
         //２列目以降の処理
-        for (var i = 2; i < 2 + 4; i++) {
-          var trash = new TrashModel(area_days_label[i], row[i]);
+        for (var r = 2; r < 2 + 4; r++) {
+          var trash = new TrashModel(area_days_label[r], row[r]);
           area.trash.push(trash);
         }
       }
@@ -355,8 +355,9 @@ $(function() {
 
       for (var d_no in descriptions) {
         var description = descriptions[d_no];
-
-        if (description.label == trash.label) {
+       if (description.label != trash.label) {
+          continue;
+        }
 
           var target_tag = "";
           var furigana = "";
@@ -416,7 +417,6 @@ $(function() {
             '<div class="targetDays"></div></div>' +
             "</div>" +
             "</div>";
-        }
       }
     }
 
