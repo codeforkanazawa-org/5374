@@ -63,6 +63,7 @@ var TrashModel = function(_lable, _cell) {
   this.dayCell = _cell.split(" ");
   this.label = _lable;
   this.description;
+  this.regularFlg = 1;              // 定期回収フラグ（デフォルトはオン）
 
   var result_text = "";
   var today = new Date();
@@ -70,8 +71,12 @@ var TrashModel = function(_lable, _cell) {
   for (var j in this.dayCell) {
     if (this.dayCell[j].length == 1) {
       result_text += "毎週" + this.dayCell[j] + "曜日 ";
-    } else {
+    } else if (this.dayCell[j].length == 2) {
       result_text += "第" + this.dayCell[j].charAt(1) + this.dayCell[j].charAt(0) + "曜日 ";
+    } else {
+      // 年数回程度の不定期回収の場合
+      result_text     = "不定期 ";
+      this.regularFlg = 0;          // 定期回収フラグオフ
     }
   }
   this.dayLabel = result_text;
@@ -99,46 +104,61 @@ var TrashModel = function(_lable, _cell) {
     var day_mix = this.dayCell;
     var result_text = "";
     var day_list = new Array();
-    // 12月 +3月　を表現
-    for (var month = 4; month <= 12 + 3; month++) {
-      for (var j in day_mix) {
-        //休止期間だったら、今後一週間ずらす。 
-        var isShift = false;
 
-        //week=0が第1週目です。
-        for (var week = 0; week < 5; week++) {
-          //4月1日を起点として第n曜日などを計算する。
-          var date = new Date(2013, month - 1, 1);
-          var d = new Date(date);
-          //コンストラクタでやろうとするとうまく行かなかった。。
-          //
-          //4月1日を基準にして曜日の差分で時間を戻し、最大５週までの増加させて毎週を表現
-          d.setTime(date.getTime() + 1000 * 60 * 60 * 24 *
-            ((7 + getDayIndex(day_mix[j].charAt(0)) - date.getDay()) % 7) + week * 7 * 24 * 60 * 60 * 1000
-          );
-          //年末年始のずらしの対応
-          //休止期間なら、今後の日程を１週間ずらす
-          if (areaObj.isBlankDay(d)) {
-            isShift = true;
-          }
-          if (isShift) {
-            d.setTime(d.getTime() + 7 * 24 * 60 * 60 * 1000);
-          }
-          //同じ月の時のみ処理したい
-          if (d.getMonth() != (month - 1) % 12) {
-            continue;
-          }
-          //特定の週のみ処理する
-          if (day_mix[j].length > 1) {
-            if (week != day_mix[j].charAt(1) - 1) {
+    // 定期回収の場合はゴミの日計算
+    if (this.regularFlg == 1) {
+
+      // 12月 +3月　を表現
+      for (var month = 4; month <= 12 + 3; month++) {
+        for (var j in day_mix) {
+          //休止期間だったら、今後一週間ずらす。 
+          var isShift = false;
+
+          //week=0が第1週目です。
+          for (var week = 0; week < 5; week++) {
+            //4月1日を起点として第n曜日などを計算する。
+            var date = new Date(2013, month - 1, 1);
+            var d = new Date(date);
+            //コンストラクタでやろうとするとうまく行かなかった。。
+            //
+            //4月1日を基準にして曜日の差分で時間を戻し、最大５週までの増加させて毎週を表現
+            d.setTime(date.getTime() + 1000 * 60 * 60 * 24 *
+              ((7 + getDayIndex(day_mix[j].charAt(0)) - date.getDay()) % 7) + week * 7 * 24 * 60 * 60 * 1000
+            );
+            //年末年始のずらしの対応
+            //休止期間なら、今後の日程を１週間ずらす
+            if (areaObj.isBlankDay(d)) {
+              isShift = true;
+            }
+            if (isShift) {
+              d.setTime(d.getTime() + 7 * 24 * 60 * 60 * 1000);
+            }
+            //同じ月の時のみ処理したい
+            if (d.getMonth() != (month - 1) % 12) {
               continue;
             }
-          }
+            //特定の週のみ処理する
+            if (day_mix[j].length > 1) {
+              if (week != day_mix[j].charAt(1) - 1) {
+                continue;
+              }
+            }
 
-          day_list.push(d);
+            day_list.push(d);
+          }
         }
       }
+    } else {
+      // 不定期回収の場合は、csvの日付をそのままセット
+      for (var j in day_mix) {
+        var year  = parseInt(day_mix[j].substr(0, 4));
+        var month = parseInt(day_mix[j].substr(4, 2)) - 1;
+        var day   = parseInt(day_mix[j].substr(6, 2));
+        var d     = new Date(year, month, day);
+        day_list.push(d);
+      }
     }
+
     //曜日によっては日付順ではないので最終的にソートする。
     //ソートしなくてもなんとなりそうな気もしますが、とりあえずソート
     day_list.sort(function(a, b) {
@@ -341,7 +361,8 @@ $(function() {
     //SVG が使えるかどうかの判定を行う。
     //TODO Android 2.3以下では見れない（代替の表示も含め）不具合が改善されてない。。
     //参考 http://satussy.blogspot.jp/2011/12/javascript-svg.html
-    var ableSVG = (window.SVGAngle !== void 0);
+//    var ableSVG = (window.SVGAngle !== void 0);
+    var ableSVG = false;  // SVG未使用、descriptionの1項目目を使用
     var areaModel = areaModels[row_index];
     var today = new Date();
     //直近の一番近い日付を計算します。
