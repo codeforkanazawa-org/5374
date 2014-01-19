@@ -136,3 +136,11 @@ cssはcustom.cssとなっております。
 
 [mobile-bookmark-bubble](https://code.google.com/p/mobile-bookmark-bubble/)のライブラリを使用しており、
 それらのファイルも含まれております。
+
+##生駒市の方からプルリクエストで
+回収日が不定期な場合にも簡単に対応する事ができるようになりました。
+###不定期な場合のデータ
+・area_days.csv
+　area_days.csvにて、不定期な日付を半角スペース区切りで、以下のように指定します。
+　20140301 20140325・・・
+　形式はYYYYMMDDとなります。
