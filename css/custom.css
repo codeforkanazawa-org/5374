@@ -7,10 +7,10 @@ font-family:".HiraKakuInterface-W1",'Lucida Grande',
 }
 /* Override base .btn styles */
 /* Apply text and background changes to three key states: default, hover, and active (click). */
-#accordion-group0{background-color:  #733b96;}/* 燃やす */
-#accordion-group1{background-color:  #77ae1f;}/* 燃やさない */
-#accordion-group2{background-color:  #ea3b13;}/* 資源 */
-#accordion-group3{background-color:  #2dc7aa;}/* びん */
+/*#accordion-group0{background-color:  #733b96;}*//* 燃やす */
+/*#accordion-group1{background-color:  #77ae1f;}*//* 燃やさない */
+/*#accordion-group2{background-color:  #ea3b13;}*//* 資源 */
+/*#accordion-group3{background-color:  #2dc7aa;}*//* びん */
 
 .accordion-group{margin-bottom:0;border:0;border-radius:0}
 
@@ -26,6 +26,10 @@ a.accordion-toggle-top{
 #accordion3 h2{
 	font-size: 25px;
 	margin-top: 40px;
+}
+
+#accordion3 #cfi{
+	border-top: 1px solid black;
 }
 
 #accordion3 #cfk{

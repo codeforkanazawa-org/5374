@@ -60,7 +60,18 @@ var TrashModel = function(_lable, _cell) {
   this.dayLabel;
   this.mostRecent;
   this.dayList;
-  this.dayCell = _cell.split(" ");
+  this.mflag = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  if (_cell.search(/:/) >= 0) {
+    var flag = _cell.split(":");
+    this.dayCell = flag[0].split(" ");
+    var mm = flag[1].split(" ");
+  } else {
+    this.dayCell = _cell.split(" ");
+    var mm = new Array("4", "5", "6", "7", "8", "9", "10", "11", "12", "1", "2", "3");
+  }
+  for (var m in mm) {
+    this.mflag[mm[m] - 1] = 1;
+  }
   this.label = _lable;
   this.description;
   this.regularFlg = 1;      // 定期回収フラグ（デフォルトはオン:1）
@@ -104,12 +115,23 @@ var TrashModel = function(_lable, _cell) {
     var day_mix = this.dayCell;
     var result_text = "";
     var day_list = new Array();
-
+    
     // 定期回収の場合
     if (this.regularFlg == 1) {
 
+      var today = new Date();
+        
       // 12月 +3月　を表現
-      for (var month = 4; month <= 12 + 3; month++) {
+      for (var i = 0; i <= MaxMonth; i++) {
+
+        var curMonth = today.getMonth() + i;
+        var curYear = today.getFullYear() + Math.floor(curMonth / 12);
+        var month = (curMonth % 12) + 1;
+
+        // 収集が無い月はスキップ
+        if (this.mflag[month - 1] == 0) {
+            continue;
+        }
         for (var j in day_mix) {
           //休止期間だったら、今後一週間ずらす。 
           var isShift = false;
@@ -117,7 +139,7 @@ var TrashModel = function(_lable, _cell) {
           //week=0が第1週目です。
           for (var week = 0; week < 5; week++) {
             //4月1日を起点として第n曜日などを計算する。
-            var date = new Date(2013, month - 1, 1);
+            var date = new Date(curYear, month - 1, 1);
             var d = new Date(date);
             //コンストラクタでやろうとするとうまく行かなかった。。
             //
@@ -130,7 +152,7 @@ var TrashModel = function(_lable, _cell) {
             if (areaObj.isBlankDay(d)) {
               isShift = true;
             }
-            if (isShift) {
+            if (isShift && WeekShift) {
               d.setTime(d.getTime() + 7 * 24 * 60 * 60 * 1000);
             }
             //同じ月の時のみ処理したい
@@ -216,6 +238,7 @@ var DescriptionModel = function(data) {
   this.sublabel = data[1];//not used
   this.description = data[2];//not used
   this.styles = data[3];
+  this.background = data[4];
 
 }
 /**
@@ -229,15 +252,15 @@ var TargetRowModel = function(data) {
   this.furigana = data[3];
 }
 
-var windowHeight;
+/* var windowHeight; */
 
 $(function() {
-  windowHeight = $(window).height();
+/*   windowHeight = $(window).height(); */
 
   var center_data = new Array();
   var descriptions = new Array();
   var areaModels = new Array();
-  var descriptions = new Array();
+/*   var descriptions = new Array(); */
 
 
   function getSelectedAreaName() {
@@ -276,9 +299,11 @@ $(function() {
 
         areaModels.push(area);
         //２列目以降の処理
-        for (var r = 2; r < 2 + 4; r++) {
-          var trash = new TrashModel(area_days_label[r], row[r]);
-          area.trash.push(trash);
+        for (var r = 2; r < 2 + MaxDescription; r++) {
+          if (area_days_label[r]) {
+            var trash = new TrashModel(area_days_label[r], row[r]);
+            area.trash.push(trash);
+          }
         }
       }
 
@@ -366,8 +391,9 @@ $(function() {
     //トラッシュの近い順にソートします。
     areaModel.sortTrash();
 
-    var accordion_height = windowHeight / 4;
+    var accordion_height = window.innerHeight / descriptions.length;
 
+    var styleHTML = "";
     var accordionHTML = "";
     //アコーディオンの分類から対応の計算を行います。
     for (var i in areaModel.trash) {
@@ -415,6 +441,8 @@ $(function() {
           } else {
             leftDayText = leftDay + "日後";
           }
+          
+          styleHTML += '#accordion-group' + d_no + '{background-color:  ' + description.background + ';} ';
 
           accordionHTML +=
             '<div class="accordion-group" id="accordion-group' + d_no + '">' +
@@ -422,7 +450,7 @@ $(function() {
             '<a class="accordion-toggle" style="height:' + accordion_height + 'px" data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '">' +
             '<div class="left-day">' + leftDayText + '</div>' +
             '<div class="accordion-table" >';
-          if (ableSVG) {
+          if (ableSVG && SVGLabel) {
             accordionHTML += '<img src="' + description.styles + '" alt="' + description.label + '"  />';
           } else {
             accordionHTML += '<p class="text-center">' + description.label + "</p>";
@@ -439,6 +467,8 @@ $(function() {
             "</div>";
       }
     }
+    
+    $("#accordion-style").html('<!-- ' + styleHTML + ' -->');
 
     var accordion_elm = $("#accordion");
     accordion_elm.html(accordionHTML);
@@ -463,11 +493,13 @@ $(function() {
 
   function onChangeSelect(row_index) {　
     if (row_index == -1) {
+      $("#accordion").html("");
+      setSelectedAreaName("");
       return;
     }
     setSelectedAreaName(areaModels[row_index].label);
 
-    if ($("#accordion").children().length == 0) {
+    if ($("#accordion").children().length === 0 && descriptions.length === 0) {
 
       createMenuList(function() {
         updateData(row_index);

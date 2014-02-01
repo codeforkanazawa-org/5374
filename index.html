@@ -9,8 +9,20 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
     <link href="css/custom.css" rel="stylesheet" media="screen" />
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-47688368-1', '5374.jp');
+  ga('send', 'pageview');
+
+    </script>
   </head>
   <body>
+  <style id="accordion-style" type="text/css"></style>
   <div id="accordion"></div>
   <select class="form-control" id="select_area"></select>
   <div class="accordion" id="accordion3">
@@ -21,35 +33,31 @@
       <div id="collapse3_0" class="accordion-body collapse">
         <div class="accordion-inner">
           <div id="help">
-ゴミの問題は、どの地域でも深刻になりつつあります。
-Code for Kanazawaでは、先ずは正しいゴミの捨て方に注目しました。
-目的と使い方は、とてもシンプルです。
+5374（ゴミナシ）.jpは、Code for Kanazawaによって開発されたアプリです。それをCode for Ibarakiが茨城町版に改良しました。
             <h2>目的</h2>
-「いつ、どのゴミが収集されているのか？」
-例えばお引っ越しをされた場合や、新しく金沢市に住むことになった時、このアプリを使えば、すぐに分かるようにデザインされています。
+「いつ、どのゴミが収集されているのか？」例えばお引っ越しをされた場合や、新しく町に住むことになった時、このアプリを使えば、すぐに分かるようにデザインされています。
             <h2>使い方</h2>
             <h3>色でゴミのジャンルを表示</h3>
             <p>一番近いゴミの日とジャンルを上から順に表示しています。</p>
             <h3>捨てる事が可能なゴミ</h3>
             <p>ゴミのジャンルをタップすると、捨てることが可能なゴミの一覧を見ることができます</p>
             <h3>設定</h3>
-            <p>お住まいの地域を選択することで、ゴミ収集日が自動的に更新されます。</p>
+            <p>お住まいの地域を選択することで、ゴミ収集日を計算し近い順に表示されます。</p>
             <div id="caption">
               <h4>提供されるゴミ情報について</h4>
-              <p>金沢市が公開しているデータからCfKが独自に解析し、アプリに実装しました。</p>
+              <p>茨城町が公開しているデータをもとにCode for Ibarakiがアプリに実装しました。</p>
               <h4>ライセンスについて</h4>
-              <p>本アプリの著作権はCode for Kanazawaに帰属します。</p>
+              <p>本アプリ及びソースコードの著作権はCode for Kanazawaに帰属します。 但し、このソースコードはMPLのもと配布されています。MPLに従えば、どなたでも利用、改変、及び再配布が可能です。</p>
             </div>
             <div id="cfk">
               <h3>Code for Kanazawaについて</h3>
-              <p>コードで、世界をHappyに。<br />
-各地域には様々な課題があり、解決するためのコミュニティ（団体）も数多くあります。<br />
-課題の中には、ITやデザインの力で解決できるものも多くありますが、全てのコミュニティにそのスキル（技術）が備わっているわけではありません。<br /><br />
-Code for Kanazawa（CfK）は、市民の課題を集め、その課題を整理・分析した上で、メンバーが実際に課題解決となるソフトウェアやハードウェア（仕組みや方法）を開発します。<br />
-私たちは、デザインをして、ソフトウェアコードを書き、課題を解決するサービスを完成させるのです。さらに、そのサービスを提供し続ける力も持ちます。<br /><br />
-CfKは市民のための組織です。行政や民間企業の影響を受けずに中立・公益の立場から物事を判断するよう心がけています。<br /><br />
-公式サイト<br />
-<a href="http://www.codeforkanazawa.org/" style=" color: #FF0000;text-decoration: underline;">http://www.codeforkanazawa.org/</a>
+              <p>公式サイト<br /><a href="http://www.codeforkanazawa.org/" target="_blank" rel="nofollow" style=" color: #FF0000;text-decoration: underline;">http://www.codeforkanazawa.org/</a><br />
+5374(ゴミナシ).jp<br /><a href="http://5374.jp/" target="_blank" rel="nofollow" style=" color: #FF0000;text-decoration: underline;">http://5374.jp/</a>  
+              </p>
+            </div>
+            <div id="cfi">
+              <h3>Code for Ibaraki（コード・フォー・茨城）について</h3>
+              <p>公式サイト<br /><a href="http://codeforibaraki.org/" target="_blank" style=" color: #FF0000;text-decoration: underline;">http://codeforibaraki.org/</a>
               </p>
             </div>
           </div>
@@ -68,14 +76,7 @@ CfKは市民のための組織です。行政や民間企業の影響を受け�
   <script src="js/bookmark-bubble/bookmark_bubble.min.js"></script>
   <script src="js/bookmark-bubble/example/example.min.js"></script>
 
+  <script src="js/setting.js"></script>
   <script src="js/script.js"></script>
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-43926409-1', '5374.jp');
-  ga('send', 'pageview');
-  </script>
   </body>
 </html>
