@@ -37,7 +37,7 @@
 ### 茨城町版開発チーム
 - 佐藤 俊秀(Toshihide Sato)　Developer
 
- [Code for IbarakiK](http://codeforibaraki.org/)
+ [Code for Ibaraki](http://codeforibaraki.org/)
 
 基本的にはdataフォルダの中を変更していただければ、データが変更できます。
 
