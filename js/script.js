@@ -367,7 +367,7 @@ $(function() {
     areaModel.sortTrash();
 
     var accordion_height = windowHeight / 4;
-
+    if (accordion_height<100) {accordion_height=100;};
     var accordionHTML = "";
     //アコーディオンの分類から対応の計算を行います。
     for (var i in areaModel.trash) {
