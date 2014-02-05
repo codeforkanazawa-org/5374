@@ -392,7 +392,7 @@ $(function() {
     areaModel.sortTrash();
 
     var accordion_height = window.innerHeight / descriptions.length;
-
+    if (accordion_height<100) {accordion_height=100;};
     var styleHTML = "";
     var accordionHTML = "";
     //アコーディオンの分類から対応の計算を行います。
