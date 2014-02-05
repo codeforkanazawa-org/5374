@@ -122,7 +122,7 @@ var TrashModel = function(_lable, _cell) {
       var today = new Date();
         
       // 12月 +3月　を表現
-      for (var i = 0; i <= MaxMonth; i++) {
+      for (var i = 0; i < MaxMonth; i++) {
 
         var curMonth = today.getMonth() + i;
         var curYear = today.getFullYear() + Math.floor(curMonth / 12);
