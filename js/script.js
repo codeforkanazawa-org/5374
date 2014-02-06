@@ -390,9 +390,11 @@ $(function() {
     areaModel.calcMostRect();
     //トラッシュの近い順にソートします。
     areaModel.sortTrash();
-
-    var accordion_height = window.innerHeight / descriptions.length;
+  var accordion_height = window.innerHeight / descriptions.length;
+if(descriptions.length>5){
     if (accordion_height<100) {accordion_height=100;};
+}
+    
     var styleHTML = "";
     var accordionHTML = "";
     //アコーディオンの分類から対応の計算を行います。
@@ -450,7 +452,7 @@ $(function() {
             '<a class="accordion-toggle" style="height:' + accordion_height + 'px" data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '">' +
             '<div class="left-day">' + leftDayText + '</div>' +
             '<div class="accordion-table" >';
-          if (ableSVG && SVGLabel) {
+          if (ableSVG) {
             accordionHTML += '<img src="' + description.styles + '" alt="' + description.label + '"  />';
           } else {
             accordionHTML += '<p class="text-center">' + description.label + "</p>";

@@ -1,10 +1,5 @@
 label,sublabel,description,styles,bgcolor
-燃えるごみ,指定ゴミ袋,,img/burnable.svg,#ea3b13
-カン・金属類,コンテナ,,img/metal.svg,#685ecf
-粗大ごみ,コンテナ,,img/large.svg,#733b96
-無色のビン,コンテナ,,img/bottle.svg,#2dc7aa
-茶色のビン,コンテナ,,img/bottle-brown.svg,#00b7c0
-その他のビン,コンテナ,,img/bottle-other.svg,#7fc6e4
-ガラス・陶磁器類,,,img/glass.svg,#91dde7
-古紙類,ひもでしばる,,img/usedpaper.svg,#77ae1f
-ペットボトル,コンテナ,,img/pet.svg,#81d12e
+燃やさないごみ,,,img/moyasanai02.svg,#733b96
+資源,,,img/shigen02.svg,#77ae1f
+燃やすごみ,,,img/moyasu02.svg,#ea3b13
+びん,,,img/bin02.svg,#2dc7aa
