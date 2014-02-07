@@ -150,9 +150,13 @@ var TrashModel = function(_lable, _cell) {
             //年末年始のずらしの対応
             //休止期間なら、今後の日程を１週間ずらす
             if (areaObj.isBlankDay(d)) {
-              isShift = true;
+              if (WeekShift) {
+                isShift = true;
+              } else {
+                continue;
+              }
             }
-            if (isShift && WeekShift) {
+            if (isShift) {
               d.setTime(d.getTime() + 7 * 24 * 60 * 60 * 1000);
             }
             //同じ月の時のみ処理したい
