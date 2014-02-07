@@ -15,14 +15,15 @@
  
 ■設定
 お住まいの地域を選択することで、ゴミ収集日が自動的に更新されます。
+今後スマートフォンのGPSから位置情報を取得する機能を追加する予定です。
  
-[5374 for Ibaraki](http://ibaraki-town.5374.jp/ )を使う。
+[5374 for kanazawa](http://kanazawa.5374.jp/ )を使う。
 
 
 ##提供されるゴミ情報について
-茨城町が公開しているオープンデータをもとにしています。
+金沢市が公開しているオープンデータをもとにしています。
 
-##金沢版開発チームとライセンスについて
+##開発チームとライセンスについて
 - 小野 祐貴(Yuki ONO)　Developer
 - 五十川 員申(Kazunobu IKAGAWA)　Developer
 - 高木 志宗(Yukimune TAKAGI)　Developer
