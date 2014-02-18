@@ -264,7 +264,7 @@ $(function() {
   var center_data = new Array();
   var descriptions = new Array();
   var areaModels = new Array();
-  var polygons = {}; // 消したほうがいいかも
+  var polygons = {};
   var place_name = new String();
 /*   var descriptions = new Array(); */
 
@@ -402,6 +402,8 @@ $(function() {
         var area_select_form = $("#select_area");
         area_select_form.find('option').each(function(index, elem) {
           if($(elem).text() === place_name) {
+            area_select_form[0].selectedIndex = index;
+            setSelectedAreaName(place_name);
           }
         });
       },
