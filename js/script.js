@@ -403,7 +403,7 @@ $(function() {
         area_select_form.find('option').each(function(index, elem) {
           if($(elem).text() === place_name) {
             area_select_form[0].selectedIndex = index;
-            setSelectedAreaName(place_name);
+            onChangeSelect(elem.value);
           }
         });
       },
