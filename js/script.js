@@ -408,7 +408,7 @@ $(function() {
         });
       },
       function(error) {
-        // nothing to do when it is error.
+        alert('位置情報を取得できませんでした。');
       });
   }
 
@@ -591,6 +591,10 @@ if(descriptions.length>5){
   });
 
   $('#select_by_location_data').on('click', function() {
+    if(!navigator.geolocation) {
+      alert('お使いの端末で位置情報を利用できません');
+    }
+
     takeUserLocation();
   });
 
