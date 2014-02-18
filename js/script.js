@@ -264,6 +264,8 @@ $(function() {
   var center_data = new Array();
   var descriptions = new Array();
   var areaModels = new Array();
+  var polygons = {}; // 消したほうがいいかも
+  var place_name = new String();
 /*   var descriptions = new Array(); */
 
 
@@ -355,6 +357,58 @@ $(function() {
     });
   }
 
+  function selectAreaByLocationData() {
+  }
+
+  function takePolygon() {
+    $.ajax({
+      url: 'data/nonoichi_city.kml',
+      type: 'get',
+      dataType: 'xml',
+      success: function(xml) {
+       $(xml).find('Placemark').each(function(index, elem) {
+         var $elem = $(elem);
+         var name = $elem.find('name').text();
+         var coordinates = $elem.find('coordinates').text().split(' ');
+
+         var points = new Array(coordinates.length);
+         for(var i = 0, l = coordinates.length; i < l; i++) {
+           var point = coordinates[i].split(',');
+           points[i] = {
+             latitude: parseFloat(point[1]),
+             longitude: parseFloat(point[0])
+           };
+         }
+         polygons[name] = points;
+       });
+      }
+    });
+  }
+
+  function whereIsPointInsidePolygon(latitude, longitude) {
+    for(var name in polygons) {
+      var isInside = geolib.isPointInside(
+                      {latitude: latitude, longitude: longitude}, polygons[name]);
+      if(isInside) {
+        return name;
+      }
+    }
+  }
+
+  function takeUserLocation() {
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
+        place_name = whereIsPointInsidePolygon(position.coords.latitude, position.coords.longitude);
+        var area_select_form = $("#select_area");
+        area_select_form.find('option').each(function(index, elem) {
+          if($(elem).text() === place_name) {
+          }
+        });
+      },
+      function(error) {
+        // nothing to do when it is error.
+      });
+  }
 
   function createMenuList(after_action) {
     csvToArray("data/description.csv", function(data) {
@@ -534,6 +588,10 @@ if(descriptions.length>5){
     onChangeSelect(row_index);
   });
 
+  $('#select_by_location_data').on('click', function() {
+    takeUserLocation();
+  });
+
   //-----------------------------------
   //位置情報をもとに地域を自動的に設定する処理です。
   //これから下は現在、利用されておりません。 
@@ -581,4 +639,5 @@ if(descriptions.length>5){
     }
   }
   updateAreaList();
+  takePolygon();
 });
