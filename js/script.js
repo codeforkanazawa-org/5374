@@ -408,7 +408,7 @@ $(function() {
         });
       },
       function(error) {
-        // nothing to do when it is error.
+        alert('位置情報を取得できませんでした。');
       });
   }
 
