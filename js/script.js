@@ -591,6 +591,10 @@ if(descriptions.length>5){
   });
 
   $('#select_by_location_data').on('click', function() {
+    if(!navigator.geolocation) {
+      alert('お使いの端末で位置情報を利用できません');
+    }
+
     takeUserLocation();
   });
 
