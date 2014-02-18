@@ -4,6 +4,7 @@
 ゴミの問題はどの地域でも深刻になりつつあります。
  [Code for Kanazawa](http://codeforkanazawa.org/)
 では、先ずは正しいゴミの捨て方に注目しました。例えばお引っ越しをされた場合や、新しく金沢市に住むことになった時、このアプリを使えばすぐに分かるように、目的と使い方をとてもシンプルにデザインしました。
+この5374は金沢市版をベースに野々市市版として開発を行いました。
 
 《使い方》
 
@@ -17,13 +18,13 @@
 お住まいの地域を選択することで、ゴミ収集日が自動的に更新されます。
 今後スマートフォンのGPSから位置情報を取得する機能を追加する予定です。
  
-[5374 for kanazawa](http://kanazawa.5374.jp/ )を使う。
+[5374 for nonoichi](http://nonoichi.5374.jp/ )を使う。
 
 
 ##提供されるゴミ情報について
-金沢市が公開しているオープンデータをもとにしています。
+野々市市が公開しているオープンデータをもとにしています。
 
-##開発チームとライセンスについて
+##金沢市版開発チームとライセンスについて
 - 小野 祐貴(Yuki ONO)　Developer
 - 五十川 員申(Kazunobu IKAGAWA)　Developer
 - 高木 志宗(Yukimune TAKAGI)　Developer
@@ -31,6 +32,20 @@
 
 本アプリ及びソースコードの著作権はCode for Kanazawaに帰属します。
 但し、このソースコードは[MPL](http://www.mozilla.org/MPL/2.0/)のもと配布されています。MPLに従えば、どなたでも利用、改変、及び再配布が可能です。
+
+##野々市市版開発チームについて
+- 五十川 員申(Kazunobu IKAGAWA)　Developer
+- 市野 陽太(Yota Ichino) Developer
+- 福島 健一郎(Kenichiro Fukushima) Developer
+- 寺口 久美子(Kumiko Teraguchi) Developer
+- tadachan(tadachan) Developer
+- M. N(M. N) Developer
+- J.-I.S.(J.-I.S.) Developer
+- 坂井 三四郎(Sanshiro Sakai) Developer
+- 滝沢 航太(Kouta Takizawa) Developer
+- 高倉 正道(Masamichi Takakura) Developer
+- 中山 真梨子(Mariko Nakayama) Developer
+- 小野 祐貴(Yuki ONO)　Developer
 
 ## 5347のカスタマイズについて
 
@@ -48,7 +63,7 @@ unusedは将来的には使用するかもしれないプログラムなどが�
 ## data/area_days.csvの仕様
 
 各エリアのゴミを出す曜日を記述します。
-特に金沢の場合、１月にセンターが休止期間があり、
+特に野々市の場合、１月にセンターが休止期間があり、
 その期間１週間ずらすという仕様のため、センターの名称を記述します。
 
 ### 地名
