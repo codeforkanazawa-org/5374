@@ -108,6 +108,9 @@ a,a:hover{
 .initials {
 	color: #ffffff;
 }
+.note{
+	font-size: 10px;
+}
 #help{
 	margin-left: 5px;
 }
