@@ -431,7 +431,7 @@ if(descriptions.length>5){
               target_tag += "<ul>";
             }
 
-            target_tag += "<li>" + target.name + "</li>";
+            target_tag += '<li style="list-style:none;">' + target.name + "</li>";
             target_tag += '<p class="note">' + target.notice + "</p>";
           }
 
