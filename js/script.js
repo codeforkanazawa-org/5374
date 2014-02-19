@@ -429,6 +429,7 @@ if(descriptions.length>5){
             }
 
             target_tag += "<li>" + target.name + "</li>";
+            target_tag += '<p class="note">' + target.notice + "</p>";
           }
 
           target_tag += "</ul>";
