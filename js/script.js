@@ -278,8 +278,11 @@ $(function() {
   function csvToArray(filename, cb) {
     $.get(filename, function(csvdata) {
       //CSVのパース作業
-      var csvdata = csvdata.replace("\r/gm", ""),
-          line = csvdata.split("\n"),
+      //CRの解析ミスがあった箇所を修正しました。
+      //以前のコードだとCRが残ったままになります。
+      // var csvdata = csvdata.replace("\r/gm", ""),
+       csvdata = csvdata.replace(/\r/gm, "");
+      var line = csvdata.split("\n"),
           ret = [];
       for (var i in line) {
         //空行はスルーする。
