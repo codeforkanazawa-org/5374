@@ -46,7 +46,7 @@
 - 高倉 正道(Masamichi Takakura) Developer
 - 中山 真梨子(Mariko Nakayama) Developer
 - 小野 祐貴(Yuki ONO)　Developer
-
+- 一ノ瀬 裕太(Yuta Ichinose)　Developer  
 ## 5347のカスタマイズについて
 
 基本的にはdataフォルダの中を変更していただければ、データが変更できます。
@@ -140,7 +140,6 @@ description.csvで記述したものでこれをもとに、紐付けを行う�
 ### notice
 
 このゴミを捨てるときの注意事項を記述します。
-*ただし、本アプリケーションでは現在使用されておりません*
 
 ### furigana
 
