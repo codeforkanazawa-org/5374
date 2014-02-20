@@ -393,12 +393,21 @@ $(function() {
         return name;
       }
     }
+
+    return '';
   }
 
   function takeUserLocation() {
     navigator.geolocation.getCurrentPosition(
       function(position) {
         place_name = whereIsPointInsidePolygon(position.coords.latitude, position.coords.longitude);
+
+        var not_found = (place_name === '');
+        if(not_found) {
+            alert('5374(野々市市)は現在位置に対応しておりません。');
+            return;
+        }
+
         var area_select_form = $("#select_area");
         area_select_form.find('option').each(function(index, elem) {
           if($(elem).text() === place_name) {
