@@ -46,7 +46,7 @@
 - 高倉 正道(Masamichi Takakura) Developer
 - 中山 真梨子(Mariko Nakayama) Developer
 - 小野 祐貴(Yuki ONO)　Developer
-- 一ノ瀬 裕太(Yuta Ichinose)　Developer
+- 一ノ瀬 裕太(Yuta Ichinose)　Developer  
 ## 5347のカスタマイズについて
 
 基本的にはdataフォルダの中を変更していただければ、データが変更できます。
