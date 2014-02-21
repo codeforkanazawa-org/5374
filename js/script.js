@@ -404,7 +404,7 @@ $(function() {
 
         var not_found = (place_name === '');
         if(not_found) {
-            alert('5374(野々市市)は現在位置に対応しておりません。');
+            alert('お使いの場所を特定できません。リストから地域を選んで設定を行ってください。');
             return;
         }
 
