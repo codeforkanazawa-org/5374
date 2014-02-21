@@ -113,6 +113,15 @@ a,a:hover{
 }
 #help{
 	margin-left: 5px;
+	color: #2c3e50;
+}
+#help p{
+	color: #34495e;
+	font-size: 10px;
+}
+#help li{
+	list-style: none;
+	color: #2c3e50;
 }
 #select_area_title{
 	text-align: center;
