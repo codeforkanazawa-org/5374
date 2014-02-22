@@ -56,7 +56,8 @@ var AreaModel = function() {
 /**
   各ゴミのカテゴリを管理するクラスです。
 */
-var TrashModel = function(_lable, _cell) {
+var TrashModel = function(_lable, _cell, remarks) {
+  this.remarks = remarks;
   this.dayLabel;
   this.mostRecent;
   this.dayList;
@@ -82,8 +83,9 @@ var TrashModel = function(_lable, _cell) {
   for (var j in this.dayCell) {
     if (this.dayCell[j].length == 1) {
       result_text += "毎週" + this.dayCell[j] + "曜日 ";
-    } else if (this.dayCell[j].length == 2) {
+    } else if (this.dayCell[j].length == 2 && this.dayCell[j].substr(0,1) != "*") {
       result_text += "第" + this.dayCell[j].charAt(1) + this.dayCell[j].charAt(0) + "曜日 ";
+    } else if (this.dayCell[j].length == 2 && this.dayCell[j].substr(0,1) == "*") {
     } else {
       // 不定期回収の場合（YYYYMMDD指定）
       result_text = "不定期 ";
@@ -94,7 +96,7 @@ var TrashModel = function(_lable, _cell) {
 
   this.getDateLabel = function() {
     var result_text = this.mostRecent.getFullYear() + "/" + (1 + this.mostRecent.getMonth()) + "/" + this.mostRecent.getDate();
-    return this.dayLabel + " " + result_text;
+    return this.getRemark() + this.dayLabel + " " + result_text;
   }
 
   var day_enum = ["日", "月", "火", "水", "木", "金", "土"];
@@ -108,6 +110,22 @@ var TrashModel = function(_lable, _cell) {
     return -1;
   }
   /**
+   * このごみ収集日が特殊な条件を持っている場合備考を返します。収集日データに"*n" が入っている場合に利用されます
+   */
+  this.getRemark = function getRemark() {
+    var ret = "";
+    this.dayCell.forEach(function(day){
+      if (day.substr(0,1) == "*") {
+        remarks.forEach(function(remark){
+          if (remark.id == day.substr(1,1)){
+            ret += remark.text + "<br/>";
+          }
+        });
+      };
+    });
+    return ret;
+  }
+  /**
   このゴミの年間のゴミの日を計算します。
   センターが休止期間がある場合は、その期間１週間ずらすという実装を行っております。
 */
@@ -115,12 +133,12 @@ var TrashModel = function(_lable, _cell) {
     var day_mix = this.dayCell;
     var result_text = "";
     var day_list = new Array();
-    
+
     // 定期回収の場合
     if (this.regularFlg == 1) {
 
       var today = new Date();
-        
+
       // 12月 +3月　を表現
       for (var i = 0; i < MaxMonth; i++) {
 
@@ -133,7 +151,7 @@ var TrashModel = function(_lable, _cell) {
             continue;
         }
         for (var j in day_mix) {
-          //休止期間だったら、今後一週間ずらす。 
+          //休止期間だったら、今後一週間ずらす。
           var isShift = false;
 
           //week=0が第1週目です。
@@ -256,6 +274,15 @@ var TargetRowModel = function(data) {
   this.furigana = data[3];
 }
 
+/**
+ * ゴミ収集日に関する備考を管理するクラスです。
+ * remarks.csvのモデルです。
+ */
+var RemarkModel = function(data) {
+  this.id = data[0];
+  this.text = data[1];
+}
+
 /* var windowHeight; */
 
 $(function() {
@@ -264,6 +291,7 @@ $(function() {
   var center_data = new Array();
   var descriptions = new Array();
   var areaModels = new Array();
+  var remarks = new Array();
 /*   var descriptions = new Array(); */
 
 
@@ -308,7 +336,7 @@ $(function() {
         //２列目以降の処理
         for (var r = 2; r < 2 + MaxDescription; r++) {
           if (area_days_label[r]) {
-            var trash = new TrashModel(area_days_label[r], row[r]);
+            var trash = new TrashModel(area_days_label[r], row[r], remarks);
             area.trash.push(trash);
           }
         }
@@ -357,6 +385,13 @@ $(function() {
 
 
   function createMenuList(after_action) {
+    // 備考データを読み込む
+    csvToArray("data/remarks.csv", function(data) {
+      data.shift();
+      for (var i in data) {
+        remarks.push(new RemarkModel(data[i]));
+      }
+    });
     csvToArray("data/description.csv", function(data) {
       data.shift();
       for (var i in data) {
@@ -401,7 +436,7 @@ $(function() {
 if(descriptions.length>5){
     if (accordion_height<100) {accordion_height=100;};
 }
-    
+
     var styleHTML = "";
     var accordionHTML = "";
     //アコーディオンの分類から対応の計算を行います。
@@ -451,7 +486,7 @@ if(descriptions.length>5){
           } else {
             leftDayText = leftDay + "日後";
           }
-          
+
           styleHTML += '#accordion-group' + d_no + '{background-color:  ' + description.background + ';} ';
 
           accordionHTML +=
@@ -477,7 +512,7 @@ if(descriptions.length>5){
             "</div>";
       }
     }
-    
+
     $("#accordion-style").html('<!-- ' + styleHTML + ' -->');
 
     var accordion_elm = $("#accordion");
@@ -485,7 +520,7 @@ if(descriptions.length>5){
 
     $('html,body').animate({scrollTop: 0}, 'fast');
 
-    //アコーディオンのラベル部分をクリックしたら  
+    //アコーディオンのラベル部分をクリックしたら
     $(".accordion-body").on("shown.bs.collapse", function() {
       var body = $('body');
       var accordion_offset = $($(this).parent().get(0)).offset().top;
@@ -493,7 +528,7 @@ if(descriptions.length>5){
         scrollTop: accordion_offset
       }, 50);
     });
-    //アコーディオンの非表示部分をクリックしたら  
+    //アコーディオンの非表示部分をクリックしたら
     $(".accordion-body").on("hidden.bs.collapse", function() {
       if ($(".in").length == 0) {
         $("html, body").scrollTop(0);
@@ -537,7 +572,7 @@ if(descriptions.length>5){
 
   //-----------------------------------
   //位置情報をもとに地域を自動的に設定する処理です。
-  //これから下は現在、利用されておりません。 
+  //これから下は現在、利用されておりません。
   //将来的に使うかもしれないので残してあります。
   $("#gps_area").click(function() {
     navigator.geolocation.getCurrentPosition(function(position) {
