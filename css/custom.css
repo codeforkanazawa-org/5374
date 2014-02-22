@@ -127,3 +127,6 @@ a,a:hover{
 	text-align: center;
 	font-size: 20px;
 }
+.accordion-heading .accordion-toggle-top{
+	color: #2c3e50;
+}
