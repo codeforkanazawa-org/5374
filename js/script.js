@@ -517,10 +517,15 @@ if(descriptions.length>5){
             leftDayText = leftDay + "日後";
           }
           
-          styleHTML += '#accordion-group' + d_no + '{background-color:  ' + description.background + ';} ';
+          //styleHTML += '#accordion-group' + d_no + '{background-color:  ' + description.background + ';} ';
+	  //IE対応
+          styleHTML = 'background-color:  ' + description.background ;
 
           accordionHTML +=
-            '<div class="accordion-group" id="accordion-group' + d_no + '">' +
+            //'<div class="accordion-group" id="accordion-group' + d_no + '">' +
+	    //IE対応
+            '<div class="accordion-group" id="accordion-group' + d_no + '" style="' + styleHTML + '">' +
+
             '<div class="accordion-heading">' +
             '<a class="accordion-toggle" style="height:' + accordion_height + 'px" data-toggle="collapse" data-parent="#accordion" href="#collapse' + i + '">' +
             '<div class="left-day">' + leftDayText + '</div>' +
@@ -543,7 +548,8 @@ if(descriptions.length>5){
       }
     }
     
-    $("#accordion-style").html('<!-- ' + styleHTML + ' -->');
+    //IE対応
+    //$("#accordion-style").html('<!-- ' + styleHTML + ' -->');
 
     var accordion_elm = $("#accordion");
     accordion_elm.html(accordionHTML);
