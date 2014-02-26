@@ -35,8 +35,8 @@
 ## 5374をあなたの地域に導入したい場合について
 
 あなたの地域で5374を立ち上げたい場合、以下のドキュメントがきっと役立ちます。ご参考ください。
-[5374(ゴミナシ).jpサービスの立ち上げに必要なデータの準備](http://qiita.com/tosato3/items/e7a231e8190508e278fa)
-[地元の 5374 を、自前サーバを用意せずに github pages で公開する手順](http://qiita.com/kuboon/items/1b4f64a42ce5365fb1c7)
+- [5374(ゴミナシ).jpサービスの立ち上げに必要なデータの準備](http://qiita.com/tosato3/items/e7a231e8190508e278fa)
+- [地元の 5374 を、自前サーバを用意せずに github pages で公開する手順](http://qiita.com/kuboon/items/1b4f64a42ce5365fb1c7)
 
 ## 5374のカスタマイズについて
 
