@@ -115,12 +115,10 @@ var TrashModel = function(_lable, _cell) {
     var day_mix = this.dayCell;
     var result_text = "";
     var day_list = new Array();
-    
     // 定期回収の場合
     if (this.regularFlg == 1) {
 
       var today = new Date();
-        
       // 12月 +3月　を表現
       for (var i = 0; i < MaxMonth; i++) {
 
