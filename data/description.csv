@@ -1,5 +1,5 @@
 label,sublabel,description,styles,bgcolor
-燃やさないごみ,,,img/moyasanai02.svg,#733b96
-資源,,,img/shigen02.svg,#77ae1f
-燃やすごみ,,,img/moyasu02.svg,#ea3b13
-びん,,,img/bin02.svg,#2dc7aa
+もやせる,,,img/moyasanai02.svg,#733b96
+プラ製容器,,,img/shigen02.svg,#77ae1f
+紙製容器,,,img/moyasu02.svg,#ea3b13
+古紙・古着,,,img/bin02.svg,#2dc7aa
