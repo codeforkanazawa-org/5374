@@ -195,3 +195,21 @@ SVGイメージを使用するときは、true ※金沢市版はSVGも用意し
 
 ・area_days.csv 　area_days.csvにて、不定期な日付を半角スペース区切りで、以下のように指定します。
 　20140301 20140325・・・ 　形式はYYYYMMDDとなります。
+
+# About 5374
+##Making it easy to know what garbage gets collected when.
+
+Garbage collection is becoming a serious problem. Knowing when collection is and what is being collected can be confusing. 5374 fixes this problems by making it easy to access detailed information on garbage times and items in your local neighborhood.
+
+《Usage》
+
+■Garbage Color Groupings
+Each type of garbage is displayed in a different color. The groups of garbage are arranged by how close it is to their collection day.
+
+■Viewing Specific Items
+For garbage that can be thrown away, tap the category to see the specific items that can be discarded.
+
+■Settings
+Set your location to automatically set your collection dates for each category of disposable trash. In the future, we are planning to use GPS location services make this automatic.
+
+[View 5374 for kanazawa](http://kanazawa.5374.jp/ )
