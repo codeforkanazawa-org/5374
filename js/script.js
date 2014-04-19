@@ -373,8 +373,8 @@ $(function() {
             if (row_index > 0) {
               select_html += '</optgroup label>';
             }
+            temp_ward = areaModels[row_index].ward;
             select_html += '<optgroup label="' + temp_ward + '">';
-            temp_ward = areaModels[row_index].temp_ward;
           }
           var area_name = areaModels[row_index].label;
           var selected = (selected_name == area_name) ? 'selected="selected"' : "";
