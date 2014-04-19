@@ -330,12 +330,13 @@ $(function() {
       for (var i in tmp) {
         var row = tmp[i];
         var area = new AreaModel();
-        area.label = row[0];
-        area.centerName = row[1];
+        area.ward = row[0];
+        area.label = row[1];
+        area.centerName = row[2];
 
         areaModels.push(area);
-        //２列目以降の処理
-        for (var r = 2; r < 2 + MaxDescription; r++) {
+        //３列目以降の処理
+        for (var r = 3; r < 3 + MaxDescription; r++) {
           if (area_days_label[r]) {
             var trash = new TrashModel(area_days_label[r], row[r], remarks);
             area.trash.push(trash);
