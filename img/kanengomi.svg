@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="203.5625"
-   height="65.9375"
+   width="99.484375"
+   height="39.140625"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.1875"
-     inkscape:cx="102.38348"
-     inkscape:cy="41.526805"
+     inkscape:zoom="1.3671875"
+     inkscape:cx="-91.725235"
+     inkscape:cy="94.012155"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -59,7 +59,7 @@
      inkscape:label="レイヤー 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-8.6428566,-990.80859)">
+     transform="translate(-5.6819191,-1014.2148)">
     <flowRoot
        xml:space="preserve"
        id="flowRoot2999"
@@ -97,15 +97,15 @@
          id="flowPara3017" /></flowRoot>    <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arphic Kuro-Maru-POP Heavy JIS;-inkscape-font-specification:Arphic Kuro-Maru-POP Heavy JIS"
-       x="17.142857"
+       x="55.385044"
        y="1040.9336"
        id="text3019"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3021"
-         x="17.142857"
+         x="55.885044"
          y="1040.9336"
-         style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#aa0000;font-family:HGPSoeiKakupoptai;-inkscape-font-specification:HGPSoeiKakupoptai">可燃ごみ</tspan></text>
+         style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;letter-spacing:1px;word-spacing:0px;text-anchor:middle;fill:#aa0000;font-family:HGPSoeiKakupoptai;-inkscape-font-specification:HGPSoeiKakupoptai">可燃ごみ</tspan></text>
     <flowRoot
        xml:space="preserve"
        id="flowRoot3023"
