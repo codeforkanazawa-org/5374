@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="173.63281"
-   height="55.859375"
+   width="203.5625"
+   height="65.9375"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.875"
-     inkscape:cx="365.08371"
-     inkscape:cy="41.339286"
+     inkscape:zoom="2.1875"
+     inkscape:cx="102.38348"
+     inkscape:cy="41.526805"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -59,7 +59,7 @@
      inkscape:label="レイヤー 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-9.9162941,-1000.6992)">
+     transform="translate(-8.6428566,-990.80859)">
     <flowRoot
        xml:space="preserve"
        id="flowRoot2999"
@@ -71,7 +71,7 @@
            height="75.428574"
            x="1.1428572"
            y="3.4285715" /></flowRegion><flowPara
-         id="flowPara3005"></flowPara></flowRoot>    <text
+         id="flowPara3005" /></flowRoot>    <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arphic Kuro-Maru-POP Heavy JIS;-inkscape-font-specification:Arphic Kuro-Maru-POP Heavy JIS"
        x="11.428571"
@@ -94,7 +94,7 @@
            height="53.714287"
            x="11.428572"
            y="21.714285" /></flowRegion><flowPara
-         id="flowPara3017"></flowPara></flowRoot>    <text
+         id="flowPara3017" /></flowRoot>    <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arphic Kuro-Maru-POP Heavy JIS;-inkscape-font-specification:Arphic Kuro-Maru-POP Heavy JIS"
        x="17.142857"
@@ -105,7 +105,7 @@
          id="tspan3021"
          x="17.142857"
          y="1040.9336"
-         style="fill:#550000">可燃ごみ</tspan></text>
+         style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#aa0000;font-family:HGPSoeiKakupoptai;-inkscape-font-specification:HGPSoeiKakupoptai">可燃ごみ</tspan></text>
     <flowRoot
        xml:space="preserve"
        id="flowRoot3023"
@@ -117,7 +117,7 @@
            height="105.14286"
            x="1.1428572"
            y="2.1450894" /></flowRegion><flowPara
-         id="flowPara3029"></flowPara></flowRoot>    <flowRoot
+         id="flowPara3029" /></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3031"
        style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arphic Kuro-Maru-POP Heavy JIS;-inkscape-font-specification:Arphic Kuro-Maru-POP Heavy JIS"
@@ -128,5 +128,5 @@
            height="98.285713"
            x="-22.857143"
            y="-4.7120538" /></flowRegion><flowPara
-         id="flowPara3037"></flowPara></flowRoot>  </g>
+         id="flowPara3037" /></flowRoot>  </g>
 </svg>
