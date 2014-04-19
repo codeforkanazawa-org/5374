@@ -1,6 +1,6 @@
 label,sublabel,description,styles,bgcolor
 不燃・粗大ごみ,,,img/moyasanai02.svg,#733b96
-可燃ごみ,,,img/kanengomi.svg,#ea3b13
+可燃ごみ,,,img/kanengomi.svg,#ffb299
 びん・缶・ペットボトル,,,img/bin02.svg,#2dc7aa
 収集不可,,,img/bin02.svg,#2dc7aa
 地域の集団古紙回収へ,,,img/bin02.svg,#2dc7aa
