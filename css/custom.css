@@ -67,7 +67,7 @@ a.accordion-toggle-top:hover{
 }
 .accordion-group-top{background-color:  #ffffff;}
 
-.accordion-inner ul {color:#ffffff;}
+.accordion-inner ul {color:#000000;}
 
 #accordion2 {display: none;}
 #accordion2 .accordion-inner {text-align: center}
@@ -106,7 +106,7 @@ a,a:hover{
 }
 
 .initials {
-	color: #ffffff;
+	color: #000000;
 }
 .note{
 	font-size: 10px;
