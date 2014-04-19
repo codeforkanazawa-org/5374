@@ -366,13 +366,22 @@ $(function() {
         var selected_name = getSelectedAreaName();
         var area_select_form = $("#select_area");
         var select_html = "";
+        var temp_ward = "";
         select_html += '<option value="-1">地域を選択してください</option>';
         for (var row_index in areaModels) {
+          if (temp_ward != areaModels[row_index].ward) {
+            if (row_index > 0) {
+              select_html += '</optgroup label>';
+            }
+            select_html += '<optgroup label="' + temp_ward + '">';
+            temp_ward = areaModels[row_index].temp_ward;
+          }
           var area_name = areaModels[row_index].label;
           var selected = (selected_name == area_name) ? 'selected="selected"' : "";
 
           select_html += '<option value="' + row_index + '" ' + selected + " >" + area_name + "</option>";
         }
+        select_html += '<optgroup label="' + temp_ward + '">';
 
         //デバッグ用
         if (typeof dump == "function") {
