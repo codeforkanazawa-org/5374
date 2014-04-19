@@ -4,6 +4,7 @@
   エリア(ごみ処理の地域）を管理するクラスです。
 */
 var AreaModel = function() {
+  this.ward;
   this.label;
   this.centerName;
   this.center;
