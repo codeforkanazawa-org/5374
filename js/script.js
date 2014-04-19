@@ -371,7 +371,7 @@ $(function() {
         for (var row_index in areaModels) {
           if (temp_ward != areaModels[row_index].ward) {
             if (row_index > 0) {
-              select_html += '</optgroup label>';
+              select_html += '</optgroup>';
             }
             temp_ward = areaModels[row_index].ward;
             select_html += '<optgroup label="' + temp_ward + '">';
@@ -381,7 +381,7 @@ $(function() {
 
           select_html += '<option value="' + row_index + '" ' + selected + " >" + area_name + "</option>";
         }
-        select_html += '<optgroup label="' + temp_ward + '">';
+        select_html += '</optgroup>';
 
         //デバッグ用
         if (typeof dump == "function") {
