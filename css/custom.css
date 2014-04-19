@@ -77,7 +77,13 @@ a.accordion-toggle-top:hover{
 
 .left-day{
        font-size: 1.5em;
-       color: white;
+       color: black;
+       position: absolute;
+       padding-left: 10px;
+}
+a:.left-day{
+       font-size: 1.5em;
+       color: red;
        position: absolute;
        padding-left: 10px;
 }
