@@ -81,14 +81,8 @@ a.accordion-toggle-top:hover{
        position: absolute;
        padding-left: 10px;
 }
-a:.left-day{
-       font-size: 1.5em;
-       color: red;
-       position: absolute;
-       padding-left: 10px;
-}
 a,a:hover{	
-	color: white;
+	color: black;
 	text-decoration: none;
 }
 .accordion-heading .accordion-table{
