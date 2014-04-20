@@ -45,9 +45,9 @@ var AreaModel = function() {
   */
   this.sortTrash = function() {
     this.trash.sort(function(a, b) {
-      if (a.mostRecent == void 0) {
+      if (typeof a.mostRecent === "undefined":true) {
         return 1;
-      } else if (b.mostRecent == void 0) {
+      } else if (typeof b.mostRecent === "undefined":true) {
         return -1;
       }
 
@@ -465,7 +465,10 @@ $(function() {
         var description = descriptions[d_no];
        if (description.label != trash.label) {
           continue;
-        }
+       } else if (trash.mostRecent == void 0) {
+          // 空カラムは判定しない
+          continue;
+       }
 
           var target_tag = "";
           var furigana = "";
