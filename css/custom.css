@@ -92,6 +92,9 @@ a,a:hover{
 	width: 80%;
 	font-size: 22px;
 	/*font-weight: bold;*/
+	text-overflow: ellipsis;
+　　　　white-space: nowrap;
+　　　　overflow:hidden;
 
 }
 .accordion-heading .accordion-toggle {
