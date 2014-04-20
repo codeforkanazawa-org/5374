@@ -42,9 +42,15 @@ var AreaModel = function() {
   }
   /**
   ゴミのカテゴリのソートを行います。
-*/
+  */
   this.sortTrash = function() {
     this.trash.sort(function(a, b) {
+      if (typeof a.mostRecent === "undefined":true) {
+        return 1;
+      } else if (typeof b.mostRecent === "undefined":true) {
+        return -1;
+      }
+
       var at = a.mostRecent.getTime();
       var bt = b.mostRecent.getTime();
       if (at < bt) return -1;
