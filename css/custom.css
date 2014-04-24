@@ -159,7 +159,8 @@ div.footer {
         z-index: 99;
         font-weight: bold;
         line-height: 50px;
-        padding: 30px;
+        text-align: right;
+        padding-right: 30px;
 }
 * html div.area{
 	height: 100%;
