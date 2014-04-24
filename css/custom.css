@@ -140,7 +140,7 @@ select.select {
 	top: 50;
 	left: 0;
 	width: 100%;
-	height: 20px;
+	height: 30px;
         z-index: 99;
 }
 div.footer {
