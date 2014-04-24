@@ -134,6 +134,15 @@ div.header {
 	color: #fff;
         z-index: 99;
 }
+div.select {
+	position: fixed !important;
+	position: absolute;
+	top: 50;
+	left: 0;
+	width: 100%;
+	height: 100%;
+        z-index: 99;
+}
 div.footer {
 	position: fixed !important;
 	position: absolute;
