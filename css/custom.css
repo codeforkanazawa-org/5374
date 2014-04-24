@@ -133,6 +133,7 @@ div.header {
 	background-color: #4E9ABE;
 	color: #fff;
         z-index: 99;
+        font-weight: bold;
 }
 select.select {
 	position: fixed !important;
@@ -153,6 +154,7 @@ div.footer {
 	background-color: #4E9ABE;
 	color: #fff;
         z-index: 99;
+        font-weight: bold;
 }
 * html div.area{
 	height: 100%;
