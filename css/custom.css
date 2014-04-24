@@ -141,6 +141,8 @@ div.header {
 select.select {
 	position: fixed !important;
 	position: absolute;
+	margin: 0px;
+	padding: 0px;
 	top: 50;
 	left: 0;
 	width: 100%;
