@@ -134,7 +134,7 @@ div.header {
 	color: #fff;
         z-index: 99;
 }
-div.select {
+select.select {
 	position: fixed !important;
 	position: absolute;
 	top: 50;
