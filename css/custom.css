@@ -5,7 +5,7 @@ font-family:".HiraKakuInterface-W1",'Lucida Grande',
  'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3',
  Meiryo, メイリオ, sans-serif;
  margin: 0;
- padding: 80px 0 50px 0;
+ padding: 100px 0 50px 0;
 }
 /* Override base .btn styles */
 /* Apply text and background changes to three key states: default, hover, and active (click). */
@@ -141,8 +141,6 @@ div.header {
 select.select {
 	position: fixed !important;
 	position: absolute;
-	margin: 0px;
-	padding: 0px;
 	top: 50px;
 	left: 0;
 	width: 100%;
