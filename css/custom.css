@@ -134,6 +134,8 @@ div.header {
 	color: #fff;
         z-index: 99;
         font-weight: bold;
+        font-size: 20px;
+        line-height: 50px;
 }
 select.select {
 	position: fixed !important;
@@ -155,6 +157,8 @@ div.footer {
 	color: #fff;
         z-index: 99;
         font-weight: bold;
+        line-height: 50px;
+        padding: 30px;
 }
 * html div.area{
 	height: 100%;
