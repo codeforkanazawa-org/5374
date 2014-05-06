@@ -287,7 +287,7 @@ var DescriptionModel = function(data) {
  * target.csvのモデルです。
  */
 var TargetRowModel = function(data) {
-  this.type = data[0];
+  this.label = data[0];
   this.name = data[1];
   this.notice = data[2];
   this.furigana = data[3];
@@ -424,7 +424,7 @@ $(function() {
           var row = new TargetRowModel(data[i]);
           for (var j = 0; j < descriptions.length; j++) {
             //一致してるものに追加する。
-            if (descriptions[j].label == row.type) {
+            if (descriptions[j].label == row.label) {
               descriptions[j].targets.push(row);
               break;
             }
