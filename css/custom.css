@@ -4,13 +4,15 @@ body{
 font-family:".HiraKakuInterface-W1",'Lucida Grande',
  'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3',
  Meiryo, メイリオ, sans-serif;
+ margin: 0;
+ padding: 100px 0 50px 0;
 }
 /* Override base .btn styles */
 /* Apply text and background changes to three key states: default, hover, and active (click). */
 /*#accordion-group0{background-color:  #733b96;}*//* 燃やす */
 /*#accordion-group1{background-color:  #77ae1f;}*//* 燃やさない */
 /*#accordion-group2{background-color:  #ea3b13;}*//* 資源 */
-/*#accordion-group3{background-color:  #2dc7aa;}*//* びん */
+/*#accordion-group3{background-color:  #2dc7aa;}*//* びん・缶 */
 
 .accordion-group{margin-bottom:0;border:0;border-radius:0}
 
@@ -55,7 +57,7 @@ a.accordion-toggle-top{
 
 a.accordion-toggle-top{
 	color: #000000;
-	height: 22px;
+	height: 100%;
 	text-align: center;
 	margin: 0 auto;
 	display: block;
@@ -67,7 +69,7 @@ a.accordion-toggle-top:hover{
 }
 .accordion-group-top{background-color:  #ffffff;}
 
-.accordion-inner ul {color:#ffffff;}
+.accordion-inner ul {color:#000000;}
 
 #accordion2 {display: none;}
 #accordion2 .accordion-inner {text-align: center}
@@ -77,12 +79,12 @@ a.accordion-toggle-top:hover{
 
 .left-day{
        font-size: 1.5em;
-       color: white;
+       color: black;
        position: absolute;
        padding-left: 10px;
 }
 a,a:hover{	
-	color: white;
+	color: black;
 	text-decoration: none;
 }
 .accordion-heading .accordion-table{
@@ -92,21 +94,20 @@ a,a:hover{
 	width: 80%;
 	font-size: 22px;
 	/*font-weight: bold;*/
-
 }
 .accordion-heading .accordion-toggle {
 	position: relative;
 	display: table;
 	padding: 0;
 	width: 100%;
-	height: 119px;
+	height: 100px;
 }
 .accordion-group h6{
 	position:absolute;bottom:0px;left:10px;margin:0;
 }
 
 .initials {
-	color: #ffffff;
+	color: #000000;
 }
 .note{
 	font-size: 10px;
@@ -118,3 +119,133 @@ a,a:hover{
 	text-align: center;
 	font-size: 20px;
 }
+
+* html body{
+	overflow: hidden;
+} 
+div.header {
+	position: fixed !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 50px;
+	background-color: #4E9ABE;
+	color: #fff;
+        z-index: 99;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 50px;
+        text-align: center;
+}
+select.select {
+	position: fixed !important;
+	position: absolute;
+	top: 50px;
+	left: 0;
+	width: 100%;
+	height: 50px;
+        z-index: 99;
+}
+div.footer {
+	position: fixed !important;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 50px;
+	background-color: #4E9ABE;
+	color: #fff;
+        z-index: 99;
+        font-weight: bold;
+        line-height: 50px;
+        text-align: right;
+        padding-right: 30px;
+}
+* html div.area{
+	height: 100%;
+	overflow: auto;
+}
+
+
+.tbl {
+    display:table;
+    table-layout: auto;
+    border-collapse: collapse;
+    width:80%;
+    margin:50px auto;
+    white-space:nowrap;
+}
+
+.row {
+    display:table-row;
+}
+
+.cell {
+    display:table-cell;
+    border: solid 1px #ccc;
+    border-collapse:collapse;
+    padding:5px;
+    vertical-align:middle;
+    text-align: center;
+}
+
+.tbl1 {
+    display:table;
+    width:100%;
+}
+
+.cell1 {
+    display:table-cell;
+    border-collapse: collapse;
+}
+
+.headder {
+    display:table-cell;
+    background:#e1e1e1;
+    font-weight: bold;
+    text-align: center;
+    padding:5px;
+}
+
+.hyde {
+    display: table-cell;;
+    visibility: visible;
+}
+
+.capt {
+    display:table-caption;
+    font-weight: bold;
+    text-align: center;
+    padding:5px;
+}
+
+/*
+@media only screen and (max-width:420px) {
+    .bin {
+        color: #ff0000;
+    }
+    .kan {
+        color: #ff7700;
+    }
+    .pet {
+        color: #ffcc00;
+    }
+    .hyde {
+        display: none;
+        visibility: hidden;
+    }
+
+    .cell {
+        display:inline;
+    }
+
+    .headder {
+        display:list-item;
+        color: #f36;
+        border: 0px;
+        background: #ffffff;
+        text-align: left;
+    }
+}
+*/

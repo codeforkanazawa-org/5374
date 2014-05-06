@@ -2,7 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
-    <title>5374(ｺﾞﾐﾅｼ).jp</title> 
+    <title>5374(ゴミナシ).jp for Shizuoka</title> 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
     <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-precomposed.png" />
@@ -11,15 +11,824 @@
     <link href="css/custom.css" rel="stylesheet" media="screen" />
   </head>
   <body>
+  <div class="header">5374(ゴミナシ).jp for Shizuoka</div>
+  <select class="form-control select" id="select_area"></select>
+  <div class="area">
   <style id="accordion-style" type="text/css"></style>
   <div id="accordion"></div>
-  <select class="form-control" id="select_area"></select>
   <div class="accordion" id="accordion3">
+
+    <hr>
+
     <div class="accordion-group-top">
       <div class="accordion-heading">
-        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_0">5374.jpについて</a>
+        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_0">古紙・雑がみ類の回収について</a>
       </div>
-      <div id="collapse3_0" class="accordion-body collapse">
+      <div id="collapse3_0" class="accordion-body collapse" style="height: 0px;">
+        <div class="accordion-inner">
+          <div id="help">
+古紙・雑がみ類の回収につきましては、自治会・町内会等で実施している集団古紙回収や民間事業者による回収をご利用ください。<br>
+なお、新聞、雑誌、段ボール、紙パックは古紙に含まれますので、ごみに出さず集団古紙回収をはじめとした資源回収にご協力ください。
+            <h4>か</h4>
+            <ul>
+               <li>紙芯（トイレットペーパー等）</li>
+               <li>紙箱（食料品・日用品等）</li>
+               <li>紙パック</li>
+               <p>内部がアルミ製のものは可燃ごみへ</p>
+               <li>紙袋</li>
+               <p>指定袋に入れるか、1m以内に解体して束ねて出す<br>1ｍ超になるものは不燃・粗大ごみへ</p>
+               <li>カレンダー</li>
+               <p>金属部分は不燃・粗大ごみへ</p>
+               <li>牛乳パック</li>
+               <li>教科書</li>
+            </ul>
+            <h4>さ</h4>
+            <ul>
+              <li>雑誌</li>
+              <li>辞典</li>
+              <p>布やビニール等で加工された表紙は可燃ごみで可</p>
+            <li>新聞紙</li>
+            </ul>
+            <h4>た</h4>
+              <ul>
+                <li>卵のパック（紙製）</li>
+                <li>段ボール</li>
+                <p>内部がアルミ製のものは可燃ごみへ</p>
+                <li>チラシ</li>
+                <li>ティッシュペーパーの箱</li>
+                <p>ビニール部分は可燃ごみへ</p>
+            </ul>
+            <h4>は</h4>
+            <ul>
+              <li>はがき</li>
+              <li>包装紙</li>
+              <li>ポスター</li>
+              <li>本</li>
+              <li>はがき</li>
+            </ul>
+            <h4>ま</h4>
+            <ul>
+              <li>メモ用紙</li>
+            </ul>
+            <h4>ら</h4>
+            <ul>
+              <li>ラップの箱</li>
+              <p>金属刃は不燃・粗大ごみへ</p>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="accordion-group-top">
+      <div class="accordion-heading">
+        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_1">市が取り扱いできないごみについて</a>
+      </div>
+      <div id="collapse3_1" class="accordion-body collapse" style="height: 0px;">
+        <div class="accordion-inner">
+          <div id="help">
+以下のごみは、<font color=#ff0000><b>収集も処理もできません。</b></font>
+            <h4>あ</h4>
+            <ul>
+              <li>石</li>
+              <p>購入店又は取扱店に相談</p>
+              <li>衣類乾燥機</li>
+              <p>家電リサイクル法対象品</p>
+              <li>エアコン</li>
+              <p>家電リサイクル法対象品</p>
+              <li>LPガスボンベ類</li>
+              <p>購入店又は取扱店、製造メーカーに相談</p>
+            </ul>
+            <h4>か</h4>
+            <ul>
+              <li>瓦</li>
+              <p>購入店又は取扱店、製造メーカーに相談</p>
+              <li>金庫（耐火）</li>
+              <p>購入店又は取扱店、製造メーカーに相談</p>
+              <li>グリス</li>
+              <p>購入店又は取扱店、製造メーカーに相談</p>
+              <li>建築廃材</li>
+              <p>処理業者等へ依頼</p>
+              <li>原動機付自転車</li>
+              <p>二輪車リサイクルシステムへ</p>
+              <li>コンクリートブロック</li>
+              <p>購入店又は取扱店、製造メーカーに相談</p>
+            </ul>
+            <h4>さ</h4>
+            <ul>
+              <li>消火器</li>
+              <p>購入店又は取扱店、製造メーカーに相談</p>
+              <li>洗濯機</li>
+              <p>家電リサイクル法対象品</p>
+            </ul>
+            <h4>た</h4>
+              <ul>
+              <li>タイヤ（車）</li>
+              <p>購入店又は取扱店、製造メーカーに相談</p>
+              <li>タイル</li>
+              <p>購入店又は取扱店、製造メーカーに相談</p>
+              <li>土（園芸用・培養土を含む）</li>
+              <p>購入店又は取扱店、製造メーカーに相談</p>
+              <li>テレビ（液晶・プラズマ・ブラウン管</li>
+              <p>家電リサイクル法対象品</p>
+              <li>塗料（ペンキ）</li>
+              <p>購入店又は取扱店、製造メーカーに相談 空缶は不燃・粗大ごみへ</p>
+            </ul>
+            <h4>な</h4>
+              <ul>
+              <li>流し台（システムキッチン）</li>
+              <p>販売店又は取扱店へ</p>
+              <li>農薬（容器含む）</li>
+              <p>購入店又は取扱店、製造メーカーに相談</p>
+              <li>ノート型パソコン</li>
+              <p>パソコンリサイクル対象品</p>
+            </ul>
+            <h4>は</h4>
+            <ul>
+              <li>バイク（原付バイクを含む）</li>
+              <p>二輪車リサイクルシステムへ</p>
+              <li>廃材（増改築等で出た物）</li>
+              <p>処分業者等へ依頼</p>
+              <li>廃油（灯油・ガソリン・オイル類）</li>
+              <p>購入店又は取扱店、製造メーカーに相談</p>
+              <li>バッテリー</li>
+              <p>購入店又は取扱店、製造メーカーに相談</p>
+              <li>ピアノ</li>
+              <p>購入店又は取扱店、製造メーカーに相談</p>
+            </ul>
+            <h4>や</h4>
+            <ul>
+              <li>薬品（農薬・劇薬等）の容器</li>
+              <p>購入店又は取扱店、製造メーカーに相談</p>
+            </ul>
+            <h4>ら</h4>
+            <ul>
+              <li>冷蔵庫・冷凍庫</li>
+              <p>家電リサイクル法対象品</p>
+              <li>レンガ</li>
+              <p>購入店又は取扱店、製造メーカーに相談</p>
+            </ul>
+            <h4>わ</h4>
+            <ul>
+              <li>レンガ</li>
+              <p>購入店又は取扱店、製造メーカーに相談</p>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="accordion-group-top">
+      <div class="accordion-heading">
+        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_2">蒲原・由比地区のびん・缶・ペットボトル自治会回収日程表</a>
+      </div>
+      <div id="collapse3_2" class="accordion-body collapse" style="height: 0px;">
+        <div class="accordion-inner">
+          <div id="help">
+              <div class="tbl">
+                <span class="capt">蒲原</span>
+                <div class="row">
+                  <div class="cell headder">回収地域<br>（自治会名）</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell headder">地区①</div>
+                      </div>
+                      <div class="row">
+                        <div class="cell"><pre>
+神沢
+蒲原堰沢
+中区inかんばら
+小金
+堀川
+新諏訪
+蒲原新田（JR以南の集積所）
+蒲原西町（JR以南の集積所）
+蒲原柵（JR以南の集積所）
+高浜
+蒲原白銀</pre>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell headder">地区②</div>
+                      </div>
+                      <div class="row">
+                        <div class="cell"><pre>
+蒲原新田（JR以北の集積所）
+蒲原西町（JR以北の集積所）
+蒲原柵（JR以北の集積所）
+善福寺
+本町
+蒲原天王町
+蒲原八幡町
+蒲原諏訪町
+蒲原新栄
+蒲原日の出
+蒲原東町</pre>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">回収品目</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="cell headder">びん</div>
+                      <div class="cell headder">缶</div>
+                      <div class="cell headder">ペットボトル</div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="cell headder hyde">びん</div>
+                      <div class="cell headder hyde">缶</div>
+                      <div class="cell headder hyde">ペットボトル</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">４月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２<br class="hyde">(水)</div>
+                        <div class="cell">９<br class="hyde">(水)</div>
+                        <div class="cell">１６<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">３<br class="hyde">(木)</div>
+                        <div class="cell">１０<br class="hyde">(木)</div>
+                        <div class="cell">１７<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">５月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">７<br class="hyde">(水)</div>
+                        <div class="cell">１４<br class="hyde">(水)</div>
+                        <div class="cell">２１<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">８<br class="hyde">(木)</div>
+                        <div class="cell">１５<br class="hyde">(木)</div>
+                        <div class="cell">２２<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">６月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">４<br class="hyde">(水)</div>
+                        <div class="cell">１１<br class="hyde">(水)</div>
+                        <div class="cell">１８<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">５<br class="hyde">(木)</div>
+                        <div class="cell">１２<br class="hyde">(木)</div>
+                        <div class="cell">１９<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">７月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２<br class="hyde">(水)</div>
+                        <div class="cell">９<br class="hyde">(水)</div>
+                        <div class="cell">１６<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">３<br class="hyde">(木)</div>
+                        <div class="cell">１０<br class="hyde">(木)</div>
+                        <div class="cell">１７<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">８月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">６<br class="hyde">(水)</div>
+                        <div class="cell">１３<br class="hyde">(水)</div>
+                        <div class="cell">２０<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">７<br class="hyde">(木)</div>
+                        <div class="cell">１４<br class="hyde">(木)</div>
+                        <div class="cell">２１<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">９月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">３<br class="hyde">(水)</div>
+                        <div class="cell">１０<br class="hyde">(水)</div>
+                        <div class="cell">１７<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">４<br class="hyde">(木)</div>
+                        <div class="cell">１１<br class="hyde">(木)</div>
+                        <div class="cell">１８<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">１０月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">１<br class="hyde">(水)</div>
+                        <div class="cell">８<br class="hyde">(水)</div>
+                        <div class="cell">１５<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２<br class="hyde">(木)</div>
+                        <div class="cell">９<br class="hyde">(木)</div>
+                        <div class="cell">１６<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">１１月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">５<br class="hyde">(水)</div>
+                        <div class="cell">１２<br class="hyde">(水)</div>
+                        <div class="cell">１９<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">６<br class="hyde">(木)</div>
+                        <div class="cell">１３<br class="hyde">(木)</div>
+                        <div class="cell">２０<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">１２月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">３<br class="hyde">(水)</div>
+                        <div class="cell">１０<br class="hyde">(水)</div>
+                        <div class="cell">１７<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">４<br class="hyde">(木)</div>
+                        <div class="cell">１１<br class="hyde">(木)</div>
+                        <div class="cell">１８<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">１月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">７<br class="hyde">(水)</div>
+                        <div class="cell">１４<br class="hyde">(水)</div>
+                        <div class="cell">２１<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">８<br class="hyde">(木)</div>
+                        <div class="cell">１５<br class="hyde">(木)</div>
+                        <div class="cell">１９<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">２月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">４<br class="hyde">(水)</div>
+                        <div class="cell">１１<br class="hyde">(水)</div>
+                        <div class="cell">１８<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">５<br class="hyde">(木)</div>
+                        <div class="cell">１２<br class="hyde">(木)</div>
+                        <div class="cell">１９<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">３月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">４<br class="hyde">(水)</div>
+                        <div class="cell">１１<br class="hyde">(水)</div>
+                        <div class="cell">１８<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">５<br class="hyde">(木)</div>
+                        <div class="cell">１２<br class="hyde">(木)</div>
+                        <div class="cell">１９<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tbl">
+                <span class="capt">由比</span>
+                <div class="row">
+                  <div class="cell headder">回収地域<br>（自治会名）</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell headder">地区①</div>
+                      </div>
+                      <div class="row">
+                        <div class="cell"><pre>
+由比
+由比阿僧
+由比東山寺
+由比室野
+由比入山</pre>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell headder">地区②</div>
+                      </div>
+                      <div class="row">
+                        <div class="cell"><pre>
+由比北田
+由比町屋原
+由比今宿
+由比寺尾
+由比倉沢
+由比西山寺</pre>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">回収品目</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="cell headder">びん</div>
+                      <div class="cell headder">缶</div>
+                      <div class="cell headder">ペットボトル</div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="cell headder hyde">びん</div>
+                      <div class="cell headder hyde">缶</div>
+                      <div class="cell headder hyde">ペットボトル</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">４月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２３<br class="hyde">(水)</div>
+                        <div class="cell">７<br class="hyde">(月)</div>
+                        <div class="cell">２<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２４<br class="hyde">(木)</div>
+                        <div class="cell">７<br class="hyde">(月)</div>
+                        <div class="cell">３<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">５月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２８<br class="hyde">(水)</div>
+                        <div class="cell">１２<br class="hyde">(月)</div>
+                        <div class="cell">７<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２９<br class="hyde">(木)</div>
+                        <div class="cell">１２<br class="hyde">(月)</div>
+                        <div class="cell">８<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">６月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２５<br class="hyde">(水)</div>
+                        <div class="cell">２<br class="hyde">(月)</div>
+                        <div class="cell">４<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２６<br class="hyde">(木)</div>
+                        <div class="cell">２<br class="hyde">(月)</div>
+                        <div class="cell">５<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">７月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２３<br class="hyde">(水)</div>
+                        <div class="cell">７<br class="hyde">(月)</div>
+                        <div class="cell">２<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２４<br class="hyde">(木)</div>
+                        <div class="cell">７<br class="hyde">(月)</div>
+                        <div class="cell">３<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">８月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２７<br class="hyde">(水)</div>
+                        <div class="cell">４<br class="hyde">(月)</div>
+                        <div class="cell">６<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２８<br class="hyde">(木)</div>
+                        <div class="cell">４<br class="hyde">(月)</div>
+                        <div class="cell">７<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">９月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２４<br class="hyde">(水)</div>
+                        <div class="cell">１<br class="hyde">(月)</div>
+                        <div class="cell">３<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２５<br class="hyde">(木)</div>
+                        <div class="cell">１<br class="hyde">(月)</div>
+                        <div class="cell">４<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">１０月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２２<br class="hyde">(水)</div>
+                        <div class="cell">６<br class="hyde">(月)</div>
+                        <div class="cell">１<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２３<br class="hyde">(木)</div>
+                        <div class="cell">６<br class="hyde">(月)</div>
+                        <div class="cell">２<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">１１月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２６<br class="hyde">(水)</div>
+                        <div class="cell">１０<br class="hyde">(月)</div>
+                        <div class="cell">１<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２７<br class="hyde">(木)</div>
+                        <div class="cell">１０<br class="hyde">(月)</div>
+                        <div class="cell">６<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">１２月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２４<br class="hyde">(水)</div>
+                        <div class="cell">１<br class="hyde">(月)</div>
+                        <div class="cell">３<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２５<br class="hyde">(木)</div>
+                        <div class="cell">１<br class="hyde">(月)</div>
+                        <div class="cell">４<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">１月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２８<br class="hyde">(水)</div>
+                        <div class="cell">５<br class="hyde">(月)</div>
+                        <div class="cell">７<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２９<br class="hyde">(木)</div>
+                        <div class="cell">５<br class="hyde">(月)</div>
+                        <div class="cell">８<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">２月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２５<br class="hyde">(水)</div>
+                        <div class="cell">２<br class="hyde">(月)</div>
+                        <div class="cell">４<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２６<br class="hyde">(木)</div>
+                        <div class="cell">２<br class="hyde">(月)</div>
+                        <div class="cell">５<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="cell headder">３月</div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２５<br class="hyde">(水)</div>
+                        <div class="cell">２<br class="hyde">(月)</div>
+                        <div class="cell">４<br class="hyde">(水)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell1">
+                    <div class="tbl1">
+                      <div class="row">
+                        <div class="cell">２６<br class="hyde">(木)</div>
+                        <div class="cell">２<br class="hyde">(月)</div>
+                        <div class="cell">５<br class="hyde">(木)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+    <div class="accordion-group-top">
+      <div class="accordion-heading">
+        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_3">5374.jpについて</a>
+      </div>
+      <div id="collapse3_3" class="accordion-body collapse">
         <div class="accordion-inner">
           <div id="help">
 ゴミの問題は、どの地域でも深刻になりつつあります。
@@ -78,5 +887,7 @@ CfKは市民のための組織です。行政や民間企業の影響を受け�
   ga('create', 'UA-43926409-1', '5374.jp');
   ga('send', 'pageview');
   </script>
+  </div>
+  <div class="footer">by stic</div>
   </body>
 </html>

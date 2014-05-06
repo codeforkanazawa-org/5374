@@ -4,6 +4,7 @@
   エリア(ごみ処理の地域）を管理するクラスです。
 */
 var AreaModel = function() {
+  this.ward;
   this.label;
   this.centerName;
   this.center;
@@ -41,9 +42,15 @@ var AreaModel = function() {
   }
   /**
   ゴミのカテゴリのソートを行います。
-*/
+  */
   this.sortTrash = function() {
     this.trash.sort(function(a, b) {
+      if (a.mostRecent == void 0) {
+        return 1;
+      } else if (b.mostRecent == void 0) {
+        return -1;
+      }
+
       var at = a.mostRecent.getTime();
       var bt = b.mostRecent.getTime();
       if (at < bt) return -1;
@@ -329,12 +336,13 @@ $(function() {
       for (var i in tmp) {
         var row = tmp[i];
         var area = new AreaModel();
-        area.label = row[0];
-        area.centerName = row[1];
+        area.ward = row[0];
+        area.label = row[1];
+        area.centerName = row[2];
 
         areaModels.push(area);
-        //２列目以降の処理
-        for (var r = 2; r < 2 + MaxDescription; r++) {
+        //３列目以降の処理
+        for (var r = 3; r < 3 + MaxDescription; r++) {
           if (area_days_label[r]) {
             var trash = new TrashModel(area_days_label[r], row[r], remarks);
             area.trash.push(trash);
@@ -364,13 +372,22 @@ $(function() {
         var selected_name = getSelectedAreaName();
         var area_select_form = $("#select_area");
         var select_html = "";
+        var temp_ward = "";
         select_html += '<option value="-1">地域を選択してください</option>';
         for (var row_index in areaModels) {
+          if (temp_ward != areaModels[row_index].ward) {
+            if (row_index > 0) {
+              select_html += '</optgroup>';
+            }
+            temp_ward = areaModels[row_index].ward;
+            select_html += '<optgroup label="' + temp_ward + '">';
+          }
           var area_name = areaModels[row_index].label;
           var selected = (selected_name == area_name) ? 'selected="selected"' : "";
 
           select_html += '<option value="' + row_index + '" ' + selected + " >" + area_name + "</option>";
         }
+        select_html += '</optgroup>';
 
         //デバッグ用
         if (typeof dump == "function") {
@@ -432,10 +449,10 @@ $(function() {
     areaModel.calcMostRect();
     //トラッシュの近い順にソートします。
     areaModel.sortTrash();
-    var accordion_height = window.innerHeight / descriptions.length;
+    var accordion_height = (window.innerHeight - 150) / descriptions.length;
     if(descriptions.length>4){
-      accordion_height = window.innerHeight / 4.1;
-      if (accordion_height>140) {accordion_height = window.innerHeight / descriptions.length;};
+      accordion_height = (window.innerHeight - 150) / 4.1;
+      if (accordion_height>140) {accordion_height = (window.innerHeight - 150) / descriptions.length;};
       if (accordion_height<130) {accordion_height=130;};
     }
     var styleHTML = "";
@@ -448,7 +465,10 @@ $(function() {
         var description = descriptions[d_no];
        if (description.label != trash.label) {
           continue;
-        }
+       } else if (trash.mostRecent == void 0) {
+          // 空カラムは判定しない
+          continue;
+       }
 
           var target_tag = "";
           var furigana = "";
