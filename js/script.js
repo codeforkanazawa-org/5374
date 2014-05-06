@@ -20,6 +20,9 @@ var AreaModel = function() {
     休止期間（主に年末年始）かどうかを判定します。
   */
   this.isBlankDay = function(currentDate) {
+    if (!this.center) {
+        return false;
+    }
     var period = [this.center.startDate, this.center.endDate];
 
     if (period[0].getTime() <= currentDate.getTime() &&
@@ -284,7 +287,7 @@ var DescriptionModel = function(data) {
  * target.csvのモデルです。
  */
 var TargetRowModel = function(data) {
-  this.type = data[0];
+  this.label = data[0];
   this.name = data[1];
   this.notice = data[2];
   this.furigana = data[3];
@@ -421,7 +424,7 @@ $(function() {
           var row = new TargetRowModel(data[i]);
           for (var j = 0; j < descriptions.length; j++) {
             //一致してるものに追加する。
-            if (descriptions[j].label == row.type) {
+            if (descriptions[j].label == row.label) {
               descriptions[j].targets.push(row);
               break;
             }
