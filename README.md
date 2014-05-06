@@ -38,6 +38,25 @@
 - [5374(ゴミナシ).jpサービスの立ち上げに必要なデータの準備](http://qiita.com/tosato3/items/e7a231e8190508e278fa)
 - [地元の 5374 を、自前サーバを用意せずに github pages で公開する手順](http://qiita.com/kuboon/items/1b4f64a42ce5365fb1c7)
 
+### 5374を開発環境で動作させたい場合について
+
+#### Rubyを使う場合
+
+```
+$ gem install bundler
+$ bundle install
+$ bundle exec rackup
+$ open http://localhost:9292/
+```
+
+### 5374をHerokuで動作させたい場合について
+
+```
+$ heroku create your-5374-app-name-here
+$ git push heroku master
+$ heroku open
+```
+
 ## 5374のカスタマイズについて
 
 基本的にはdataフォルダの中を変更していただければ、データが変更できます。
