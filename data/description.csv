@@ -1,9 +1,9 @@
 label,sublabel,description,styles,bgcolor
-燃えるごみ,,,img/01moerugomi.svg,#DC143C
-不燃ごみ,,,img/02hunengomi.svg,#4169E1
-資源物（紙類）,,,img/03sigen_kami.svg,#D2B48C
-資源物（ペットボトルの日）,,,img/06sigen_pet.svg,#6B8E23
+燃えるごみ,,,img/01moerugomi.svg,#FF82B2
+不燃ごみ,,,img/02hunengomi.svg,#75A9FF
+資源物（紙類）,,,img/03sigen_kami.svg,#E9FFA5
+資源物（ペットボトルの日）,,,img/06sigen_pet.svg,#9BF9CC
 資源物（ビンの日）,,,img/04sigen_bin.svg,#66CDAA
-資源物（カンの日）,,,img/05sigen_kan.svg,#6495ED
-粗大ごみ,,,img/07sodaigomi.svg,#E9967A
-有害ごみ,,,img/08yugaigomi.svg,#BA55D3
+資源物（カンの日）,,,img/05sigen_kan.svg,#A7F1FF
+粗大ごみ,,,img/07sodaigomi.svg,#FFC7AF
+有害ごみ,,,img/08yugaigomi.svg,#B384FF
