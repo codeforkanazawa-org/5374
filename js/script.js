@@ -118,7 +118,7 @@ var TrashModel = function(_lable, _cell, remarks) {
       if (day.substr(0,1) == "*") {
         remarks.forEach(function(remark){
           if (remark.id == day.substr(1,1)){
-            ret += remark.text + "<br/>";
+            ret += remark.text +"不定期"+ "<br/>";
           }
         });
       };
