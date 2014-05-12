@@ -89,7 +89,7 @@ var TrashModel = function(_lable, _cell, remarks) {
     } else {
       // 不定期回収の場合（YYYYMMDD指定）
       result_text = "不定期回収！";
-      this.regularFlg = 1;  // 定期回収フラグオフ
+      this.regularFlg = 1;  // 定期回収フラグオフ：オンは　1　:オフは  0
     }
   }
   this.dayLabel = result_text;
