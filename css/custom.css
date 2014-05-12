@@ -66,9 +66,9 @@ a.accordion-toggle-top:hover{
 	
 }
 /**/
-.accordion-group-top{background-color:  #000000;}
+.accordion-group-top{background-color:  #ffffff;}
 
-.accordion-inner ul {color:#000000;}
+.accordion-inner ul {color:#ffffff;}
 
 #accordion2 {display: none;}
 #accordion2 .accordion-inner {text-align: center}
@@ -78,12 +78,12 @@ a.accordion-toggle-top:hover{
 
 .left-day{
        font-size: 1.5em;
-       color: black;
+       color: white;
        position: absolute;
        padding-left: 10px;
 }
 a,a:hover{	
-	color: black;
+	color: white;
 	text-decoration: none;
 }
 .accordion-heading .accordion-table{
@@ -107,7 +107,7 @@ a,a:hover{
 }
 
 .initials {
-	color: #000000;
+	color: #ffffff;
 }
 .note{
 	font-size: 10px;
