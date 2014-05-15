@@ -5,5 +5,4 @@ label,sublabel,description,styles,bgcolor
 資源物（ペットボトルの日）,,,img/06sigen_pet.svg,#3CB371 
 資源物（ビンの日）,,,img/04sigen_bin.svg,#00CED1
 資源物（カンの日）,,,img/05sigen_kan.svg,#20B2AA
-粗大ごみ,,,img/07sodaigomi.svg,#A0522D 
-<!-- 追加部分 ここから -->有害ごみ,,,img/08yugaigomi.svg,#8B008B　<!-- 追加部分 ここまで -->
+粗大ごみ,,,img/07sodaigomi.svg,#A0522D
