@@ -82,9 +82,9 @@ var TrashModel = function(_lable, _cell, remarks) {
 
   for (var j in this.dayCell) {
     if (this.dayCell[j].length == 1) {
-      result_text += "毎週 " + this.dayCell[j] + " 曜日 ";
+      result_text += "毎週 " + this.dayCell[j] + "曜日 ";
     } else if (this.dayCell[j].length == 2 && this.dayCell[j].substr(0,1) != "*") {
-      result_text += "第 " + this.dayCell[j].charAt(1) + this.dayCell[j].charAt(0) + " 曜日 ";
+      result_text += "第" + this.dayCell[j].charAt(1) +" "+ this.dayCell[j].charAt(0) + " 曜日 ";
     } else if (this.dayCell[j].length == 2 && this.dayCell[j].substr(0,1) == "*") {
     } else {
       // 不定期回収の場合（YYYYMMDD指定）
