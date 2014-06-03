@@ -89,18 +89,19 @@ var TrashModel = function(_lable, _cell, remarks) {
     } else {
       // 不定期回収の場合（YYYYMMDD指定）
       for(int i=0;i<4;i++){
-        if(i=0){
-          result_text = "1不定期";
-        }else if(i=1){
-          result_text = "2不定期";
-        }else if(i=2){
-          result_text = "3不定期";
-        }else if(i=3){
-          result_text = "4不定期";
-        }else{
-          result_text = "不定期";
-        }
+        // if(i=0){
+        //   result_text = "1不定期";
+        // }else if(i=1){
+        //   result_text = "2不定期";
+        // }else if(i=2){
+        //   result_text = "3不定期";
+        // }else if(i=3){
+        //   result_text = "4不定期";
+        // }else{
+        //   result_text = "不定期";
+        // }
       }
+       result_text = "不定期";
       this.regularFlg = 1;  // 定期回収フラグオフ：オンは　1　:オフは  0
     }
   }
