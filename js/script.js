@@ -460,7 +460,7 @@ $(function() {
     areaModel.calcMostRect();
     //トラッシュの近い順にソートします。
     areaModel.sortTrash();
-  var accordion_height = window.innerHeight / descriptions.length;
+  var accordion_height = $(window).height() / descriptions.length;
 if(descriptions.length>5){
     if (accordion_height<100) {accordion_height=100;};
 }
