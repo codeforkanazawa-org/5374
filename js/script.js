@@ -47,6 +47,8 @@ var AreaModel = function() {
 */
   this.sortTrash = function() {
     this.trash.sort(function(a, b) {
+      if (a.mostRecent === undefined) return 1;
+      if (b.mostRecent === undefined) return -1;
       var at = a.mostRecent.getTime();
       var bt = b.mostRecent.getTime();
       if (at < bt) return -1;
@@ -70,6 +72,9 @@ var TrashModel = function(_lable, _cell, remarks) {
     var flag = _cell.split(":");
     this.dayCell = flag[0].split(" ");
     var mm = flag[1].split(" ");
+  } else if (_cell.length == 2 && _cell.substr(0,1) == "*") {
+    this.dayCell = _cell.split(" ");
+    var mm = new Array();
   } else {
     this.dayCell = _cell.split(" ");
     var mm = new Array("4", "5", "6", "7", "8", "9", "10", "11", "12", "1", "2", "3");
@@ -114,6 +119,9 @@ var TrashModel = function(_lable, _cell, remarks) {
 
 
   this.getDateLabel = function() {
+    if (this.mostRecent === undefined) {
+	return this.getRemark() + "不明";
+    }
     var result_text = this.mostRecent.getFullYear() + "/" + (1 + this.mostRecent.getMonth()) + "/" + this.mostRecent.getDate();
     return this.getRemark() + this.dayLabel + " " + result_text;
   }
@@ -232,7 +240,8 @@ var TrashModel = function(_lable, _cell, remarks) {
     })
     //直近の日付を更新
     var now = new Date();
-
+	  console.log(day_list);
+console.log(areaObj);
     for (var i in day_list) {
       if (this.mostRecent == null && now.getTime() < day_list[i].getTime() + 24 * 60 * 60 * 1000) {
         this.mostRecent = day_list[i];
@@ -494,18 +503,22 @@ $(function() {
 
           var dateLabel = trash.getDateLabel();
           //あと何日かを計算する処理です。
-          var leftDay = Math.ceil((trash.mostRecent.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
-
           var leftDayText = "";
-          if (leftDay == 0) {
-            leftDayText = "今日";
-          } else if (leftDay == 1) {
-            leftDayText = "明日";
-          } else if (leftDay == 2) {
-            leftDayText = "明後日"
-          } else {
-            leftDayText = leftDay + "日後";
-          }
+	  if (trash.mostRecent === undefined) {
+	    leftDayText == "不明";
+	  } else {
+            var leftDay = Math.ceil((trash.mostRecent.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
+
+            if (leftDay == 0) {
+              leftDayText = "今日";
+            } else if (leftDay == 1) {
+              leftDayText = "明日";
+            } else if (leftDay == 2) {
+              leftDayText = "明後日"
+            } else {
+              leftDayText = leftDay + "日後";
+            }
+	  }
 
           styleHTML += '#accordion-group' + d_no + '{background-color:  ' + description.background + ';} ';
 
