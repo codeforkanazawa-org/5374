@@ -240,8 +240,6 @@ var TrashModel = function(_lable, _cell, remarks) {
     })
     //直近の日付を更新
     var now = new Date();
-	  console.log(day_list);
-console.log(areaObj);
     for (var i in day_list) {
       if (this.mostRecent == null && now.getTime() < day_list[i].getTime() + 24 * 60 * 60 * 1000) {
         this.mostRecent = day_list[i];
