@@ -1,19 +1,66 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-	 y="0px" width="595.279px" height="841.89px" viewBox="0 0 595.279 841.89" enable-background="new 0 0 595.279 841.89"
-	 xml:space="preserve">
-<path fill="#F7F8F8" d="M8.281,3.336l0.72,0.624c-3.48,3.48-5.497,8.231-5.497,11.233c0,3.744,2.352,5.543,5.521,5.543
-	c4.056,0,6.625-2.76,6.625-8.855c0-2.375-0.433-5.449-1.368-9.025l0.84-0.24c1.224,3.336,3.359,6.097,6.433,7.465l-0.456,0.888
-	c-2.735-1.32-4.439-3.456-5.305-5.208c0.528,2.329,0.792,4.464,0.792,6.362c0,6.096-2.568,9.574-7.632,9.574
-	c-3.721,0-6.361-2.23-6.361-6.457c0-2.879,1.872-7.151,3.96-9.743C5.234,6.145,2.545,6.601,0.12,6.745L0,5.761
-	c2.521-0.048,5.521-0.576,7.033-1.416C7.465,4.104,7.921,3.768,8.281,3.336z M16.873,1.008c0.984,1.056,1.944,2.28,2.712,3.528
-	l-0.624,0.408c-0.696-1.2-1.68-2.52-2.64-3.48L16.873,1.008z M19.513,0c1.008,1.032,1.944,2.256,2.688,3.504l-0.601,0.408
-	c-0.695-1.224-1.655-2.52-2.615-3.504L19.513,0z"/>
-<path fill="#F7F8F8" d="M33.6,2.16c-1.271,3.576-2.928,8.137-4.056,10.992c1.296-1.463,2.521-2.231,3.912-2.231
-	c1.823,0,2.735,1.37,2.735,5.399c0,3.674,1.2,4.656,2.88,4.656c2.448,0,4.369-2.23,5.232-7.656l0.961,0.219
-	c-1.033,5.977-3.265,8.377-6.241,8.377c-2.279,0-3.769-1.537-3.769-5.475c0-3.432-0.695-4.561-2.088-4.561
-	c-1.009,0-2.16,0.623-3.433,2.16c-0.336,0.408-0.793,1.057-1.057,1.656c-0.672,1.439-1.801,4.295-2.592,6.24l-0.984-0.385
-	c2.232-4.752,6.146-15.242,7.488-19.682L33.6,2.16z"/>
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="レイヤー_1"
+   x="0px"
+   y="0px"
+   width="595.279px"
+   height="841.89px"
+   viewBox="0 0 595.279 841.89"
+   enable-background="new 0 0 595.279 841.89"
+   xml:space="preserve"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="bin.svg"><metadata
+   id="metadata11"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+   id="defs9" /><sodipodi:namedview
+   pagecolor="#000000"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="1"
+   inkscape:pageshadow="2"
+   inkscape:window-width="996"
+   inkscape:window-height="676"
+   id="namedview7"
+   showgrid="false"
+   inkscape:zoom="0.95077131"
+   inkscape:cx="295.61512"
+   inkscape:cy="761.29676"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="レイヤー_1" />
+<path
+   fill="#F7F8F8"
+   d="M8.281,3.336l0.72,0.624c-3.48,3.48-5.497,8.231-5.497,11.233c0,3.744,2.352,5.543,5.521,5.543  c4.056,0,6.625-2.76,6.625-8.855c0-2.375-0.433-5.449-1.368-9.025l0.84-0.24c1.224,3.336,3.359,6.097,6.433,7.465l-0.456,0.888  c-2.735-1.32-4.439-3.456-5.305-5.208c0.528,2.329,0.792,4.464,0.792,6.362c0,6.096-2.568,9.574-7.632,9.574  c-3.721,0-6.361-2.23-6.361-6.457c0-2.879,1.872-7.151,3.96-9.743C5.234,6.145,2.545,6.601,0.12,6.745L0,5.761  c2.521-0.048,5.521-0.576,7.033-1.416C7.465,4.104,7.921,3.768,8.281,3.336z M16.873,1.008c0.984,1.056,1.944,2.28,2.712,3.528  l-0.624,0.408c-0.696-1.2-1.68-2.52-2.64-3.48L16.873,1.008z M19.513,0c1.008,1.032,1.944,2.256,2.688,3.504l-0.601,0.408  c-0.695-1.224-1.655-2.52-2.615-3.504L19.513,0z"
+   id="path3" />
+<path
+   fill="#F7F8F8"
+   d="M33.6,2.16c-1.271,3.576-2.928,8.137-4.056,10.992c1.296-1.463,2.521-2.231,3.912-2.231  c1.823,0,2.735,1.37,2.735,5.399c0,3.674,1.2,4.656,2.88,4.656c2.448,0,4.369-2.23,5.232-7.656l0.961,0.219  c-1.033,5.977-3.265,8.377-6.241,8.377c-2.279,0-3.769-1.537-3.769-5.475c0-3.432-0.695-4.561-2.088-4.561  c-1.009,0-2.16,0.623-3.433,2.16c-0.336,0.408-0.793,1.057-1.057,1.656c-0.672,1.439-1.801,4.295-2.592,6.24l-0.984-0.385  c2.232-4.752,6.146-15.242,7.488-19.682L33.6,2.16z"
+   id="path5" />
+<text
+   xml:space="preserve"
+   style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Meiryo;-inkscape-font-specification:Meiryo"
+   x="54.692436"
+   y="37.280128"
+   id="text2988"
+   sodipodi:linespacing="125%"
+   transform="translate(0,-1.3194025e-5)"><tspan
+     sodipodi:role="line"
+     id="tspan2990"
+     x="54.692436"
+     y="37.280128">缶びん</tspan></text>
 </svg>
