@@ -210,7 +210,7 @@ var TrashModel = function(_lable, _cell, remarks) {
             }
             //特定の週のみ処理する
             if (day_mix[j].length > 1) {
-              if (week != day_mix[j].charAt(1) - 1) {
+              if ((week != day_mix[j].charAt(1) - 1) || ("*" == day_mix[j].charAt(0))) {
                 continue;
               }
             }
