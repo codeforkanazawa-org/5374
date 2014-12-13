@@ -1,6 +1,6 @@
 label,sublabel,description,styles,bgcolor
 可燃ごみ,,,img/kanengomi.svg,#ff9f37
-ビン,,,img/bin.svg,#91dde7
+ビン,,,img/OB_bin01.svg,#91dde7
 プラスチック製容器包装,,,img/moyasanai.svg,#7fc6e4
 廃食用油,,,img/moyasanai.svg,#13c4e1
 特定処理品目,,,img/moyasanai.svg,#00b7c0
