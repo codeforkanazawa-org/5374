@@ -1,120 +1,135 @@
-/* Custom button
--------------------------------------------------- */
-body{
-font-family:".HiraKakuInterface-W1",'Lucida Grande',
- 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3',
- Meiryo, メイリオ, sans-serif;
+/*!
+ * 基本スタイル
+ */
+body {
+	font-family: ".HiraKakuInterface-W1",'Lucida Grande', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, sans-serif;
 }
-/* Override base .btn styles */
-/* Apply text and background changes to three key states: default, hover, and active (click). */
-/*#accordion-group0{background-color:  #733b96;}*//* 燃やす */
-/*#accordion-group1{background-color:  #77ae1f;}*//* 燃やさない */
-/*#accordion-group2{background-color:  #ea3b13;}*//* 資源 */
-/*#accordion-group3{background-color:  #2dc7aa;}*//* びん */
-
-.accordion-group{margin-bottom:0;border:0;border-radius:0}
-
-#accordion3 
-a.accordion-toggle-top{
-	margin: 0;
-	text-align: left;
-	font-size: 25px;
-	margin: 15px 0 15px 15px;
-
-}
-
-#accordion3 h2{
-	font-size: 25px;
-	margin-top: 40px;
-}
-
-#accordion3 #cfi{
-	border-top: 1px solid black;
-}
-
-#accordion3 #cfk{
-	border-top: 1px solid black;
-}
-
-#accordion3 h3{
-	font-weight: bold;
-	font-size: 16px;
-	margin-top: 15px;
-}
-
-#accordion3 #caption{
-	font-size: 12px;
-	color: #7F7F7F;
-	margin-top: 30px;
-}
-#accordion3 #caption h4{
-	font-size: 12px;
-	font-weight: bold;
-}
-
-
-a.accordion-toggle-top{
-	color: #000000;
-	height: 22px;
-	text-align: center;
-	margin: 0 auto;
-	display: block;
-	font-size: 16px;
-}
-a.accordion-toggle-top:hover{
-	color: #000000;
-	
-}
-.accordion-group-top{background-color:  #ffffff;}
-
-.accordion-inner ul {color:#ffffff;}
-
-#accordion2 {display: none;}
-#accordion2 .accordion-inner {text-align: center}
-.date {} 
-
-#gps_area {margin-top: 5px;}
-
-.left-day{
-       font-size: 1.5em;
-       color: white;
-       position: absolute;
-       padding-left: 10px;
-}
-a,a:hover{	
+a,
+a:hover {
 	color: white;
 	text-decoration: none;
 }
-.accordion-heading .accordion-table{
+.accordion-inner {
+	padding: 9px 15px;
+}
+
+/*!
+ * ゴミ収集の情報
+ */
+#accordion .accordion-group {
+	margin-bottom: 0;
+	border: 0;
+	border-radius: 0;
+}
+#accordion .accordion-group h6 {
+	position: absolute;
+	bottom: 0px;
+	left: 10px;
+	margin: 0;
+}
+#accordion .accordion-inner ul {
+	color: #ffffff;
+}
+#accordion .accordion-heading .accordion-table {
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
 	width: 80%;
 	font-size: 22px;
-	/*font-weight: bold;*/
-
 }
-.accordion-heading .accordion-toggle {
+#accordion .accordion-heading .accordion-toggle {
 	position: relative;
 	display: table;
 	padding: 0;
 	width: 100%;
 	height: 119px;
 }
-.accordion-group h6{
-	position:absolute;bottom:0px;left:10px;margin:0;
+/* 相対日付 (左肩) */
+#accordion .left-day {
+	font-size: 1.5em;
+	color: white;
+	position: absolute;
+	padding-left: 10px;
 }
-
-.initials {
+/* 指定日・直近日付 */
+#accordion .date {
+}
+/* 分別方法の頭文字(ふりがな) */
+#accordion .initials {
 	color: #ffffff;
 }
-.note{
+/* ゴミを捨てるときの注意事項 */
+#accordion .note {
 	font-size: 10px;
 }
-#help{
+
+/*!
+ * 備考欄
+ */
+#accordion2 {
+	display: none;
+}
+#accordion2 .accordion-inner {
+	text-align: center;
+}
+
+/*!
+ * 5374.jpについて
+ */
+#accordion3 a.accordion-toggle-top {
+	color: #000000;
+	height: 22px;
+	display: block;
+	margin: 0;
+	text-align: left;
+	font-size: 25px;
+	margin: 15px 0 15px 15px;
+}
+#accordion3 a.accordion-toggle-top:hover {
+	color: #000000;
+}
+#accordion3 h2 {
+	font-size: 25px;
+	margin-top: 40px;
+}
+#accordion3 h3 {
+	font-weight: bold;
+	font-size: 16px;
+	margin-top: 15px;
+}
+#accordion3 #cfi {
+	border-top: 1px solid black;
+}
+#accordion3 #cfk {
+	border-top: 1px solid black;
+}
+#accordion3 #caption {
+	font-size: 12px;
+	color: #7F7F7F;
+	margin-top: 30px;
+}
+#accordion3 #caption h4 {
+	font-size: 12px;
+	font-weight: bold;
+}
+#accordion3 #help {
 	margin-left: 5px;
 }
-#select_area_title{
+
+/*!
+ * Maybe not in use. Remove these later.
+ */
+#select_area_title {
 	text-align: center;
 	font-size: 20px;
+}
+#gps_area {
+	margin-top: 5px;
+}
+.accordion-group-top {
+	background-color: #ffffff;
+}
+#cfk > p > a{
+	 color: #FF0000;
+	 text-decoration: underline;
 }

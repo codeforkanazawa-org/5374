@@ -20,6 +20,9 @@ var AreaModel = function() {
     休止期間（主に年末年始）かどうかを判定します。
   */
   this.isBlankDay = function(currentDate) {
+    if (!this.center) {
+        return false;
+    }
     var period = [this.center.startDate, this.center.endDate];
 
     if (period[0].getTime() <= currentDate.getTime() &&
@@ -44,6 +47,8 @@ var AreaModel = function() {
 */
   this.sortTrash = function() {
     this.trash.sort(function(a, b) {
+      if (a.mostRecent === undefined) return 1;
+      if (b.mostRecent === undefined) return -1;
       var at = a.mostRecent.getTime();
       var bt = b.mostRecent.getTime();
       if (at < bt) return -1;
@@ -62,10 +67,14 @@ var TrashModel = function(_lable, _cell, remarks) {
   this.mostRecent;
   this.dayList;
   this.mflag = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  if (_cell.search(/:/) >= 0) {
+  var monthSplitFlag=_cell.search(/:/)>=0
+  if (monthSplitFlag) {
     var flag = _cell.split(":");
     this.dayCell = flag[0].split(" ");
     var mm = flag[1].split(" ");
+  } else if (_cell.length == 2 && _cell.substr(0,1) == "*") {
+    this.dayCell = _cell.split(" ");
+    var mm = new Array();
   } else {
     this.dayCell = _cell.split(" ");
     var mm = new Array("4", "5", "6", "7", "8", "9", "10", "11", "12", "1", "2", "3");
@@ -92,9 +101,27 @@ var TrashModel = function(_lable, _cell, remarks) {
       this.regularFlg = 0;  // 定期回収フラグオフ
     }
   }
+  if (monthSplitFlag){
+    var monthList="";
+    for (var m in this.mflag) {
+      if (this.mflag[m]){
+        if (monthList.length>0){
+          monthList+=","
+        }
+        //mを整数化
+        monthList+=((m-0)+1)
+      }
+    };
+    monthList+="月 "
+    result_text=monthList+result_text
+  }
   this.dayLabel = result_text;
 
+
   this.getDateLabel = function() {
+    if (this.mostRecent === undefined) {
+	return this.getRemark() + "不明";
+    }
     var result_text = this.mostRecent.getFullYear() + "/" + (1 + this.mostRecent.getMonth()) + "/" + this.mostRecent.getDate();
     return this.getRemark() + this.dayLabel + " " + result_text;
   }
@@ -183,7 +210,7 @@ var TrashModel = function(_lable, _cell, remarks) {
             }
             //特定の週のみ処理する
             if (day_mix[j].length > 1) {
-              if (week != day_mix[j].charAt(1) - 1) {
+              if ((week != day_mix[j].charAt(1) - 1) || ("*" == day_mix[j].charAt(0))) {
                 continue;
               }
             }
@@ -213,7 +240,6 @@ var TrashModel = function(_lable, _cell, remarks) {
     })
     //直近の日付を更新
     var now = new Date();
-
     for (var i in day_list) {
       if (this.mostRecent == null && now.getTime() < day_list[i].getTime() + 24 * 60 * 60 * 1000) {
         this.mostRecent = day_list[i];
@@ -268,7 +294,7 @@ var DescriptionModel = function(data) {
  * target.csvのモデルです。
  */
 var TargetRowModel = function(data) {
-  this.type = data[0];
+  this.label = data[0];
   this.name = data[1];
   this.notice = data[2];
   this.furigana = data[3];
@@ -405,7 +431,7 @@ $(function() {
           var row = new TargetRowModel(data[i]);
           for (var j = 0; j < descriptions.length; j++) {
             //一致してるものに追加する。
-            if (descriptions[j].label == row.type) {
+            if (descriptions[j].label == row.label) {
               descriptions[j].targets.push(row);
               break;
             }
@@ -475,18 +501,22 @@ $(function() {
 
           var dateLabel = trash.getDateLabel();
           //あと何日かを計算する処理です。
-          var leftDay = Math.ceil((trash.mostRecent.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
-
           var leftDayText = "";
-          if (leftDay == 0) {
-            leftDayText = "今日";
-          } else if (leftDay == 1) {
-            leftDayText = "明日";
-          } else if (leftDay == 2) {
-            leftDayText = "明後日"
-          } else {
-            leftDayText = leftDay + "日後";
-          }
+	  if (trash.mostRecent === undefined) {
+	    leftDayText == "不明";
+	  } else {
+            var leftDay = Math.ceil((trash.mostRecent.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
+
+            if (leftDay == 0) {
+              leftDayText = "今日";
+            } else if (leftDay == 1) {
+              leftDayText = "明日";
+            } else if (leftDay == 2) {
+              leftDayText = "明後日"
+            } else {
+              leftDayText = leftDay + "日後";
+            }
+	  }
 
           styleHTML += '#accordion-group' + d_no + '{background-color:  ' + description.background + ';} ';
 

@@ -1,5 +1,11 @@
 label,sublabel,description,styles,bgcolor
+<<<<<<< HEAD
 燃やさないごみ2,,,img/moyasanai02.svg,#733b96
 資源2,,,img/shigen02.svg,#77ae1f
 燃やすごみ2,,,img/moyasu02.svg,#ea3b13
 びん2,,,img/bin02.svg,#2dc7aa
+=======
+資源,,,img/shigen02.svg,#77ae1f
+可燃ごみ,,,img/moyasu02.svg,#ea3b13
+不燃ごみ,,,img/moyasanai02.svg,#733b96
+>>>>>>> master
