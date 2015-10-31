@@ -111,15 +111,15 @@ a,a:hover{
 .note{
 	font-size: 10px;
 }
-#help{
+.help{
 	margin-left: 5px;
 	color: #2c3e50;
 }
-#help p{
+.help p{
 	color: #34495e;
 	font-size: 10px;
 }
-#help li{
+.help li{
 	list-style: none;
 	color: #2c3e50;
 }
