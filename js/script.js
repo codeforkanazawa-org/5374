@@ -296,7 +296,7 @@ $(function() {
     }
 
     function updateAreaList() {
-        csvToArray("data/area_days.csv", function(tmp) {
+        csvToArray("data/ja/area_days.csv", function(tmp) {
             var area_days_label = tmp.shift();
             for (var i in tmp) {
                 var row = tmp[i];
@@ -314,7 +314,7 @@ $(function() {
                 }
             }
 
-            csvToArray("data/center.csv", function(tmp) {
+            csvToArray("data/ja/center.csv", function(tmp) {
                 //ゴミ処理センターのデータを解析します。
                 //表示上は現れませんが、
                 //金沢などの各処理センターの休止期間分は一週間ずらすという法則性のため
@@ -360,7 +360,7 @@ $(function() {
 
     function takePolygon() {
         $.ajax({
-            url: 'data/nonoichi_city.kml',
+            url: 'data/ja/nonoichi_city.kml',
             type: 'get',
             dataType: 'xml',
             success: function(xml) {
@@ -420,13 +420,13 @@ $(function() {
     }
 
     function createMenuList(after_action) {
-        csvToArray("data/description.csv", function(data) {
+        csvToArray("data/ja/description.csv", function(data) {
             data.shift();
             for (var i in data) {
                 descriptions.push(new DescriptionModel(data[i]));
             }
 
-            csvToArray("data/target.csv", function(data) {
+            csvToArray("data/ja/target.csv", function(data) {
 
                 data.shift();
                 for (var i in data) {
