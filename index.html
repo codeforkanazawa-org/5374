@@ -1,357 +1,356 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <meta property="og:title" content="5374.jp野々市版" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://nonoichi.5374.jp/" />
-    <meta property="og:description" content="Code for Kanazawaの作った5374.jpの野々市版です。5374.jpは貴方の地域で、いつ、どのゴミが回収されるのか、簡単に知る事ができます。" />
-    <meta property="og:image" content="http://nonoichi.5374.jp/OGP.png" width="1200" height="1200" />
-    <title>5374野々市版</title> 
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
-    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png" />
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
-    <link href="css/custom.css" rel="stylesheet" media="screen" />
-  </head>
-  <body>
-  <!-- style id="accordion-style" type="text/css"></style -->
-  <div id="accordion"></div>
-  <select class="form-control" id="select_area"></select>
-  <button class="form-control" id="select_by_location_data">位置情報から選択</button>
-  <div class="accordion" id="accordion3">
-
-    <div class="accordion-group-top">
-      <div class="accordion-heading">
-        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_1">古紙について</a>
-      </div>
-      <div id="collapse3_1" class="accordion-body collapse">
-        <div class="accordion-inner">
-          <div id="help">
-古紙は、子ども会などの地域の集団回収またはエコステーションへ出してください。
-            <h4>あ</h4>
-            <ul>
-              <li>厚紙</li>
-              <p></p>
-              <li>絵本</li>
-              <p></p>
-              <li>折込広告</li>
-              <p></p>
-            </ul>
-            <h4>か</h4>
-            <ul>
-              <li>カタログ類</li>
-              <p></p>
-              <li>カレンダー</li>
-              <p>金具は「燃えないごみ」</p>
-              <li>広告紙</li>
-              <p></p>
-              <li>コピー用紙</li>
-            </ul>
-            <h4>さ</h4>
-            <ul>
-              <li>雑誌</li>
-              <p>濡らさないように,紙ひもで縛って出す</p>
-              <li>辞書・辞典</li>
-              <p>紙ひもで縛って出す</p>
-              <li>新聞紙</li>
-              <p>紙ひもで縛って出す</p>
-            </ul>
-            <h4>た</h4>
-            <ul>
-              <li>単行本</li>
-              <p></p>
-              <li>段ボール</li>
-              <p>ガムテープ・金具は取り外す</p>
-              <li>チラシ</li>
-              <p></p>
-            </ul>
-            <h4>な</h4>
-            <ul>
-              <li>ノート</li>
-              <p></p>
-            </ul>
-            <h4>は</h4>
-            <ul>
-              <li>はがき</li>
-              <p></p>
-              <li>半紙</li>
-              <p></p>
-              <li>便箋</li>
-              <p></p>
-              <li>包装紙</li>
-              <p></p>
-              <li>ポスター</li>
-              <p></p>
-            </ul>
-            <h4>ま</h4>
-            <ul>
-              <li>みかん箱</li>
-              <p>果物、野菜の箱含む</p>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr>
-
-    <div class="accordion-group-top">
-      <div class="accordion-heading">
-        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_2">古着・牛乳パックについて</a>
-      </div>
-      <div id="collapse3_2" class="accordion-body collapse">
-        <div class="accordion-inner">
-          <div id="help">
-古着・布類は、中央・富奥・郷・押野公民館、女性センターへ開館時間中にお持ちください。また、エコステーションでも回収しています。牛乳パックはエコステーション又はスーパーなどの店頭回収をご利用ください。
-            <h4>あ</h4>
-            <ul>
-              <li>衣類</li>
-              <p>できるだけ指定回収施設へ</p>
-              <li>飲料用紙パック</li>
-              <p>中を洗って切り開き、乾かしてから出す　※内側が銀色のものは「一般ごみ」</p>
-            </ul>
-            <h4>か</h4>
-            <ul>
-              <li>紙パック</li>
-              <p>中を切り開き、乾かしてから出す　※内側が銀色のものは「一般ごみ」</p>
-              <li>牛乳パック</li>
-              <p>中を洗って切り開き、乾かしてから出す</p>
-            </ul>
-            <h4>さ</h4>
-            <ul>
-              <li>シーツ</li>
-              <p>洗濯してください</p>
-              <li>スーツ</li>
-              <p>裏地のあるものは「一般ごみ」</p>
-              <li>セーター</li>
-            </ul>
-            <h4>た</h4>
-            <ul>
-              <li>タオル</li>
-              <p>きれいなもの</p>
-              <li>Tシャツ</li>
-              <p>汚れたものは「一般ごみ」</p>
-            </ul>
-            <h4>な</h4>
-            <ul>
-              <li>布</li>
-              <p></p>
-            </ul>
-            <h4>や</h4>
-            <ul>
-              <li>ゆかた</li>
-              <p></p>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr>
-
-    <div class="accordion-group-top">
-      <div class="accordion-heading">
-        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_3">自己処理について</a>
-      </div>
-      <div id="collapse3_3" class="accordion-body collapse">
-        <div class="accordion-inner">
-          <div id="help">
-自己処理は、ご自身で処理してもらうものです。販売店等にお問い合わせください。
-            <h4>あ</h4>
-            <ul>
-              <li>アスファルト</li>
-              <p>販売店等にお問合せください</p>
-              <li>畔シート</li>
-              <p>販売店等にお問合せください</p>
-              <li>油（食用以外）</li>
-              <p>販売店等にお問合せください</p>
-              <li>石（漬物石等）</li>
-              <p>販売店等にお問合せください</p>
-              <li>犬猫のふん</li>
-              <p>できるだけトイレに流す　※フンの放置はやめましょう</p>
-              <li>衣類乾燥機（家電リサイクル法対象）</li>
-              <p>販売店等に引き取ってもらってください。詳細は、家庭ごみの収集日程と分け方を参照</p>
-              <li>植木</li>
-              <p>なるべく販売店等に引き取ってもらってください。ごみに出す場合は、直径10ｃｍ×１ｍ以下に切って束ねて出す</p>
-              <li>エアコン（家電リサイクル対象）</li>
-              <p>ウィンドウタイプも含みます。販売店等に引き取ってもらってください。詳細は、「家庭ごみ分け方・出し方」参照</p>
-              <li>液晶テレビ</li>
-              <p>販売店等に引き取ってもらってください。詳細は、「家庭ごみ分け方・出し方」参照</p>
-              <li>枝（業者に依頼したもの）</li>
-              <p>業者に引き取ってもらってください</p>
-              <li>ＬＰガスのボンベ</li>
-              <p>販売店等にお問合せください</p>
-              <li>エンジン</li>
-              <p>販売店等にお問合せください</p>
-              <li>オイル（食用以外）</li>
-              <p>販売店等にお問合せください</p>
-              <li>オイル缶</li>
-              <p>中身が残っている場合は「自己処理」</p>
-              <li>オイルヒーター</li>
-              <p>販売店等にお問合せください</p>
-              <li>オートバイ</li>
-              <p>販売店等にお問合せください</p>
-            </ul>
-            <h4>か</h4>
-            <ul>
-               <li>ガス風呂温水器</li>
-               <p>販売店等にお問合せください</p>
-               <li>ガスボンベ（LPG）</li>
-               <p>販売店等にお問合せください</p>
-               <li>ガソリン</li>
-               <p>販売店等にお問合せください</p>
-               <li>瓦</li>
-               <p>販売店等にお問合せください</p>
-               <li>牛乳びん</li>
-               <p>配達分は販売店等に返却してください</p>
-               <li>金庫（手提げ金庫程度）</li>
-               <p>耐火金庫等一人で運べないものは自己処理</p>
-               <li>クーラー（エアコン）（家電リサイクル法対象）</li>
-               <p>販売店等に引き取ってもらってください。詳細は、「家庭ごみ収集日と分け方」参照</p>
-               <li>草刈り機</li>
-               <p>販売店等にお問合せください</p>
-               <li>携帯電話</li>
-               <p>販売店等にお問合せください</p>
-               <li>建築廃材</li>
-               <p>販売店等にお問合せください</p>
-               <li>耕耘機（耕運機）</li>
-               <p>販売店等にお問合せください</p>
-               <li>コンクリート・ブロック</li>
-               <p>販売店等にお問合せください</p>
-            </ul>
-            <h4>さ</h4>
-            <ul>
-              <li>酸素ボンベ</li>
-              <p>販売店等にお問合せください</p>
-              <li>自動車及び部品</li>
-              <p>販売店等にお問合せください</p>
-              <li>消火器</li>
-              <p>「廃消火器リサイクルシステム」を利用して適正に処理してください。詳細は家庭ごみ収集日と分け方を参照</p>
-              <li>食品トレイ</li>
-              <p>発泡スチロール製トレイは、なるべくスーパー等の回収箱をご利用ください</p>
-              <li>シンナー</li>
-              <p>販売店等にお問合せください</p>
-              <li>洗濯機（家電リサイクル法対象）</li>
-              <p>販売店等に引き取ってもらってください。詳細は、「家庭ごみ分け方・出し方」参照</p>
-            </ul>
-            <h4>た</h4>
-            <ul>
-              <li>タイヤ・チューブ、ホイール（自動車用）</li>
-              <p>販売店等にお問合せください</p>
-              <li>田植え機</li>
-              <p>販売店等にお問合せください</p>
-              <li>注射針</li>
-              <p>回収薬局へ引取りを依頼してください。詳細は、家庭ごみ収集日と分け方を参照</p>
-              <li>テレビ(家電リサイクル対象)</li>
-              <p>販売店等に引き取ってもらってください。詳細は家庭ごみ収集日と分け方参照</p>
-              <li>電気温水器</li>
-              <p>販売店等にお問合せください</p>
-            </ul>
-            <h4>は</h4>
-            <ul>
-              <li>バイク</li>
-              <p>販売店等にお問合せください</p>
-              <li>廃油（食用以外）</li>
-              <p>販売店等にお問合せください</p>
-              <li>パソコン（家庭用）</li>
-              <p>製造メーカーにお問合せください</p>
-              <li>バッテリー</li>
-              <p>販売店等にお問合せください</p>
-              <li>ピアノ</li>
-              <p>販売店等にお問合せください</p>
-              <li>肥料</li>
-              <p>販売店等にお問合せください</p>
-              <li>ブロック</li>
-              <p>販売店等にお問合せください</p>
-              <li>プロパンガスのボンベ</li>
-              <p>販売店等にお問合せください</p>
-              <li>ペンキ・塗料</li>
-              <p>販売店等にお問合せください</p>
-              <li>ボイラー</li>
-              <p>販売店等にお問合せください</p>
-              <li>ポンプ</li>
-              <p>エンジン付は販売店等にお問合せください</p>
-            </ul>
-            <h4>ま</h4>
-            <ul>
-              <li>物置</li>
-              <p>販売店等にお問合せください</p>
-              <li>物干し台</li>
-              <p>販売店等にお問合せください</p>
-            </ul>
-            <h4>や</h4>
-            <ul>
-              <li>薬品（劇薬類）</li>
-              <p>販売店等にお問合せください</p>
-              <li>浴槽</li>
-              <p>販売店等にお問合せください</p>
-              <li>レンガ</li>
-              <p>販売店等にお問合せください</p>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr>
-
-    <div class="accordion-group-top">
-      <div class="accordion-heading">
-        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_0">5374.jpについて</a>
-      </div>
-      <div id="collapse3_0" class="accordion-body collapse">
-        <div class="accordion-inner">
-          <div id="help">
-ゴミの問題は、どの地域でも深刻になりつつあります。
-Code for Kanazawaでは、先ずは正しいゴミの捨て方に注目しました。
-目的と使い方は、とてもシンプルです。
-            <h2>目的</h2>
-「いつ、どのゴミが収集されているのか？」
-例えばお引っ越しをされた場合や、新しく野々市市に住むことになった時、このアプリを使えば、すぐに分かるようにデザインされています。
-            <h2>使い方</h2>
-            <h3>色でゴミのジャンルを表示</h3>
-            <p>一番近いゴミの日とジャンルを上から順に表示しています。</p>
-            <h3>捨てる事が可能なゴミ</h3>
-            <p>ゴミのジャンルをタップすると、捨てることが可能なゴミの一覧を見ることができます</p>
-            <h3>設定</h3>
-            <p>お住まいの地域を選択することで、ゴミ収集日が自動的に更新されます。</p>
-            <div id="caption">
-              <h4>野々市市版について</h4>
-              <p>野々市市版5374は野々市市をベースに活動するシビックテック系コミュニティ"Spending Nonoichi"が作成しました。</p>
-              <h4>提供されるゴミ情報について</h4>
-              <p>野々市市が公開しているデータから"Spending Nonoichi"が独自に解析し、アプリに実装しました。</p>
-              <h4>ライセンスについて</h4>
-              <p>本アプリの著作権はCode for Kanazawaに帰属します。但し、このソースコードはMPLのもと配布されています。MPLに従えば、どなたでも利用、改変、及び再配布が可能です。</p>
+    <head>
+        <meta charset="UTF-8">
+        <meta property="og:title" content="5374.jp野々市版" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://nonoichi.5374.jp/" />
+        <meta property="og:description" content="Code for Kanazawaの作った5374.jpの野々市版です。5374.jpは貴方の地域で、いつ、どのゴミが回収されるのか、簡単に知る事ができます。" />
+        <meta property="og:image" content="http://nonoichi.5374.jp/OGP.png" width="1200" height="1200" />
+        <title data-l10n-id="title"></title> 
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+        <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png" />
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
+        <link href="css/custom.css" rel="stylesheet" media="screen" />
+        <link rel="localization" href="manifest.json">
+        <script defer src="js/l20n.min.js"></script>
+    </head>
+    <body>
+        <!-- style id="accordion-style" type="text/css"></style -->
+        <div id="accordion"></div>
+        <select class="form-control" id="select_area"></select>
+        <button data-l10n-id="locationbtn" class="form-control" id="select_by_location_data"></button>
+        <div class="accordion" id="accordion3">
+            
+            <div class="accordion-group-top">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_1" data-l10n-id="papers"></a>
+                </div>
+                <div id="collapse3_1" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div id="paper" class="help">
+                            <span data-l10n-id="papers_disposal"></span>
+                            <h4>あ</h4>
+                            <ul>
+                                <li>厚紙</li>
+                                <p></p>
+                                <li>絵本</li>
+                                <p></p>
+                                <li>折込広告</li>
+                                <p></p>
+                            </ul>
+                            <h4>か</h4>
+                            <ul>
+                                <li>カタログ類</li>
+                                <p></p>
+                                <li>カレンダー</li>
+                                <p>金具は「燃えないごみ」</p>
+                                <li>広告紙</li>
+                                <p></p>
+                                <li>コピー用紙</li>
+                            </ul>
+                            <h4>さ</h4>
+                            <ul>
+                                <li>雑誌</li>
+                                <p>濡らさないように,紙ひもで縛って出す</p>
+                                <li>辞書・辞典</li>
+                                <p>紙ひもで縛って出す</p>
+                                <li>新聞紙</li>
+                                <p>紙ひもで縛って出す</p>
+                            </ul>
+                            <h4>た</h4>
+                            <ul>
+                                <li>単行本</li>
+                                <p></p>
+                                <li>段ボール</li>
+                                <p>ガムテープ・金具は取り外す</p>
+                                <li>チラシ</li>
+                                <p></p>
+                            </ul>
+                            <h4>な</h4>
+                            <ul>
+                                <li>ノート</li>
+                                <p></p>
+                            </ul>
+                            <h4>は</h4>
+                            <ul>
+                                <li>はがき</li>
+                                <p></p>
+                                <li>半紙</li>
+                                <p></p>
+                                <li>便箋</li>
+                                <p></p>
+                                <li>包装紙</li>
+                                <p></p>
+                                <li>ポスター</li>
+                                <p></p>
+                            </ul>
+                            <h4>ま</h4>
+                            <ul>
+                                <li>みかん箱</li>
+                                <p>果物、野菜の箱含む</p>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="cfk">
-              <h3>Code for Kanazawaについて</h3>
-              <p>コードで、世界をHappyに。<br />
-各地域には様々な課題があり、解決するためのコミュニティ（団体）も数多くあります。<br />
-課題の中には、ITやデザインの力で解決できるものも多くありますが、全てのコミュニティにそのスキル（技術）が備わっているわけではありません。<br /><br />
-Code for Kanazawa（CfK）は、市民の課題を集め、その課題を整理・分析した上で、メンバーが実際に課題解決となるソフトウェアやハードウェア（仕組みや方法）を開発します。<br />
-私たちは、デザインをして、ソフトウェアコードを書き、課題を解決するサービスを完成させるのです。さらに、そのサービスを提供し続ける力も持ちます。<br /><br />
-CfKは市民のための組織です。行政や民間企業の影響を受けずに中立・公益の立場から物事を判断するよう心がけています。<br /><br />
-公式サイト<br />
-<a href="http://www.codeforkanazawa.org/" style=" color: #FF0000;text-decoration: underline;">http://www.codeforkanazawa.org/</a>
-              </p>
+            <hr>
+            
+            <div class="accordion-group-top">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_2" data-l10n-id="clothes"></a>
+                </div>
+                <div id="collapse3_2" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div id="clothes" class="help">
+                            <span data-l10n-id="clothes_disposal"></span>
+                            <h4>あ</h4>
+                            <ul>
+                                <li>衣類</li>
+                                <p>できるだけ指定回収施設へ</p>
+                                <li>飲料用紙パック</li>
+                                <p>中を洗って切り開き、乾かしてから出す　※内側が銀色のものは「一般ごみ」</p>
+                            </ul>
+                            <h4>か</h4>
+                            <ul>
+                                <li>紙パック</li>
+                                <p>中を切り開き、乾かしてから出す　※内側が銀色のものは「一般ごみ」</p>
+                                <li>牛乳パック</li>
+                                <p>中を洗って切り開き、乾かしてから出す</p>
+                            </ul>
+                            <h4>さ</h4>
+                            <ul>
+                                <li>シーツ</li>
+                                <p>洗濯してください</p>
+                                <li>スーツ</li>
+                                <p>裏地のあるものは「一般ごみ」</p>
+                                <li>セーター</li>
+                            </ul>
+                            <h4>た</h4>
+                            <ul>
+                                <li>タオル</li>
+                                <p>きれいなもの</p>
+                                <li>Tシャツ</li>
+                                <p>汚れたものは「一般ごみ」</p>
+                            </ul>
+                            <h4>な</h4>
+                            <ul>
+                                <li>布</li>
+                                <p></p>
+                            </ul>
+                            <h4>や</h4>
+                            <ul>
+                                <li>ゆかた</li>
+                                <p></p>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <hr>
+            
+            <div class="accordion-group-top">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_3" data-l10n-id="disposal"></a>
+                </div>
+                <div id="collapse3_3" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div id="disposal" class="help">
+                            <span data-l10n-id="disposal_shops"></span>
+                            <h4>あ</h4>
+                            <ul>
+                                <li>アスファルト</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>畔シート</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>油（食用以外）</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>石（漬物石等）</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>犬猫のふん</li>
+                                <p>できるだけトイレに流す　※フンの放置はやめましょう</p>
+                                <li>衣類乾燥機（家電リサイクル法対象）</li>
+                                <p>販売店等に引き取ってもらってください。詳細は、家庭ごみの収集日程と分け方を参照</p>
+                                <li>植木</li>
+                                <p>なるべく販売店等に引き取ってもらってください。ごみに出す場合は、直径10ｃｍ×１ｍ以下に切って束ねて出す</p>
+                                <li>エアコン（家電リサイクル対象）</li>
+                                <p>ウィンドウタイプも含みます。販売店等に引き取ってもらってください。詳細は、「家庭ごみ分け方・出し方」参照</p>
+                                <li>液晶テレビ</li>
+                                <p>販売店等に引き取ってもらってください。詳細は、「家庭ごみ分け方・出し方」参照</p>
+                                <li>枝（業者に依頼したもの）</li>
+                                <p>業者に引き取ってもらってください</p>
+                                <li>ＬＰガスのボンベ</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>エンジン</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>オイル（食用以外）</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>オイル缶</li>
+                                <p>中身が残っている場合は「自己処理」</p>
+                                <li>オイルヒーター</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>オートバイ</li>
+                                <p>販売店等にお問合せください</p>
+                            </ul>
+                            <h4>か</h4>
+                            <ul>
+                                <li>ガス風呂温水器</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>ガスボンベ（LPG）</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>ガソリン</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>瓦</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>牛乳びん</li>
+                                <p>配達分は販売店等に返却してください</p>
+                                <li>金庫（手提げ金庫程度）</li>
+                                <p>耐火金庫等一人で運べないものは自己処理</p>
+                                <li>クーラー（エアコン）（家電リサイクル法対象）</li>
+                                <p>販売店等に引き取ってもらってください。詳細は、「家庭ごみ収集日と分け方」参照</p>
+                                <li>草刈り機</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>携帯電話</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>建築廃材</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>耕耘機（耕運機）</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>コンクリート・ブロック</li>
+                                <p>販売店等にお問合せください</p>
+                            </ul>
+                            <h4>さ</h4>
+                            <ul>
+                                <li>酸素ボンベ</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>自動車及び部品</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>消火器</li>
+                                <p>「廃消火器リサイクルシステム」を利用して適正に処理してください。詳細は家庭ごみ収集日と分け方を参照</p>
+                                <li>食品トレイ</li>
+                                <p>発泡スチロール製トレイは、なるべくスーパー等の回収箱をご利用ください</p>
+                                <li>シンナー</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>洗濯機（家電リサイクル法対象）</li>
+                                <p>販売店等に引き取ってもらってください。詳細は、「家庭ごみ分け方・出し方」参照</p>
+                            </ul>
+                            <h4>た</h4>
+                            <ul>
+                                <li>タイヤ・チューブ、ホイール（自動車用）</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>田植え機</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>注射針</li>
+                                <p>回収薬局へ引取りを依頼してください。詳細は、家庭ごみ収集日と分け方を参照</p>
+                                <li>テレビ(家電リサイクル対象)</li>
+                                <p>販売店等に引き取ってもらってください。詳細は家庭ごみ収集日と分け方参照</p>
+                                <li>電気温水器</li>
+                                <p>販売店等にお問合せください</p>
+                            </ul>
+                            <h4>は</h4>
+                            <ul>
+                                <li>バイク</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>廃油（食用以外）</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>パソコン（家庭用）</li>
+                                <p>製造メーカーにお問合せください</p>
+                                <li>バッテリー</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>ピアノ</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>肥料</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>ブロック</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>プロパンガスのボンベ</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>ペンキ・塗料</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>ボイラー</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>ポンプ</li>
+                                <p>エンジン付は販売店等にお問合せください</p>
+                            </ul>
+                            <h4>ま</h4>
+                            <ul>
+                                <li>物置</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>物干し台</li>
+                                <p>販売店等にお問合せください</p>
+                            </ul>
+                            <h4>や</h4>
+                            <ul>
+                                <li>薬品（劇薬類）</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>浴槽</li>
+                                <p>販売店等にお問合せください</p>
+                                <li>レンガ</li>
+                                <p>販売店等にお問合せください</p>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            
+            <div class="accordion-group-top">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_0" data-l10n-id="about"></a>
+                </div>
+                <div id="collapse3_0" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div id="about" class="help">
+                            <div data-l10n-id="trash_problem"></div>
+                            <h2 data-l10n-id="purpose"></h2>
+                            <div data-l10n-id="purpose_explained"></div>
+                            <h2 data-l10n-id="howtouse"></h2>
+                            <h3 data-l10n-id="type_colors"></h3>
+                            <p data-l10n-id="type_order"></p>
+                            <h3 data-l10n-id="disposables"></h3>
+                            <p data-l10n-id="type_tapping"></p>
+                            <h3 data-l10n-id="settings"></h3>
+                            <p data-l10n-id="choose_location"></p>
+                            <div id="caption">
+                                <h4 data-l10n-id="about_nonoichi"></h4>
+                                <p data-l10n-id="nonoichi_5374"></p>
+                                <h4 data-l10n-id="info"></h4>
+                                <p data-l10n-id="info_explained"></p>
+                                <h4 data-l10n-id="license"></h4>
+                                <p data-l10n-id="license_explained"></p>
+                            </div>
+                            <div id="cfk">
+                                <h3 data-l10n-id="about_cfk"></h3>
+                                <p><span data-l10n-id="cfk_motto"></span><br />
+                                    <span data-l10n-id="cfk_community"></span><br />
+                                    <span data-l10n-id="cfk_it"></span><br /><br />
+                                    <span data-l10n-id="cfk_solution"></span><br />
+                                    <span data-l10n-id="cfk_service"></span><br /><br />
+                                    <span data-l10n-id="cfk_citizens"></span><br /><br />
+                                    <span data-l10n-id="cfk_site"></span><br />
+                                    <a href="http://www.codeforkanazawa.org/" style=" color: #FF0000;text-decoration: underline;">http://www.codeforkanazawa.org/</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <!-- JavaScript plugins (requires jQuery) -->
-  <script src="js/jquery-1.10.2.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/bootstrap.min.js"></script>
-  <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) 
-  <script src="js/respond.js"></script>
-  -->
-  <!-- ブックマークお勧めポップアップ追加-->
-  <script src="js/bookmark-bubble/bookmark_bubble.min.js"></script>
-  <script src="js/bookmark-bubble/example/example.min.js"></script>
-  <script src="js/setting.js"></script>
-  <script src="js/script.js"></script>
-  <!-- geolib, 地域の判定に利用。ライセンスはLGPL, https://github.com/manuelbieh/Geolib -->
-  <script type="text/javascript" src="http://www.manuel-bieh.de/publikationen/scripts/geolib/geolib.js"></script>
-  </body>
+        <!-- JavaScript plugins (requires jQuery) -->
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) 
+        <script src="js/respond.js"></script>
+        -->
+        <!-- ブックマークお勧めポップアップ追加-->
+        <script src="js/bookmark-bubble/bookmark_bubble.min.js"></script>
+        <script src="js/bookmark-bubble/example/example.min.js"></script>
+        <script src="js/setting.js"></script>
+        <script src="js/script.js"></script>
+        <!-- geolib, 地域の判定に利用。ライセンスはLGPL, https://github.com/manuelbieh/Geolib -->
+        <script type="text/javascript" src="http://www.manuel-bieh.de/publikationen/scripts/geolib/geolib.js"></script>
+    </body>
 </html>
