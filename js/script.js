@@ -254,6 +254,17 @@ var TargetRowModel = function(data) {
     this.furigana = data[3];
 }
 
+/**
+ * 古紙,古着,自己処理のゴミを管理するクラスです。(TargetRowModelと同じ構造)
+ * addendum.csvのモデルです。
+ */
+var AddendumModel = function(data) {
+    this.type = data[0];
+    this.name = data[1];
+    this.notice = data[2];
+    this.furigana = data[3];
+}
+
 /* var windowHeight; */
 
 $(function() {
@@ -262,6 +273,7 @@ $(function() {
     var center_data = new Array();
     var descriptions = new Array();
     var areaModels = new Array();
+    var addendums = new Array();
     var polygons = {};
     var place_name = new String();
     /*   var descriptions = new Array(); */
@@ -446,6 +458,55 @@ $(function() {
 
         });
 
+    }
+
+    function createAddendums(after_action, language) {
+        var language = (language === undefined) ? "ja" : language;
+        var filepath = "data/" + language + "/addendum.csv";
+        csvToArray(filepath, function(data) {
+            data.shift();
+            for (var i in data) {
+                addendums.push(new AddendumModel(data[i]));
+            }
+            after_action();
+        });
+    }
+
+    function updateAddendums() {
+        if (addendums.length === 0) {
+            return;
+        }
+        var accordionElements = $("#accordion3 .help");
+        var accordionSize = accordionElements.size();
+        if (accordionSize === 0) {
+            return;
+        }
+        var accordionIndex = 0;
+        var tmpType = addendums[0].type;
+        var tmpFurigana = addendums[0].furigana;
+        var accordionHTML = "<h4>" + tmpFurigana + "</h4><ul>";
+
+        for (var i in addendums) {
+            if (accordionIndex > accordionSize) {
+                break;
+            }
+            var addendum = addendums[i];
+            if (addendum.type !== tmpType) {
+                tmpType = addendum.type;
+                tmpFurigana = addendum.furigana;
+                accordionElements.eq(accordionIndex).append(accordionHTML + "</ul>");
+                accordionIndex += 1;
+                accordionHTML = "<h4>" + tmpFurigana + "</h4><ul>";
+                if (accordionIndex > accordionSize) {
+                    break;
+                }
+            } else if (addendum.furigana !== tmpFurigana) {
+                tmpFurigana = addendum.furigana;
+                accordionHTML += "</ul><h4>" + tmpFurigana + "</h4><ul>";
+            }
+            accordionHTML += "<li>" + addendum.name + "<li><p>" + addendum.notice + "</p>";
+        }
+        accordionElements.eq(accordionIndex).append(accordionHTML + "</ul>");
     }
 
     function updateData(row_index) {
@@ -660,4 +721,5 @@ $(function() {
     }
     updateAreaList();
     takePolygon();
+    createAddendums(updateAddendums, "ja");
 });
