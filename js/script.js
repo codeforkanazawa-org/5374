@@ -531,8 +531,8 @@ $(function() {
               target_tag += "<ul>";
             }
 
-            target_tag += '<li style="list-style:none;">' + target.name + "</li>";
-            target_tag += '<p class="note">' + target.notice + "</p>";
+            target_tag += '<li style="list-style:none;"><div>' + target.name + "</div>";
+            target_tag += '<div class="note">' + target.notice + "</div></li>";
           }
 
           target_tag += "</ul>";
