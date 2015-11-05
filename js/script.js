@@ -504,7 +504,7 @@ $(function() {
                 tmpFurigana = addendum.furigana;
                 accordionHTML += "</ul><h4>" + tmpFurigana + "</h4><ul>";
             }
-            accordionHTML += "<li>" + addendum.name + "<li><p>" + addendum.notice + "</p>";
+            accordionHTML += "<li><div>" + addendum.name + '</div><div class="note">' + addendum.notice + "</div></li>";
         }
         accordionElements.eq(accordionIndex).append(accordionHTML + "</ul>");
     }
@@ -555,8 +555,8 @@ $(function() {
                         target_tag += "<ul>";
                     }
 
-                    target_tag += '<li style="list-style:none;">' + target.name + "</li>";
-                    target_tag += '<p class="note">' + target.notice + "</p>";
+                    target_tag += '<li style="list-style:none;"><div>' + target.name + "</div>";
+                    target_tag += '<div class="note">' + target.notice + "</div></li>";
                 }
 
                 target_tag += "</ul>";
