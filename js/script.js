@@ -1,5 +1,7 @@
 "use strict";
 
+var ctx = null;  //多言語化対応
+
 /**
   エリア(ごみ処理の地域）を管理するクラスです。
  */
@@ -11,11 +13,11 @@ var AreaModel = function() {
     /**
      各ゴミのカテゴリに対して、最も直近の日付を計算します。
      */
-    this.calcMostRect = function() {
+    this.calcMostRecent = function() {
         for (var i = 0; i < this.trash.length; i++) {
-            this.trash[i].calcMostRect(this);
+            this.trash[i].calcMostRecent(this);
         }
-    }
+    };
     /**
      休止期間（主に年末年始）かどうかを判定します。
      */
@@ -27,18 +29,18 @@ var AreaModel = function() {
             return true;
         }
         return false;
-    }
+    };
     /**
      ゴミ処理センターを登録します。
      名前が一致するかどうかで判定を行っております。
      */
     this.setCenter = function(center_data) {
         for (var i in center_data) {
-            if (this.centerName == center_data[i].name) {
+            if (this.centerName === center_data[i].name) {
                 this.center = center_data[i];
             }
         }
-    }
+    };
     /**
      ゴミのカテゴリのソートを行います。
      */
@@ -50,13 +52,13 @@ var AreaModel = function() {
             if (at > bt) return 1;
             return 0;
         });
-    }
-}
+    };
+};
 
 /**
   各ゴミのカテゴリを管理するクラスです。
  */
-var TrashModel = function(_lable, _cell) {
+var TrashModel = function(_lable, _cell, l10n) {
     this.dayLabel;
     this.mostRecent;
     this.dayList;
@@ -75,18 +77,48 @@ var TrashModel = function(_lable, _cell) {
     this.label = _lable;
     this.description;
     this.regularFlg = 1;      // 定期回収フラグ（デフォルトはオン:1）
-
+    
     var result_text = "";
-    var today = new Date();
+
+    // 多言語化対応
+    var day_enum = [ l10n.entities.sun.value,
+                     l10n.entities.mon.value,
+                     l10n.entities.tue.value,
+                     l10n.entities.wed.value,
+                     l10n.entities.thu.value,
+                     l10n.entities.fri.value,
+                     l10n.entities.sat.value
+                   ];
+
+    var week_name = {};
+    week_name[l10n.entities.sun.value] = l10n.entities.sunday.value;
+    week_name[l10n.entities.mon.value] = l10n.entities.monday.value;
+    week_name[l10n.entities.tue.value] = l10n.entities.tuesday.value;
+    week_name[l10n.entities.wed.value] = l10n.entities.wednesday.value;
+    week_name[l10n.entities.thu.value] = l10n.entities.thursday.value;
+    week_name[l10n.entities.fri.value] = l10n.entities.friday.value;
+    week_name[l10n.entities.sat.value] = l10n.entities.saturday.value;
+
+    var week_enum = {
+        1: l10n.entities.first.value,
+        2: l10n.entities.second.value,
+        3: l10n.entities.third.value,
+        4: l10n.entities.fourth.value,
+        5: l10n.entities.fifth.value
+    };
+    var parts = [];
 
     for (var j in this.dayCell) {
-        if (this.dayCell[j].length == 1) {
-            result_text += "毎週" + this.dayCell[j] + "曜日 ";
-        } else if (this.dayCell[j].length == 2) {
-            result_text += "第" + this.dayCell[j].charAt(1) + this.dayCell[j].charAt(0) + "曜日 ";
+        parts = this.dayCell[j].match(/([^0-9]+)([0-9])/);
+        if ($.inArray(this.dayCell[j], day_enum) > 0) {
+            result_text += l10n.entities.weekly.value + week_name[this.dayCell[j]] + ", ";
+        } else if (parts && parts.length === 3 && parts[1] !== "*") {
+            result_text += week_enum[parts[2]] + week_name[parts[1]] + ", ";
+        } else if (parts && parts.length === 3 && parts[1] === "*") {
+            // 
         } else {
             // 不定期回収の場合（YYYYMMDD指定）
-            result_text = "不定期 ";
+            result_text = l10n.entities.unscheduled.value + " ";
             this.regularFlg = 0;  // 定期回収フラグオフ
         }
     }
@@ -95,28 +127,25 @@ var TrashModel = function(_lable, _cell) {
     this.getDateLabel = function() {
         var result_text = this.mostRecent.getFullYear() + "/" + (1 + this.mostRecent.getMonth()) + "/" + this.mostRecent.getDate();
         return this.dayLabel + " " + result_text;
-    }
-
-    var day_enum = ["日", "月", "火", "水", "木", "金", "土"];
+    };
 
     function getDayIndex(str) {
         for (var i = 0; i < day_enum.length; i++) {
-            if (day_enum[i] == str) {
+            if (day_enum[i] === str) {
                 return i;
             }
         };
         return -1;
-    }
+    };
     /**
       このゴミの年間のゴミの日を計算します。
       センターが休止期間がある場合は、その期間１週間ずらすという実装を行っております。
      */
-    this.calcMostRect = function(areaObj) {
+    this.calcMostRecent = function(areaObj) {
         var day_mix = this.dayCell;
-        var result_text = "";
         var day_list = new Array();
         // 定期回収の場合
-        if (this.regularFlg == 1) {
+        if (this.regularFlg === 1) {
 
             var today = new Date();
             // 12月 +3月　を表現
@@ -127,7 +156,7 @@ var TrashModel = function(_lable, _cell) {
                 var month = (curMonth % 12) + 1;
 
                 // 収集が無い月はスキップ
-                if (this.mflag[month - 1] == 0) {
+                if (this.mflag[month - 1] === 0) {
                     continue;
                 }
                 for (var j in day_mix) {
@@ -143,7 +172,7 @@ var TrashModel = function(_lable, _cell) {
                         //
                         //4月1日を基準にして曜日の差分で時間を戻し、最大５週までの増加させて毎週を表現
                         d.setTime(date.getTime() + 1000 * 60 * 60 * 24 *
-                                ((7 + getDayIndex(day_mix[j].charAt(0)) - date.getDay()) % 7) + week * 7 * 24 * 60 * 60 * 1000
+                                ((7 + getDayIndex(day_mix[j].replace(/[0-9]/, '')) - date.getDay()) % 7) + week * 7 * 24 * 60 * 60 * 1000
                                 );
                         //年末年始のずらしの対応
                         //休止期間なら、今後の日程を１週間ずらす
@@ -158,12 +187,13 @@ var TrashModel = function(_lable, _cell) {
                             d.setTime(d.getTime() + 7 * 24 * 60 * 60 * 1000);
                         }
                         //同じ月の時のみ処理したい
-                        if (d.getMonth() != (month - 1) % 12) {
+                        if (d.getMonth() !== (month - 1) % 12) {
                             continue;
                         }
                         //特定の週のみ処理する
-                        if (day_mix[j].length > 1) {
-                            if (week != day_mix[j].charAt(1) - 1) {
+                        var last_str = day_mix[j].substr(day_mix[j].length - 1, 1);
+                        if (!isNaN(last_str - 0)) {
+                            if (last_str - 1 !== week) {
                                 continue;
                             }
                         }
@@ -190,19 +220,21 @@ var TrashModel = function(_lable, _cell) {
             if (at < bt) return -1;
             if (at > bt) return 1;
             return 0;
-        })
+        });
+        
         //直近の日付を更新
         var now = new Date();
 
         for (var i in day_list) {
-            if (this.mostRecent == null && now.getTime() < day_list[i].getTime() + 24 * 60 * 60 * 1000) {
+            if (typeof this.mostRecent === 'undefined' 
+                    && now.getTime() < day_list[i].getTime() + 24 * 60 * 60 * 1000) {
                 this.mostRecent = day_list[i];
                 break;
             }
-        };
+        }
 
         this.dayList = day_list;
-    }
+    };
     /**
    計算したゴミの日一覧をリスト形式として取得します。
      */
@@ -214,10 +246,11 @@ var TrashModel = function(_lable, _cell) {
         };
         day_text += "</ul>";
         return day_text;
-    }
-}
+    };
+};
+
 /**
-センターのデータを管理します。
+ * センターのデータを管理します。
  */
 var CenterModel = function(row) {
     function getDay(center, index) {
@@ -228,7 +261,8 @@ var CenterModel = function(row) {
     this.name = row[0];
     this.startDate = getDay(row, 1);
     this.endDate = getDay(row, 2);
-}
+};
+
 /**
  * ゴミのカテゴリを管理するクラスです。
  * description.csvのモデルです。
@@ -242,7 +276,8 @@ var DescriptionModel = function(data) {
     this.styles = data[3];
     this.background = data[4];
 
-}
+};
+
 /**
  * ゴミのカテゴリの中のゴミの具体的なリストを管理するクラスです。
  * target.csvのモデルです。
@@ -252,7 +287,7 @@ var TargetRowModel = function(data) {
     this.name = data[1];
     this.notice = data[2];
     this.furigana = data[3];
-}
+};
 
 /**
  * 古紙,古着,自己処理のゴミを管理するクラスです。(TargetRowModelと同じ構造)
@@ -263,21 +298,76 @@ var AddendumModel = function(data) {
     this.name = data[1];
     this.notice = data[2];
     this.furigana = data[3];
-}
-
-/* var windowHeight; */
+};
 
 $(function() {
-    /*   windowHeight = $(window).height(); */
-
     var center_data = new Array();
     var descriptions = new Array();
     var areaModels = new Array();
     var addendums = new Array();
     var polygons = {};
     var place_name = new String();
-    /*   var descriptions = new Array(); */
+    
+    var geo_error;
 
+    // 多言語化対応
+    // 'today','tomorrow','in_two_days','days_later'の翻訳に使う
+    var days_labels = {};
+    
+    /**
+     * 多言語化対応
+     * ブラウザの言語設定と同じロケールが対応されているならロードする。
+     * ロードできたらスクリプトの使う文字列を翻訳して、エリアリストや
+     * 情報位置イベントを設置する。
+     */
+    function setupL20n() {
+        // ブラウザの言語設定
+        var lang = navigator.language.toLowerCase();
+        $.getJSON('./manifest.json', function(settings) {
+            ctx = L20n.getContext();
+            ctx.registerLocales(settings.default_locale, settings.locales);
+            ctx.linkResource(function(locale) {
+                return './locales/' + locale + '/main.l20n';
+            });
+
+            ctx.requestLocales(lang);
+            
+            ctx.ready(function() {
+                // 実際の初期処理
+                var params = ['select_area',
+                              'today','tomorrow','in_two_days','days_later',
+                              'sun','mon','tue','wed','thu','fri','sat',
+                              'sunday','monday','tuesday','wednesday','thursday','friday','saturday',
+                              'weekly','first','second','third','fourth','fifth',
+                              'unscheduled', 
+                              'geolocation_error'
+                             ];
+                ctx.localize(params, function(l10n) {
+                    updateAreaList(l10n);
+                    takePolygon();
+                    
+                    //必要な文字列の翻訳をゲットしたらエリア変更イベントを登録する
+                    days_labels['today'] = l10n.entities.today.value;
+                    days_labels['tomorrow'] = l10n.entities.tomorrow.value;
+                    days_labels['in_two_days'] = l10n.entities.in_two_days.value;
+                    days_labels['days_later'] = l10n.entities.days_later.value;
+                    $("#select_area").change(function(data) {
+                        var row_index = $(data.target).val();
+                        onChangeSelect(row_index);
+                    });
+
+                    // エラーメッセージの準備できてから位置情報試しましょう
+                    geo_error = l10n.entities.geolocation_error.value;
+                    $('#select_by_location_data').on('click', function() {
+                        if(!navigator.geolocation) {
+                            alert(geo_error);
+                        }
+                        takeUserLocation();
+                    });
+                });
+            });
+        });
+    }
 
     function getSelectedAreaName() {
         return localStorage.getItem("selected_area_name");
@@ -298,7 +388,7 @@ $(function() {
             ret = [];
             for (var i in line) {
                 //空行はスルーする。
-                if (line[i].length == 0) continue;
+                if (line[i].length === 0) continue;
 
                 var row = line[i].split(",");
                 ret.push(row);
@@ -307,8 +397,13 @@ $(function() {
         });
     }
 
-    function updateAreaList() {
-        csvToArray("data/ja/area_days.csv", function(tmp) {
+    function updateAreaList(l10n) {
+        // 多言語化対応
+        var lang = ctx.supportedLocales[0];
+
+        createAddendums(updateAddendums, lang);
+        
+        csvToArray("data/" + lang + "/area_days.csv", function(tmp) {
             var area_days_label = tmp.shift();
             for (var i in tmp) {
                 var row = tmp[i];
@@ -319,14 +414,15 @@ $(function() {
                 areaModels.push(area);
                 //２列目以降の処理
                 for (var r = 2; r < 2 + MaxDescription; r++) {
-                    if (area_days_label[r]) {
-                        var trash = new TrashModel(area_days_label[r], row[r]);
+                    if (area_days_label[r] && row[r]) {
+                        var trash = new TrashModel(area_days_label[r], row[r], l10n);
                         area.trash.push(trash);
                     }
                 }
             }
 
-            csvToArray("data/ja/center.csv", function(tmp) {
+            // 多言語化対応
+            csvToArray("data/" + lang + "/center.csv", function(tmp) {
                 //ゴミ処理センターのデータを解析します。
                 //表示上は現れませんが、
                 //金沢などの各処理センターの休止期間分は一週間ずらすという法則性のため
@@ -348,16 +444,16 @@ $(function() {
                 var selected_name = getSelectedAreaName();
                 var area_select_form = $("#select_area");
                 var select_html = "";
-                select_html += '<option value="-1">地域を選択してください</option>';
+                select_html += '<option value="-1">' + l10n.entities.select_area.value + '</option>';
                 for (var row_index in areaModels) {
                     var area_name = areaModels[row_index].label;
-                    var selected = (selected_name == area_name) ? 'selected="selected"' : "";
+                    var selected = (selected_name === area_name) ? 'selected="selected"' : "";
 
                     select_html += '<option value="' + row_index + '" ' + selected + " >" + area_name + "</option>";
                 }
 
                 //デバッグ用
-                if (typeof dump == "function") {
+                if (typeof dump === "function") {
                     dump(areaModels);
                 }
                 //HTMLへの適応
@@ -367,12 +463,9 @@ $(function() {
         });
     }
 
-    function selectAreaByLocationData() {
-    }
-
     function takePolygon() {
         $.ajax({
-            url: 'data/ja/nonoichi_city.kml',
+            url: "data/" + ctx.supportedLocales[0] + "/nonoichi_city.kml",
             type: 'get',
             dataType: 'xml',
             success: function(xml) {
@@ -408,16 +501,14 @@ $(function() {
     }
 
     function takeUserLocation() {
-        navigator.geolocation.getCurrentPosition(
-                function(position) {
-                    place_name = whereIsPointInsidePolygon(position.coords.latitude, position.coords.longitude);
-
-            var not_found = (place_name === '');
-            if(not_found) {
-                alert('お使いの場所を特定できません。リストから地域を選んで設定を行ってください。');
+        navigator.geolocation.getCurrentPosition(function(position) {
+            place_name = whereIsPointInsidePolygon(position.coords.latitude, position.coords.longitude);
+            
+            if(!place_name) {
+                alert(geo_error);
                 return;
             }
-
+            
             var area_select_form = $("#select_area");
             area_select_form.find('option').each(function(index, elem) {
                 if($(elem).text() === place_name) {
@@ -427,25 +518,27 @@ $(function() {
             });
         },
         function(error) {
-            alert('お使いの端末で位置情報を取得できませんでした。\nリストからお住まいの地域を選択してください。');
+            alert(geo_error);
         });
     }
 
     function createMenuList(after_action) {
-        csvToArray("data/ja/description.csv", function(data) {
+        // 多言語化
+        var lang = ctx.supportedLocales[0];
+        csvToArray("data/" + lang + "/description.csv", function(data) {
             data.shift();
             for (var i in data) {
                 descriptions.push(new DescriptionModel(data[i]));
             }
 
-            csvToArray("data/ja/target.csv", function(data) {
+            csvToArray("data/" + lang + "/target.csv", function(data) {
 
                 data.shift();
                 for (var i in data) {
                     var row = new TargetRowModel(data[i]);
                     for (var j = 0; j < descriptions.length; j++) {
                         //一致してるものに追加する。
-                        if (descriptions[j].label == row.type) {
+                        if (descriptions[j].label === row.type) {
                             descriptions[j].targets.push(row);
                             break;
                         }
@@ -454,14 +547,11 @@ $(function() {
                 after_action();
                 $("#accordion2").show();
 
-            });
-
+            });                
         });
-
     }
 
     function createAddendums(after_action, language) {
-        var language = (language === undefined) ? "ja" : language;
         var filepath = "data/" + language + "/addendum.csv";
         csvToArray(filepath, function(data) {
             data.shift();
@@ -518,7 +608,7 @@ $(function() {
         var areaModel = areaModels[row_index];
         var today = new Date();
         //直近の一番近い日付を計算します。
-        areaModel.calcMostRect();
+        areaModel.calcMostRecent();
         //トラッシュの近い順にソートします。
         areaModel.sortTrash();
         var accordion_height = $(window).height() / descriptions.length;
@@ -534,7 +624,7 @@ $(function() {
 
             for (var d_no in descriptions) {
                 var description = descriptions[d_no];
-                if (description.label != trash.label) {
+                if (description.label !== trash.label) {
                     continue;
                 }
 
@@ -544,8 +634,8 @@ $(function() {
                 var targets = description.targets;
                 for (var j in targets) {
                     var target = targets[j];
-                    if (furigana != target.furigana) {
-                        if (furigana != "") {
+                    if (furigana !== target.furigana) {
+                        if (furigana !== "") {
                             target_tag += "</ul>";
                         }
 
@@ -563,17 +653,17 @@ $(function() {
 
                 var dateLabel = trash.getDateLabel();
                 //あと何日かを計算する処理です。
-                var leftDay = Math.ceil((trash.mostRecent.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
+                var leftDay = Math.ceil((trash.mostRecent.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 
                 var leftDayText = "";
-                if (leftDay == 0) {
-                    leftDayText = "今日";
-                } else if (leftDay == 1) {
-                    leftDayText = "明日";
-                } else if (leftDay == 2) {
-                    leftDayText = "明後日"
+                if (leftDay === 0) {
+                    leftDayText = days_labels['today'];
+                } else if (leftDay === 1) {
+                    leftDayText = days_labels['tomorrow'];
+                } else if (leftDay === 2) {
+                    leftDayText = days_labels['in_two_days'];
                 } else {
-                    leftDayText = leftDay + "日後";
+                    leftDayText = leftDay + days_labels['days_later'];
                 }
 
                 //styleHTML += '#accordion-group' + d_no + '{background-color:  ' + description.background + ';} ';
@@ -625,14 +715,14 @@ $(function() {
         });
         //アコーディオンの非表示部分をクリックしたら  
         $(".accordion-body").on("hidden.bs.collapse", function() {
-            if ($(".in").length == 0) {
+            if ($(".in").length === 0) {
                 $("html, body").scrollTop(0);
             }
         });
     }
 
-    function onChangeSelect(row_index) {　
-        if (row_index == -1) {
+    function onChangeSelect(row_index) {
+        if (row_index === '-1') {
             $("#accordion").html("");
             setSelectedAreaName("");
             return;
@@ -649,56 +739,16 @@ $(function() {
         }
     }
 
-
-
     function getAreaIndex(area_name) {
         for (var i in areaModels) {
-            if (areaModels[i].label == area_name) {
+            if (areaModels[i].label === area_name) {
                 return i;
             }
         }
         return -1;
     }
-    //リストが選択されたら
-    $("#select_area").change(function(data) {
-        var row_index = $(data.target).val();
-        onChangeSelect(row_index);
-    });
-
-    $('#select_by_location_data').on('click', function() {
-        if(!navigator.geolocation) {
-            alert('お使いの端末で位置情報を利用できません。\nリストからお住まいの地域を選択してください。');
-        }
-
-        takeUserLocation();
-    });
-
-    //-----------------------------------
-    //位置情報をもとに地域を自動的に設定する処理です。
-    //これから下は現在、利用されておりません。 
-    //将来的に使うかもしれないので残してあります。
-    $("#gps_area").click(function() {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            $.getJSON("area_candidate.php", {
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude
-            }, function(data) {
-                if (data.result == true) {
-                    var area_name = data.candidate;
-                    var index = getAreaIndex(area_name);
-                    $("#select_area").val(index).change();
-                    alert(area_name + "が設定されました");
-                } else {
-                    alert(data.reason);
-                }
-            })
-
-        }, function(error) {
-            alert(getGpsErrorMessage(error));
-        });
-    });
-
-    if (getSelectedAreaName() == null) {
+        
+    if (getSelectedAreaName() === null) {
         $("#accordion2").show();
         $("#collapseZero").addClass("in");
     }
@@ -706,20 +756,6 @@ $(function() {
         $("#gps_area").css("display", "none");
     }
 
-    function getGpsErrorMessage(error) {
-        switch (error.code) {
-            case error.PERMISSION_DENIED:
-                return "User denied the request for Geolocation."
-            case error.POSITION_UNAVAILABLE:
-                return "Location information is unavailable."
-            case error.TIMEOUT:
-                return "The request to get user location timed out."
-            case error.UNKNOWN_ERROR:
-            default:
-                return "An unknown error occurred."
-        }
-    }
-    updateAreaList();
-    takePolygon();
-    createAddendums(updateAddendums, "ja");
+    setupL20n();
+    
 });
