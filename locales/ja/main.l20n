@@ -63,3 +63,7 @@
 <third  "第３">
 <fourth "第４">
 <fifth  "第５">
+
+<unscheduled "不定期">
+
+<geolocation_error "お使いの端末で位置情報を利用できません。リストからお住まいの地域を選択してください。">
