@@ -19,7 +19,7 @@ var AreaModel = function() {
         }
     };
     /**
-     休止期間（主に年末年始）かどうかを判定します。
+     * 休止期間（主に年末年始）かどうかを判定します。
      */
     this.isBlankDay = function(currentDate) {
         var period = [this.center.startDate, this.center.endDate];
@@ -304,6 +304,7 @@ $(function() {
     var center_data = new Array();
     var descriptions = new Array();
     var areaModels = new Array();
+    var towns = new Array();
     var addendums = new Array();
     var polygons = {};
     var place_name = new String();
@@ -345,6 +346,7 @@ $(function() {
                 ctx.localize(params, function(l10n) {
                     updateAreaList(l10n);
                     takePolygon();
+                    loadTowns();
                     
                     //必要な文字列の翻訳をゲットしたらエリア変更イベントを登録する
                     days_labels['today'] = l10n.entities.today.value;
@@ -369,6 +371,16 @@ $(function() {
         });
     }
 
+    function loadTowns() {
+        // area_days.csvに書いていない名前である可能性があるので
+        // town_area.csvで町の地域を調べる
+        var lang = ctx.supportedLocales[0];
+        csvToArray("data/" + lang + "/town_area.csv", function(data) {
+            data.shift();
+            towns = data;
+        });
+    }
+    
     function getSelectedAreaName() {
         return localStorage.getItem("selected_area_name");
     }
@@ -402,7 +414,7 @@ $(function() {
         var lang = ctx.supportedLocales[0];
 
         createAddendums(updateAddendums, lang);
-        
+
         csvToArray("data/" + lang + "/area_days.csv", function(tmp) {
             var area_days_label = tmp.shift();
             for (var i in tmp) {
@@ -493,6 +505,13 @@ $(function() {
             var isInside = geolib.isPointInside(
                     {latitude: latitude, longitude: longitude}, polygons[name]);
             if(isInside) {
+                for (var i = 0; i < towns.length; i++ ) {
+                    var match = towns[i];
+                    if (match[0] === name) {
+                        name = match[1];
+                        break;
+                    }
+                }
                 return name;
             }
         }
@@ -509,6 +528,8 @@ $(function() {
                 return;
             }
             
+            // TODO: Make a better way of changing the user's area
+            //       Handle the case that a name is not in area_days.csv
             var area_select_form = $("#select_area");
             area_select_form.find('option').each(function(index, elem) {
                 if($(elem).text() === place_name) {
@@ -525,6 +546,10 @@ $(function() {
     function createMenuList(after_action) {
         // 多言語化
         var lang = ctx.supportedLocales[0];
+        
+        // TODO: csvからのデータ読込みを初期化の時しか呼出さないようにする
+        //       createMenuListは地域が変更するごとに呼出されるので、
+        //       ここにcsvToArrayを使わないほうが良い。
         csvToArray("data/" + lang + "/description.csv", function(data) {
             data.shift();
             for (var i in data) {
