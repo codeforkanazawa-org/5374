@@ -116,6 +116,11 @@ a:hover {
 	margin-left: 5px;
 }
 
+/* fuji coustom */
+#accordion3 a {
+	color:#428bca;
+}
+
 /*!
  * Maybe not in use. Remove these later.
  */
