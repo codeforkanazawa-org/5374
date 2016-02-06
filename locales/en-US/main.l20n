@@ -1,0 +1,69 @@
+<title "5374 Nonoichi">
+
+<locationbtn "Select area from current location">
+
+<papers "Paper waste">
+<papers_disposal "Please use the Children's Association collection service or an Eco Station.">
+<clothes "Old clothing, Milk cartons">
+<clothes_disposal "For old clothing, bring it to the Chuo, Tomioku, Gou, Oshino Kominkan, or Josei Center during hours of operation or to the Eco Station. For milk cartons, bring them to the Eco Station or a collection place at your local super market.">
+<disposal "Self-disposal">
+<disposal_shops "For the items labeled self-disposal, please inquire at a retail store.">
+
+<about "About 5374.jp">
+<trash_problem "Garbage disposal is a serious problem in every region. We at Code for Kanazawa focused our efforts on the proper way to take out garbage. The purpose of this app and how to use it are very simple.">
+<purpose "Purpose">
+<purpose_explained "This app is designed to help you find out when and which kinds of garbage are collected. For example, when you move to Nonoichi City.">
+<howtouse "How to use this app">
+<type_colors "Different color labels show the categories of garbage.">
+<type_order "This app shows you the soonest day for garbage collection and the garbage category for that day.">
+<disposables "Disposable Garbage">
+<type_tapping "You can see the list of disposable garbage when you tap the category.">
+<settings "Settings">
+<choose_location "This app updates the garbage collection date automatically after you select your area.">
+<about_nonoichi "About the Nonoichi Version">
+<nonoichi_5374 """The Nonoichi city version of 5374 was programmed by "Spending Nonoichi" which is an active civic tech community in Nonoichi City.""">
+<info "About the Garbage Information Provided Here">
+<info_explained """"Spending Nonoichi" analyzed the data published by Nonoichi city and used it for this app.""">
+<license "License">
+<license_explained """Code for Kanazawa holds the copyrights for this app. However, the source code for this app is open along with the MPL. You can use, change and redistribute the source code along with the MPL.""">
+<about_cfk "About Code for Kanazawa">
+<cfk_motto "Make the world happy with coding!">
+<cfk_community "There are various kinds of problems in every region and there are many communities (groups) to solve them.">
+<cfk_it "There are many problems which can be solved by IT or design, but not every community has these skills (technology).">
+<cfk_solution "Members of Code for Kanazawa (CfK) develop hardware and software (systems and methods) to solve problems after gathering information on the problems citizens have and analyzing them.">
+<cfk_service "We make designs, write code and perfect services to solve problems. And, we maintain an ability to continue providing these services.">
+<cfk_citizens "CfK is an organization for citizens. We try our best to remain neutral and to make decisions based on the public good while not being influenced by government agencies or private businesses.">
+<cfk_site "Official Website">
+
+<!-- For JavaScript -->
+<select_area "Please select your area">
+<today "Today">
+<tomorrow "Tomorrow">
+<in_two_days "In 2 days">
+<days_later " days from now">
+
+<sun "Sun">
+<mon "Mon">
+<tue "Tue">
+<wed "Wed">
+<thu "Thu">
+<fri "Fri">
+<sat "Sat">
+<sunday "{{sun}}day">
+<monday "{{mon}}day">
+<tuesday "{{tue}}sday">
+<wednesday "{{wed}}nesday">
+<thursday "{{thu}}rsday">
+<friday "{{fri}}day">
+<saturday "{{sat}}urday">
+
+<weekly "Every ">
+<first  "1st ">
+<second "2nd ">
+<third  "3rd ">
+<fourth "4th ">
+<fifth  "5th ">
+
+<unscheduled "unscheduled">
+
+<geolocation_error "Your location information cannot be determined with your current device. Please select your area from the list.">
