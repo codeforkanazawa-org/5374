@@ -14,7 +14,6 @@ General Garbage,Backpack,,B
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Backpack,,B
 General Garbage,Bag,Metal items are Non-burnable Garbage.,B
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Bags (metal ),It is Oversized Burnable Garbage unless it is made of metal.,B
-Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Bags (metal),,B
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Bags (metal),Metal items are Non-burnable Garbage.,B
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Bags (non-metal),Metal items are Non-burnable Garbage.,B
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Baked goods containers (metal),If it is dirty or rusty&#44; it is Non-burnable.,B
@@ -45,7 +44,6 @@ Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Blinds,Bind blinds w
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Book shelves,Metal items are Non-burnable Garbage.,B
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Book shelves (metal),It is Oversized Burnable Garbage unless it is made of metal.,B
 General Garbage,Boots,,B
-General Garbage,Boots,,B
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Bottle lids,Metal items are Non-burnable Garbage.,B
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Bottle lids,Metal items are Non-burnable Garbage.,B
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Bottle openers,,B
@@ -72,7 +70,6 @@ General Garbage,Canteen,Metal items are Non-burnable Garbage.,C
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Canteen,It is General Garbage or Oversized Burnable Garbage unless it is made of metal.,C
 General Garbage,Carbon paper,,C
 General Garbage,Cards (credit&#44; telephone),,C
-Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Carpets,Roll up and bind with string.,C
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Carpets,Roll up and bind with string.,C
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Cassette deck,,C
 General Garbage,Cassette tapes,,C
@@ -109,14 +106,12 @@ Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Conditioner containe
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Container for drink (can&#44; glass&#44; plastic),Rinse the inside out with water and remove the lid and sort them by type. ,C
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Container for drink (PET bottle&#44; plastic),Rinse the inside out with water and remove the lid and sort them by type.,C
 General Garbage,Cooking oil,Solidify the oil or absorb it with paper.,C
-General Garbage,Cooking oil,Solidify the oil or absorb it with paper.,C
-General Garbage,Cooking oil,Solidify the oil or soak it up with paper.,C
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Cord Reel,,C
 General Garbage,Cork Stoppers,,C
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Corrugated sheet,Only for small quantities. For large quantities inquire at retail stores.,C
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Corrugated sheet,Only for small quantities. For large quantities inquire at retail stores.,C
-Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Cosmetics containers,"Things made of glass or metal are burnable (don't mix them with glass bottles). Things made of plastic are ""Plastic Containers"".",C
-General Garbage,Cosmetics containers,"Things made of glass or metal are burnable (don't mix them with glass bottles). Things made of plastic are ""Plastic Containers"".",C
+Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Cosmetics containers,Things made of glass or metal are burnable (don't mix them with glass bottles). Things made of plastic are "Plastic Containers".,C
+General Garbage,Cosmetics containers,Things made of glass or metal are burnable (don't mix them with glass bottles). Things made of plastic are "Plastic Containers".,C
 General Garbage,Crayons,,C
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Crockery (rice bowls),,C
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Crown cap,Put them into bags.,C
@@ -185,7 +180,6 @@ Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Electric appliance (
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Electric blanket,Fold and bind with string when throwing away.,E
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Electric cords (extension cord),Bind and dispose.,E
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Electric fans,,E
-Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Electric heated carpet,Roll up and bind with string.,E
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Electric heated carpets,Roll up and bind with string.,E
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Electric kettles,,E
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Electric kotatsu,Part of electric heater is Non-burnable.,E
@@ -204,7 +198,6 @@ Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Felt tip pen
 General Garbage,Felt tipped pen,,F
 General Garbage,File classes (stationery),,F
 General Garbage,Film negatives,,F
-General Garbage,Films (negatives),,F
 General Garbage,Fireworks,Immerse it in water&#44; make sure to extinguish the fire.,F
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Firing tray,Please cooperation in bringing items to the collection box at supermarkets etc.,F
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Firing trays,Please cooperation in bringing items to the collection box at supermarkets etc.,F
@@ -216,12 +209,12 @@ Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Flashlight bulbs,Sep
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Flat glass,When you purchase a new one&#44; have the retail store dispose of it for you.,F
 General Garbage,Floor cloths,Put with General Garbage after drying.,F
 General Garbage,Floppy disks,,F
-Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Flower pots (metal or ceramic),,F
-Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Flowerpot (ceramic),Remove all dirt. Things made of plastic are Oversized Burnable Garbage.,F
-Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Flowerpot (plastic),Remove all dirt. Ceramic is Oversized Burnable Garbage.,F
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Flowerpots,,F
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Flowerpots,,F
+Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Flowerpots (ceramic),Remove all dirt. Things made of plastic are Oversized Burnable Garbage.,F
+Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Flowerpots (metal or ceramic),,F
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Flowerpots (non-metal and non-ceramic),Things made of metal or ceramic are Non-burnable.,F
+Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Flowerpots (plastic),Remove all dirt. Ceramic is Oversized Burnable Garbage.,F
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Fluorescent light bulbs,Separate from other Non-burnable Garbage when throwing out.,F
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Folding chair,,F
 General Garbage,Folding fans,Metal items are Non-burnable Garbage.,F
@@ -254,7 +247,6 @@ Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Glass doors,When you
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Glasses (metal),,G
 General Garbage,Glasses (plastic lens and frames),,G
 General Garbage,Gloves,,G
-General Garbage,Gloves,,G
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Glow lamps starter lamp bulbs,Separate from other Non-burnable Garbage when throwing out.,G
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Go stones,,G
 General Garbage,Goggles,,G
@@ -265,8 +257,8 @@ Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Golf bag,,G
 General Garbage,Golf balls,,G
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Golf club,,G
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Goza mat,Fold and bind with string when throwing away.,G
-Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Guitars (non-metal),Metal items are Non-burnable Garbage.,G
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Guitars (metal),It is Oversized Burnable Garbage unless it is made of metal.,G
+Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Guitars (non-metal),Metal items are Non-burnable Garbage.,G
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Hair dryers,,H
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Hammers,,H
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Hangers,If it has a wire core&#44; place with Non-burnable Garbage.,H
@@ -276,9 +268,9 @@ General Garbage,Hats,,H
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Headphones,,H
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Heaters&#44; Fan heaters (stoves),Please make sure you remove any kerosene and batteries.,H
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Heating pads (metal),Disposable Cairo is General Garbage.,H
-Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Heat?resistant glass&#44; tableware,,H
+Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Heat-resistant glass&#44; tableware,,H
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Helmets,,H
-Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Home appliances (*except refigerators?freezers?TV?A/C?washing machines?dryers ),*Refrigerator&#44; Freezer&#44; TV&#44; Air-Conditioner&#44; Washing Machine&#44; Clothes Dryer is received by Stores. Refer to the schedule and Garbage separation sections for details.,H
+Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Home appliances (*except refigerators&#44; freezers&#44; TVs&#44; A/Cs&#44; washing machines&#44; dryers ),*Refrigerator&#44; Freezer&#44; TV&#44; Air-Conditioner&#44; Washing Machine&#44; Clothes Dryer is received by Stores. Refer to the schedule and Garbage separation sections for details.,H
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Hook,Separate from other Non-burnable Garbage when throwing out.,H
 General Garbage,Hoses,If it has a wire core&#44; place with Non-burnable Garbage.,H
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Hoses,If it has a wire core&#44; place with Non-burnable Garbage.,H
@@ -288,22 +280,21 @@ Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Hot water bo
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Humidifiers,,H
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Ice boxes,Please remove metal parts.,I
 General Garbage,Ice packs,,I
-General Garbage,Ice packs,,I
 General Garbage,Ink cartridge,Used cartridges should be returned to the store.,I
 General Garbage,Ink ribbon,,I
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Ink stones,,I
 General Garbage,Inner tubes,,I
-General Garbage,Insect cages,Metal items are Non-burnable Garbage.,I
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Insect cage (metal),It is General Garbage unless it is made of metal.,I
+General Garbage,Insect cages,Metal items are Non-burnable Garbage.,I
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Insect repellent (spray),Use up the contents and be sure to open a hole in the side.,I
 General Garbage,Insect repellent (tablet),,I
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Insecticide cans,Use up the contents and be sure to open a hole in the side.,I
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Ironing board,,I
-Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Japanese Ikebana pin sup pat,Separate from other Non-burnable Garbage when throwing out.,J
 General Garbage,Japanese abacuses,,J
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Japanese dressers,Break down to make it as small as possible.,J
 General Garbage,Japanese geta,Metal items are Non-burnable Garbage.,J
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Japanese geta (metal),It is General Garbage unless it is made of metal.,J
+Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Japanese Ikebana pin sup pat,Separate from other Non-burnable Garbage when throwing out.,J
 General Garbage,Japanese sandals,,J
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Juicer machine,,J
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Kerosene pump (electric),Please remove batteries,K
@@ -315,8 +306,6 @@ General Garbage,Kitchen mat,Roll it up and bind it with string when throwing out
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Kitchen mats (large type),Roll it up and bind it with string when throwing out. Small items are General Garbage.,K
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Kitchen scales (non-metal),Metal items are Non-burnable Garbage.,K
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Knitting machine,,K
-Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Knives,Please wrap the blade in paper or cloth.,K
-Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Knives,Please wrap the blade in paper or cloth.,K
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Knives,Please wrap the blade in paper or cloth.,K
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Kotatsu,Part of electric heater is Non-burnable.,K
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Kotatsu (Heater part),Parts other than the electric heater are Oversized Burnable Garbage.,K
@@ -366,7 +355,7 @@ Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Microwave oven,,M
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Milk bottles,Should be returned to the store.,M
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Milk cans,,M
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Minicars,,M
-Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Mirrors,"If it is broken&#44; please wrap them in clothing or paper and write ""Caution"" on it.",M
+Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Mirrors,If it is broken&#44; please wrap them in clothing or paper and write "Caution" on it.,M
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Mortars,,M
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Nails,Separate from other Non-burnable Garbage when throwing out.,N
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Needles,Separate from other Non-burnable Garbage when throwing out.,N
@@ -397,8 +386,8 @@ Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Pencil cases (metal)
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Pencil sharpener,,P
 General Garbage,Pens,Metal items are Non-burnable Garbage.,P
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Pens (metal),It is General Garbage unless it is made of metal.,P
-Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,PET bottles caps/label,Metal lids are Non-burnable. Things made of plastic are Plastic Container.,P
-Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,PET bottles caps/label,Metal lids are Non-burnable. Things made of plastic are Plastic Container.,P
+Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,PET bottle caps/labels,Metal lids are Non-burnable. Things made of plastic are Plastic Container.,P
+Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,PET bottle caps/labels,Metal lids are Non-burnable. Things made of plastic are Plastic Container.,P
 General Garbage,Photo Album,Removable metal parts are Non-burnable.,P
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Photo frames (metal),It is Oversized Burnable Garbage unless it is made of metal.,P
 General Garbage,Photos,,P
@@ -418,7 +407,7 @@ General Garbage,Plants,Please remove dirt.,P
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Plastic bag,Clear or semi-transparent bags can used for garbage bag.,P
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Plastic bags,Use your own bag.,P
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Plastic bags,Use your own bag.,P
-Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Plastic buckets?plastic tanks,,P
+Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Plastic buckets/plastic tanks,,P
 General Garbage,Plastic Containers,Rinse the inside out with water and remove the lid.,P
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Plastic Containers,Rinse the inside out with water and remove the lid.,P
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Plastic sauce bottles,Rinse the inside out with water and remove the lid. Rinse the inside out with water and remove the lid.,P
@@ -576,14 +565,13 @@ Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Tents,Fold a
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Thankless water heater (small household use),When you purchase a new one&#44; have the retail store dispose of it for you.,T
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Thankless water heater(small&#44; household use),When you purchase a new one&#44; have the retail store dispose of it for you.,T
 General Garbage,Thermal paper,,T
-Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Thermometers,"Separate from other Non-burnable Garbage when throwing out. If it is broken&#44; please wrap them in cloth or paper and write ""Caution"" on it.",T
+Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Thermometers,Separate from other Non-burnable Garbage when throwing out. If it is broken&#44; please wrap them in cloth or paper and write "Caution" on it.,T
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Thermometers (glass&#44; electric),Separate mercury thermometers from other Non-burnable Garbage. Putin its case so it doesn't break. If it is broken put it in a bag and write the contents on the bag.,T
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Thermos bottles,,T
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Tiepins,,T
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Tire chains (for cars),,T
 General Garbage,Tires&#44; tubes (for bikes),When you purchase a new one&#44; have the retail store dispose of it for you.,T
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Tires&#44; tubes (for bikes),When you purchase a new one&#44; have the retail store dispose of it for you.,T
-General Garbage,Tissue paper,,T
 General Garbage,Tissue paper,,T
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Toasters,,T
 General Garbage,Toothbrushes,Electric toothbrushes are Non-burnable.,T
@@ -615,7 +603,7 @@ General Garbage,Used cooking oil,Solidify the oil or absorb it with paper.,U
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Vacuum cleaners,,V
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Vanities (mirror parts),Parts other than the mirror are Oversized Burnable Garbage.,V
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Vanities (other than mirror parts),Mirror parts are Non-burnable.,V
-Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Vases,"If it is broken&#44; please wrap them in clothing or paper and write ""Caution"" on it.",V
+Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Vases,If it is broken&#44; please wrap them in clothing or paper and write "Caution" on it.,V
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Ventilation fans,When you purchase a new one&#44; have the retail store dispose of it for you.,V
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Video cameras,,V
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Video decks,,V
@@ -630,7 +618,7 @@ General Garbage,Washbowls,Metal items are Non-burnable Garbage.,W
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Washbowls,Metal items are Non-burnable Garbage.,W
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Washbowls (metal),It is General Garbage or Oversized Burnable Garbage unless it is made of metal.,W
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Water bottles,Metal items are Non-burnable Garbage.,W
-Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Water tank,Items not made of glass are Oversized General Garbage.,W
+Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Water tanks,Items not made of glass are Oversized General Garbage.,W
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Water tanks,Things made of glass are Non-burnable.,W
 Non-burnable&#44; Cans&#44; Bottles&#44; Plastic Containers,Watering pots (metal),It is Oversized Burnable Garbage unless it is made of metal.,W
 Oversized Burnable Garbage&#44; PET Bottles&#44; Plastic Containers,Watering pots (non-metal),Metal items are Non-burnable Garbage.,W
