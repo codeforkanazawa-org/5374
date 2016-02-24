@@ -1,8 +1,9 @@
 {
     "locales": [
+        "en-US",
         "ja"
     ],
-    "default_locale": "ja",
+    "default_locale": "en-US",
     "resources": [
         "./locales/{{locale}}/main.l20n"
     ]

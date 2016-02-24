@@ -1,0 +1,85 @@
+type,name,notice,furigana
+Paper Waste,Calenders,Metal parts are non-burnable garbage.,C
+Paper Waste,Calligraphy paper,,C
+Paper Waste,Carboard boxies,Includes cardboard boxes for fruits and vegetables.,C
+Paper Waste,Cardboard,Removing packing tape and metal parts.,C
+Paper Waste,Catalogs,,C
+Paper Waste,Children's books,,C
+Paper Waste,Copy paper,,C
+Paper Waste,Dictionares,Tie with paper string.,D
+Paper Waste,Flyers,,F
+Paper Waste,Hardcover books,,H
+Paper Waste,Leaflets,,L
+Paper Waste,Letter paper,,L
+Paper Waste,Magazines,Bind it with paper string and try not to get it wet.,M
+Paper Waste,Newspapers,Tie with paper string.,N
+Paper Waste,Note books,,N
+Paper Waste,Postcards,,P
+Paper Waste,Posters,,P
+Paper Waste,Thick paper,,T
+Paper Waste,Wrapping paper,,W
+Old Clothing,Clothes,,C
+Old Clothing,Clothings,Bring them to the assigned collecting facility.,C
+Old Clothing,Drink carton boxies,Cut it open and rinse with water&#44; then dry it. *If it has a silver color lining&#44; put with General garbage.,D
+Old Clothing,Milk cartons,Cut it open and rinse with water&#44; then dry it.,M
+Old Clothing,Paper cartons,Cut it open and rinse with water&#44; then dry it. *If it has a silver color lining&#44; put with General garbage.,P
+Old Clothing,Sheets,Wash it before placing as garbage. ,S
+Old Clothing,Suits,If it has a lining&#44; please put with General garbage.,S
+Old Clothing,Sweaters,,S
+Old Clothing,Towels,Clean items only.,T
+Old Clothing,T-shirts,Dirty items are general garbage.,T
+Old Clothing,Yukata,,Y
+Self-disposal,AC (approved by home appliance recycling law),Including window type. Please have a retail store handle disposal. Refer to "Home Garbage Collection Dates & Information" to check the details.,A
+Self-disposal,Air conditioner(approved by home appliance recycling law),Please have a retail store handle disposal. You can refer to "Home Garbage Collection Dates & Infomation" to check the details.,A
+Self-disposal,Asphalt,Inquire at retail store.,A
+Self-disposal,Bathtub,Inquire at retail store.,B
+Self-disposal,Batteries,Inquire at retail store.,B
+Self-disposal,Boiler,Inquire at retail store.,B
+Self-disposal,Bricks,Inquire at retail store.,B
+Self-disposal,Bicycle,Inquire at retail store.,B
+Self-disposal,Cars or automotive components,Inquire at retail store.,C
+Self-disposal,Cell phones,Inquire at retail store.,C
+Self-disposal,Clothes dryer (approved by home appliance recycling law),Please have a retail store handle disposal. You can refer to "Home Garbage Collection Dates & Infomation" to check the details.,C
+Self-disposal,Concrete blocks,Inquire at retail store.,C
+Self-disposal,Concrete?block,Inquire at retail store.,C
+Self-disposal,Construction wastes,Inquire at retail store.,C
+Self-disposal,Cut branches (cut by vendor),Please have the vender handle disposal.,C
+Self-disposal,Dog and cat waste(droppings),Flush as much as you can down the toilet.,D
+Self-disposal,Drags(powerful medicine) ,Inquire at retail store.,D
+Self-disposal,Drying racks,Inquire at retail store.,D
+Self-disposal,Electric water heater,Inquire at retail store.,E
+Self-disposal,Engines,Inquire at retail store.,E
+Self-disposal,Fertilizer,Inquire at retail store.,F
+Self-disposal,Fire extinguishers,Please dispose correctly using the "fire extinguisher recycle system".  You can also refer to "Home Garbage Collection Dates & Infomation" to check the details.,F
+Self-disposal,Gas cylinders (LG),Inquire at retail store.,G
+Self-disposal,Gas water heaters,Inquire at retail store.,G
+Self-disposal,Gasoline,Inquire at retail store.,G
+Self-disposal,LCD TVs,Please have a retail store handle disposal. You can refer to "Home Garbage Collection Dates & Infomation" to check the details.,L
+Self-disposal,LP gas tank,Inquire at retail store.,L
+Self-disposal,Milk botteles,Please return delivered milk bottles to a retail store.,M
+Self-disposal,Motorbike,Inquire at retail store.,M
+Self-disposal,Oil (non-edible),Inquire at retail store.,O
+Self-disposal,Oil cans,If there is anything remaining inside&#44; please dispose yourself.,O
+Self-disposal,Oil heaters,Inquire at retail store.,O
+Self-disposal,Oxygen cylinders,Inquire at retail store.,O
+Self-disposal,Paint,Inquire at retail store.,P
+Self-disposal,Paint thinner,Inquire at retail store.,P
+Self-disposal,PC (householed use),Inquire at manufacturer.,P
+Self-disposal,Piano,Inquire at retail store.,P
+Self-disposal,Polystyrene trays,Please place styroform trays in the collecting boxes at super markets when never possible.,P
+Self-disposal,Potted plant,Please have a retail store take it if possible. If you want to place with garbage&#44; tie branches in bundles of 10cm by 1m or smaller.,P
+Self-disposal,Propane gas cylinder,Inquire at retail store.,P
+Self-disposal,Pump,Inquire at retail store if it has an engine.,P
+Self-disposal,Rice planter,Inquire at retail store.,R
+Self-disposal,Safe (portablesize),Please dispose as "Self-disposal garbage" if it's too heavy to carry yourself.,S
+Self-disposal,Shed,Inquire at retail store.,S
+Self-disposal,Stones,Inquire at retail store.,S
+Self-disposal,Syringes,Please contact the pharmacy to for disposal. You can refer to the "Home Garbage Collection Dates & Infomation" to check the details. ,S
+Self-disposal,Tiles,Inquire at retail store.,T
+Self-disposal,Tillers,Inquire at retail store.,T
+Self-disposal,Tires&#44; tubes&#44; wheels (cars),Inquire at retail store.,T
+Self-disposal,TV  (approved by home appliance recycling law),Please have a retail store handle disposal. You can refer to "Home Garbage Collection Dates & Infomation" to check the details.,T
+Self-disposal,Washing machine (approved by home appliance recycling law),Please have a retail store handle disposal. You can refer to "Home Garbage Collection Dates & Infomation" to check the details.,W
+Self-disposal,Waste oil (other than cookingoils),Inquire at retail store.,W
+Self-disposal,Waterproof sheet for rice fields,Inquire at retail store.,W
+Self-disposal,Weed cutter,Inquire at retail store.,W
