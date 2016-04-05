@@ -11,13 +11,12 @@ KANAZAWA_GOMI_JITEN = $(KANAZAWA_DIR)/$(JITEN_CSV)
 
 GO_PROGRAM = $(KANAZAWA_DIR)/convert.go
 
-
 .PHONY: all test clean
 
 all: $(AREA_DATA)
 
 test:  $(KANAZAWA_CALENDAR) $(KANAZAWA_GOMI_JITEN)
-	go test ./$(KANAZAWA_DIR)/...
+	go test -cover ./$(KANAZAWA_DIR)/...
 
 clean: 
 	$(RM) $(KANAZAWA_CALENDAR)

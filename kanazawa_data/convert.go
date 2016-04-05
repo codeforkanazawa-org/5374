@@ -10,11 +10,13 @@ import (
 	"io/ioutil"
 	"bytes"
 	"io"
+	"fmt"
 )
 
 // 例えば MAPPING_AREA[1]=2 というのは 5374フォーマットのカラム1が金沢オープンデータフォーマット カラム2に対応
 
 var MAPPING_AREA = []int{0, 5, 1, 2, 3, 4}
+var MAPPING_TARGET = []int{3, 1, 4, 0}
 
 type Center struct {
 	start string
@@ -60,16 +62,28 @@ func convert5374TargetColumn(row []string) []string {
 
 }
 
+// 2016/1/5を2016/01/05 のようにします。
+func normalizeDate(d string) string {
+	s := strings.Split(d, "/")
 
+	s[1] = fmt.Sprintf("%02s", s[1])
+	s[2] = fmt.Sprintf("%02s", s[2])
+	return strings.Join(s, "/")
+
+}
 
 // ごみ処理センターのマッピングをします
 // 金沢オープンデータフォーマット カラム5,6,7に対応
 func mappingCenter(mp map[string]*Center, row []string) {
 	v, found := mp[row[5]];
+	row[6] = normalizeDate(row[6])
+	row[7] = normalizeDate(row[7])
+
 	if !found {
 		mp[row[5]] = &Center{start:row[6], end:row[7]}
 	}else {
 		// 最大の期間を選択するようにする
+		//
 		if row[6] < v.start {
 			v.start = row[6]
 		}
@@ -87,7 +101,9 @@ func saveFile(filePath string, data string) {
 		panic(err)
 	}
 
-	f.WriteString(data)
+	if _, err2 := f.WriteString(data); err2 != nil {
+		panic(err2)
+	}
 }
 
 func mapToCenterFile(mp map[string]*Center) string {
