@@ -15,14 +15,20 @@ import (
 
 // 例えば MAPPING_AREA[1]=2 というのは 5374フォーマットのカラム1が金沢オープンデータフォーマット カラム2に対応
 
-var MAPPING_AREA = []int{0, 5, 1, 2, 3, 4}
-var MAPPING_TARGET = []int{3, 1, 4, 0}
+var (
+	MAPPING_AREA = []int{0, 5, 1, 2, 3, 4}
+	MAPPING_TARGET = []int{3, 1, 4, 0}
+)
+
+const (
+	KANAZAWA_DEFAULT_COMMNA = rune('\t')
+)
 
 type Center struct {
 	start string
 	end   string
 }
-
+// 金沢オープンデータ用のCSVを読み出します。
 func csvReader(filename string) *csv.Reader {
 
 	b, err := ioutil.ReadFile(filename)
@@ -30,7 +36,7 @@ func csvReader(filename string) *csv.Reader {
 		panic(err)
 	}
 	r := csv.NewReader(bufio.NewReader(bytes.NewReader(b)))
-	r.Comma = rune('\t')
+	r.Comma = rune(KANAZAWA_DEFAULT_COMMNA)
 	return r
 
 }
@@ -47,6 +53,7 @@ func convertColumn(row []string, mapping []int) []string {
 	return result
 }
 
+// 金沢オープンデータ用から5374用の変換を行います。
 func convert5374TargetColumn(row []string) []string {
 
 	result := convertColumn(row, []int{3, 1, 4, 0})
@@ -83,7 +90,6 @@ func mappingCenter(mp map[string]*Center, row []string) {
 		mp[row[5]] = &Center{start:row[6], end:row[7]}
 	}else {
 		// 最大の期間を選択するようにする
-		//
 		if row[6] < v.start {
 			v.start = row[6]
 		}
@@ -106,7 +112,8 @@ func saveFile(filePath string, data string) {
 	}
 }
 
-func mapToCenterFile(mp map[string]*Center) string {
+// center.csvファイル用の文字列を作成します。
+func mapToCenterData(mp map[string]*Center) string {
 
 	result := "名称,休止開始日,休止終了日\n"
 	for key, value := range mp {
@@ -117,7 +124,7 @@ func mapToCenterFile(mp map[string]*Center) string {
 	}
 	return result
 }
-
+// area_days.csv用の解析を行います。
 func calcAreaDays(filename string) {
 
 	r := csvReader(filename)
@@ -142,9 +149,10 @@ func calcAreaDays(filename string) {
 	}
 
 	saveFile("data/area_days.csv", strings.Join(area, "\n"))
-	saveFile("data/center.csv", mapToCenterFile(mp))
+	saveFile("data/center.csv", mapToCenterData(mp))
 }
 
+// target.csv用の解析を行います。
 func calcTarget(filename string) {
 	r := csvReader(filename)
 	var targets []string = []string{"type,name,notice,furigana"}

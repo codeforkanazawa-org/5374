@@ -4,7 +4,7 @@ CALENDAR_CSV = H27_gomi_calendar.csv
 JITEN_CSV = H27_gomi_jiten.csv
 
 
-KANAZAWA_DIR = kanazawa_data
+KANAZAWA_DIR = convert_kanazawa_od
 KANAZAWA_CALENDAR = $(KANAZAWA_DIR)/$(CALENDAR_CSV)
 KANAZAWA_GOMI_JITEN = $(KANAZAWA_DIR)/$(JITEN_CSV)
 
@@ -16,7 +16,16 @@ GO_PROGRAM = $(KANAZAWA_DIR)/convert.go
 all: $(AREA_DATA)
 
 test:  $(KANAZAWA_CALENDAR) $(KANAZAWA_GOMI_JITEN)
-	go test -cover ./$(KANAZAWA_DIR)/...
+	rm -rf src
+
+	mkdir -p src
+	# go tool を動かすためのハック
+	ln -s `pwd`/$(KANAZAWA_DIR) `pwd`/src/$(KANAZAWA_DIR)
+	@env GOPATH=`pwd`/ go test -coverprofile=cover.out $(KANAZAWA_DIR)
+	@env GOPATH=`pwd`/ go tool cover -html=cover.out
+	rm -rf src
+	rm cover.out
+
 
 clean: 
 	$(RM) $(KANAZAWA_CALENDAR)
