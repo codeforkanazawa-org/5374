@@ -118,9 +118,6 @@ func mapToCenterData(mp map[string]*Center) string {
 
 	result := "名称,休止開始日,休止終了日\n"
 	for key, value := range mp {
-		if key == "センター" {
-			continue
-		}
 		result += key + "," + value.start + "," + value.end + "\n"
 	}
 	return result
