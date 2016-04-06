@@ -25,13 +25,24 @@ func Test2(t *testing.T) {
 	}
 }
 
-func Test3(t *testing.T) {
-	data := []string{"す", "すり鉢", "", "燃やさないごみ", ""}
+func TestCSV(t *testing.T) {
+	data := []string{"す", "すり鉢", "", "燃やさないごみ", "test\ntest"}
 	result := convert5374TargetColumn(data)
 
 	if result[0] != "燃やさないごみ" {
 		t.Errorf("余計な文字が消えています。 actual=%s", result[0])
 	}
+	if result[1] != "すり鉢" {
+		t.Errorf("改行が<br>に置き換わっていません actual=%s", result[1])
+	}
+	if result[2] != "test<br>test" {
+		t.Errorf("改行が<br>に置き換わっていません actual=%s", result[2])
+	}
+
+	if result[3] != "す" {
+		t.Errorf("改行が<br>に置き換わっていません actual=%s", result[3])
+	}
+
 }
 
 func TestReader(t *testing.T) {
@@ -82,7 +93,6 @@ func TestCenter(t *testing.T) {
 			t.Errorf("セットミス")
 		}
 	}
-
 
 	{
 		row := []string{"", "", "", "", "", "センター", "2015/12/31", "2016/01/06"}

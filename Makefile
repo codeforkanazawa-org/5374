@@ -3,6 +3,7 @@ AREA_DATA = data/area_days.csv data/center.csv data/target.csv
 CALENDAR_CSV = H27_gomi_calendar.csv
 JITEN_CSV = H27_gomi_jiten.csv
 
+OPENDATA_URL_PREFIX = http://www4.city.kanazawa.lg.jp/data/open/cnt/3/23069/1/
 
 KANAZAWA_DIR = convert_kanazawa_od
 KANAZAWA_CALENDAR = $(KANAZAWA_DIR)/$(CALENDAR_CSV)
@@ -38,11 +39,11 @@ $(AREA_DATA): $(KANAZAWA_CALENDAR) $(KANAZAWA_GOMI_JITEN)
 
 
 $(KANAZAWA_CALENDAR):
-	curl http://www4.city.kanazawa.lg.jp/data/open/cnt/3/23069/1/$(CALENDAR_CSV) | nkf -w -W16 > $@
+	curl $(OPENDATA_URL_PREFIX)/$(CALENDAR_CSV) | nkf -w -W16 > $@
 
 
 $(KANAZAWA_GOMI_JITEN):
-	curl http://www4.city.kanazawa.lg.jp/data/open/cnt/3/23069/1/$(JITEN_CSV) | nkf -w -W16 > $@
+	curl $(OPENDATA_URL_PREFIX)/$(JITEN_CSV) | nkf -w -W16 > $@
 
 
 

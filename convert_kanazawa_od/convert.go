@@ -41,14 +41,15 @@ func csvReader(filename string) *csv.Reader {
 
 }
 
-// rowは金沢オープンデータのデータ
+// カラムの再マッピングを行います。
+// 同時に改行コードを<br>に置き換えます。
 func convertColumn(row []string, mapping []int) []string {
 
 	var N = len(mapping)
 	result := make([]string, N)
 
 	for i := 0; i < N; i++ {
-		result[i] = row[mapping[i]]
+		result[i] = strings.Replace(row[mapping[i]], "\n", "<br>", -1)
 	}
 	return result
 }
