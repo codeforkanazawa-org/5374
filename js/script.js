@@ -49,8 +49,17 @@ var AreaModel = function() {
     this.trash.sort(function(a, b) {
       if (a.mostRecent === undefined) return 1;
       if (b.mostRecent === undefined) return -1;
-      var at = a.mostRecent.getTime();
-      var bt = b.mostRecent.getTime();
+      var amr = a.mostRecent;
+      var bmr = b.mostRecent;
+      if (!amr && !bmr) {
+        return 0;
+      } else if (amr && !bmr) {
+        return -1;
+      } else if (!amr && bmr) {
+        return 1;
+      }
+      var at = amr.getTime();
+      var bt = bmr.getTime();
       if (at < bt) return -1;
       if (at > bt) return 1;
       return 0;
