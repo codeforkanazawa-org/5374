@@ -256,7 +256,7 @@ var TrashModel = function(_lable, _cell, remarks) {
           day_list.push(d);
         }
       }
-    /***ADD*****/   
+    /***ADD*****/
     } else {
       // 不定期回収の場合は、そのまま指定された日付をセットする
       for (var j in day_mix) {
@@ -565,7 +565,7 @@ $(function() {
             '<div class="left-day">' + leftDayText + '</div>' +
             '<div class="accordion-table" >';
           if (ableSVG && SVGLabel) {
-            accordionHTML += '<img src="' + description.styles + '" alt="' + description.label + '"  />';
+            accordionHTML += '<img class="img-responsive label-img" src="' + description.styles + '" alt="' + description.label + '"  />';
           } else {
             accordionHTML += '<p class="text-center">' + description.label + "</p>";
           }

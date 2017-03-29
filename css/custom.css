@@ -133,3 +133,7 @@ a:hover {
 	 color: #FF0000;
 	 text-decoration: underline;
 }
+
+.label-img {
+	max-height:88px;
+}
