@@ -8,6 +8,7 @@ var AreaModel = function() {
   this.centerName;
   this.center;
   this.trash = new Array();
+  this.areaType;  //静岡市葵区駿河区版：エリアタイプ(1:町内会・自治会 2:住所)
   /**
   各ゴミのカテゴリに対して、最も直近の日付を計算します。
   */
@@ -357,6 +358,8 @@ $(function() {
   var areaModels = new Array();
   var remarks = new Array();
 /*   var descriptions = new Array(); */
+  var areaIndex = -1;   /* 静岡市葵区駿河区版：町内会・自治会の選択インデックス */
+  var area2Index = -1;  /* 静岡市葵区駿河区版：住所の選択インデックス */
 
 
   function getSelectedAreaName() {
@@ -365,6 +368,16 @@ $(function() {
 
   function setSelectedAreaName(name) {
     localStorage.setItem("selected_area_name", name);
+  }
+
+  /* 静岡市葵区駿河区版：2エリア対応 */
+  function getSelectedArea2Name() {
+    return localStorage.getItem("selected_area2_name");
+  }
+
+  /* 静岡市葵区駿河区版：2エリア対応 */
+  function setSelectedArea2Name(name) {
+    localStorage.setItem("selected_area2_name", name);
   }
 
   function csvToArray(filename, cb) {
@@ -395,11 +408,13 @@ $(function() {
         var area = new AreaModel();
         area.label = row[0];
         area.centerName = row[1];
+        area.areaType = row[2];   /* 静岡市葵区駿河区版：エリアタイプ */
 
         areaModels.push(area);
-        //２列目以降の処理
-        for (var r = 2; r < 2 + MaxDescription; r++) {
-          if (area_days_label[r]) {
+        //３列目以降の処理(静岡市葵区駿河区版：エリアタイプ追加により1列ずらす)
+        for (var r = 3; r < 3 + MaxDescription; r++) {
+          //静岡市葵区駿河区版：未設定のごみ種類はセットしない
+          if (area_days_label[r] && row[r] != "") {
             var trash = new TrashModel(area_days_label[r], row[r], remarks);
             area.trash.push(trash);
           }
@@ -425,15 +440,26 @@ $(function() {
         };
         //エリアとゴミ処理センターを対応後に、表示のリストを生成する。
         //ListメニューのHTML作成
+        /* 静岡市葵区駿河区版：2エリア選択対応 */
         var selected_name = getSelectedAreaName();
         var area_select_form = $("#select_area");
         var select_html = "";
-        select_html += '<option value="-1">地域を選択してください</option>';
+        var selected_name2 = getSelectedArea2Name();
+        var area2_select_form = $("#select_area2");
+        var select_html2 = "";
+
+        select_html += '<option value="-1">町内会・自治会を選択してください</option>';
+        select_html2 += '<option value="-1">住所を選択してください</option>';
         for (var row_index in areaModels) {
           var area_name = areaModels[row_index].label;
-          var selected = (selected_name == area_name) ? 'selected="selected"' : "";
-
-          select_html += '<option value="' + row_index + '" ' + selected + " >" + area_name + "</option>";
+          var selected;
+          if (areaModels[row_index].areaType == "1") {
+            selected = (selected_name == area_name) ? 'selected="selected"' : "";
+            select_html += '<option value="' + row_index + '" ' + selected + " >" + area_name + "</option>";
+          } else {
+            selected = (selected_name2 == area_name) ? 'selected="selected"' : "";
+            select_html2 += '<option value="' + row_index + '" ' + selected + " >" + area_name + "</option>";
+          }
         }
 
         //デバッグ用
@@ -443,6 +469,8 @@ $(function() {
         //HTMLへの適応
         area_select_form.html(select_html);
         area_select_form.change();
+        area2_select_form.html(select_html2);
+        area2_select_form.change();
       });
     });
   }
@@ -484,13 +512,41 @@ $(function() {
 
   }
 
-  function updateData(row_index) {
+  /* 静岡市葵区駿河区版：2エリアのAreaModelをマージする */
+  function getMultiAreaModel(areaIndex, area2Index) {
+    var chonaikaiModel = areaModels[areaIndex];
+    var jusyoModel = areaModels[area2Index];
+
+    var multiAreaModel = new AreaModel();
+    multiAreaModel.label = chonaikaiModel.label + ":" + jusyoModel.label;
+    // センター情報は同一という前提で町内会データよりセット
+    multiAreaModel.centerName = chonaikaiModel.centerName;
+    multiAreaModel.center = chonaikaiModel.center;
+
+    //町内会の収集日情報をセット
+    for (var i in chonaikaiModel.trash) {
+      var trash = chonaikaiModel.trash[i];
+      multiAreaModel.trash.push(trash);
+    }
+
+    //住所の収集日情報をセット
+    for (var i in jusyoModel.trash) {
+      var trash = jusyoModel.trash[i];
+      multiAreaModel.trash.push(trash);
+    }
+
+    return multiAreaModel;
+
+  }
+
+  function updateData(areaIndex, area2Index) {
     //SVG が使えるかどうかの判定を行う。
     //TODO Android 2.3以下では見れない（代替の表示も含め）不具合が改善されてない。。
     //参考 http://satussy.blogspot.jp/2011/12/javascript-svg.html
     var ableSVG = (window.SVGAngle !== void 0);
     //var ableSVG = false;  // SVG未使用の場合、descriptionの1項目目を使用
-    var areaModel = areaModels[row_index];
+    /* 静岡市葵区駿河区版：2エリアのAreaModelをマージしたAreaModelを取得 */
+    var areaModel = getMultiAreaModel(areaIndex, area2Index);
     var today = new Date();
     //直近の一番近い日付を計算します。
     areaModel.calcMostRect();
@@ -605,21 +661,28 @@ $(function() {
     });
   }
 
-  function onChangeSelect(row_index) {　
-    if (row_index == -1) {
+  /* 静岡市葵区駿河区版：2エリア選択用に修正 */
+  function onChangeSelect() {　
+    if (areaIndex == -1) {
       $("#accordion").html("");
       setSelectedAreaName("");
       return;
     }
-    setSelectedAreaName(areaModels[row_index].label);
+    if (area2Index == -1) {
+      $("#accordion").html("");
+      setSelectedArea2Name("");
+      return;
+    }
+    setSelectedAreaName(areaModels[areaIndex].label);
+    setSelectedArea2Name(areaModels[area2Index].label);
 
     if ($("#accordion").children().length === 0 && descriptions.length === 0) {
 
       createMenuList(function() {
-        updateData(row_index);
+        updateData(areaIndex, area2Index);
       });
     } else {
-      updateData(row_index);
+      updateData(areaIndex, area2Index);
     }
   }
 
@@ -634,9 +697,14 @@ $(function() {
     return -1;
   }
   //リストが選択されたら
+  /* 静岡市葵区駿河区版：2エリア選択用に修正 */
   $("#select_area").change(function(data) {
-    var row_index = $(data.target).val();
-    onChangeSelect(row_index);
+    areaIndex = $(data.target).val();
+    onChangeSelect();
+  });
+  $("#select_area2").change(function(data) {
+    area2Index = $(data.target).val();
+    onChangeSelect();
   });
 
   //-----------------------------------
