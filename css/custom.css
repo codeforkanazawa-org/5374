@@ -78,7 +78,6 @@ a:hover {
  */
 #accordion3 a.accordion-toggle-top {
 	color: #000000;
-	height: 22px;
 	display: block;
 	margin: 0;
 	text-align: left;
@@ -112,8 +111,27 @@ a:hover {
 	font-size: 12px;
 	font-weight: bold;
 }
+
 #accordion3 #help {
 	margin-left: 5px;
+}
+
+/* fuji coustom */
+header h1{
+	font-size: 24px;
+	padding: 10px 10px 0px 10px;
+}
+
+header p {
+	padding: 10px 10px 0px 10px;
+}
+
+header p a {
+    color: blue;
+}
+
+#accordion3 a {
+	color: #428bca;
 }
 
 /*!
