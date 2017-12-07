@@ -714,6 +714,12 @@ $(function() {
   if (isNode) {
     module.exports = {
       updateAreaList: new Promise((resolve) => updateAreaList(resolve)),
+      AreaModel: AreaModel,
+      TrashModel: TrashModel,
+      CenterModel: CenterModel,
+      DescriptionModel: DescriptionModel,
+      TargetRowModel: TargetRowModel,
+      RemarkModel: RemarkModel,
     };
   } else {
     updateAreaList();
