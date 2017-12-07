@@ -18,7 +18,7 @@ var SkipSuspend = true; // 休止期間を除去するときは、true。奈良�
 
 // ======================モジュール設定=======================
 
-var isNode =
+const isNode =
   typeof global === 'object' && 
   typeof module === 'object' &&
   typeof require === 'function'

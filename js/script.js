@@ -3,23 +3,24 @@
 /**
  * 実行環境がNodeJSかどうかを判定します
  */
-var isNode =
+const isNode =
   typeof global === 'object' && 
   typeof module === 'object' &&
-  typeof require === 'function'
+  typeof require === 'function';
 
 if (isNode) {
   // Node環境でモックを読み込みます
-  var mock = require('../lib/mock')
-  var $ = mock.jquery
-  global.localStorage = mock.localStorage
-  global.navigator = mock.navigator
-  var setting = require('./setting')
-  var SVGLabel = setting.SVGLabel
-  var MaxDescription = setting.MaxDescription
-  var MaxMonth = setting.MaxMonth
-  var WeekShift = setting.WeekShift
-  var SkipSuspend = setting.SkipSuspend
+  const mock = require('../lib/mock');
+  const setting = require('./setting');
+
+  global.$ = mock.jquery;
+  global.localStorage = mock.localStorage;
+  global.navigator = mock.navigator;
+  global.SVGLabel = setting.SVGLabel;
+  global.MaxDescription = setting.MaxDescription;
+  global.MaxMonth = setting.MaxMonth;
+  global.WeekShift = setting.WeekShift;
+  global.SkipSuspend = setting.SkipSuspend;
 }
 
 /**
@@ -409,7 +410,7 @@ $(function() {
     });
   }
 
-  function updateAreaList(resolve) {
+  function updateAreaList(callback) {
     csvToArray("data/area_days.csv", function(tmp) {
       var area_days_label = tmp.shift();
       for (var i in tmp) {
@@ -467,7 +468,7 @@ $(function() {
         area_select_form.change();
         
         // resolve
-        typeof resolve === 'function' && resolve(areaModels)
+        typeof callback === 'function' && callback(areaModels)
       });
     });
   }
@@ -713,6 +714,7 @@ $(function() {
   
   if (isNode) {
     module.exports = {
+      // areaListの生成タイミングは非同期的なので、Node.js環境ではPromiseとして移譲する
       updateAreaList: new Promise((resolve) => updateAreaList(resolve)),
       AreaModel: AreaModel,
       TrashModel: TrashModel,
@@ -722,6 +724,7 @@ $(function() {
       RemarkModel: RemarkModel,
     };
   } else {
+    // ノード環境以外では普通に実行する
     updateAreaList();
   }
 });

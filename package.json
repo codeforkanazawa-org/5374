@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "「いつ、どのゴミが収集されているのか？」ゴミの問題はどの地域でも深刻になりつつあります。 Code for Kanazawa では、先ずは正しいゴミの捨て方に注目しました。例えばお引っ越しをされた場合、このアプリを使えばすぐに分かるように、目的と使い方をとてもシンプルにデザインしました。",
   "main": "js/script.js",
+  "engines" : { "node" : ">=4" },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/codeforkanazawa-org/5374.git"
