@@ -476,6 +476,14 @@ $(function() {
         //HTMLへの適応
         area_select_form.html(select_html);
         area_select_form.change();
+        
+        // モジュール設定
+        if (isNode) {
+          module.exports = Object.assign(
+            module.exports || {},
+            { areaModels }
+          )
+        }
       });
     });
   }
@@ -721,13 +729,17 @@ $(function() {
   updateAreaList();
 });
 
+// モジュール設定
 if (isNode) {
-  module.exports = {
-    AreaModel,
-    TrashModel,
-    CenterModel,
-    DescriptionModel,
-    TargetRowModel,
-    RemarkModel,
-  }
+  module.exports = Object.assign(
+    module.exports || {},
+    {
+      AreaModel,
+      TrashModel,
+      CenterModel,
+      DescriptionModel,
+      TargetRowModel,
+      RemarkModel,
+    }
+  )
 }

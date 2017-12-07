@@ -14,15 +14,15 @@ var WeekShift = true; // 休止期間なら週をずらすときは、true。金
 var SkipSuspend = true; // 休止期間を除去するときは、true。奈良の仕様は、true。
 
 
-/**
- * 実行環境がNodeJSかどうかを判定します
- */
+
+
+// ======================モジュール設定=======================
+
 var isNode =
   typeof global === 'object' && 
   typeof module === 'object' &&
   typeof require === 'function'
 
-// Node.js環境で5374を使用する時のモジュール設定です
 if (isNode) {
   module.exports = {
     SVGLabel,
