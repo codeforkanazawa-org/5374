@@ -9,29 +9,19 @@ var isNode =
   typeof require === 'function'
 
 /**
- * Node環境でjQueryのモックを読み込みます
- * Node環境以外でブラウザだと思われる場合にはグローバルなjQueryを読み込みます
+ * Node環境でモックを読み込みます
  */
-var $ = isNode ? require('./jquery-mock') : window.$
-
-/**
- * Node環境でlocalStorageのモックを読み込みます
- * Node環境以外でブラウザだと思われる場合にはグローバルなlocalStorageを読み込みます
- */
-var localStorage = isNode ? require('./local-storage-mock') : window.localStorage
-
-/**
- * Node環境でnavigatorオブジェクトを読み込みます
- * Node環境以外でブラウザだと思われる場合にはグローバルなnavigatorを読み込みます
- */
-var navigator = isNode ? {} : window.navigator
-
-var setting = isNode ? require('./setting') : window
-var SVGLabel = setting.SVGLabel
-var MaxDescription = setting.MaxDescription
-var MaxMonth = setting.MaxMonth
-var WeekShift = setting.WeekShift
-var SkipSuspend = setting.SkipSuspend
+if (isNode) {
+  var $ = require('./jquery-mock')
+  global.localStorage = require('./local-storage-mock')
+  global.navigator = {}
+  var setting = require('./setting')
+  var SVGLabel = setting.SVGLabel
+  var MaxDescription = setting.MaxDescription
+  var MaxMonth = setting.MaxMonth
+  var WeekShift = setting.WeekShift
+  var SkipSuspend = setting.SkipSuspend
+}
 
 /**
   エリア(ごみ処理の地域）を管理するクラスです。
@@ -481,7 +471,7 @@ $(function() {
         if (isNode) {
           module.exports = Object.assign(
             module.exports || {},
-            { areaModels }
+            { areaModels: areaModels }
           )
         }
       });
@@ -734,12 +724,12 @@ if (isNode) {
   module.exports = Object.assign(
     module.exports || {},
     {
-      AreaModel,
-      TrashModel,
-      CenterModel,
-      DescriptionModel,
-      TargetRowModel,
-      RemarkModel,
+      AreaModel: AreaModel,
+      TrashModel: TrashModel,
+      CenterModel: CenterModel,
+      DescriptionModel: DescriptionModel,
+      TargetRowModel: TargetRowModel,
+      RemarkModel: RemarkModel,
     }
   )
 }

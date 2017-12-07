@@ -25,10 +25,10 @@ var isNode =
 
 if (isNode) {
   module.exports = {
-    SVGLabel,
-    MaxDescription,
-    MaxMonth,
-    WeekShift,
-    SkipSuspend
+    SVGLabel: SVGLabel,
+    MaxDescription: MaxDescription,
+    MaxMonth: MaxMonth,
+    WeekShift: WeekShift,
+    SkipSuspen: SkipSuspend
   }
 }
