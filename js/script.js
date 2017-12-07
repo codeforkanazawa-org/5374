@@ -8,13 +8,12 @@ var isNode =
   typeof module === 'object' &&
   typeof require === 'function'
 
-/**
- * Node環境でモックを読み込みます
- */
 if (isNode) {
-  var $ = require('./jquery-mock')
-  global.localStorage = require('./local-storage-mock')
-  global.navigator = {}
+  // Node環境でモックを読み込みます
+  var mock = require('../lib/mock')
+  var $ = mock.jquery
+  global.localStorage = mock.localStorage
+  global.navigator = mock.navigator
   var setting = require('./setting')
   var SVGLabel = setting.SVGLabel
   var MaxDescription = setting.MaxDescription
@@ -410,7 +409,7 @@ $(function() {
     });
   }
 
-  function updateAreaList() {
+  function updateAreaList(resolve) {
     csvToArray("data/area_days.csv", function(tmp) {
       var area_days_label = tmp.shift();
       for (var i in tmp) {
@@ -467,13 +466,8 @@ $(function() {
         area_select_form.html(select_html);
         area_select_form.change();
         
-        // モジュール設定
-        if (isNode) {
-          module.exports = Object.assign(
-            module.exports || {},
-            { areaModels: areaModels }
-          )
-        }
+        // resolve
+        typeof resolve === 'function' && resolve(areaModels)
       });
     });
   }
@@ -716,20 +710,12 @@ $(function() {
         return "An unknown error occurred."
     }
   }
-  updateAreaList();
+  
+  if (isNode) {
+    module.exports = {
+      updateAreaList: new Promise((resolve) => updateAreaList(resolve)),
+    };
+  } else {
+    updateAreaList();
+  }
 });
-
-// モジュール設定
-if (isNode) {
-  module.exports = Object.assign(
-    module.exports || {},
-    {
-      AreaModel: AreaModel,
-      TrashModel: TrashModel,
-      CenterModel: CenterModel,
-      DescriptionModel: DescriptionModel,
-      TargetRowModel: TargetRowModel,
-      RemarkModel: RemarkModel,
-    }
-  )
-}
