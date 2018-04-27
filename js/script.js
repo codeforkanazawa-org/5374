@@ -10,10 +10,10 @@ var AreaModel = function() {
   this.trash = new Array();
   /**
   各ゴミのカテゴリに対して、最も直近の日付を計算します。
-*/
-  this.calcMostRect = function(today) {
+  */
+  this.calcMostRect = function() {
     for (var i = 0; i < this.trash.length; i++) {
-      this.trash[i].calcMostRect(this, today);
+      this.trash[i].calcMostRect(this);
     }
   }
   /**
@@ -25,36 +25,12 @@ var AreaModel = function() {
     }
     var period = [this.center.startDate, this.center.endDate];
 
-    if (period[0] <= currentDate &&
-      currentDate <= period[1]) {
+    if (period[0].getTime() <= currentDate.getTime() &&
+      currentDate.getTime() <= period[1].getTime()) {
       return true;
     }
     return false;
   }
-  //期間内の休止期間があるかどうか判定します。
-  this.isInPeoriod = function(days1, days2){
-      if (!this.center) {
-          return false;
-      }
-      if (days1 < days2) {
-          if (days1 < this.center.startDate && this.center.endDate < days2)
-              return true;
-          return false;
-      }
-      else
-      {
-          if (days2 < this.center.startDate && this.center.endDate < days1)
-              return true;
-          return false;
-      }
-  }
-
-  //期間内の曜日の日数を計算します。
-  this.numberofDay = function(weekday){
-      return Math.floor((this.center.endDate - this.center.startDate + 7 - (7 + weekday - getDayOfWeek(this.center.startDate)) % 7) / 7)
-  }
-
-
   /**
     ゴミ処理センターを登録します。
     名前が一致するかどうかで判定を行っております。
@@ -68,13 +44,13 @@ var AreaModel = function() {
   }
   /**
   ゴミのカテゴリのソートを行います。
-*/
+  */
   this.sortTrash = function() {
     this.trash.sort(function(a, b) {
       if (a.mostRecent === undefined) return 1;
       if (b.mostRecent === undefined) return -1;
-      var at = a.mostRecent;
-      var bt = b.mostRecent;
+      var at = a.mostRecent.getTime();
+      var bt = b.mostRecent.getTime();
       if (at < bt) return -1;
       if (at > bt) return 1;
       return 0;
@@ -91,7 +67,7 @@ var TrashModel = function(_lable, _cell, remarks) {
   this.mostRecent;
   this.dayList;
   this.mflag = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-  var monthSplitFlag = _cell.search(/:/)>=0
+  var monthSplitFlag=_cell.search(/:/)>=0
   if (monthSplitFlag) {
     var flag = _cell.split(":");
     this.dayCell = flag[0].split(" ");
@@ -111,7 +87,7 @@ var TrashModel = function(_lable, _cell, remarks) {
   this.regularFlg = 1;      // 定期回収フラグ（デフォルトはオン:1）
 
   var result_text = "";
-  var day_enum = ["日", "月", "火", "水", "木", "金", "土"];
+  var today = new Date();
 
   for (var j in this.dayCell) {
     if (this.dayCell[j].length == 1) {
@@ -119,18 +95,12 @@ var TrashModel = function(_lable, _cell, remarks) {
     } else if (this.dayCell[j].length == 2 && this.dayCell[j].substr(0,1) != "*") {
       result_text += "第" + this.dayCell[j].charAt(1) + this.dayCell[j].charAt(0) + "曜日 ";
     } else if (this.dayCell[j].length == 2 && this.dayCell[j].substr(0,1) == "*") {
-    } else if (this.dayCell[j].substr(0, 1) == "e") {
-        var ecell = this.dayCell[j].split('w');
-        if (ecell[0].substr(1) === "2")
-            result_text += "隔週";
-        else
-            result_text += ecell[0].substr(1) + "週毎";
-        var year = parseInt(ecell[1].substr(0, 4));
-        var month = parseInt(ecell[1].substr(4, 2)) - 1;
-        var day = parseInt(ecell[1].substr(6, 2));
-        var date = new Date(year, month, day);
-        result_text += day_enum[date.getDay()] + "曜日";
-        this.regularFlg = "2";
+    } else if (this.dayCell[j].length == 10 && this.dayCell[j].substr(0,1) == "隔") {
+      /**** MOD: PICK biweek, Ex:隔月20140401 ****/
+      /****ADD****/
+      result_text += "隔週" + this.dayCell[j].charAt(1) + "曜 ";
+      this.regularFlg = 2;      // 隔週フラグ
+      /****ADD****/
     } else {
       // 不定期回収の場合（YYYYMMDD指定）
       result_text = "不定期 ";
@@ -158,10 +128,11 @@ var TrashModel = function(_lable, _cell, remarks) {
     if (this.mostRecent === undefined) {
 	return this.getRemark() + "不明";
     }
-    var result_text = daysToString(this.mostRecent);
+    var result_text = this.mostRecent.getFullYear() + "/" + (1 + this.mostRecent.getMonth()) + "/" + this.mostRecent.getDate();
     return this.getRemark() + this.dayLabel + " " + result_text;
   }
 
+  var day_enum = ["日", "月", "火", "水", "木", "金", "土"];
 
   function getDayIndex(str) {
     for (var i = 0; i < day_enum.length; i++) {
@@ -191,138 +162,124 @@ var TrashModel = function(_lable, _cell, remarks) {
   このゴミの年間のゴミの日を計算します。
   センターが休止期間がある場合は、その期間１週間ずらすという実装を行っております。
 */
-  this.calcMostRect = function(areaObj, today) {
+  this.calcMostRect = function(areaObj) {
     var day_mix = this.dayCell;
     var result_text = "";
     var day_list = new Array();
-    
-        // 定期回収の場合
-    if (this.regularFlg > 0) {
-        //隔週と他の回収との混合を可能にした
+
+    // 定期回収の場合
+    if (this.regularFlg == 1) {
+
+      var today = new Date();
+
+      // 12月 +3月　を表現
+      for (var i = 0; i < MaxMonth; i++) {
+
+        var curMonth = today.getMonth() + i;
+        var curYear = today.getFullYear() + Math.floor(curMonth / 12);
+        var month = (curMonth % 12) + 1;
+
+        // 収集が無い月はスキップ
+        if (this.mflag[month - 1] == 0) {
+            continue;
+        }
         for (var j in day_mix) {
-            if (this.regularFlg == 1) {
-                // 12月 +3月　を表現
-                for (var i = 0; i < MaxMonth; i++) {
-                    var curMonth = today.getUTCMonth() + i;
-                    var curYear = today.getUTCFullYear() + Math.floor(curMonth / 12);
-                    var month = (curMonth % 12) + 1;
+          //休止期間だったら、今後一週間ずらす。
+          var isShift = false;
 
-                    // 収集が無い月はスキップ
-                    if (this.mflag[month - 1] == 0) {
-                        continue;
-                    }
-
-                    //休止期間だったら、今後一週間ずらす。
-                    var isShift = false;
-
-                    //week=0が第1週目です。
-
-                    var date = getDays(curYear, month - 1, 1);
-
-                    var d = date + (7 + getDayIndex(day_mix[j].charAt(0)) - getDayOfWeek(date)) % 7
-                    //1日を基準にして曜日の差分で時間を戻し、最大５週までの増加させて毎週を表現
-                    for (var week = 0; week < 5; week++) {
-                        //年末年始のずらしの対応
-                        //休止期間なら、今後の日程を１週間ずらす
-                        if (areaObj.isBlankDay(d)) {
-                            if (WeekShift) {
-                                isShift = true;
-                            } else {
-                                continue;
-                            }
-                        }
-                        if (isShift) {
-                            d = d + 7;
-                        }
-                        //同じ月の時のみ処理したい
-                        if (getMonthOfDays(d) != (month - 1) % 12) {
-                            continue;
-                        }
-                        //特定の週のみ処理する
-                        if ((day_mix[j].length == 1) ||
-                            ((day_mix[j].length > 1) &&
-                            !((week != day_mix[j].charAt(1) - 1) || ("*" == day_mix[j].charAt(0)))))
-                            day_list.push(d);
-                        d += 7;
-                    }
-                }
-            } else if (this.regularFlg == "2") {
-                //隔週、4週間毎に対応、一応先付けの収集日設定にも対応
-                var dm = day_mix[j].split('w');
-                var peoriod = parseInt(dm[0].substr(1))
-                var startday = getDays(parseInt(dm[1].substr(0, 4)),
-                    parseInt(dm[1].substr(4, 2)) - 1,
-                    parseInt(dm[1].substr(6, 2)));
-                var day = DateToDays(today);
-                if (areaObj.isBlankDay(day)) 
-                    day = areaObj.center.endDate + 1;
-
-                var weeks = Math.floor((day - startday) / 7);
-                if (WeekShift) {
-                    if (day > startday)
-                        weeks -= areaObj.isInPeoriod(startday, day) ? areaObj.numberofDay(getDayOfWeek(startday)) : 0;
-                    else
-                        weeks += areaObj.isInPeoriod(startday, day) ? areaObj.numberofDay(getDayOfWeek(startday)) : 0;
-                }
-                weeks = ((weeks % peoriod) + peoriod) % peoriod;
-                var d = (day - startday) % 7;
-                var d = ((day - startday) % 7 + 7) % 7;
-                if (weeks == 0 && d == 0)
-                {
-                    day_list.push(day);
-                    break;
-                    
-                }
-                if (d != 0) {
-                    day += 7 - d;
-                    weeks += (WeekShift && areaObj.isBlankDay(day)) ? 0 : 1;
-                }
-                if (weeks == peoriod) {
-                    if (!areaObj.isBlankDay(day)) {
-                        day_list.push(day);
-                        break;
-                    }
-                    else
-                        weeks = 0;
-                }
-                while (true)
-                {
-                    day += 7;
-                    weeks += (WeekShift && areaObj.isBlankDay(day)) ? 0 : 1;
-                    if (weeks == peoriod) {
-                        if (!areaObj.isBlankDay(day)) {
-                            day_list.push(day);
-                            break;
-                        }
-                        else
-                            weeks = 0;
-                    }
-                }
+          //week=0が第1週目です。
+          for (var week = 0; week < 5; week++) {
+            //4月1日を起点として第n曜日などを計算する。
+            var date = new Date(curYear, month - 1, 1);
+            var d = new Date(date);
+            //コンストラクタでやろうとするとうまく行かなかった。。
+            //
+            //4月1日を基準にして曜日の差分で時間を戻し、最大５週までの増加させて毎週を表現
+            d.setTime(date.getTime() + 1000 * 60 * 60 * 24 *
+              ((7 + getDayIndex(day_mix[j].charAt(0)) - date.getDay()) % 7) + week * 7 * 24 * 60 * 60 * 1000
+            );
+            //年末年始休暇のスキップ対応
+            if (SkipSuspend) {
+              if (areaObj.isBlankDay(d)) {
+                continue;
+              }
             }
-        }
-    } else {
-        // 不定期回収の場合は、そのまま指定された日付をセットする
-        for (var j in day_mix) {
-            var year = parseInt(day_mix[j].substr(0, 4));
-            var month = parseInt(day_mix[j].substr(4, 2)) - 1;
-            var day = parseInt(day_mix[j].substr(6, 2));
-            var d = getDays(year, month, day);
+            //年末年始のずらしの対応
+            //休止期間なら、今後の日程を１週間ずらす
+            if (areaObj.isBlankDay(d)) {
+            if (WeekShift) {
+                isShift = true;
+              } else {
+                continue;
+              }
+            }
+      ////
+            if (isShift) {
+              d.setTime(d.getTime() + 7 * 24 * 60 * 60 * 1000);
+            }
+            //同じ月の時のみ処理したい
+            if (d.getMonth() != (month - 1) % 12) {
+              continue;
+            }
+            //特定の週のみ処理する
+            if (day_mix[j].length > 1) {
+              if ((week != day_mix[j].charAt(1) - 1) || ("*" == day_mix[j].charAt(0))) {
+                continue;
+              }
+            }
+
             day_list.push(d);
+          }
         }
+      }
+      /****ASS****/
+    } else if (this.regularFlg == 2) {
+      // 隔週回収の場合は、basedateに指定初回日付をセット
+      for (var j in day_mix) {
+        var year = parseInt(day_mix[j].substr(2, 4));
+        var month = parseInt(day_mix[j].substr(6, 2)) - 1;
+        var day = parseInt(day_mix[j].substr(8, 2));
+        var basedate = new Date(year, month, day);
+
+        //week=0が第1週目です。
+        for (var week = 0; week < 27; week++) {
+          // basedate を起点に、最も近い偶数週目を計算する。
+          var d = new Date(date);
+          // basedate を基準に、最大53週まで増加させて隔週を表現
+          d.setTime( basedate.getTime() + week * 14 * 24 * 60 * 60 * 1000 );
+          //年末年始休暇のスキップ対応
+          if (SkipSuspend) {
+            if (areaObj.isBlankDay(d)) {
+              continue;
+            }
+          }
+          day_list.push(d);
+        }
+      }
+    /***ADD*****/   
+    } else {
+      // 不定期回収の場合は、そのまま指定された日付をセットする
+      for (var j in day_mix) {
+        var year = parseInt(day_mix[j].substr(0, 4));
+        var month = parseInt(day_mix[j].substr(4, 2)) - 1;
+        var day = parseInt(day_mix[j].substr(6, 2));
+        var d = new Date(year, month, day);
+        day_list.push(d);
+      }
     }
-    
     //曜日によっては日付順ではないので最終的にソートする。
     //ソートしなくてもなんとなりそうな気もしますが、とりあえずソート
     day_list.sort(function(a, b) {
-      if (a < b) return -1;
-      if (a > b) return 1;
+      var at = a.getTime();
+      var bt = b.getTime();
+      if (at < bt) return -1;
+      if (at > bt) return 1;
       return 0;
     })
     //直近の日付を更新
-      //var now = new Date();
-    var days = DateToDays(today)
+    var now = new Date();
     for (var i in day_list) {
-        if (this.mostRecent == null && days <= day_list[i]) {
+      if (this.mostRecent == null && now.getTime() < day_list[i].getTime() + 24 * 60 * 60 * 1000) {
         this.mostRecent = day_list[i];
         break;
       }
@@ -337,7 +294,7 @@ var TrashModel = function(_lable, _cell, remarks) {
     var day_text = "<ul>";
     for (var i in this.dayList) {
       var d = this.dayList[i];
-      day_text += "<li>" + daysToString(d) + "</li>";
+      day_text += "<li>" + d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate() + "</li>";
     };
     day_text += "</ul>";
     return day_text;
@@ -349,7 +306,7 @@ var TrashModel = function(_lable, _cell, remarks) {
 var CenterModel = function(row) {
   function getDay(center, index) {
     var tmp = center[index].split("/");
-    return getDays(tmp[0], tmp[1] - 1, tmp[2]);
+    return new Date(tmp[0], tmp[1] - 1, tmp[2]);
   }
 
   this.name = row[0];
@@ -390,57 +347,15 @@ var RemarkModel = function(data) {
   this.text = data[1];
 }
 
-//Date を1970年1月1日からの日数に変換
-function DateToDays(dt)
-{
-    return Math.floor( dt / 86400000)     //(1000 * 60 * 60 * 24)
-}
-
-function getDays(year, month, day)
-{
-    return DateToDays(Date.UTC(year, month, day));
-}
-
-//日にちの文字列をの1970年1月1日からの日数に変換
-//new Date(dtString)の場合、ES5ではUTC、ES6ではローカル時間に解釈される
-//http://qiita.com/labocho/items/5fbaa0491b67221419b4
-function getParseDays(dtString)
-{
-    var t = dtString.split('/');
-    return DateToDays(Date.UTC(t[0], t[1], t[2])) 
-}
-
-//曜日の取得
-function getDayOfWeek(days)
-{
-    return (days + 4) % 7 
-}
-
-//月の取得
-function getMonthOfDays(days)
-{
-    var dt = new Date();
-    dt.setTime(days * 86400000);
-    return dt.getUTCMonth();
-}
-//文字列に変換
-function daysToString(days)
-{
-    var dt = new Date();
-    dt.setTime(days * 86400000);
-    return dt.getUTCFullYear() + "/" + (dt.getUTCMonth() + 1) + "/" + dt.getUTCDate()
-}
-
-
 /* var windowHeight; */
 
 $(function() {
+/*   windowHeight = $(window).height(); */
 
   var center_data = new Array();
   var descriptions = new Array();
   var areaModels = new Array();
   var remarks = new Array();
- 
 /*   var descriptions = new Array(); */
 
 
@@ -473,102 +388,63 @@ $(function() {
   }
 
   function updateAreaList() {
-      csvToArray("data/area_days.csv", function (tmpdays) {
-          if (IsUseArea) {
-              csvToArray("data/area.csv", function (tmparea) {
-                  var area_days_label = tmpdays.shift();
-                  tmparea.shift();
-                  var rowdays;
-                  for (var i in tmparea) {
-                      var row = tmparea[i];
-                      var area = new AreaModel();
-                      area.label = row[0];
-                      area.centerName = row[1];
+    csvToArray("data/area_days.csv", function(tmp) {
+      var area_days_label = tmp.shift();
+      for (var i in tmp) {
+        var row = tmp[i];
+        var area = new AreaModel();
+        area.label = row[0];
+        area.centerName = row[1];
 
-                      var collectionArea = row[2];
-                      for (var j in tmpdays) {
-                          if (tmpdays[j][0] === collectionArea) {
-                              rowdays = tmpdays[j];
-                              break;
-                          }
-                      }
-
-                      areaModels.push(area);
-                      //２列目以降の処理
-                      for (var r = 1; r < 1 + MaxDescription; r++) {
-                          if (area_days_label[r]) {
-                              var trash = new TrashModel(area_days_label[r], rowdays[r], remarks);
-                              area.trash.push(trash);
-                          }
-                      }
-                  }
-                  updateCenter();
-              });
+        areaModels.push(area);
+        //２列目以降の処理
+        for (var r = 2; r < 2 + MaxDescription; r++) {
+          if (area_days_label[r]) {
+            var trash = new TrashModel(area_days_label[r], row[r], remarks);
+            area.trash.push(trash);
           }
-          else
-          {
-              var area_days_label = tmp.shift();
-              for (var i in tmp) {
-                  var row = tmp[i];
-                  var area = new AreaModel();
-                  area.label = row[0];
-                  area.centerName = row[1];
+        }
+      }
 
-                  areaModels.push(area);
-                  //２列目以降の処理
-                  for (var r = 2; r < 2 + MaxDescription; r++) {
-                      if (area_days_label[r]) {
-                          var trash = new TrashModel(area_days_label[r], row[r], remarks);
-                          area.trash.push(trash);
-                      }
-                  }
-              }
-              updateCenter();
-          }
+      csvToArray("data/center.csv", function(tmp) {
+        //ゴミ処理センターのデータを解析します。
+        //表示上は現れませんが、
+        //金沢などの各処理センターの休止期間分は一週間ずらすという法則性のため
+        //例えば第一金曜日のときは、一周ずらしその月だけ第二金曜日にする
+        tmp.shift();
+        for (var i in tmp) {
+          var row = tmp[i];
+
+          var center = new CenterModel(row);
+          center_data.push(center);
+        }
+        //ゴミ処理センターを対応する各地域に割り当てます。
+        for (var i in areaModels) {
+          var area = areaModels[i];
+          area.setCenter(center_data);
+        };
+        //エリアとゴミ処理センターを対応後に、表示のリストを生成する。
+        //ListメニューのHTML作成
+        var selected_name = getSelectedAreaName();
+        var area_select_form = $("#select_area");
+        var select_html = "";
+        select_html += '<option value="-1">地域を選択してください</option>';
+        for (var row_index in areaModels) {
+          var area_name = areaModels[row_index].label;
+          var selected = (selected_name == area_name) ? 'selected="selected"' : "";
+
+          select_html += '<option value="' + row_index + '" ' + selected + " >" + area_name + "</option>";
+        }
+
+        //デバッグ用
+        if (typeof dump == "function") {
+          dump(areaModels);
+        }
+        //HTMLへの適応
+        area_select_form.html(select_html);
+        area_select_form.change();
       });
-  }
-
-  function updateCenter()
-  {
-      csvToArray("data/center.csv", function (tmp) {
-          //ゴミ処理センターのデータを解析します。
-          //表示上は現れませんが、
-          //金沢などの各処理センターの休止期間分は一週間ずらすという法則性のため
-          //例えば第一金曜日のときは、一周ずらしその月だけ第二金曜日にする
-          tmp.shift();
-          for (var i in tmp) {
-              var row = tmp[i];
-
-              var center = new CenterModel(row);
-              center_data.push(center);
-          }
-          //ゴミ処理センターを対応する各地域に割り当てます。
-          for (var i in areaModels) {
-              var area = areaModels[i];
-              area.setCenter(center_data);
-          };
-          //エリアとゴミ処理センターを対応後に、表示のリストを生成する。
-          //ListメニューのHTML作成
-          var selected_name = getSelectedAreaName();
-          var area_select_form = $("#select_area");
-          var select_html = "";
-          select_html += '<option value="-1">地域を選択してください</option>';
-          for (var row_index in areaModels) {
-              var area_name = areaModels[row_index].label;
-              var selected = (selected_name == area_name) ? 'selected="selected"' : "";
-
-              select_html += '<option value="' + row_index + '" ' + selected + " >" + area_name + "</option>";
-          }
-
-          //デバッグ用
-          if (typeof dump == "function") {
-              dump(areaModels);
-          }
-          //HTMLへの適応
-          area_select_form.html(select_html);
-          area_select_form.change();
-
-      });
+    });
   }
 
 
@@ -586,27 +462,23 @@ $(function() {
         descriptions.push(new DescriptionModel(data[i]));
       }
 
-      if (TargetSettings == null) {
-          csvToArray("data/target.csv", function (data) {
+      csvToArray("data/target.csv", function(data) {
 
-              data.shift();
-              for (var i in data) {
-                  var row = new TargetRowModel(data[i]);
-                  for (var j = 0; j < descriptions.length; j++) {
-                      //一致してるものに追加する。
-                      if (descriptions[j].label == row.label) {
-                          descriptions[j].f.push(row);
-                          break;
-                      }
-                  };
-              }
-              after_action();
-              $("#accordion2").show();
+        data.shift();
+        for (var i in data) {
+          var row = new TargetRowModel(data[i]);
+          for (var j = 0; j < descriptions.length; j++) {
+            //一致してるものに追加する。
+            if (descriptions[j].label == row.label) {
+              descriptions[j].targets.push(row);
+              break;
+            }
+          };
+        }
+        after_action();
+        $("#accordion2").show();
 
-          });
-      }
-      after_action();
-      $("#accordion2").show();
+      });
 
     });
 
@@ -620,16 +492,8 @@ $(function() {
     //var ableSVG = false;  // SVG未使用の場合、descriptionの1項目目を使用
     var areaModel = areaModels[row_index];
     var today = new Date();
-    if (TestDate == null)
-    {
-        var t = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
-        today.setTime(t);
-    }
-    else
-        today.setTime(TestDate);;
-    
     //直近の一番近い日付を計算します。
-    areaModel.calcMostRect(today);
+    areaModel.calcMostRect();
     //トラッシュの近い順にソートします。
     areaModel.sortTrash();
     var accordion_height = $(window).height() / descriptions.length;
@@ -649,36 +513,29 @@ $(function() {
        if (description.label != trash.label) {
           continue;
         }
+
           var target_tag = "";
           var furigana = "";
-
-          if (TargetSettings === null) {
-              //ゴミの分別を target.csv から読み込み場合
-              var targets = description.targets;
-              for (var j in targets) {
-                  var target = targets[j];
-                  if (furigana != target.furigana) {
-                      if (furigana != "") {
-                          target_tag += "</ul>";
-                      }
-
-                      furigana = target.furigana;
-
-                      target_tag += '<h4 class="initials">' + furigana + "</h4>";
-                      target_tag += "<ul>";
-                  }
-
-                  target_tag += '<li style="list-style:none;">' + target.name + "</li>";
-                  target_tag += '<p class="note">' + target.notice + "</p>";
+          var target_tag = "";
+          var targets = description.targets;
+          for (var j in targets) {
+            var target = targets[j];
+            if (furigana != target.furigana) {
+              if (furigana != "") {
+                target_tag += "</ul>";
               }
 
-              target_tag += "</ul>";
+              furigana = target.furigana;
+
+              target_tag += '<h4 class="initials">' + furigana + "</h4>";
+              target_tag += "<ul>";
+            }
+
+            target_tag += '<li style="list-style:none;"><div>' + target.name + "</div>";
+            target_tag += '<div class="note">' + target.notice + "</div></li>";
           }
-          else {
-              //ゴミの分別を index.html から読み込み
-              var tg = TargetSettings[description.label];
-              target_tag = document.getElementById(tg).innerHTML;
-          }
+
+          target_tag += "</ul>";
 
           var dateLabel = trash.getDateLabel();
           //あと何日かを計算する処理です。
@@ -686,8 +543,7 @@ $(function() {
 	  if (trash.mostRecent === undefined) {
 	    leftDayText == "不明";
 	  } else {
-	      
-	      var leftDay = trash.mostRecent - DateToDays(today);
+            var leftDay = Math.ceil((trash.mostRecent.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
 
             if (leftDay == 0) {
               leftDayText = "今日";
