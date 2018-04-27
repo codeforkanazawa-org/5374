@@ -1,7 +1,7 @@
-﻿Column1,Column2,Column3,Column4,Column5
+Column1,Column2,Column3,Column4,Column5
 label,sublabel,description,styles,bgcolor
 燃やせないごみ,,,,#2dc7aa
 プラスチック,,,,#ea3b13
 燃やせるごみ,,,,#ffd700
-ペットボトル びん 蛍光管・電球 乾電池,,,,#a9a9a9
-紙のごみ,,,,#f0ffff
+ペットボトル びん 蛍光管・電球 乾電池,,,,#000000
+紙のごみ,,,,#a9a9a9
