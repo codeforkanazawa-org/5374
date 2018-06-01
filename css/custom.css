@@ -47,7 +47,7 @@ a:hover {
 /* 相対日付 (左肩) */
 #accordion .left-day {
 	font-size: 1.5em;
-	color: white;
+	color: black;
 	position: absolute;
 	padding-left: 10px;
 }
