@@ -1,5 +1,12 @@
 label,sublabel,description,styles,bgcolor
-燃やさないごみ,,「週1回の燃やさないごみの日」に埋立ごみとして出せるものです。長さがおおむね2ｍ以上、重さがおおむね55㎏以上のものは出せません。,img/moyasanai02.svg,#733b96
-資源,,「月2回の資源回収の日」に出せるものです。,img/shigen02.svg,#77ae1f
-燃やすごみ,,「週2回の燃やすごみの日」に出せるものです。半透明の袋に入れて出してください。,img/moyasu02.svg,#ea3b13
-あきびん,,「月1回のあきびんの日」に出せるものです。色ごとに分けて出してください。ビールびんや一升びんは、酒屋さんへ。,img/bin02.svg,#2dc7aa
+その他プラスチック,,,img/moyasanai02.svg,#733b96
+粗大ごみ《大型家具等》,,,img/shigen02.svg,#77ae1f
+粗大ごみ《その他粗大ごみ》,,,img/shigen02.svg,#77ae1f
+破砕ごみ,,,img/shigen02.svg,#77ae1f
+可燃ごみ,,,img/moyasu02.svg,#ea3b13
+ビン,,,img/bin02.svg,#2dc7aa
+金属類,,,img/bin02.svg,#2dc7aa
+ガスライター,,,img/bin02.svg,#2dc7aa
+乾電池,,,img/bin02.svg,#2dc7aa
+古紙・古着類,,,img/bin02.svg,#2dc7aa
+ペットボトル,,,img/bin02.svg,#2dc7aa
