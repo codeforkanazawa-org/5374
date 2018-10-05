@@ -6,7 +6,7 @@ body {
 }
 a,
 a:hover {
-	color: white;
+	color: black;
 	text-decoration: none;
 }
 .accordion-inner {
@@ -28,7 +28,7 @@ a:hover {
 	margin: 0;
 }
 #accordion .accordion-inner ul {
-	color: #ffffff;
+	color: #000000;
 }
 #accordion .accordion-heading .accordion-table {
 	display: table-cell;
@@ -47,7 +47,7 @@ a:hover {
 /* 相対日付 (左肩) */
 #accordion .left-day {
 	font-size: 1.5em;
-	color: white;
+	color: black;
 	position: absolute;
 	padding-left: 10px;
 }
@@ -56,7 +56,7 @@ a:hover {
 }
 /* 分別方法の頭文字(ふりがな) */
 #accordion .initials {
-	color: #ffffff;
+	color: #000000;
 }
 /* ゴミを捨てるときの注意事項 */
 #accordion .note {
