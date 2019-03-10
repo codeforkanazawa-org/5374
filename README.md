@@ -14,8 +14,8 @@
 
 ## ローカライズについて
 
-ローカライズする場合は本家の[5374](https://github.com/codeforkanazawa-org/5374)をご確認ください。
-各地域へのローカライズについては[LOCALIZE.md](LOCALIZE.md)を参照するようにしてください。
+ローカライズする場合は本家の[5374](https://github.com/codeforkanazawa-org/5374)をご確認ください。  
+各地域へのローカライズについては[LOCALIZE.md](LOCALIZE.md)を参照するようにしてください。  
 For English please see [LOCALIZE_en.md](LOCALIZE_en.md).
 
 ## 開発チームとライセンスについて
