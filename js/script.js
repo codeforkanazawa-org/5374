@@ -172,7 +172,7 @@ var TrashModel = function(_lable, _cell, remarks) {
 
       var today = new Date();
 
-      // 12月 +3月　を表現
+      // 12月 +3月 を表現
       for (var i = 0; i < MaxMonth; i++) {
 
         var curMonth = today.getMonth() + i;
@@ -605,7 +605,7 @@ $(function() {
     });
   }
 
-  function onChangeSelect(row_index) {　
+  function onChangeSelect(row_index) {
     if (row_index == -1) {
       $("#accordion").html("");
       setSelectedAreaName("");
