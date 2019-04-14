@@ -273,7 +273,9 @@ var TrashModel = function(_lable, _cell, remarks) {
         var month = parseInt(day_mix[j].substr(4, 2)) - 1;
         var day = parseInt(day_mix[j].substr(6, 2));
         var d = new Date(year, month, day);
-        day_list.push(d);
+        if (d.toString() !== "Invalid Date") {
+            day_list.push(d);
+        }
       }
     }
     //曜日によっては日付順ではないので最終的にソートする。
