@@ -1,4 +1,4 @@
-## 使い方
+## 使い方だよ
 
 [5374 for YOUR_CITY](http://YOUR_CITY.domain/ )について説明します。
 
