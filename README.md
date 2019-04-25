@@ -1,4 +1,4 @@
-# 5374について
+# 5374についてだよ
 For English please see [LOCALIZE_en.md](LOCALIZE_en.md).
 ##「いつ、どのゴミが収集されているのか？」
 
