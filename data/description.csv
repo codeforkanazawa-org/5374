@@ -1,5 +1,5 @@
-label,sublabel,description,styles,bgcolor
-燃やさないごみ1,,,img/moyasanai02.svg,#733b96
-資源,,,img/shigen02.svg,#77ae1f
-燃やすごみ,,,img/moyasu02.svg,#ea3b13
-びん,,,img/bin02.svg,#2dc7aa
+﻿label,sublabel,description,styles,bgcolor
+金物類,,,img/moyasanai02.svg,#733b96
+プラスチック製容器包装,,,img/shigen02.svg,#77ae1f
+燃えるごみ,,,img/moyasu02.svg,#ea3b13
+ガラス類,,,img/bin02.svg,#2dc7aa
