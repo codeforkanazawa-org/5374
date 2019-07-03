@@ -1,41 +1,446 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <title>5374(ゴミナシ).jp for 静岡県富士市版 2018年度</title>
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
-    <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-precomposed.png" />
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
-    <link href="css/custom.css" rel="stylesheet" media="screen" />
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8">
+  <title>5374(ゴミナシ).jp for 静岡県富士市版 2018年度</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0" />
+  <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-precomposed.png" />
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
+  <link href="css/custom.css" rel="stylesheet" media="screen" />
+  <link href="css/fuji_custom.css" rel="stylesheet" media="screen" />
+</head>
+
+<body>
   <header>
     <h1>5374(ゴミナシ).jp for 静岡県富士市版 2018年度</h1>
-    <p>こちらの情報は富士市の公式情報ではありません。富士市公式の情報は<a href="http://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000000zbx.html">こちらより</a>確認ください。<br />
-   間違いについての連絡は富士市にではなく、 hrs.sano645_at_gmail.com または<a href="https://twitter.com/hrs_sano645">Twitter:@hrs_sano645</a> へ連絡ください。</p>
+    <p>こちらの情報は富士市の公式情報ではありません。富士市公式の情報は<a
+        href="http://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000000zbx.html">こちらより</a>確認ください。<br />
+      間違いについての連絡は富士市にではなく、 hrs.sano645_at_gmail.com または<a
+        href="https://twitter.com/hrs_sano645">Twitter:@hrs_sano645</a> へ連絡ください。</p>
   </header>
   <style id="accordion-style" type="text/css"></style>
   <div id="accordion"></div>
   <select class="form-control" id="select_area"></select>
 
-  <!--富士市の地域ごとパターンの説明-->
+  <!--富士市の地域ごとパターン一覧表-->
   <div class="accordion" id="accordion3">
     <div class="accordion-group-top">
       <div class="accordion-heading">
-        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_1">[重要]各地域とパターンについて</a>
+        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3"
+          href="#collapse3_1">地区とパターン名一覧表</a>
       </div>
       <div id="collapse3_1" class="accordion-body collapse">
         <div class="accordion-inner">
           <div id="help">
             <article id="content" class="markdown-body">
               <p>
-                2017年度より地区選択では富士市が指定するパターン表記に切り替えました。（地域の町内区名をすべて載せると300を超える選択肢となりモバイル端末での選択操作が困難になるためです）<br>
-                パターン表記と各地域の詳細については、富士市役所のこちらのPDFファイルにて対応を確認して下さい。<br>
-                また、ゴミ出しの各箇所にゴミ出し場の町内会名が記載されているので下記の地区一覧と対応を確認できます。
+                2017年度より地区選択のリスト表記は富士市が指定するパターン名を利用しています。<br />
+                パターン対応一覧は以下より確認できます。こちらは富士市のWEBサイトより整理して抜粋しています<br />
+
               </p>
-              <p><a href="http://www.city.fuji.shizuoka.jp/kurashi/c0701/rn2ola000000blp9-att/rn2ola000000bltx.pdf">平成30年度ごみカレンダー　富士市地区別一覧</a>（注意:PDFファイルです）</p>
+              <p>抜粋元: <a
+                  href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/rn2ola000001udh9.html">2019年度版ごみのカレンダー（地区別） |
+                  静岡県富士市</a>
+              </p>
+              <div>
+                <h3>吉原地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>D-7</td>
+                    <td>
+                      東本通１、東本通２、東本通３、宮町、吉原本町１、吉原本町２、吉原本町３、吉原本町４、西本通り、南町、依田原１、依田原２、依田原３、依田原４、春日町、大和町、幸町、昭和通り、住吉町、日吉町１、日吉町２、日吉町３、東国久保、西国久保、エンゼル町
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>D-5</td>
+                    <td>伝馬町、西仲町、新追町、青島、津田、荒田島１、荒田島２、八代町、新通り、緑町、錦町１、永田町、弥生町、新青島町、高島、中央町壱番館</td>
+                  </tr>
+                </table>
+                <h3>伝法地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>D-1</td>
+                    <td>宮川町、長者町、伝法町１、伝法町２、伝法町３、中桁、上田端、田端町、吉原上中町、中村町、千代田町、宮の上※<br />
+                      <br />
+                      ※宮の上の一部地区はD-7パターンですのでご注意ください。</td>
+                  </tr>
+                  <tr>
+                    <td>D-5</td>
+                    <td>三日市、瓜島、日乃出町、永田町壱番館、サーパス永田町、富士日乃出町</td>
+                  </tr>
+                  <tr>
+                    <td>D-7</td>
+                    <td>宮の上（一部地区）</td>
+                  </tr>
+                </table>
+                <h3>今泉地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>E-5</td>
+                    <td>田宿、御殿、吹上、新橋、依田橋</td>
+                  </tr>
+                  <tr>
+                    <td>D-3</td>
+                    <td>
+                      寺市場、市場、一の宮町１、一の宮町２、一の宮町３、立小路、栄町、富士見町、水の上、仲町、泉町、鍛治町１、鍛治町２、鍛治町３、上和田町、吉原緑ヶ丘、和田町１、和田町２、駿河台１、駿河台２、駿河台３、駿河台４、南仲町、北仲町、新富士見町、エンブルネクスト今泉
+                    </td>
+                  </tr>
+                </table>
+                <h3>青葉台地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>A-7</td>
+                    <td>木の宮町、西木の宮町、東木の宮、茶の木平、青葉台南、高山、若松町１、若松町３</td>
+                  </tr>
+                  <tr>
+                    <td>A-5</td>
+                    <td>一色、荻の原</td>
+                  </tr>
+                </table>
+                <h3>吉永地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>E-3</td>
+                    <td>
+                      富士岡入町、富士岡町１、富士岡町２、富士岡町３、富士岡本花守町、富士岡渋脇町、富士岡花守町、東比奈町１、東比奈町２、東比奈町３、中比奈町１、中比奈町２、中比奈町３、西比奈町１、西比奈町２、西比奈町３
+                    </td>
+                  </tr>
+                </table>
+                <h3>元吉原地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>F-4</td>
+                    <td>鈴川本町、鈴川町３、鈴川町４、鈴川町５、鈴川浜町東通り、鈴川浜町中通り、鈴川浜町西通り、今井本町、今井東町、今井毘沙門町、大野町、桧町、田中町、西田中町、柏原町１、柏原町２、柏原町３</td>
+                  </tr>
+                </table>
+                <h3>須津地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>E-1</td>
+                    <td>中里町１、中里町３、中里町４、中里新富町、中里八幡町、川尻町１、川尻町２、中里寿町</td>
+                  </tr>
+                  <tr>
+                    <td>E-3</td>
+                    <td>中里町２、中里曙町</td>
+                  </tr>
+                  <tr>
+                    <td>F-1</td>
+                    <td>神谷町１、神谷町２、神谷町３、増川町１、増川町２、増川町３、江尾町１、江尾町２、神谷緑町</td>
+                  </tr>
+                </table>
+                <h3>浮島</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>F-1</td>
+                    <td>浮島町１、浮島町２、浮島町３</td>
+                  </tr>
+                </table>
+                <h3>原田地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>E-5</td>
+                    <td>宇東川町１、宇東川町２、宇東川町３、宇東川本町、西滝川町、原田町１、原田町２、原田町４、原田本町、吉原中島町１、吉原中島町２、三ツ沢町１、三ツ沢町２、三ツ沢町３、原田町３※<br />
+                      <br />
+                      ※原田町3の一部地区はパターンE-3ですのでご注意ください。</td>
+                  </tr>
+                  <tr>
+                    <td>E-3</td>
+                    <td>南滝川町、東滝川町、北滝川町、原田町３（一部地区）</td>
+                  </tr>
+                </table>
+                <h3>富士見台地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>A-5</td>
+                    <td>富士見台１、富士見台２北、富士見台２南、富士見台３、富士見台４東、富士見台４西、富士見台５、富士見台６、富士見台７</td>
+                  </tr>
+                  <tr>
+                    <td>E-5</td>
+                    <td>富士見台８</td>
+                  </tr>
+                </table>
+                <h3>神戸地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>A-5</td>
+                    <td>神戸１、神戸２、今宮</td>
+                  </tr>
+                </table>
+                <h3>吉永北地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>A-5</td>
+                    <td>間門町、鵜無ヶ淵町１、鵜無ヶ淵町２、桑崎町、石井町、陽光台東、陽光台西、陽光台南</td>
+                  </tr>
+                </table>
+                <h3>大淵地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>A-1</td>
+                    <td>大久保町、大淵町１、大淵町２、大淵町３、八王子町１、八王子町２、八王子本町、中野町１、中野町２、落合町、片倉町、三ッ倉町、吉原富士本中町、吉原富士本西町、城山町、希望ヶ丘</td>
+                  </tr>
+                  <tr>
+                    <td>A-3</td>
+                    <td>穴原町１、穴原町２、大富町、次郎長町、境町、大峯町</td>
+                  </tr>
+                </table>
+                <h3>富士駅北地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>C-8</td>
+                    <td>本市場１、本市場２、本市場３、本市場４、国久、十兵衛北、千寿町</td>
+                  </tr>
+                  <tr>
+                    <td>C-6</td>
+                    <td>水戸島上</td>
+                  </tr>
+                  <tr>
+                    <td>D-6</td>
+                    <td>塔の木、塔の木２、川原宿、藤間、蓼原１、蓼原２、蓼原３、蓼原４、蓼原５</td>
+                  </tr>
+                  <tr>
+                    <td>B-4</td>
+                    <td>柚木、平垣町２、平垣町３、銀座町、平垣八幡町、富士本町、富士町、平垣町、平垣北町、松岡東</td>
+                  </tr>
+                </table>
+                <h3>富士北地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>C-8</td>
+                    <td>青葉町</td>
+                  </tr>
+                  <tr>
+                    <td>B-4</td>
+                    <td>浅間町、本市場新町、松本、富士中島上、富士中島下、中島新道町、くすの木町</td>
+                  </tr>
+                </table>
+                <h3>富士駅南地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>C-8</td>
+                    <td>上横割、十兵衛南町、下横割南、下横割北、水戸島中、水戸島下、水戸島南町</td>
+                  </tr>
+                  <tr>
+                    <td>C-6</td>
+                    <td>四丁河原南、水戸島上南</td>
+                  </tr>
+                </table>
+                <h3>田子浦地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>C-4</td>
+                    <td>柳島、柳島日東、川成島、東宮島、宮島新田、助六、下川成</td>
+                  </tr>
+                  <tr>
+                    <td>C-2</td>
+                    <td>新浜、中丸浜、小須、田子、鮫島、江川、前田新田、前田、中丸丘</td>
+                  </tr>
+                </table>
+                <h3>富士南地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>C-6</td>
+                    <td>森島、宮下</td>
+                  </tr>
+                  <tr>
+                    <td>C-4</td>
+                    <td>西宮島、千鳥町、富士見ヶ丘、自由ヶ丘、上五貫島、下五貫島</td>
+                  </tr>
+                  <tr>
+                    <td>C-2</td>
+                    <td>三四軒屋、靖国町、浜添</td>
+                  </tr>
+                </table>
+                <h3>岩松地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>B-8</td>
+                    <td>浦町、林町、新町、四丁河原上、水神</td>
+                  </tr>
+                  <tr>
+                    <td>C-6</td>
+                    <td>橋下、四丁河原下</td>
+                  </tr>
+                </table>
+                <h3>岩松北地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>B-8</td>
+                    <td>四ツ家、上町、富士上中、富士下中、瀬戸河原、富士緑ヶ丘、東田、旭町、湯沢平１、湯沢平２</td>
+                  </tr>
+                  <tr>
+                    <td>B-2</td>
+                    <td>滝戸</td>
+                  </tr>
+                </table>
+                <h3>富士川地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>D-2</td>
+                    <td>木島、小山、室野、吉津、かぎあな</td>
+                  </tr>
+                  <tr>
+                    <td>B-6</td>
+                    <td>
+                      相生町、岩淵上町、船山町、坂下、岩淵旭町、中之郷堺町、中之郷川坂、中之郷新町、新町本町、四十九町、中之郷宮町、小池、大楽窪、中之郷本通１、中之郷本通３、中之郷本通４、中之郷幸町、東町１、東町２、中之郷日の出町
+                    </td>
+                  </tr>
+                </table>
+                <h3>松野地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>D-2</td>
+                    <td>南松野１、南松野２、松野富士見町、松野八幡町、富士松野、清水町、大北町、侭下町、中野台</td>
+                  </tr>
+                </table>
+                <h3>鷹岡地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>B-1</td>
+                    <td>厚原西、久沢東、久沢西、久沢南、久沢北、鷹岡本町１</td>
+                  </tr>
+                  <tr>
+                    <td>B-5</td>
+                    <td>鷹岡本町２、鷹岡本町３、入山瀬東、入山瀬西、入山瀬天王町、入山瀬久保</td>
+                  </tr>
+                </table>
+                <h3>広見地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>A-7</td>
+                    <td>広見町１、広見町２、広見町３、広見町４、広見町５、広見町６、広見町７、広見町８、広見町９、百合ヶ丘、桜ヶ丘町、美原町、若松町２、久保町、三ツ倉南町、石坂町４</td>
+                  </tr>
+                  <tr>
+                    <td>D-7</td>
+                    <td>石坂町１、石坂町２、石坂町３、源太坂</td>
+                  </tr>
+                </table>
+                <h3>天間地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>B-5</td>
+                    <td>天間南、天間川坂、天間田代、天間北１、天間北２、天間東</td>
+                  </tr>
+                </table>
+                <h3>丘地区</h3>
+                <table class="gomi_pattern_table">
+                  <tr>
+                    <th class="gomi_pattern">パターン</th>
+                    <th class="gomi_area">町内会</th>
+                  </tr>
+                  <tr>
+                    <td>A-3</td>
+                    <td>傘木、片宿、厚原中、厚原南、厚原北１、厚原北２、厚原東１、厚原東２、厚原東３、傘木北、末広町※ ※末広地区の一部地区はパターンA-1ですのでご注意ください。</td>
+                  </tr>
+                  <tr>
+                    <td>A-1</td>
+                    <td>末広町（一部地区）</td>
+                  </tr>
+                </table>
+              </div>
             </article>
           </div>
         </div>
@@ -43,327 +448,78 @@
     </div>
   </div>
 
-  <!--ゴミの出し方簡易版-->
+  <!-- ゴミの出し方のリンク集 -->
   <div class="accordion" id="accordion3">
     <div class="accordion-group-top">
       <div class="accordion-heading">
-        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_2">各種ごみの出し方</a>
+        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3"
+          href="#collapse3_2">各種ごみの出し方</a>
       </div>
       <div id="collapse3_2" class="accordion-body collapse">
         <div class="accordion-inner">
           <div id="help">
             <article id="content" class="markdown-body">
-              <p>この文章は、「ごみの分け方便利帳」の一部を抜粋したものを載せています。更に詳しい内容は便利帳を確認ください。</p>
-              <p><a href="http://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000006klx.html">ごみの分け方便利帳（PDF版） | 静岡県富士市</a></p>
-              <h3>指定袋でのごみ出しについて</h3>
-              <p>”燃えるごみ・かん・プラスチック生容器包装・その他の紙・衣類”のゴミ出しについては、指定袋製を導入しています。
-              指定袋は「燃えるごみ専用袋」と「資源物専用袋」の2種類があり、スーパーやホームセンターなどで購入できます。</p>
-              <h2>燃えるごみ</h2>
-              <h3>燃えるごみの種類</h3>
+              <h2>ごみの出し方の基本について</h2>
+              <p>ごみの出し方の基本的なルールを確認出来ます。</p>
+
+              <a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000007u3x.html">ごみの出し方の基本について | 静岡県富士市</a>
+
+              <h2>各ごみの出し方</h2>
               <ul>
-              <li>生ごみ: 生ごみの約8割は水分です。水切りをお願いします。</li>
-              <li>ゴム類</li>
-              <li>プラスチック製品: プラマークがついていないもの</li>
-              <li>資源物にならない紙類・布類<ul>
-              <li>油や塗料などで汚れた紙、布</li>
-              <li>汚れ・においのひどい古着</li>
-              <li>ティッシュペーパー</li>
-              <li>紙おむつ</li>
-              <li>においのついた紙類</li>
-              <li>アイロンプリント紙</li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/rn2ola000001awjf.html">燃えるごみの出し方 |
+                    静岡県富士市</a></li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000006v4j.html">プラスチック製容器包装の出し方 |
+                    静岡県富士市</a></li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000007xv8.html">剪定枝の出し方 | 静岡県富士市</a>
+                </li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/rn2ola000001awsi.html">古紙類の出し方 | 静岡県富士市</a>
+                </li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/rn2ola000001axc3.html">埋立ごみの出し方 |
+                    静岡県富士市</a></li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo00000086qp.html">小型家電の出し方 |
+                    静岡県富士市</a></li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/rn2ola000001axvi.html">かん・金属の出し方 |
+                    静岡県富士市</a></li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/rn2ola000001ay54.html">びんの出し方 | 静岡県富士市</a>
+                </li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000000zbx.html">ごみの出し方 | 静岡県富士市</a>
+                </li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/rn2ola000001ayh2.html">ペットボトルの出し方 |
+                    静岡県富士市</a></li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/rn2ola000001az06.html">衣類・ふとん類の出し方 |
+                    静岡県富士市</a></li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000008f9t.html">廃食用油の出し方 |
+                    静岡県富士市</a></li>
               </ul>
-              </li>
-              </ul>
-              <h3>出すときに注意が必要なもの</h3>
+
+              <h2>市で収集しない主なもの</h2>
               <ul>
-              <li>ジュータン・カーペット等大きな燃えるごみ<ul>
-              <li>ジュータン・カーペットは6~8等分程度の大きさに切って、指定袋に入れて出すか、ひもでしばって出す。（ホットカーペットは埋め立てゴミへ）</li>
-              <li>大きな燃えるごみは50cm以下に切って出してください。</li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000000zbx.html">ごみの出し方 | 静岡県富士市</a>
+                </li>
+                <li><a
+                    href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/rn2ola000001axr0.html">市で回収しないもの（市で処理できないもの） |
+                    静岡県富士市</a></li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo00000085h8.html">パソコンの処分方法 |
+                    静岡県富士市</a></li>
+                <li><a
+                    href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000007y8e.html">テレビ・冷蔵庫（冷凍庫）・洗濯機・衣類乾燥機・エアコンの処分方法
+                    | 静岡県富士市</a></li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000008617.html">バイク（二輪車）の処分方法 |
+                    静岡県富士市</a></li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo00000085q7.html">事業活動で発生したごみの処理について |
+                    静岡県富士市</a></li>
               </ul>
-              </li>
-              <li>竹ぐし<ul>
-              <li>安全に収集できるように紙などに包むか、先端を短く降りテープ等で止めてから袋に入れてください。</li>
-              </ul>
-              </li>
-              </ul>
-              <h2>剪定枝</h2>
-              <h3>出し方</h3>
-              <p>排出する集積所の「町内会名」「集積所番号」を確認し、火曜日までに環境クリーンセンターに申し込みをして水曜日に燃えるごみの集積所煮だしてください。</p>
+
+              <h2>その他の情報</h2>
               <ul>
-              <li>枝の太さは直径10cm程度までで、長さ50cm程度に切り、しばって出してください（1回20束）まで</li>
-              <li>しばる際には、あらなわか麻ひもを使用してください。</li>
+                <li><a
+                    href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo000000b2zn.html">環境クリーンセンターへのごみ等の持ち込みについて
+                    | 静岡県富士市</a></li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000006uvn.html">富士市指定ごみ袋について |
+                    静岡県富士市</a></li>
+                <li><a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000006klx.html">ごみの分け方便利帳（PDF版） |
+                    静岡県富士市</a></li>
               </ul>
-              <h3>注意事項</h3>
-              <ul>
-              <li>事前に必ず環境クリーンセンターに申し込んでください。</li>
-              <li>業者（造園等）が選定した枝は収集できません。</li>
-              <li>下記の樹木はリサイクルできないので、燃えるごみとして出してください。（1回3束）まで<ul>
-              <li>毒性のある樹木（きょうちくとう・あせび・うるし等）</li>
-              <li>シュロの木、竹、笹、ナンテン、草、落ち葉、樹木の根 など）</li>
-              </ul>
-              </li>
-              </ul>
-              <h2>プラスチック製容器包装</h2>
-              <p>商品が入っていた容器や袋であってプラスチック製の物が対象です。</p>
-              <h3>出し方</h3>
-              <ol>
-              <li>中身を空にして、必要であれば水で汚れを取り除く（汚れを落としにくいものは燃えるごみに出してください）</li>
-              <li>富士市指定の「資源物専用袋」に入れて、週1回資源物集積所へ出す。</li>
-              </ol>
-              <p>※: リサイクルに支障があるため、二重袋で出さないでください。</p>
-              <h3>主なプラスチック製容器包装</h3>
-              <ul>
-              <li>ボトル類<ul>
-              <li>シャンプー、リンス、洗剤などの容器</li>
-              </ul>
-              </li>
-              <li>ポリ袋・ラップ類<ul>
-              <li>野菜、そば、うどん、パン、お菓子などの袋</li>
-              <li>カップ麺、タバコなどの外装フィルム</li>
-              <li>レジ袋</li>
-              </ul>
-              </li>
-              <li>カップ・パック類<ul>
-              <li>カップ麺、プリン、コンビニ弁当などの容器</li>
-              <li>卵、豆腐、歯ブラシなどのパック</li>
-              <li>薬、化粧品、日用品などのケース</li>
-              </ul>
-              </li>
-              <li>トレイ類<ul>
-              <li>果物、野菜、肉などのトレイ</li>
-              <li>惣菜、お菓子などのトレイ</li>
-              </ul>
-              </li>
-              <li>緩衝材類<ul>
-              <li>家電製品を保護している発泡スチロールなど</li>
-              </ul>
-              </li>
-              <li>キャップ類<ul>
-              <li>ペットボトルやプラスチック容器などのふた</li>
-              </ul>
-              </li>
-              </ul>
-              <p>※: 対象外のもの， 具体的な分別方法はこの場では書ききれないので、便利帳より確認ください</p>
-              <h2>古紙類</h2>
-              <h3>出し方</h3>
-              <p>種類別に分けて紙ひもでしばって出す。</p>
-              <ul>
-              <li>新聞紙<ul>
-              <li>折り込みチラシを含みます。</li>
-              </ul>
-              </li>
-              <li>雑誌<ul>
-              <li>薄くても中心を針金で止めて製本してあるものを含みます。</li>
-              <li>図書、ノート、単行本、百科事典を含みます。</li>
-              </ul>
-              </li>
-              <li>ダンボール<ul>
-              <li>ガムテープやホッチキスをはずしてください</li>
-              </ul>
-              </li>
-              <li>紙パック<ul>
-              <li>洗って開いて出してください。</li>
-              <li>内側がアルミ加工されているものはその他の紙へ</li>
-              </ul>
-              </li>
-              <li>その他の紙<ul>
-              <li>紙箱、封筒、メモ用紙など</li>
-              <li>詳しくは「その他の紙について」を参照</li>
-              </ul>
-              </li>
-              </ul>
-              <h4>このような出し方はやめてください</h4>
-              <ul>
-              <li>ガムテープやビニールテープでしばる</li>
-              <li>ガンボール・ビニール袋を入れ物として使う</li>
-              <li>他の種類の紙を混ぜて出す</li>
-              </ul>
-              <p>※: 古紙として回収しない品目については「その他の紙について」をご覧ください。</p>
-              <h3>古紙の回収先について</h3>
-              <ol>
-              <li>市の回収（集積所）: 集積所に排出された古紙量に応じて地区に奨励金が出ます。古紙排出にご協力ください。</li>
-              <li>地域の集団回収: 子ども会やPTAなど、地区の団体で実施されます（回収品目を確認してください）</li>
-              <li>拠点回収: 事業所等が設置する古紙リサイクルボックスの利用もできます。</li>
-              </ol>
-              <h3>その他の紙について</h3>
-              <p>その他の紙とは、紙箱やはがきなど新聞、雑誌、ダンボール、紙パックに当たらない古紙類です。</p>
-              <p>出すときは、紙袋に入れてしばる、包装紙などで包みしばる　を行い出してください。</p>
-              <ul>
-              <li>紙箱・カップ類<ul>
-              <li>ティッシュの紙箱: 使用済みのティッシュは燃えるごみへ</li>
-              <li>ヨーグルトなどの紙パック、紙コップ: 中身は洗ってください</li>
-              </ul>
-              </li>
-              <li>はがき・封筒等<ul>
-              <li>シュレッダー紙: シュレッダー紙を出すときは飛散しないように紙袋か指定袋に入れて出してください</li>
-              </ul>
-              </li>
-              </ul>
-              <p>※: 収集所に出すときに限り排出できる品があります。詳しくは便利帳のP13を確認してください</p>
-              <h3>その他の紙として回収できないもの</h3>
-              <p>燃えるごみとして出してください</p>
-              <ul>
-              <li>汚れた紙</li>
-              <li>においのついた紙</li>
-              <li>洗剤、線香の箱等</li>
-              <li>紙おむつ</li>
-              <li>アイロンプリント紙</li>
-              </ul>
-              <h2>埋立ごみ</h2>
-              <h3>出し方</h3>
-              <p>大きいものはそのまま出す。細かいものは中身が確認できる透明な袋に入れて出す。種類別に置くこと</p>
-              <ul>
-              <li>粗大: 家具、ベッド、ソファー<ul>
-              <li>持ち込み可能であれば、事前連絡し環境クリーンセンターへ</li>
-              </ul>
-              </li>
-              <li>小物家電: ラジカセ、掃除機、アイロン<ul>
-              <li>電池や電源で動くものが対象です。</li>
-              <li><strong>乾電池</strong> は外してください。</li>
-              <li>パソコンに付いては便利帳P26をご覧ください。</li>
-              <li>8割書金属で出来ているものは、かん・金属の日に出します。</li>
-              </ul>
-              </li>
-              <li>埋立: スキー板、茶わん、電球<ul>
-              <li>割れびん、刃物、電球などは、紙で包み、中身を明記し、透明な袋に入れてください。</li>
-              </ul>
-              </li>
-              <li>蛍光灯<ul>
-              <li>割れていない蛍光灯は紙で包む化、購入時の箱などに入れて出してください。</li>
-              </ul>
-              </li>
-              <li>乾電池<ul>
-              <li>集積所の備え付けの赤い缶に、電池だけ入れてください。</li>
-              </ul>
-              </li>
-              </ul>
-              <h3>注意事項</h3>
-              <p><strong>テレビ・冷蔵庫・冷凍庫・洗濯機・衣類乾燥機・エアコン・バイク等は市では集めません！</strong></p>
-              <p>家電リサイクル対象品目については便利帳P27~P28、バイクについては便利帳P29をご覧の上、適正に処理してください。</p>
-              <p>高品位小型家電回収ボックスも利用できます。対象品目と回収場所については便利帳P14をご覧ください。</p>
-              <h2>かん・金属</h2>
-              <h3>出し方</h3>
-              <p>かんは中を洗いきれいにしてから、富士市指定「資源物専用袋」入れて出す。金属は袋に入れずそのまま出す。</p>
-              <p>※: 資源物専用袋はスーパーやホームセンターなどで購入してください。</p>
-              <h3>かんの種類</h3>
-              <p>再生処理に支障が出るので、かんはつぶさないでください。</p>
-              <ul>
-              <li>飲料缶（アルミ・スチール）</li>
-              <li>スプレー缶<ul>
-              <li>必ず使い切り <strong>穴をあけて</strong> ガスを抜く</li>
-              </ul>
-              </li>
-              <li>缶詰かん</li>
-              <li>4リットル未満のかん</li>
-              </ul>
-              <h3>金属の種類</h3>
-              <p>素材の8割以上が金属で出来ているもの（金属が少ない物は埋立ごみに出してください）</p>
-              <p>以下は例となります。</p>
-              <ul>
-              <li>石油ストーブ<ul>
-              <li>燃料を抜いて、乾電池をはずす。</li>
-              </ul>
-              </li>
-              <li>かさのほね<ul>
-              <li>布、ビニール部分と金属部分にわけ、布、ビニール部分は燃えるごみへ</li>
-              </ul>
-              </li>
-              <li>針や釘<ul>
-              <li>お茶のかん等に入れ、中身を明記し資源物専用袋には <strong>入れないで</strong> 出してください。</li>
-              </ul>
-              </li>
-              <li>4リットル以上のかん<ul>
-              <li>中身をからにして出してください。</li>
-              <li>ペンキの缶で、残ってしまったペンキはウエスに染み込ませ燃えるごみへ</li>
-              </ul>
-              </li>
-              </ul>
-              <h2>びん</h2>
-              <p>びん製品や建築材などにリサイクルします。</p>
-              <h3>出し方</h3>
-              <ol>
-              <li>キャップを外す</li>
-              <li>中身を洗う</li>
-              <li>よく水をきる</li>
-              <li>指定の集積所にあるコンテナへ<ul>
-              <li>コンテナは積み重ねて回収するため、8分目を目安に入れてください。</li>
-              <li>中身入りは回収しません</li>
-              </ul>
-              </li>
-              </ol>
-              <h3>びんの日に集めるもの</h3>
-              <p>以下は例となります。</p>
-              <ul>
-              <li>食用油びん</li>
-              <li>酢のびん</li>
-              <li>ジャムのびん</li>
-              <li>化粧品のびん<ul>
-              <li>乳白色びん（マニキュアのびんなど）については埋立へ</li>
-              </ul>
-              </li>
-              <li>ドレッシングのびん</li>
-              <li>コーヒー等のびん</li>
-              <li>ビール瓶</li>
-              </ul>
-              <h3>注意事項</h3>
-              <p>以下の物はびんの日に回収出来ません！ <strong>埋立ごみ（便利帳P14）に出してください</strong></p>
-              <p>乳白色びん、ガラス製品、板ガラス、蛍光灯、セトモノ、割れびん、コップ</p>
-              <h2>ペットボトル</h2>
-              <p>回収する物は「PET1マーク」の付いているペットボトルです。（飲料用、しょうゆ、みりん等）</p>
-              <h3>出し方</h3>
-              <ol>
-              <li>キャップ・ラベルをはずす。</li>
-              <li>中身を洗い、水をよく切る。</li>
-              <li>軽く踏んで潰す</li>
-              <li>回収ネットへ入れる<ul>
-              <li>ビニール袋などは入れず、ペットボトルだけ入れてください。</li>
-              <li>※: 口がきっちり収まるようにして入れ過ぎないようにしてください。（約8分目までを目安に）</li>
-              </ul>
-              </li>
-              </ol>
-              <h2>衣類・ふとん類</h2>
-              <p>国内外で再利用されたり工場用のウエスなどにしてリサイクルされます。</p>
-              <h3>出し方</h3>
-              <p>衣類全般 + 布類、くつ類、小物類の種類ごと資源物専用袋に入れて、口をしばって出す</p>
-              <p>ふとん・毛布類はひもで縛ってそのまま出す。 <strong>注意:雨の日は出さないでください</strong></p>
-              <ul>
-              <li>衣類全般、布類<ul>
-              <li>シャツ</li>
-              <li>Tシャツ</li>
-              <li>フリース</li>
-              <li>セーター</li>
-              <li>ジーンズ</li>
-              <li>スーツ</li>
-              <li>ジャケット</li>
-              <li>タオル 等</li>
-              </ul>
-              </li>
-              <li>くつ類<ul>
-              <li>革靴、スニーカー、パンプス等</li>
-              <li>※: 片方しかない場合は燃えるごみへ</li>
-              </ul>
-              </li>
-              <li>ベルト、帽子、バッグ等の小物類<ul>
-              <li>ベルト、ビジネスバッグ、スポーツバッグ、リュックサック、トートバッグ、帽子、ぬいぐるみ（15cm以下の物）など</li>
-              </ul>
-              </li>
-              </ul>
-              <h3>衣類・ふとん類として回収しないもの</h3>
-              <p>以下のものは衣類・ふとん類としては回収しません。それぞれの分別区分にしたがって処理してください。</p>
-              <ul>
-              <li>臭いの付いているもの</li>
-              <li>枕</li>
-              <li>マットレス</li>
-              <li>クッション</li>
-              <li>座布団</li>
-              <li>カーテン</li>
-              <li>長ぐつ</li>
-              <li>キャリーバッグ</li>
-              </ul>
-              <h3>衣類回収拠点について</h3>
-              <p>衣類についてはまちづくりセンター等の公共施設での拠点回収も行っています。
-              施設が開いている時であればいつでも出すことは出来ますのでこちらもご利用ください。回収場所などについては便利帳P20を参照ください。
-              <strong>なお、まちづくりセンター等の公共施設ではふとん・毛布類の回収は行いません</strong></p>
             </article>
           </div>
         </div>
@@ -371,220 +527,56 @@
     </div>
   </div>
 
+  <!-- 多言語情報 -->
   <div class="accordion" id="accordion3">
     <div class="accordion-group-top">
       <div class="accordion-heading">
-        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_3">市で回収しないもの</a>
+        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_3">
+          Multi Language </a>
       </div>
       <div id="collapse3_3" class="accordion-body collapse">
         <div class="accordion-inner">
           <div id="help">
-            <article id="content" class="markdown-body">
-              <p>この文章は、「ごみの分け方便利帳」の一部を抜粋したものを載せています。更に詳しい内容は便利帳を確認ください。</p>
-              <p><a href="http://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000006klx.html">ごみの分け方便利帳（PDF版） | 静岡県富士市</a></p>
-              <h2>市で収集しない主なもの</h1>
-              <p>市では、以下の様なものについて収集や持ち込みの受け入れを行っておりません。
-              電話帳などに乗っている販売店や専門業者に処理を依頼してください。</p>
-              <p>※: 便利帳P25、便利帳P33の項目:収集できない、から引用しています。</p>
-              <ul>
-              <li>い<ul>
-              <li>石: 自己処理してください</li>
-              <li>衣類乾燥機: 家電リサイクル法対象品です　処理方法は便利帳P27~P28をご覧ください</li>
-              </ul>
+            <p>多言語情報です。Garbage calendar for Multi Language</p>
+            <!-- 各ゴミのカレンダーのリンクを多言語で翻訳したタイトルにして乗せる -->
+            <ul>
+              <li>
+                <a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/rn2ola0000020jka.html">
+                  한국어 버전（韓国語版）</a></li>
+              <li>
+                <a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/rn2ola0000020jar.html">
+                  Version en español（スペイン語版）
+                </a>
               </li>
-              <li>え<ul>
-              <li>エアコン（室内機、室外機）: 家電リサイクル法対象品です　処理方法は便利帳P27~P28をご覧ください</li>
-              </ul>
+              <li>
+                <a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/rn2ola0000020iyu.html">
+                  English（英語版)</a></li>
+              <li>
+                <a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/rn2ola0000020ior.html">
+                  Phiên bản tiếng việt（ベトナム語）
+                </a>
               </li>
-              <li>お<ul>
-              <li>オイル（自動車、バイク用）: 販売店等で引き取ってもらってください　オイルパックで処理した物も出せません</li>
-              <li>オートバイ: 販売店へ問い合わせてください　P29をご覧ください（部品も収集しません）</li>
-              </ul>
+              <li>
+                <a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/rn2ola0000020ieu.html">
+                  Tagalog na bersyon（タガログ語版）
+                </a>
               </li>
-              <li>か<ul>
-              <li>乾燥機（衣類）: 家電リサイクル法対象品です　処理方法は便利帳P27~P28をご覧ください</li>
-              </ul>
-              </li>
-              <li>き<ul>
-              <li>金庫（耐火）: 処理困難物　（株）富士環境保全公社 TEL 0545-23-0900 へお問い合わせください</li>
-              </ul>
-              </li>
-              <li>し<ul>
-              <li>自動車関連部品: 販売店に相談してください　後付けアクセサリーは収集します（キャリアー等）</li>
-              <li>消火器: 消防用品販売店等に相談してください</li>
-              <li>除草剤（粉末含む）（家庭用）: 販売店等に相談してください</li>
-              </ul>
-              </li>
-              <li>す<ul>
-              <li>砂:</li>
-              <li>スロット台: 処理困難物　販売店に相談してください</li>
-              </ul>
-              </li>
-              <li>せ<ul>
-              <li>セニアカー: 販売店に相談してください</li>
-              <li>洗濯機: 家電リサイクル法対象品です　処理方法は便利帳P27~P28をご覧ください</li>
-              </ul>
-              </li>
-              <li>た<ul>
-              <li>タイヤ: 自転車用は燃えるごみへ（個人で交換した場合）</li>
-              <li>耐火金庫:</li>
-              </ul>
-              </li>
-              <li>つ<ul>
-              <li>土: 自己処理してください</li>
-              </ul>
-              </li>
-              <li>て<ul>
-              <li>テレビ（液晶、ブラウン管方式）: 家電リサイクル法対象品です　処理方法は便利帳P27~P28をご覧ください</li>
-              </ul>
-              </li>
-              <li>の<ul>
-              <li>農薬: 販売店で引き取ってもらってください</li>
-              </ul>
-              </li>
-              <li>は<ul>
-              <li>バイク: 2輪車リサイクルの対象です　P29をご覧ください</li>
-              <li>パソコン: P26をご覧ください</li>
-              <li>パチンコ台: 処理困難物　販売店へ相談してください</li>
-              <li>バッテリー（家電用）: リサイクル協力店へ持ち込んでください　リサイクル協力店については販売店または廃棄物対策課にご相談ください</li>
-              <li>バッテリー（自動車、バイク用）: 販売店等へご相談ください</li>
-              </ul>
-              </li>
-              <li>ひ<ul>
-              <li>ピアノ: 販売店で引き取ってもらってください</li>
-              </ul>
-              </li>
-              <li>ほ<ul>
-              <li>ホイール（車）: 販売店へ相談してください</li>
-              <li>ボンベ類: 取引店で引き取ってもらってください（消火器、ガスボンベ等）</li>
-              </ul>
-              </li>
-              <li>や<ul>
-              <li>薬品: 購入先へ相談してください</li>
-              </ul>
-              </li>
-              <li>れ<ul>
-              <li>冷蔵庫: 家電リサイクル法対象品です　処理方法は便利帳P27~P28をご覧ください</li>
-              <li>冷凍庫: 家電リサイクル法対象品です　処理方法は便利帳P27~P28をご覧ください</li>
-              </ul>
-              </li>
-              <li>わ<ul>
-              <li>ワインセラー: 家電リサイクル法対象品です　処理方法は便利帳P27~P28をご覧ください</li>
-              </ul>
-              </li>
-              </ul>
-            </article>
+              <li>
+                <a href="https://www.city.fuji.shizuoka.jp/kurashi/c0701/rn2ola0000020hya.html">
+                  中文版（中国語版）</a></li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!--ゴミの出し方簡易版:市で回収しないもの-->
-  <div class="accordion" id="accordion3">
-    <div class="accordion-group-top">
-      <div class="accordion-heading">
-        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_4">家電リサイクル、パソコン、バイクの処理方法について</a>
-      </div>
-      <div id="collapse3_4" class="accordion-body collapse">
-        <div class="accordion-inner">
-          <div id="help">
-            <article id="content" class="markdown-body">
-              <p>この文章は、「ごみの分け方便利帳」の一部を抜粋したものを載せています。更に詳しい内容は便利帳を確認ください。</p>
-              <p><a href="http://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000006klx.html">ごみの分け方便利帳（PDF版） | 静岡県富士市</a></p>
-              <h1>家電リサイクル, パソコン、バイクの処理方法について</h1>
-              <h2>パソコンの処分方法について</h2>
-              <p>ご家庭で不要になったパソコンは、下記の方法で処分可能です。回収したパソコンは、国内の再資源化施設にて適切にリサイクルされます。</p>
-              <ol>
-              <li>環境クリーンセンターに持ち込む<ul>
-              <li>環境クリーンセンターへの持ち込みに限り、無料で引き取りを行っています。</li>
-              <li>環境クリーンセンターの場所や営業時間などは便利帳P24をご参照ください。</li>
-              </ul>
-              </li>
-              <li>メーカーに申し込み、ゆうパックで送付する<ul>
-              <li>処分したいPCメーカーに処分を依頼することも可能です</li>
-              </ul>
-              </li>
-              </ol>
-              <p>PCリサイクルにつきましては、<a href="http://www.pc3r.jp/">一般社団法人 パソコン3R推進協会</a> をご覧ください。</p>
-              <h2>家電リサイクル対象品目の出し方</h2>
-              <p>家電リサイクル対象品目は、法令に定められたリサイクル料金を負担して処分します。方法については、<a href="http://www.rkc.aeha.or.jp/">一般財団法人家電製品協会</a> をご覧ください。</p>
-              <p>リサイクル料金の例や、出し方の例は便利帳P27を参照ください。</p>
-              <h2>指定引取場所</h2>
-              <p>全国の製造業者（家電メーカー）は、自社製品のリサイクルをするために、製品を引き取る場所を指定します。この場所を、指定引取場所といいます。</p>
-              <p>お近くの指定引取場所に家電リサイクル対象品目を持ち込んでください。</p>
-              <ul>
-              <li>（株）篠原産業（浮島工業団地内）<ul>
-              <li>住所: 富士市中里2608-43</li>
-              <li>TEL: 0545-32-2160</li>
-              <li>受け入れメーカー: 全メーカー、回収を行うメーカーが無いもの</li>
-              <li><strong>（株）篠原産業ではリサイクル料金の支払いもできます。</strong></li>
-              </ul>
-              </li>
-              <li>中京トナミ運輸（株）<ul>
-              <li>住所: 富士市大野157-1</li>
-              <li>TEL: 0545-32-1073</li>
-              <li>受け入れメーカー: 全メーカー、回収を行うメーカーが無いもの</li>
-              <li><strong>持ち込む前に郵便局でリサイクル料金の支払ってください。</strong></li>
-              </ul>
-              </li>
-              </ul>
-              <h1>バイクのリサイクル</h1>
-              <p>バイクのリサイクルシステムのご利用に際し、リサイクル料金のご負担はありません。</p>
-              <p>詳しくは、<a href="http://www.jarc.or.jp/motorcycle/">二輪車（バイク）リサイクル | 公益財団法人 自動車リサイクル促進センター</a> をご覧ください。</p>
-              <p>なお、指定引き取り窓口へお持ち込みの場合、富士市市内では（株）篠原産業（便利帳P28）になります。費用はかかりませんのでそのままお持ち込みください。</p>
-              <p>その他のリサイクルへの出し方、お問い合わせ先、持込時に必要な書類等も便利帳P29をごらんください。　</p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
   <div class="accordion" id="accordion3">
     <div class="accordion-group-top">
       <div class="accordion-heading">
-        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_5">その他の情報</a>
-      </div>
-      <div id="collapse3_5" class="accordion-body collapse">
-        <div class="accordion-inner">
-          <div id="help">
-            <article id="content" class="markdown-body">
-              <p>この文章は、「ごみの分け方便利帳」の一部を抜粋したものを載せています。更に詳しい内容は便利帳を確認ください。</p>
-              <p><a href="http://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000006klx.html">ごみの分け方便利帳（PDF版） | 静岡県富士市</a></p>
-              <h2>その他の注意点（便利帳P30~32）</h2>
-              <ul>
-              <li>事業所、商店からのごみ<ul>
-              <li><strong>事業系ごみは集積所に出せません！</strong> 排出事業者が自らの責任で処理することが法令で定められています。</li>
-              <li>詳しくは便利帳P30をご覧ください。</li>
-              </ul>
-              </li>
-              <li>補助金制度<ul>
-              <li>家庭用生ごみ処理機器補助が利用できます。詳しくは便利帳P30か、以下のリンクご覧ください。</li>
-              </ul>
-              </li>
-              </ul>
-              <h2>よくある質問</h2>
-              <h3>Q1: ○○はどのように分別したらいいですか？</h3>
-              <p>A1:
-              このサイトの各種ごみ種別ごとに書かれている品目（各ごみの種別ごとあいうえお順で並んでいます）、便利帳P33以降の「ごみの分別一覧表」を参照ください。一覧表に記載されておらず、判断に困る場合は環境クリーンセンター（0545-35-0081）にお問い合わせください。</p>
-              <h3>Q2: ごみカレンダーはどこで配布されていますか？</h3>
-              <p>A2:
-              お住まいの地区のまちづくりセンターと、市役所10階廃棄物対策課で配布しています。市のウェブサイトでもご覧いただけます。</p>
-              <p>新年度のものについては、毎年3月5日頃に各町内会に配布された後、みなさんのご家庭に配られます。</p>
-              <h3>Q3休日や年末年始のごみの回収日はどうなりますか</h3>
-              <p>A3:
-              年末年始は燃えるごみの回収日が通常と異なります。その年度の広報ふじ12月5日号で詳細をお伝えしますので、12月に入ってからご確認ください。年末年始以外は祝日やお盆等でも通常通り回収します。</p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="accordion" id="accordion3">
-    <div class="accordion-group-top">
-      <div class="accordion-heading">
-        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3" href="#collapse3_0">5374.jpについて</a>
+        <a class="accordion-toggle-top" data-toggle="collapse" data-parent="#accordion3"
+          href="#collapse3_0">5374.jpについて</a>
       </div>
       <div id="collapse3_0" class="accordion-body collapse">
         <div class="accordion-inner">
@@ -604,20 +596,23 @@
             <p>お住まいの地域を選択することで、ゴミ収集日が自動的に更新されます。</p>
             <div id="caption">
               <h4>提供されるゴミ情報について</h4>
-              <p>静岡県富士市が公開している<a href="http://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000000zbx.html">ごみの出し方</a>から<a href="https://twitter.com/hrs_sano645">Hiroshi Sano(Twitter:@hrs_sano645)</a>が独自に解析し、アプリに実装しました。現在公開しているごみ情報は2018（平成30）年度となります。</p>
+              <p>静岡県富士市が公開している<a
+                  href="http://www.city.fuji.shizuoka.jp/kurashi/c0701/fmervo0000000zbx.html">ごみの出し方</a>から<a
+                  href="https://twitter.com/hrs_sano645">Hiroshi
+                  Sano(Twitter:@hrs_sano645)</a>が独自に解析し、アプリに実装しました。現在公開しているごみ情報は2018（平成30）年度となります。</p>
               <h4>ライセンスについて</h4>
               <p>本アプリの著作権はCode for Kanazawaに帰属します。</p>
             </div>
             <div id="cfk">
               <h3>Code for Kanazawaについて</h3>
               <p>コードで、世界をHappyに。<br />
-              各地域には様々な課題があり、解決するためのコミュニティ（団体）も数多くあります。<br />
-              課題の中には、ITやデザインの力で解決できるものも多くありますが、全てのコミュニティにそのスキル（技術）が備わっているわけではありません。<br /><br />
-              Code for Kanazawa（CfK）は、市民の課題を集め、その課題を整理・分析した上で、メンバーが実際に課題解決となるソフトウェアやハードウェア（仕組みや方法）を開発します。<br />
-              私たちは、デザインをして、ソフトウェアコードを書き、課題を解決するサービスを完成させるのです。さらに、そのサービスを提供し続ける力も持ちます。<br /><br />
-              CfKは市民のための組織です。行政や民間企業の影響を受けずに中立・公益の立場から物事を判断するよう心がけています。<br /><br />
-              公式サイト<br />
-              <a href="http://www.codeforkanazawa.org/">http://www.codeforkanazawa.org/</a>
+                各地域には様々な課題があり、解決するためのコミュニティ（団体）も数多くあります。<br />
+                課題の中には、ITやデザインの力で解決できるものも多くありますが、全てのコミュニティにそのスキル（技術）が備わっているわけではありません。<br /><br />
+                Code for Kanazawa（CfK）は、市民の課題を集め、その課題を整理・分析した上で、メンバーが実際に課題解決となるソフトウェアやハードウェア（仕組みや方法）を開発します。<br />
+                私たちは、デザインをして、ソフトウェアコードを書き、課題を解決するサービスを完成させるのです。さらに、そのサービスを提供し続ける力も持ちます。<br /><br />
+                CfKは市民のための組織です。行政や民間企業の影響を受けずに中立・公益の立場から物事を判断するよう心がけています。<br /><br />
+                公式サイト<br />
+                <a href="http://www.codeforkanazawa.org/">http://www.codeforkanazawa.org/</a>
               </p>
             </div>
           </div>
@@ -646,14 +641,15 @@
   ga('create', 'UA-43926409-1', '5374.jp');
   ga('send', 'pageview');
   </script> -->
-<!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116704617-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'UA-116704617-1');
   </script>
 
-  </body>
+</body>
+
 </html>

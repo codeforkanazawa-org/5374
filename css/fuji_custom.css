@@ -1,0 +1,48 @@
+/* fuji coustom */
+header h1{
+	font-size: 24px;
+	padding: 10px 10px 0px 10px;
+}
+
+header p {
+	padding: 10px 10px 0px 10px;
+}
+
+header p a {
+    color: blue;
+}
+
+#accordion3 a {
+	color: #428bca;
+}
+
+/* ごみパターンのテーブル */
+
+
+
+table.gomi_pattern_table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+table.gomi_pattern_table th{
+    text-align: center;
+    padding: 15px 0;
+}
+
+th.gomi_pattern {
+    width: 20%;
+}
+
+th.gomi_area{
+    width:auto;
+}
+
+table.gomi_pattern_table tr{
+    border-bottom: solid 1px #eee;
+  }
+
+  table.gomi_pattern_table td {
+      padding:6px 12px;
+  }
