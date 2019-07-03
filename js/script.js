@@ -49,8 +49,17 @@ var AreaModel = function() {
     this.trash.sort(function(a, b) {
       if (a.mostRecent === undefined) return 1;
       if (b.mostRecent === undefined) return -1;
-      var at = a.mostRecent.getTime();
-      var bt = b.mostRecent.getTime();
+      var amr = a.mostRecent;
+      var bmr = b.mostRecent;
+      if (!amr && !bmr) {
+        return 0;
+      } else if (amr && !bmr) {
+        return -1;
+      } else if (!amr && bmr) {
+        return 1;
+      }
+      var at = amr.getTime();
+      var bt = bmr.getTime();
       if (at < bt) return -1;
       if (at > bt) return 1;
       return 0;
@@ -172,7 +181,7 @@ var TrashModel = function(_lable, _cell, remarks) {
 
       var today = new Date();
 
-      // 12月 +3月　を表現
+      // 12月 +3月 を表現
       for (var i = 0; i < MaxMonth; i++) {
 
         var curMonth = today.getMonth() + i;
@@ -264,7 +273,9 @@ var TrashModel = function(_lable, _cell, remarks) {
         var month = parseInt(day_mix[j].substr(4, 2)) - 1;
         var day = parseInt(day_mix[j].substr(6, 2));
         var d = new Date(year, month, day);
-        day_list.push(d);
+        if (d.toString() !== "Invalid Date") {
+            day_list.push(d);
+        }
       }
     }
     //曜日によっては日付順ではないので最終的にソートする。
@@ -605,7 +616,7 @@ $(function() {
     });
   }
 
-  function onChangeSelect(row_index) {　
+  function onChangeSelect(row_index) {
     if (row_index == -1) {
       $("#accordion").html("");
       setSelectedAreaName("");
