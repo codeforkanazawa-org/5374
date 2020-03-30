@@ -2,32 +2,30 @@ package main
 
 import (
 	"bufio"
-	"os"
-	"strings"
-	"regexp"
 	"encoding/csv"
+	"os"
+	"regexp"
+	"strings"
 
-	"io/ioutil"
 	"bytes"
-	"io"
 	"fmt"
+	"io"
+	"io/ioutil"
 )
 
 // 例えば MAPPING_AREA[1]=2 というのは 5374フォーマットのカラム1が金沢オープンデータフォーマット カラム2に対応
 
 var (
-	MAPPING_AREA = []int{0, 5, 1, 2, 3, 4}
-	MAPPING_TARGET = []int{3, 1, 4, 0}
-)
-
-const (
-	KANAZAWA_DEFAULT_COMMNA = rune('\t')
+	MAPPING_AREA        = []int{0, 5, 1, 2, 3, 4}
+	removeTargetReg     = regexp.MustCompile(`（.*）`)
+	removeMonthKanazawa = regexp.MustCompile(`:.*?\s`)
 )
 
 type Center struct {
 	start string
 	end   string
 }
+
 // 金沢オープンデータ用のCSVを読み出します。
 func csvReader(filename string) *csv.Reader {
 
@@ -36,7 +34,6 @@ func csvReader(filename string) *csv.Reader {
 		panic(err)
 	}
 	r := csv.NewReader(bufio.NewReader(bytes.NewReader(b)))
-	r.Comma = rune(KANAZAWA_DEFAULT_COMMNA)
 	return r
 
 }
@@ -63,8 +60,7 @@ func convert5374TargetColumn(row []string) []string {
 	result[1] += row[2]
 
 	// ごみの種類(0)から (金属ごみ)などを削除する。
-	r := regexp.MustCompile(`（.*）`)
-	result[0] = r.ReplaceAllString(result[0], "")
+	result[0] = removeTargetReg.ReplaceAllString(result[0], "")
 
 	return result
 
@@ -83,13 +79,13 @@ func normalizeDate(d string) string {
 // ごみ処理センターのマッピングをします
 // 金沢オープンデータフォーマット カラム5,6,7に対応
 func mappingCenter(mp map[string]*Center, row []string) {
-	v, found := mp[row[5]];
+	v, found := mp[row[5]]
 	row[6] = normalizeDate(row[6])
 	row[7] = normalizeDate(row[7])
 
 	if !found {
-		mp[row[5]] = &Center{start:row[6], end:row[7]}
-	}else {
+		mp[row[5]] = &Center{start: row[6], end: row[7]}
+	} else {
 		// 最大の期間を選択するようにする
 		if row[6] < v.start {
 			v.start = row[6]
@@ -122,6 +118,7 @@ func mapToCenterData(mp map[string]*Center) string {
 	}
 	return result
 }
+
 // area_days.csv用の解析を行います。
 func calcAreaDays(filename string) {
 
@@ -132,16 +129,26 @@ func calcAreaDays(filename string) {
 	// 1行目はラベルなので飛ばす
 	r.Read()
 
-	for ;; {
+	for {
 		row, err := r.Read()
 		if err == io.EOF {
 			break
-		}else if err != nil {
+		} else if err != nil {
 			panic(err)
 		}
 
-		e := strings.Join(convertColumn(row, MAPPING_AREA), ",")
+		for i := 2; i < 5; i++ {
+			next := []string{}
+			split := strings.Split(row[i], " ")
+			for _, v := range split {
+				if strings.HasSuffix(v, ":4-3") || strings.HasSuffix(v, ":4-11/2-3") || strings.HasSuffix(v, ":4-12/2-3") {
+					next = append(next, v[:4])
+				}
+			}
+			row[i] = strings.Join(next, " ")
+		}
 
+		e := strings.Join(convertColumn(row, MAPPING_AREA), ",")
 		area = append(area, e)
 		mappingCenter(mp, row)
 	}
@@ -158,12 +165,12 @@ func calcTarget(filename string) {
 	// 1行目はラベルなので飛ばす
 	r.Read()
 
-	for ;; {
+	for {
 		row, err := r.Read()
 
 		if err == io.EOF {
 			break
-		}else if err != nil {
+		} else if err != nil {
 			panic(err)
 		}
 
@@ -181,7 +188,7 @@ func main() {
 	if len(os.Args) == 1 {
 		calcAreaDays("kanazawa_data/H27_gomi_calendar.csv")
 		calcTarget("kanazawa_data/H27_gomi_jiten.csv")
-	}else {
+	} else {
 		calcAreaDays(os.Args[1])
 		calcTarget(os.Args[2])
 	}
