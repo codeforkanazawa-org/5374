@@ -11,4 +11,4 @@ var MaxMonth = 3;
 
 var WeekShift = true; // 休止期間なら週をずらすときは、true。金沢の仕様は、true。
 
-var SkipSuspend = true; // 休止期間を除去するときは、true。奈良の仕様は、true。
+var SkipSuspend = false; // 休止期間を除去するときは、true。奈良の仕様は、true。
